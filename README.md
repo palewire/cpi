@@ -42,7 +42,7 @@ Currently the library only supports inflation adjustments using annual values fr
 
 ## Updating the CPI
 
-Since the BLS routinely updates the CPI with the new values, this library must periodically download the latest data to ensure calls to `inflate` that do not specify a year return current values. This library *does not* do this automatically. You must update the BLS dataset stored alongside the code yourself by running the following method:
+Since the BLS routinely releases new CPI new values, this library must periodically download the latest data. This library *does not* do this automatically. You must update the BLS dataset stored alongside the code yourself by running the following method:
 
 ```python
 >>> cpi.update()
