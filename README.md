@@ -1,6 +1,6 @@
 # cpi
 
-A Python library that quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI).
+A Python library that quickly adjusts U.S. dollars for inflation using the Consumer Price Index (CPI).
 
 ## Getting started
 
