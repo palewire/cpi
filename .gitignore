@@ -2,3 +2,4 @@
 cpi/data.tsv
 *.egg-info
 dist
+build
