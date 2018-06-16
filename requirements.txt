@@ -1,0 +1,7 @@
+requests
+
+# Testing
+twine
+flake8
+coverage
+python-coveralls

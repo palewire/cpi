@@ -1,0 +1,4 @@
+*.pyc
+cpi/data.tsv
+*.egg-info
+dist
