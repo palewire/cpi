@@ -28,7 +28,7 @@ If you'd like to adjust to a different year, submit it as an integer to the opti
 If you'd like to retrieve the CPI value itself for any year, use the `get` method.
 
 ```python
-cpi.get(1950)
+>>> cpi.get(1950)
 24.1
 ```
 
