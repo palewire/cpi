@@ -10,20 +10,22 @@ First install the library.
 $ pip install cpi
 ```
 
-Once you have it, adjusting for inflation is as simple as providing a dollar value followed by the year it is from. By default it is adjusted to its value in the most recent year available.
+Once you have it, adjusting for inflation is as simple as providing a dollar value followed by the year it is from to  the `inflate` method. By default it is adjusted to its value in the most recent year available.
 
 ```python
 >>> import cpi
 >>> cpi.inflate(100, 1950)
+1017.0954356846472
 ```
 
 If you'd like to adjust to a different year, submit it as an integer to the optional `to` keyword argument.
 
 ```python
 >>> cpi.inflate(100, 1950, to=1960)
+122.82157676348547
 ```
 
-If you'd like to retrieve the CPI value itself for any year, use the get method.
+If you'd like to retrieve the CPI value itself for any year, use the `get` method.
 
 ```python
 cpi.get(1950)
