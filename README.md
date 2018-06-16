@@ -33,8 +33,6 @@ cpi.get(1950)
 
 That's it!
 
-### Using pandas
-
 
 ## Source
 
