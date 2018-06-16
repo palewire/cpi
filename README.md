@@ -29,6 +29,7 @@ If you'd like to retrieve the CPI value itself for any year, use the `get` metho
 
 ```python
 cpi.get(1950)
+24.1
 ```
 
 That's it!
