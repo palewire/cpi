@@ -4,6 +4,7 @@
 Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)
 """
 from .data import cpi_by_year
+from .download import Downloader
 from .errors import CPIDoesNotExist
 
 
@@ -41,3 +42,12 @@ def inflate(value, year, to=None):
     # The input value is multiplied by the CPI of the target year,
     # Then divided into the cpi from the source year.
     return (value * get(to)) / float(get(year))
+
+
+def update():
+    """
+    Updates the core Consumer Price Index dataset at the core of this library.
+
+    Requires an Internet connection.
+    """
+    Downloader().update()

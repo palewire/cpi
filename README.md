@@ -33,7 +33,6 @@ cpi.get(1950)
 
 That's it!
 
-
 ## Source
 
 The adjustment is made using data provided by [The Bureau of Labor Statistics](https://www.bls.gov/cpi/home.htm) at the U.S. Department of Labor.
@@ -42,4 +41,10 @@ Currently the library only supports inflation adjustments using annual values fr
 
 The dataset is identified by the BLS as "CUUR0000SA0." It used as the default for most basic inflation calculations
 
-Learn more about the different types of CPI calculations on [the BLS website](https://www.bls.gov/cpi/questions-and-answers.htm).
+## Updating the CPI
+
+Since the BLS routinely updates the CPI with the new values, this library must periodically download the latest data to ensure calls to `inflate` that do not specify a year return current values. This library *does not* do this automatically. You must update the BLS dataset stored alongside the code yourself by running the following method:
+
+```python
+>>> cpi.update()
+```
