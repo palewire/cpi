@@ -2,6 +2,8 @@
 
 A Python library that quickly adjusts U.S. dollars for inflation using the Consumer Price Index (CPI).
 
+[![Build Status](https://travis-ci.org/datadesk/cpi.svg?branch=master)](https://travis-ci.org/datadesk/cpi)
+
 ## Getting started
 
 First install the library.
