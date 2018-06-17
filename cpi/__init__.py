@@ -3,13 +3,23 @@
 """
 Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)
 """
+import warnings
+from datetime import date
 from .data import cpi_by_year
 from .download import Downloader
-from .errors import CPIDoesNotExist
+from .errors import CPIDoesNotExist, StaleDataWarning
 
 
+# Establish the range of data available
 EARLIEST_YEAR = min(cpi_by_year.keys())
 LATEST_YEAR = max(cpi_by_year.keys())
+
+# Figure out how out of date you are
+DAYS_SINCE_LATEST = (date.today() - date(LATEST_YEAR, 1, 1)).days
+
+# If it's more than two years out of date, raise a warning.
+if DAYS_SINCE_LATEST > (365*2.5):
+    warnings.warn(StaleDataWarning())
 
 
 def get(year):

@@ -6,4 +6,15 @@ Custom errors.
 
 
 class CPIDoesNotExist(Exception):
+    """
+    Error raised when a CPI is requested that doesn't exist.
+    """
     pass
+
+
+class StaleDataWarning(Warning):
+    """
+    The warning to raise when the local data are out of date.
+    """
+    def __str__(self):
+        return "CPI data is out of date. To accurately inflate to today's dollars, you must run `cpi.update()`."
