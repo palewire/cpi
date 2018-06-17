@@ -8,6 +8,9 @@ from .download import Downloader
 from .errors import CPIDoesNotExist
 
 
+LATEST_YEAR = max(cpi_by_year.keys())
+
+
 def get(year):
     """
     Returns the CPI value for a given year.
@@ -18,7 +21,7 @@ def get(year):
         raise CPIDoesNotExist("CPI value not found for {}".format(year))
 
 
-def inflate(value, year, to=None):
+def inflate(value, year, to=LATEST_YEAR):
     """
     Returns a dollar value adjusted for inflation.
 
@@ -28,12 +31,6 @@ def inflate(value, year, to=None):
 
     If you'd like to adjust to a different year, submit it as an integer to the optional `to` keyword argument.
     """
-    # Figure out the year we're inflating to.
-    if not to:
-        # If an input hasn't been provided, we'll use the maximum year
-        max_year = max(cpi_by_year.keys())
-        to = max_year
-
     # If the two years match, just return the value unadjusted
     if year == to:
         return value
