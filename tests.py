@@ -21,6 +21,9 @@ class CPITest(unittest.TestCase):
         self.assertEqual(cpi.inflate(1017.0954356846472, 2017, to=1950), 100)
         self.assertEqual(cpi.inflate(122.82157676348547, 1960, to=1950), 100)
 
+    def test_earliest_year(self):
+        self.assertEqual(cpi.EARLIEST_YEAR, 1913)
+
     def test_latest_year(self):
         self.assertEqual(cpi.LATEST_YEAR, 2017)
 

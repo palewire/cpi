@@ -8,6 +8,7 @@ from .download import Downloader
 from .errors import CPIDoesNotExist
 
 
+EARLIEST_YEAR = min(cpi_by_year.keys())
 LATEST_YEAR = max(cpi_by_year.keys())
 
 
