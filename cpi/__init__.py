@@ -17,7 +17,7 @@ LATEST_YEAR = max(cpi_by_year.keys())
 # Figure out how out of date you are
 DAYS_SINCE_LATEST = (date.today() - date(LATEST_YEAR, 1, 1)).days
 
-# If it's more than two years out of date, raise a warning.
+# If it's more than two and a half years out of date, raise a warning.
 if DAYS_SINCE_LATEST > (365*2.5):
     warnings.warn(StaleDataWarning())
 
