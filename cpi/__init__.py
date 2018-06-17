@@ -48,7 +48,7 @@ def inflate(value, year, to=LATEST_YEAR):
 
     # Otherwise, let's do the math.
     # The input value is multiplied by the CPI of the target year,
-    # Then divided into the cpi from the source year.
+    # then divided into the CPI from the source year.
     return (value * get(to)) / float(get(year))
 
 
