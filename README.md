@@ -40,7 +40,7 @@ That's it!
 
 The adjustment is made using data provided by [The Bureau of Labor Statistics](https://www.bls.gov/cpi/home.htm) at the U.S. Department of Labor.
 
-Currently the library only supports inflation adjustments using annual values from the so-called "CPI-U" survey, which is an average of all prices paid by all urban consumers. It is not seasonally adjusted. The dataset is identified by the BLS as "CUUR0000SA0." It used as the default for most basic inflation calculations
+Currently the library only supports inflation adjustments using annual values from the so-called "CPI-U" survey, which is an average of all prices paid by all urban consumers. It is not seasonally adjusted. The dataset is identified by the BLS as "CUUR0000SA0." It used as the default for most basic inflation calculations.
 
 ## Updating the CPI
 
