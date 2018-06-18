@@ -21,6 +21,14 @@ class Data(object):
             (int(r['year']), float(r['value'])) for r in self.cpi_file if r['period_type'] == 'annual'
         )
 
+    def get_month_dict(self):
+        """
+        Returns a dictionary of the CPI-U adjustment value for each year available.
+        """
+        return dict(
+            (int(r['year']), float(r['value'])) for r in self.cpi_file if r['period_type'] == 'monthly'
+        )
+
     def get_cpi_file(self):
         """
         Returns the CPI data as a csv.DictReader object.
@@ -33,3 +41,4 @@ class Data(object):
 
 data = Data()
 cpi_by_year = data.get_year_dict()
+cpi_by_montly = data.get_month_dict()
