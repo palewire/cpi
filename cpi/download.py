@@ -14,8 +14,13 @@ import requests
 from datetime import date
 
 
+PERIOD_TYPES = dict(("M{}".format(i), "monthly") for i in range(1, 13))
+PERIOD_TYPES["M13"] = "annual"
+
+
 class Downloader(object):
-    this_dir = os.path.dirname(__file__)
+    PERIOD_TYPES = PERIOD_TYPES
+    THIS_DIR = os.path.dirname(__file__)
 
     def update(self):
         """
@@ -30,10 +35,16 @@ class Downloader(object):
         """
         bls_url = "https://download.bls.gov/pub/time.series/cu/cu.data.1.AllItems"
         response = requests.get(bls_url)
-        with open(os.path.join(self.this_dir, 'data.tsv'), 'w') as f:
+        with open(os.path.join(self.THIS_DIR, 'data.tsv'), 'w') as f:
             f.write(response.text)
 
-    def parse_period(self, row):
+    def parse_periodtype(self, row):
+        """
+        Accepts a row from the raw BLS data. Returns a string classifying the period.
+        """
+        return self.PERIOD_TYPES[row['period']]
+
+    def parse_date(self, row):
         """
         Accepts a row from the raw BLS data. Returns a Python date object based on its period.
         """
@@ -49,14 +60,14 @@ class Downloader(object):
         Parse the downloaded fixed-width file from the BLS and convert it into a CSV.
         """
         # Get the raw data
-        input = os.path.join(self.this_dir, "data.tsv")
+        input = os.path.join(self.THIS_DIR, "data.tsv")
         reader = csv.DictReader(open(input, 'r'), delimiter="\t")
 
         # Figure out where we're going to store the clean data
-        output = os.path.join(self.this_dir, "data.csv")
+        output = os.path.join(self.THIS_DIR, "data.csv")
         writer = csv.DictWriter(
             open(output, 'w'),
-            fieldnames=["series", "period", "year", "date", "value"]
+            fieldnames=["series", "period", "period_type", "year", "date", "value"]
         )
         writer.writeheader()
 
@@ -71,7 +82,8 @@ class Downloader(object):
             )
             # Only keep the annual totals (M13) from the series we care about.
             if d['series'] == 'CUUR0000SA0':
-                d['date'] = self.parse_period(d)
+                d['period_type'] = self.parse_periodtype(d)
+                d['date'] = self.parse_date(d)
                 writer.writerow(d)
 
 
