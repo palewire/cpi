@@ -18,7 +18,7 @@ LATEST_YEAR = max(YEARS)
 # Figure out how out of date you are
 DAYS_SINCE_LATEST = (date.today() - date(LATEST_YEAR, 1, 1)).days
 
-# If it's more than two years out of date, raise a warning.
+# If it's more than two and a half years out of date, raise a warning.
 if DAYS_SINCE_LATEST > (365*2.5):
     warnings.warn(StaleDataWarning())
 
@@ -49,7 +49,7 @@ def inflate(value, year, to=LATEST_YEAR):
 
     # Otherwise, let's do the math.
     # The input value is multiplied by the CPI of the target year,
-    # Then divided into the cpi from the source year.
+    # then divided into the CPI from the source year.
     return (value * get(to)) / float(get(year))
 
 
