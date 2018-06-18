@@ -14,7 +14,7 @@ setup(
     packages=("cpi",),
     include_package_data=True,
     zip_safe=False,  # because we're including static files
-    install_requires=("",),
+    install_requires=("requests",),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python',
