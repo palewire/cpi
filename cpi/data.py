@@ -18,7 +18,7 @@ class Data(object):
         Returns a dictionary of the CPI-U adjustment value for each year available.
         """
         return dict(
-            (int(r['year']), float(r['value'])) for r in self.cpi_file
+            (int(r['year']), float(r['value'])) for r in self.cpi_file if r['period'] == 'M13'
         )
 
     def get_cpi_file(self):

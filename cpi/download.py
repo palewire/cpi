@@ -58,7 +58,7 @@ class Downloader(object):
                 value=float(row['value'].strip())
             )
             # Only keep the annual totals (M13) from the series we care about.
-            if d['series'] == 'CUUR0000SA0' and d['period'] == 'M13':
+            if d['series'] == 'CUUR0000SA0':
                 writer.writerow(d)
 
 
