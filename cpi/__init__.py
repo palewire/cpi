@@ -5,12 +5,16 @@ Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)
 """
 import warnings
 from datetime import date
-from .data import cpi_by_year
 from .download import Downloader
+from .data import cpi_by_year, cpi_by_month
 from .errors import CPIDoesNotExist, StaleDataWarning
 
 
 # Establish the range of data available
+MONTHS = cpi_by_month.keys()
+EARLIEST_MONTH = min(MONTHS)
+LATEST_MONTH = max(MONTHS)
+
 YEARS = cpi_by_year.keys()
 EARLIEST_YEAR = min(YEARS)
 LATEST_YEAR = max(YEARS)

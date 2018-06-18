@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import cpi
 import unittest
+from datetime import date
 from cpi.errors import CPIDoesNotExist
 
 
@@ -26,6 +27,12 @@ class CPITest(unittest.TestCase):
 
     def test_latest_year(self):
         self.assertEqual(cpi.LATEST_YEAR, 2017)
+
+    def test_earliest_month(self):
+        self.assertEqual(cpi.EARLIEST_MONTH, date(1913, 1, 1))
+
+    def test_latest_month(self):
+        self.assertEqual(cpi.LATEST_MONTH, date(2018, 5, 1))
 
 
 if __name__ == '__main__':
