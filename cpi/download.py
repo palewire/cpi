@@ -14,12 +14,7 @@ import requests
 from datetime import date
 
 
-PERIOD_TYPES = dict(("M{}".format(i), "monthly") for i in range(1, 13))
-PERIOD_TYPES["M13"] = "annual"
-
-
 class Downloader(object):
-    PERIOD_TYPES = PERIOD_TYPES
     THIS_DIR = os.path.dirname(__file__)
 
     def update(self):
@@ -42,7 +37,9 @@ class Downloader(object):
         """
         Accepts a row from the raw BLS data. Returns a string classifying the period.
         """
-        return self.PERIOD_TYPES[row['period']]
+        period_types = dict(("M{:02d}".format(i), "monthly") for i in range(1, 13))
+        period_types["M13"] = "annual"
+        return period_types[row['period']]
 
     def parse_date(self, row):
         """
