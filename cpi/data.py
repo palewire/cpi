@@ -7,20 +7,29 @@ import os
 import csv
 
 
-def _get_cpi_dict():
-    """
-    Returns a dictionary of the CPI-U adjustment value for each year available.
-    """
-    # Open up the CSV from the BLS
+class Data(object):
     this_dir = os.path.dirname(__file__)
-    csv_path = os.path.join(this_dir, 'data.csv')
-    csv_file = open(csv_path, "r")
-    csv_data = csv.DictReader(csv_file)
 
-    # Convert it into a dictionary and pass it out.
-    return dict(
-        (int(r['year']), float(r['value'])) for r in csv_data
-    )
+    def __init__(self):
+        self.cpi_file = self.get_cpi_file()
+
+    def get_year_dict(self):
+        """
+        Returns a dictionary of the CPI-U adjustment value for each year available.
+        """
+        return dict(
+            (int(r['year']), float(r['value'])) for r in self.cpi_file
+        )
+
+    def get_cpi_file(self):
+        """
+        Returns the CPI data as a csv.DictReader object.
+        """
+        # Open up the CSV from the BLS
+        csv_path = os.path.join(self.this_dir, 'data.csv')
+        csv_file = open(csv_path, "r")
+        return csv.DictReader(csv_file)
 
 
-cpi_by_year = _get_cpi_dict()
+data = Data()
+cpi_by_year = data.get_year_dict()
