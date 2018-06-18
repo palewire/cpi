@@ -11,6 +11,7 @@ Identifer: CUUR0000SA0
 import os
 import csv
 import requests
+from datetime import date
 
 
 class Downloader(object):
@@ -32,6 +33,17 @@ class Downloader(object):
         with open(os.path.join(self.this_dir, 'data.tsv'), 'w') as f:
             f.write(response.text)
 
+    def parse_period(self, row):
+        """
+        Accepts a row from the raw BLS data. Returns a Python date object based on its period.
+        """
+        # If it is annual data, return it as Jan. 1 of that year.
+        if row['period'] == 'M13':
+            return date(row['year'], 1, 1)
+        # If it is month data, return it as the first day of the month.
+        else:
+            return date(row['year'], int(row['period'].replace("M", "")), 1)
+
     def parse_tsv(self):
         """
         Parse the downloaded fixed-width file from the BLS and convert it into a CSV.
@@ -44,7 +56,7 @@ class Downloader(object):
         output = os.path.join(self.this_dir, "data.csv")
         writer = csv.DictWriter(
             open(output, 'w'),
-            fieldnames=["series", "period", "year", "value"]
+            fieldnames=["series", "period", "year", "date", "value"]
         )
         writer.writeheader()
 
@@ -59,6 +71,7 @@ class Downloader(object):
             )
             # Only keep the annual totals (M13) from the series we care about.
             if d['series'] == 'CUUR0000SA0':
+                d['date'] = self.parse_period(d)
                 writer.writerow(d)
 
 
