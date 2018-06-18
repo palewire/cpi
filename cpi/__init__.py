@@ -11,8 +11,9 @@ from .errors import CPIDoesNotExist, StaleDataWarning
 
 
 # Establish the range of data available
-EARLIEST_YEAR = min(cpi_by_year.keys())
-LATEST_YEAR = max(cpi_by_year.keys())
+YEARS = cpi_by_year.keys()
+EARLIEST_YEAR = min(YEARS)
+LATEST_YEAR = max(YEARS)
 
 # Figure out how out of date you are
 DAYS_SINCE_LATEST = (date.today() - date(LATEST_YEAR, 1, 1)).days
