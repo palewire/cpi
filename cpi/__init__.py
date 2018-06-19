@@ -4,7 +4,8 @@
 Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)
 """
 import warnings
-from datetime import date
+from datetime import date, datetime
+
 from .download import Downloader
 from .data import cpi_by_year, cpi_by_month
 from .errors import CPIDoesNotExist, StaleDataWarning
@@ -24,46 +25,65 @@ DAYS_SINCE_LATEST_MONTH = (date.today() - LATEST_MONTH).days
 DAYS_SINCE_LATEST_YEAR = (date.today() - date(LATEST_YEAR, 1, 1)).days
 
 # If it's more than two and a half years out of date, raise a warning.
-if DAYS_SINCE_LATEST_YEAR > (365*2.5) or DAYS_SINCE_LATEST_MONTH > 90:
+if DAYS_SINCE_LATEST_YEAR > (365*2.25) or DAYS_SINCE_LATEST_MONTH > 60:
     warnings.warn(StaleDataWarning())
 
 
-def get(period):
+def get(year_or_month):
     """
     Returns the CPI value for a given year.
     """
-    if isinstance(period, int):
+    if isinstance(year_or_month, int):
         try:
-            return cpi_by_year[period]
+            return cpi_by_year[year_or_month]
         except KeyError:
-            raise CPIDoesNotExist("CPI value not found for {}".format(period))
-    elif isinstance(period, date):
+            raise CPIDoesNotExist("CPI value not found for {}".format(year_or_month))
+    elif isinstance(year_or_month, date):
         try:
-            return cpi_by_month[period]
+            return cpi_by_month[year_or_month]
         except KeyError:
-            raise CPIDoesNotExist("CPI value not found for {}".format(period))
+            raise CPIDoesNotExist("CPI value not found for {}".format(year_or_month))
     else:
         raise ValueError("Only integers and date objects are accepted.")
 
 
-def inflate(value, year, to=LATEST_MONTH):
+def inflate(value, year_or_month, to=None):
     """
     Returns a dollar value adjusted for inflation.
 
-    You must submit the value, followed by the year its from.
+    You must submit the value, followed by the year or month its from.
 
-    By default, the input is adjusted to the most recent year available from the CPI.
+    Years should be submitted as integers. Months as datetime.date objects.
 
-    If you'd like to adjust to a different year, submit it as an integer to the optional `to` keyword argument.
+    By default, the input is adjusted to the most recent year or month available from the CPI.
+
+    If you'd like to adjust to a different year or month, submit it to the optional `to` keyword argument.
+
+    Yearly data can only be updated to other years. Monthly data can only be updated to other months.
     """
-    # If the two years match, just return the value unadjusted
-    if year == to:
+    # If the two dates match, just return the value unadjusted
+    if year_or_month == to:
         return value
+
+    # Figure out the 'to' date if it has not been provided
+    if not to:
+        if isinstance(year_or_month, int):
+            to = LATEST_YEAR
+        elif isinstance(year_or_month, (date, datetime)):
+            to = LATEST_MONTH
+
+    # If a datetime has been provided, shave it down to a date.
+    if isinstance(year_or_month, datetime):
+        year_or_month = year_or_month.date()
+
+    # Make sure the two dates are the same type
+    if type(year_or_month) != type(to):
+        raise TypeError("Dates must be the same types. Years can only be converted to years. Months only to months.")
 
     # Otherwise, let's do the math.
     # The input value is multiplied by the CPI of the target year,
     # then divided into the CPI from the source year.
-    return (value * get(to)) / float(get(year))
+    return (value * get(to)) / float(get(year_or_month))
 
 
 def update():
