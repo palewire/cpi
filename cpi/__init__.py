@@ -81,7 +81,7 @@ def inflate(value, year_or_month, to=None):
 
     # Make sure the two dates are the same type
     if type(year_or_month) != type(to):
-        raise TypeError("Dates must be the same types. Years can only be converted to years. Months only to months.")
+        raise TypeError("Years can only be converted to other years. Months only to other months.")
 
     # Otherwise, let's do the math.
     # The input value is multiplied by the CPI of the target year,
