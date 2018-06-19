@@ -32,10 +32,13 @@ def get(year):
     """
     Returns the CPI value for a given year.
     """
-    try:
-        return cpi_by_year[year]
-    except KeyError:
-        raise CPIDoesNotExist("CPI value not found for {}".format(year))
+    if isinstance(year, int):
+        try:
+            return cpi_by_year[year]
+        except KeyError:
+            raise CPIDoesNotExist("CPI value not found for {}".format(year))
+    else:
+        raise ValueError("Only integers and date objects are accepted.")
 
 
 def inflate(value, year, to=LATEST_YEAR):

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import cpi
 import unittest
-from datetime import date
+from datetime import date, datetime
 from cpi.errors import CPIDoesNotExist
 
 
@@ -13,6 +13,11 @@ class CPITest(unittest.TestCase):
         self.assertEqual(cpi.get(2000), 172.2)
         with self.assertRaises(CPIDoesNotExist):
             cpi.get(1900)
+
+    def test_get_value_error(self):
+        with self.assertRaises(ValueError):
+            cpi.get(1900.1)
+            cpi.get(datetime.now())
 
     def test_inflate(self):
         self.assertEqual(cpi.inflate(100, 1950), 1017.0954356846472)
