@@ -20,10 +20,11 @@ EARLIEST_YEAR = min(YEARS)
 LATEST_YEAR = max(YEARS)
 
 # Figure out how out of date you are
-DAYS_SINCE_LATEST = (date.today() - date(LATEST_YEAR, 1, 1)).days
+DAYS_SINCE_LATEST_MONTH = (date.today() - LATEST_MONTH).days
+DAYS_SINCE_LATEST_YEAR = (date.today() - date(LATEST_YEAR, 1, 1)).days
 
 # If it's more than two and a half years out of date, raise a warning.
-if DAYS_SINCE_LATEST > (365*2.5):
+if DAYS_SINCE_LATEST_YEAR > (365*2.5) or DAYS_SINCE_LATEST_MONTH > 90:
     warnings.warn(StaleDataWarning())
 
 
