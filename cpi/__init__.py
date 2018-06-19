@@ -28,15 +28,20 @@ if DAYS_SINCE_LATEST_YEAR > (365*2.5) or DAYS_SINCE_LATEST_MONTH > 90:
     warnings.warn(StaleDataWarning())
 
 
-def get(year):
+def get(period):
     """
     Returns the CPI value for a given year.
     """
-    if isinstance(year, int):
+    if isinstance(period, int):
         try:
-            return cpi_by_year[year]
+            return cpi_by_year[period]
         except KeyError:
-            raise CPIDoesNotExist("CPI value not found for {}".format(year))
+            raise CPIDoesNotExist("CPI value not found for {}".format(period))
+    elif isinstance(period, date):
+        try:
+            return cpi_by_month[period]
+        except KeyError:
+            raise CPIDoesNotExist("CPI value not found for {}".format(period))
     else:
         raise ValueError("Only integers and date objects are accepted.")
 
