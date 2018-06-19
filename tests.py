@@ -41,6 +41,8 @@ class CPITest(unittest.TestCase):
     def test_mismatch(self):
         with self.assertRaises(TypeError):
             cpi.inflate(100, 1950, to=date(2000, 1, 1))
+        with self.assertRaises(TypeError):
+            cpi.inflate(100, date(2000, 1, 1), to=1950)
 
     def test_earliest_year(self):
         self.assertEqual(cpi.EARLIEST_YEAR, 1913)
