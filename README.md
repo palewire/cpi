@@ -42,6 +42,13 @@ If you'd like to retrieve the CPI value itself for any year, use the `get` metho
 24.1
 ```
 
+You can also do that by month.
+
+```python
+>>> cpi.get(date(1950, 1, 1))
+23.5
+```
+
 That's it!
 
 ## Source
