@@ -20,9 +20,11 @@ class CPITest(unittest.TestCase):
             cpi.get(datetime.now())
 
     def test_inflate(self):
-        self.assertEqual(cpi.inflate(100, 1950), 1017.0954356846472)
+
+        self.assertEqual(cpi.inflate(100, 1950), 1043.9336099585062)
+        self.assertEqual(cpi.inflate(100, 1950, to=2017), 1017.0954356846472)
         self.assertEqual(cpi.inflate(100, 1950, to=1960), 122.82157676348547)
-        self.assertEqual(cpi.inflate(100, 1950, to=date(2018, 5, 1)), 1043.9336099585062)
+        self.assertEqual(cpi.inflate(100, 1950, to=date(2000, 1, 1)), 700.4149377593361)
 
     def test_deflate(self):
         self.assertEqual(cpi.inflate(1017.0954356846472, 2017, to=1950), 100)

@@ -46,7 +46,7 @@ def get(period):
         raise ValueError("Only integers and date objects are accepted.")
 
 
-def inflate(value, year, to=LATEST_YEAR):
+def inflate(value, year, to=LATEST_MONTH):
     """
     Returns a dollar value adjusted for inflation.
 
