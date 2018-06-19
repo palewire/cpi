@@ -27,6 +27,14 @@ If you'd like to adjust to a different year, submit it as an integer to the opti
 122.82157676348547
 ```
 
+You can also adjust month to month. You should submit the months as `datetime.date` objects.
+
+```python
+>>> from datetime import date
+>>> cpi.inflate(100, date(1950, 1, 1), to=date(2018, 1, 1))
+1054.7531914893618
+```
+
 If you'd like to retrieve the CPI value itself for any year, use the `get` method.
 
 ```python

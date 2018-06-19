@@ -30,6 +30,7 @@ class CPITest(unittest.TestCase):
 
     def test_inflate_months(self):
         self.assertEqual(cpi.inflate(100, date(1950, 1, 1)), 1070.587234042553)
+        self.assertEqual(cpi.inflate(100, date(1950, 1, 11)), 1070.587234042553)
         self.assertEqual(cpi.inflate(100, datetime(1950, 1, 1)), 1070.587234042553)
         self.assertEqual(cpi.inflate(100, date(1950, 1, 1), to=date(2018, 1, 1)), 1054.7531914893618)
         self.assertEqual(cpi.inflate(100, date(1950, 1, 1), to=date(1960, 1, 1)), 124.68085106382979)

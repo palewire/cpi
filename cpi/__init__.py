@@ -39,6 +39,9 @@ def get(year_or_month):
         except KeyError:
             raise CPIDoesNotExist("CPI value not found for {}".format(year_or_month))
     elif isinstance(year_or_month, date):
+        # If it's not set to the first day of the month, we should do that now.
+        if year_or_month.day != 1:
+            year_or_month = year_or_month.replace(day=1)
         try:
             return cpi_by_month[year_or_month]
         except KeyError:
