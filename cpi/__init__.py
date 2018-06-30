@@ -53,7 +53,7 @@ def get(year_or_month, series=DEFAULT_SERIES):
         raise ValueError("Only integers and date objects are accepted.")
 
 
-def inflate(value, year_or_month, to=None):
+def inflate(value, year_or_month, to=None, series=DEFAULT_SERIES):
     """
     Returns a dollar value adjusted for inflation.
 
@@ -100,7 +100,9 @@ def inflate(value, year_or_month, to=None):
     # Otherwise, let's do the math.
     # The input value is multiplied by the CPI of the target year,
     # then divided into the CPI from the source year.
-    return (value * get(to)) / float(get(year_or_month))
+    source_index = get(year_or_month, series=series)
+    target_index = get(to, series=series)
+    return (value * target_index) / float(source_index)
 
 
 def update():
