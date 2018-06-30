@@ -11,13 +11,15 @@ from .download import Downloader
 from .data import cpi_by_year, cpi_by_month
 from .errors import CPIDoesNotExist, StaleDataWarning
 
+# The default series is the CPI-U
+DEFAULT_SERIES = "CUUR0000SA0"
 
 # Establish the range of data available
-MONTHS = cpi_by_month.keys()
+MONTHS = cpi_by_month[DEFAULT_SERIES].keys()
 EARLIEST_MONTH = min(MONTHS)
 LATEST_MONTH = max(MONTHS)
 
-YEARS = cpi_by_year.keys()
+YEARS = cpi_by_year[DEFAULT_SERIES].keys()
 EARLIEST_YEAR = min(YEARS)
 LATEST_YEAR = max(YEARS)
 
@@ -30,13 +32,13 @@ if DAYS_SINCE_LATEST_YEAR > (365*2.25) or DAYS_SINCE_LATEST_MONTH > 60:
     warnings.warn(StaleDataWarning())
 
 
-def get(year_or_month):
+def get(year_or_month, series=DEFAULT_SERIES):
     """
     Returns the CPI value for a given year.
     """
     if isinstance(year_or_month, numbers.Integral):
         try:
-            return cpi_by_year[year_or_month]
+            return cpi_by_year[series][year_or_month]
         except KeyError:
             raise CPIDoesNotExist("CPI value not found for {}".format(year_or_month))
     elif isinstance(year_or_month, date):
@@ -44,7 +46,7 @@ def get(year_or_month):
         if year_or_month.day != 1:
             year_or_month = year_or_month.replace(day=1)
         try:
-            return cpi_by_month[year_or_month]
+            return cpi_by_month[series][year_or_month]
         except KeyError:
             raise CPIDoesNotExist("CPI value not found for {}".format(year_or_month))
     else:

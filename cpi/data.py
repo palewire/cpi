@@ -5,6 +5,7 @@ Open the Consumer Price Index (CPI) dataset.
 """
 import os
 import csv
+import collections
 from datetime import datetime
 
 
@@ -18,18 +19,22 @@ class Data(object):
         """
         Returns a dictionary of the CPI-U adjustment value for each year available.
         """
-        return dict(
-            (int(r['year']), float(r['value'])) for r in self.cpi_file if r['period_type'] == 'annual'
-        )
+        data_dict = collections.defaultdict(dict)
+        for row in self.cpi_file:
+            if row['period_type'] == 'annual':
+                data_dict[row['series']][int(row['year'])] = float(row['value'])
+        return data_dict
 
     def get_month_dict(self):
         """
         Returns a dictionary of the CPI-U adjustment value for each year available.
         """
-        return dict(
-            (datetime.strptime(r['date'], '%Y-%m-%d').date(), float(r['value']))
-            for r in self.cpi_file if r['period_type'] == 'monthly'
-        )
+        data_dict = collections.defaultdict(dict)
+        for row in self.cpi_file:
+            if row['period_type'] == 'monthly':
+                month = (datetime.strptime(row['date'], '%Y-%m-%d')).date()
+                data_dict[row['series']][month] = float(row['value'])
+        return data_dict
 
     def get_cpi_file(self):
         """
