@@ -15,7 +15,6 @@ setup(
     include_package_data=True,
     zip_safe=False,  # because we're including static files
     install_requires=("requests",),
-    tests_require=("pandas",),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python',

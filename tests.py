@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 import cpi
-import pandas
+import csv
 import unittest
 import warnings
 from cpi.errors import CPIDoesNotExist
@@ -18,6 +18,7 @@ class CPITest(unittest.TestCase):
         cls.EARLIEST_YEAR = 1913
         cls.LATEST_YEAR = 2017
         cls.DOLLARS = 100
+        cls.DATA_FILE = 'cpi/data.csv'
 
     def test_get(self):
         self.assertEqual(cpi.get(CPITest.TEST_YEAR_EARLIER), 24.1)
@@ -77,12 +78,21 @@ class CPITest(unittest.TestCase):
                 124.68085106382979)
 
     def test_inflate_months_total(self):
-        d = pandas.read_csv('cpi/data.csv')
+
+        def predicate(x, target_year):
+            return x == target_year
+
+        # skip header row
+        with open(CPITest.DATA_FILE) as f:
+            d = list(csv.reader(f))[1:]
+        # get first month for target year
+        val = next(x for x in d if predicate(int(x[3]), CPITest.END_YEAR))
+        END_INDEX = float(val[-1])
 
         def calculate_inflation(start_year):
-            bi = d[d['year'] == start_year].value.values[0]
-            ei = d[d['year'] == CPITest.END_YEAR].value.values[0]
-            return (CPITest.DOLLARS / bi) * ei
+            val = next(x for x in d if predicate(int(x[3]), start_year))
+            start_index = float(val[-1])
+            return (CPITest.DOLLARS / start_index) * END_INDEX
 
         for year in range(CPITest.TEST_YEAR_EARLIER, CPITest.END_YEAR):
             self.assertTrue(
