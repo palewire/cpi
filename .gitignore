@@ -4,3 +4,5 @@ cpi/data.tsv
 dist
 build
 .coverage
+.eggs
+*.*#

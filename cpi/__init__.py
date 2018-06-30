@@ -3,6 +3,7 @@
 """
 Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)
 """
+import numbers
 import warnings
 from datetime import date, datetime
 
@@ -33,7 +34,7 @@ def get(year_or_month):
     """
     Returns the CPI value for a given year.
     """
-    if isinstance(year_or_month, int):
+    if isinstance(year_or_month, numbers.Integral):
         try:
             return cpi_by_year[year_or_month]
         except KeyError:
@@ -70,13 +71,22 @@ def inflate(value, year_or_month, to=None):
 
     # Figure out the 'to' date if it has not been provided
     if not to:
-        if isinstance(year_or_month, int):
-            to = LATEST_YEAR
-        elif isinstance(year_or_month, (date, datetime)):
+        if isinstance(year_or_month, (date, datetime)):
             to = LATEST_MONTH
+        else:
+            to = LATEST_YEAR
+    # Otherwise sanitize it
+    else:
+        if isinstance(to, numbers.Integral):
+            to = int(to)
+        elif isinstance(to, datetime):
+            to = to.date()
 
+    # Sanitize the year_or_month
     # If a datetime has been provided, shave it down to a date.
-    if isinstance(year_or_month, datetime):
+    if isinstance(year_or_month, numbers.Integral):
+        year_or_month = int(year_or_month)
+    elif isinstance(year_or_month, datetime):
         year_or_month = year_or_month.date()
 
     # Make sure the two dates are the same type
