@@ -51,7 +51,7 @@ You can also do that by month.
 
 That's it!
 
-## Pandas example
+## Working with pandas
 
 An inflation-adjusted column can quickly be added to pandas DataFrame using the `apply` method. Here is an example using data tracking the median household income in the United States from [The Federal Reserve Bank of St. Louis](https://fred.stlouisfed.org/series/MEHOINUSA646N).
 
