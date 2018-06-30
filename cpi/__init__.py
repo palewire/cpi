@@ -41,21 +41,22 @@ def get(year_or_month, series=DEFAULT_SERIES):
     """
     Returns the CPI value for a given year.
     """
+    # Pull the appropriate series dict depending on the data type.
     if isinstance(year_or_month, numbers.Integral):
-        try:
-            return cpi_by_year[series][year_or_month]
-        except KeyError:
-            raise CPIDoesNotExist("CPI value not found for {}".format(year_or_month))
+        series_dict = cpi_by_year[series]
     elif isinstance(year_or_month, date):
         # If it's not set to the first day of the month, we should do that now.
         if year_or_month.day != 1:
             year_or_month = year_or_month.replace(day=1)
-        try:
-            return cpi_by_month[series][year_or_month]
-        except KeyError:
-            raise CPIDoesNotExist("CPI value not found for {}".format(year_or_month))
+        series_dict = cpi_by_month[series]
     else:
         raise ValueError("Only integers and date objects are accepted.")
+
+    # Pull the value from the series_dict
+    try:
+        return series_dict[year_or_month]
+    except KeyError:
+        raise CPIDoesNotExist("CPI value not found for {}".format(year_or_month))
 
 
 def inflate(value, year_or_month, to=None, series=DEFAULT_SERIES):
