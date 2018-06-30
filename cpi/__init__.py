@@ -85,9 +85,11 @@ def inflate(value, year_or_month, to=None):
             to = to.date()
 
     # Sanitize the year_or_month
-    # If a datetime has been provided, shave it down to a date.
     if isinstance(year_or_month, numbers.Integral):
+        # We need to make sure that int64, int32 and ints
+        # are the same type for the comparison to come. 
         year_or_month = int(year_or_month)
+    # If a datetime has been provided, shave it down to a date.
     elif isinstance(year_or_month, datetime):
         year_or_month = year_or_month.date()
 
