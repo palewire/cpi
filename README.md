@@ -51,6 +51,31 @@ You can also do that by month.
 
 That's it!
 
+## Pandas example
+
+An inflation-adjusted column can quickly be added to pandas DataFrame using the `apply` method. Here is an example using data tracking the median household income in the United States from [The Federal Reserve Bank of St. Louis](https://fred.stlouisfed.org/series/MEHOINUSA646N).
+
+```python
+>>> import cpi
+>>> import pandas as pd
+>>> df = pd.read("test.csv")
+>>> df.head()
+   YEAR  MEDIAN_HOUSEHOLD_INCOME
+0  1984                    22415
+1  1985                    23618
+2  1986                    24897
+3  1987                    26061
+4  1988                    27225
+>>> df['ADJUSTED'] = df.apply(lambda x: cpi.inflate(x.MEDIAN_HOUSEHOLD_INCOME, x.YEAR), axis=1)
+>>> df.head()
+   YEAR  MEDIAN_HOUSEHOLD_INCOME      ADJUSTED
+0  1984                    22415  52881.278152
+1  1985                    23618  53803.384387
+2  1986                    24897  55682.049635
+3  1987                    26061  56233.030986
+4  1988                    27225  56410.752325
+```
+
 ## Source
 
 The adjustment is made using data provided by [The Bureau of Labor Statistics](https://www.bls.gov/cpi/home.htm) at the U.S. Department of Labor.
