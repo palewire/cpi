@@ -22,6 +22,7 @@ class CPITest(unittest.TestCase):
         with self.assertRaises(ValueError):
             cpi.get(1900.1)
             cpi.get(datetime.now())
+            cpi.get(3000)
 
     def test_inflate_years(self):
         self.assertEqual(cpi.inflate(100, 1950), 1017.0954356846472)
