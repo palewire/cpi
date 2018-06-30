@@ -4,3 +4,4 @@ cpi/data.tsv
 dist
 build
 .coverage
+*.ipynb
