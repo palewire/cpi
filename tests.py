@@ -77,11 +77,11 @@ class CPITest(unittest.TestCase):
                 124.68085106382979)
 
     def test_inflate_months_total(self):
-        d = pandas.read_csv('cpi-data.csv')
+        d = pandas.read_csv('cpi/data.csv')
 
         def calculate_inflation(start_year):
-            bi = d[d['Year'] == start_year]['Jan'].values[0]
-            ei = d[d['Year'] == CPITest.END_YEAR]['Jan'].values[0]
+            bi = d[d['year'] == start_year].value.values[0]
+            ei = d[d['year'] == CPITest.END_YEAR].value.values[0]
             return (CPITest.DOLLARS / bi) * ei
 
         for year in range(CPITest.TEST_YEAR_EARLIER, CPITest.END_YEAR):
