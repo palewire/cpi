@@ -19,7 +19,7 @@ class Data(object):
         """
         Returns a dictionary of the CPI-U adjustment value for each year available.
         """
-        data_dict = collections.defaultdict(dict)
+        data_dict = collections.defaultdict(collections.OrderedDict)
         for row in self.cpi_file:
             if row['period_type'] == 'annual':
                 data_dict[row['series']][int(row['year'])] = float(row['value'])
@@ -29,7 +29,7 @@ class Data(object):
         """
         Returns a dictionary of the CPI-U adjustment value for each year available.
         """
-        data_dict = collections.defaultdict(dict)
+        data_dict = collections.defaultdict(collections.OrderedDict)
         for row in self.cpi_file:
             if row['period_type'] == 'monthly':
                 month = (datetime.strptime(row['date'], '%Y-%m-%d')).date()
