@@ -23,7 +23,7 @@ class Data(object):
         for row in self.cpi_file:
             if row['period_type'] == 'annual':
                 data_dict[row['series']][int(row['year'])] = float(row['value'])
-        return data_dict
+        return dict(data_dict)
 
     def get_month_dict(self):
         """
@@ -34,7 +34,7 @@ class Data(object):
             if row['period_type'] == 'monthly':
                 month = (datetime.strptime(row['date'], '%Y-%m-%d')).date()
                 data_dict[row['series']][month] = float(row['value'])
-        return data_dict
+        return dict(data_dict)
 
     def get_cpi_file(self):
         """

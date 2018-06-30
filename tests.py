@@ -17,6 +17,8 @@ class CPITest(unittest.TestCase):
             cpi.get(1900)
         with self.assertRaises(CPIDoesNotExist):
             cpi.get(date(1900, 1, 1))
+        with self.assertRaises(CPIDoesNotExist):
+            cpi.get(1950, series="FOOBAR")
 
     def test_get_value_error(self):
         with self.assertRaises(ValueError):
