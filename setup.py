@@ -14,7 +14,15 @@ setup(
     packages=("cpi",),
     include_package_data=True,
     zip_safe=False,  # because we're including static files
-    install_requires=("requests",),
+    install_requires=(
+        "requests>=2.19.1",
+        "click>=6.7",
+        "python-dateutil>2.7.3",
+    ),
+    entry_points="""
+        [console_scripts]
+        inflate=cpi.cli:inflate
+    """,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python',

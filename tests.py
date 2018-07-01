@@ -3,9 +3,36 @@
 import cpi
 import warnings
 import unittest
+from cpi import cli
 import pandas as pd
 from datetime import date, datetime
+from click.testing import CliRunner
 from cpi.errors import CPIDoesNotExist
+
+
+class CliTest(unittest.TestCase):
+
+    def invoke(self, *args):
+        runner = CliRunner()
+        result = runner.invoke(cli.inflate, args)
+        self.assertEqual(result.exit_code, 0)
+        return result.output.replace("\n", "")
+
+    def test_inflate_years(self):
+        self.assertEqual(self.invoke("100", "1950"), '1017.09543568')
+        self.assertEqual(self.invoke("100", "1950", "--to", "1960"), "122.821576763")
+        self.assertEqual(self.invoke("100", "1950", "--to", "1950"), "100.0")
+
+    def test_inflate_months(self):
+        self.assertEqual(self.invoke("100", "1950-01-01"), '1070.58723404')
+        self.assertEqual(self.invoke("100", "1950-01-11"), "1070.58723404")
+        self.assertEqual(
+            self.invoke("100", "1950-01-11", "--to", "1960-01-01"),
+            "124.680851064"
+        )
+        self.assertEqual(self.invoke("100", "1950-01-01 00:00:00", "--to", "1950-01-01"), "100.0")
+        self.assertEqual(self.invoke("100", "1950-01-01", "--to", "2018-01-01"), '1054.75319149')
+        self.assertEqual(self.invoke("100", "1950-01-01", "--to", "1960-01-01"), '124.680851064')
 
 
 class CPITest(unittest.TestCase):
@@ -30,7 +57,7 @@ class CPITest(unittest.TestCase):
         self.assertEqual(cpi.inflate(100, 1950), 1017.0954356846472)
         self.assertEqual(cpi.inflate(100, 1950, to=2017), 1017.0954356846472)
         self.assertEqual(cpi.inflate(100, 1950, to=1960), 122.82157676348547)
-        self.assertEqual(cpi.inflate(100, 1950, to=1950), 100)
+        self.assertEqual(cpi.inflate(100.0, 1950, to=1950), 100)
 
     def test_inflate_months(self):
         self.assertEqual(cpi.inflate(100, date(1950, 1, 1)), 1070.587234042553)
@@ -98,6 +125,7 @@ class CPITest(unittest.TestCase):
             cpi.inflate(df.at[1984, 'MEDIAN_HOUSEHOLD_INCOME'], 1984),
             df.at[1984, 'ADJUSTED']
         )
+
 
 if __name__ == '__main__':
     unittest.main()

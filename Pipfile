@@ -9,6 +9,7 @@ twine = "*"
 "flake8" = "*"
 coverage = "*"
 python-coveralls = "*"
+click = "*"
 
 [dev-packages]
 
