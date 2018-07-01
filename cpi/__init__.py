@@ -13,7 +13,7 @@ from .errors import CPIDoesNotExist, StaleDataWarning
 
 # Configure a logger
 import logging
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 # set the default series to the CPI-U
 DEFAULT_SERIES = "CUUR0000SA0"
