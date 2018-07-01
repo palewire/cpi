@@ -17,7 +17,7 @@ setup(
     install_requires=(
         "requests>=2.19.1",
         "click>=6.7",
-        "python-dateutil>2.7.3",
+        "python-dateutil>=2.7.3",
     ),
     entry_points="""
         [console_scripts]
