@@ -4,15 +4,25 @@ A Python library that quickly adjusts U.S. dollars for inflation using the Consu
 
 [![Build Status](https://travis-ci.org/datadesk/cpi.svg?branch=master)](https://travis-ci.org/datadesk/cpi)
 
-## Getting started
+## Installation
 
-First install the library.
+The library can be installed from the Python Package Index with any of the standard Python installation tools.
+
+Like pipenv:
+
+```bash
+$ pipenv install cpi
+```
+
+Or pip:
 
 ```bash
 $ pip install cpi
 ```
 
-Once you have it, adjusting for inflation is as simple as providing a dollar value followed by the year it is from to  the `inflate` method. By default it is adjusted to its value in the most recent year available.
+## Working with Python
+
+Adjusting for inflation is as simple as providing a dollar value followed by the year it is from to  the `inflate` method. By default it is adjusted to its value in the most recent year available.
 
 ```python
 >>> import cpi
@@ -50,6 +60,45 @@ You can also do that by month.
 ```
 
 That's it!
+
+## Working with the command line
+
+The Python package also installs a command-line interface for `inflate` that is available on the terminal.
+
+It works the same as the Python library. First give it a value. Then a source year. By default it is adjusted to its value in the most recent year available.
+
+```bash
+$ inflate 100 1950
+1017.09543568
+```
+
+If you'd like to adjust to a different year, submit it as an integer to the `--to` option.
+
+```bash
+$ inflate 100 1950 --to=1960
+122.821576763
+```
+
+You can also adjust month to month. You should submit the months as parseable date string.
+
+```
+$ inflate 100 1950-01-01 --to=2018-01-01
+1054.75319149
+```
+
+Here are all its options.
+
+```bash
+$ inflate --help
+Usage: inflate [OPTIONS] VALUE YEAR_OR_MONTH
+
+  Returns a dollar value adjusted for inflation.
+
+Options:
+  --to TEXT      The year or month to adjust the value to.
+  --series TEXT  The CPI data series used for the conversion. The default is the CPI-U.
+  --help         Show this message and exit.
+```
 
 ## Working with pandas
 

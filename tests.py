@@ -16,23 +16,25 @@ class CliTest(unittest.TestCase):
         runner = CliRunner()
         result = runner.invoke(cli.inflate, args)
         self.assertEqual(result.exit_code, 0)
-        return result.output.replace("\n", "")
+        string_value = result.output.replace("\n", "")
+        # Do some rounding to ensure the same results for Python 2 and 3
+        return str(round(float(string_value), 7))
 
     def test_inflate_years(self):
-        self.assertEqual(self.invoke("100", "1950"), '1017.09543568')
-        self.assertEqual(self.invoke("100", "1950", "--to", "1960"), "122.821576763")
+        self.assertEqual(self.invoke("100", "1950"), '1017.0954357')
+        self.assertEqual(self.invoke("100", "1950", "--to", "1960"), "122.8215768")
         self.assertEqual(self.invoke("100", "1950", "--to", "1950"), "100.0")
 
     def test_inflate_months(self):
-        self.assertEqual(self.invoke("100", "1950-01-01"), '1070.58723404')
-        self.assertEqual(self.invoke("100", "1950-01-11"), "1070.58723404")
+        self.assertEqual(self.invoke("100", "1950-01-01"), '1070.587234')
+        self.assertEqual(self.invoke("100", "1950-01-11"), "1070.587234")
         self.assertEqual(
             self.invoke("100", "1950-01-11", "--to", "1960-01-01"),
-            "124.680851064"
+            "124.6808511"
         )
         self.assertEqual(self.invoke("100", "1950-01-01 00:00:00", "--to", "1950-01-01"), "100.0")
-        self.assertEqual(self.invoke("100", "1950-01-01", "--to", "2018-01-01"), '1054.75319149')
-        self.assertEqual(self.invoke("100", "1950-01-01", "--to", "1960-01-01"), '124.680851064')
+        self.assertEqual(self.invoke("100", "1950-01-01", "--to", "2018-01-01"), '1054.7531915')
+        self.assertEqual(self.invoke("100", "1950-01-01", "--to", "1960-01-01"), '124.6808511')
 
 
 class CPITest(unittest.TestCase):
