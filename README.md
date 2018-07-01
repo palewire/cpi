@@ -79,7 +79,7 @@ $ inflate 100 1950 --to=1960
 122.821576763
 ```
 
-You can also adjust month to month. You should submit the months as parseable date string.
+You can also adjust month to month. You should submit the months as parseable date strings.
 
 ```
 $ inflate 100 1950-01-01 --to=2018-01-01
