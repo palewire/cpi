@@ -60,7 +60,7 @@ def get(year_or_month, series=DEFAULT_SERIES):
 
     # Pull the value from the series_dict
     try:
-        return series_dict[year_or_month]
+        return series_dict[year_or_month].value
     except KeyError:
         raise CPIDoesNotExist("CPI value not found for {}".format(year_or_month))
 

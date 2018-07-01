@@ -21,38 +21,57 @@ class Downloader(object):
         """
         Update the Consumer Price Index dataset that powers this library.
         """
-        self.get_tsv()
-        self.parse_tsv()
+        self.get_index_file()
+        self.parse_index_file()
+        self.get_series_file()
+        self.parse_series_file()
 
-    def get_tsv(self):
+    def get_series_file(self):
+        url = "https://download.bls.gov/pub/time.series/cu/cu.series"
+        response = requests.get(url)
+        with open(os.path.join(self.THIS_DIR, 'series.tsv'), 'w') as f:
+            f.write(response.text)
+
+    def parse_series_file(self):
+        input = os.path.join(self.THIS_DIR, "series.tsv")
+        reader = csv.DictReader(open(input, 'r'), delimiter="\t")
+
+        output = os.path.join(self.THIS_DIR, "series.csv")
+        writer = csv.DictWriter(
+            open(output, 'w'),
+            fieldnames=[
+                "series_id",
+                "area_code",
+                "item_code",
+                "seasonal",
+                "periodicity_code",
+                "base_code",
+                "base_period",
+                "series_title",
+                "footnote_codes",
+                "begin_year",
+                "begin_period",
+                "end_year",
+                "end_period"
+            ]
+        )
+        writer.writeheader()
+
+        # Loop through it
+        for row in reader:
+            # Write it out
+            writer.writerow(row)
+
+    def get_index_file(self):
         """
         Download the latest annual Consumer Price Index (CPI) dataset.
         """
-        bls_url = "https://download.bls.gov/pub/time.series/cu/cu.data.1.AllItems"
-        response = requests.get(bls_url)
+        url = "https://download.bls.gov/pub/time.series/cu/cu.data.1.AllItems"
+        response = requests.get(url)
         with open(os.path.join(self.THIS_DIR, 'data.tsv'), 'w') as f:
             f.write(response.text)
 
-    def parse_periodtype(self, row):
-        """
-        Accepts a row from the raw BLS data. Returns a string classifying the period.
-        """
-        period_types = dict(("M{:02d}".format(i), "monthly") for i in range(1, 13))
-        period_types["M13"] = "annual"
-        return period_types[row['period']]
-
-    def parse_date(self, row):
-        """
-        Accepts a row from the raw BLS data. Returns a Python date object based on its period.
-        """
-        # If it is annual data, return it as Jan. 1 of that year.
-        if row['period'] == 'M13':
-            return date(row['year'], 1, 1)
-        # If it is month data, return it as the first day of the month.
-        else:
-            return date(row['year'], int(row['period'].replace("M", "")), 1)
-
-    def parse_tsv(self):
+    def parse_index_file(self):
         """
         Parse the downloaded fixed-width file from the BLS and convert it into a CSV.
         """
@@ -82,6 +101,25 @@ class Downloader(object):
                 d['period_type'] = self.parse_periodtype(d)
                 d['date'] = self.parse_date(d)
                 writer.writerow(d)
+
+    def parse_periodtype(self, row):
+        """
+        Accepts a row from the raw BLS data. Returns a string classifying the period.
+        """
+        period_types = dict(("M{:02d}".format(i), "monthly") for i in range(1, 13))
+        period_types["M13"] = "annual"
+        return period_types[row['period']]
+
+    def parse_date(self, row):
+        """
+        Accepts a row from the raw BLS data. Returns a Python date object based on its period.
+        """
+        # If it is annual data, return it as Jan. 1 of that year.
+        if row['period'] == 'M13':
+            return date(row['year'], 1, 1)
+        # If it is month data, return it as the first day of the month.
+        else:
+            return date(row['year'], int(row['period'].replace("M", "")), 1)
 
 
 if __name__ == '__main__':
