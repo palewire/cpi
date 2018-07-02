@@ -11,9 +11,9 @@ from .download import Downloader
 from .data import cpi_by_year, cpi_by_month
 from .errors import CPIDoesNotExist, StaleDataWarning
 
-# Configure a logger
 import logging
-logger = logging.getLogger(__name__).addHandler(logging.NullHandler())
+logger = logging.getLogger(__name__)
+logger.addHandler(logging.NullHandler())
 
 # set the default series to the CPI-U
 DEFAULT_SERIES = "CUUR0000SA0"
