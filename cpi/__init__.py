@@ -22,7 +22,7 @@ ITEMS = ParseItem().parse()
 PERIODS = ParsePeriod().parse()
 PERIODICITIES = ParsePeriodicity().parse()
 
-p = ParseIndex()
+p = ParseIndex(periods=PERIODS)
 p.parse()
 cpi_by_year = p.by_year
 cpi_by_month = p.by_month
