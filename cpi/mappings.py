@@ -3,7 +3,7 @@
 """
 Parses the mapping files that explain various codes contained within each series.
 """
-from .parser import BaseParser
+from .base import BaseParser
 from .models import ObjectList, Area, Item, Period, Periodicity
 
 
