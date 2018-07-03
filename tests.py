@@ -75,7 +75,7 @@ class CPITest(unittest.TestCase):
         self.assertEqual(
                 cpi.inflate(
                     CPITest.DOLLARS, CPITest.TEST_YEAR_EARLIER,
-                    to=CPITest.TEST_YEAR_LATEST),
+                    to=CPITest.TEST_YEAR_LATER),
                 1017.0954356846472)
         self.assertEqual(
                 cpi.inflate(
