@@ -32,6 +32,35 @@ class Area(object):
         return self.name
 
 
+class Period(object):
+    """
+    A time period tracked by the CPI.
+    """
+    def __init__(self, code, abbreviation, name):
+        self.id = code
+        self.code = code
+        self.abbreviation = abbreviation
+        self.name = name
+
+    def __repr__(self):
+        return "<Period: {}>".format(self.__str__())
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def month(self):
+        """
+        Returns the month integer for the period.
+        """
+        if self.id in ["M13", "S01", "S03"]:
+            return 1
+        elif self.id == "S02":
+            return 7
+        else:
+            return int(self.id.replace("M", ""))
+
+
 class Series(object):
     """
     A set of CPI data observed over an extended period of time over consistent time intervals ranging from

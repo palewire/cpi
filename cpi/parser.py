@@ -7,8 +7,7 @@ import os
 import csv
 import collections
 from datetime import date
-from .models import Area, Index, Series, ObjectList
-
+from .models import Index, Series, ObjectList
 
 
 class BaseParser(object):
@@ -24,30 +23,26 @@ class BaseParser(object):
         return csv.DictReader(csv_file)
 
 
-class ParseArea(BaseParser):
+class ParseSeries(BaseParser):
     """
-    Parses the raw list of CPI areas from the BLS.
-
-    Returns a list Area objects.
+    Parses the raw list of CPI series from the BLS.
     """
     def parse(self):
-        area_list = ObjectList()
-        for row in self.get_file('cu.area'):
-            area = Area(row['area_code'], row['area_name'])
-            area_list.append(area)
-        return area_list
+        """
+        Returns a list Series objects.
+        """
+        object_list = ObjectList()
+        for row in self.get_file('cu.series'):
+            obj = Series(
+                row['series_id']
+            )
+            object_list.append(obj)
+        return object_list
 
 
-class Parser(BaseParser):
-    FILE_LIST = [
-        "cu.series",
-        "cu.data.1.AllItems",
-    ]
+class ParseIndex(BaseParser):
 
     def __init__(self):
-        self.file_dict = dict(
-            (file, self.get_file(file)) for file in self.FILE_LIST
-        )
         self.by_year = collections.defaultdict(collections.OrderedDict)
         self.by_month = collections.defaultdict(collections.OrderedDict)
 
@@ -86,7 +81,7 @@ class Parser(BaseParser):
         """
         Parse the raw BLS data into dictionaries for Python lookups.
         """
-        for row in self.file_dict["cu.data.1.AllItems"]:
+        for row in self.get_file("cu.data.1.AllItems"):
             # Create a series
             series = Series(row['series_id'])
 
@@ -108,9 +103,3 @@ class Parser(BaseParser):
                 self.by_year[series.id][index.year] = index
             elif index.period_type == 'monthly':
                 self.by_month[series.id][index.date] = index
-
-
-p = Parser()
-p.parse()
-cpi_by_year = p.by_year
-cpi_by_month = p.by_month

@@ -7,13 +7,24 @@ import numbers
 import warnings
 from datetime import date, datetime
 
+from .parser import ParseIndex
 from .download import Downloader
-from .parser import cpi_by_year, cpi_by_month
+from .mappings import ParseArea, ParsePeriod
 from .errors import CPIDoesNotExist, StaleDataWarning
 
 import logging
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
+
+# Parse data for use
+AREAS = ParseArea().parse()
+PERIODS = ParsePeriod().parse()
+
+p = ParseIndex()
+p.parse()
+cpi_by_year = p.by_year
+cpi_by_month = p.by_month
+
 
 # set the default series to the CPI-U
 DEFAULT_SERIES = "CUUR0000SA0"
