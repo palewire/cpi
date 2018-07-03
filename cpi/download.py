@@ -14,6 +14,10 @@ logger.addHandler(logging.NullHandler())
 class Downloader(object):
     THIS_DIR = os.path.dirname(__file__)
     FILE_LIST = [
+        "cu.area",
+        "cu.item",
+        "cu.period",
+        "cu.periodicity",
         "cu.series",
         "cu.data.1.AllItems",
     ]
