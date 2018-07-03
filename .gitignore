@@ -4,5 +4,6 @@ cpi/*.tsv
 dist
 build
 .coverage
+*.ipynb
 .eggs
 *.*#

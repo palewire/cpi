@@ -1,12 +1,14 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 import cpi
-import warnings
-import unittest
-from cpi import cli
+import csv
 import pandas as pd
-from datetime import date, datetime
+import unittest
+import warnings
 from click.testing import CliRunner
+from datetime import date, datetime
+
+from cpi import cli
 from cpi.errors import CPIDoesNotExist
 
 
@@ -38,10 +40,20 @@ class CliTest(unittest.TestCase):
 
 
 class CPITest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.TEST_YEAR_EARLIER = 1950
+        cls.TEST_YEAR_MIDDLE = 1960
+        cls.TEST_YEAR_LATER = 2000
+        cls.END_YEAR = 2018
+        cls.EARLIEST_YEAR = 1913
+        cls.LATEST_YEAR = 2017
+        cls.DOLLARS = 100
+        cls.DATA_FILE = 'cpi/data.csv'
 
     def test_get(self):
-        self.assertEqual(cpi.get(1950), 24.1)
-        self.assertEqual(cpi.get(2000), 172.2)
+        self.assertEqual(cpi.get(CPITest.TEST_YEAR_EARLIER), 24.1)
+        self.assertEqual(cpi.get(CPITest.TEST_YEAR_LATER), 172.2)
         with self.assertRaises(CPIDoesNotExist):
             cpi.get(1900)
         with self.assertRaises(CPIDoesNotExist):
@@ -56,21 +68,87 @@ class CPITest(unittest.TestCase):
             cpi.get(3000)
 
     def test_inflate_years(self):
-        self.assertEqual(cpi.inflate(100, 1950), 1017.0954356846472)
-        self.assertEqual(cpi.inflate(100, 1950, to=2017), 1017.0954356846472)
-        self.assertEqual(cpi.inflate(100, 1950, to=1960), 122.82157676348547)
-        self.assertEqual(cpi.inflate(100.0, 1950, to=1950), 100)
+        self.assertEqual(
+                cpi.inflate(
+                    CPITest.DOLLARS, CPITest.TEST_YEAR_EARLIER),
+                1017.0954356846472)
+        self.assertEqual(
+                cpi.inflate(
+                    CPITest.DOLLARS, CPITest.TEST_YEAR_EARLIER,
+                    to=CPITest.TEST_YEAR_LATER),
+                1017.0954356846472)
+        self.assertEqual(
+                cpi.inflate(
+                    CPITest.DOLLARS, CPITest.TEST_YEAR_EARLIER,
+                    to=CPITest.TEST_YEAR_MIDDLE),
+                122.82157676348547)
+        self.assertEqual(
+                cpi.inflate(
+                    CPITest.DOLLARS, CPITest.TEST_YEAR_EARLIER,
+                    to=CPITest.TEST_YEAR_EARLIER),
+                CPITest.DOLLARS)
 
     def test_inflate_months(self):
-        self.assertEqual(cpi.inflate(100, date(1950, 1, 1)), 1070.587234042553)
-        self.assertEqual(cpi.inflate(100, date(1950, 1, 11)), 1070.587234042553)
-        self.assertEqual(cpi.inflate(100, datetime(1950, 1, 1)), 1070.587234042553)
-        self.assertEqual(cpi.inflate(100, date(1950, 1, 1), to=date(2018, 1, 1)), 1054.7531914893618)
-        self.assertEqual(cpi.inflate(100, date(1950, 1, 1), to=date(1960, 1, 1)), 124.68085106382979)
+        self.assertEqual(
+                cpi.inflate(
+                    CPITest.DOLLARS, date(CPITest.TEST_YEAR_EARLIER, 1, 1)),
+                1070.587234042553)
+        self.assertEqual(
+                cpi.inflate(
+                    CPITest.DOLLARS, date(CPITest.TEST_YEAR_EARLIER, 1, 11)),
+                1070.587234042553)
+        self.assertEqual(
+                cpi.inflate(
+                    CPITest.DOLLARS,
+                    datetime(CPITest.TEST_YEAR_EARLIER, 1, 1)),
+                1070.587234042553)
+        self.assertEqual(
+                cpi.inflate(
+                    CPITest.DOLLARS, date(CPITest.TEST_YEAR_EARLIER, 1, 1),
+                    to=date(CPITest.END_YEAR, 1, 1)), 1054.7531914893618)
+        self.assertEqual(
+                cpi.inflate(
+                    CPITest.DOLLARS, date(CPITest.TEST_YEAR_EARLIER, 1, 1),
+                    to=date(CPITest.TEST_YEAR_MIDDLE, 1, 1)),
+                124.68085106382979)
+
+    def test_inflate_months_total(self):
+
+        def predicate(x, target_year):
+            return x == target_year
+
+        # skip header row
+        with open(CPITest.DATA_FILE) as f:
+            d = list(csv.reader(f))[1:]
+        # get first month for target year
+        val = next(x for x in d if predicate(int(x[3]), CPITest.END_YEAR))
+        END_INDEX = float(val[-1])
+
+        def calculate_inflation(start_year):
+            val = next(x for x in d if predicate(int(x[3]), start_year))
+            start_index = float(val[-1])
+            return (CPITest.DOLLARS / start_index) * END_INDEX
+
+        for year in range(CPITest.TEST_YEAR_EARLIER, CPITest.END_YEAR):
+            self.assertTrue(
+                abs(
+                    cpi.inflate(
+                        CPITest.DOLLARS,
+                        date(year, 1, 1),
+                        to=date(CPITest.END_YEAR, 1, 1)) -
+                    calculate_inflation(year)) < 0.001)
 
     def test_deflate(self):
-        self.assertEqual(cpi.inflate(1017.0954356846472, 2017, to=1950), 100)
-        self.assertEqual(cpi.inflate(122.82157676348547, 1960, to=1950), 100)
+        self.assertEqual(
+                cpi.inflate(
+                    1017.0954356846472, 2017, to=CPITest.TEST_YEAR_EARLIER),
+                CPITest.DOLLARS)
+        self.assertEqual(
+                cpi.inflate(
+                    122.82157676348547,
+                    CPITest.TEST_YEAR_MIDDLE,
+                    to=CPITest.TEST_YEAR_EARLIER),
+                CPITest.DOLLARS)
 
     def test_numpy_dtypes(self):
         self.assertEqual(
@@ -100,21 +178,28 @@ class CPITest(unittest.TestCase):
 
     def test_mismatch(self):
         with self.assertRaises(TypeError):
-            cpi.inflate(100, 1950, to=date(2000, 1, 1))
+            cpi.inflate(
+                CPITest.DOLLARS,
+                CPITest.TEST_YEAR_EARLIER,
+                to=date(CPITest.TEST_YEAR_LATER, 1, 1))
         with self.assertRaises(TypeError):
-            cpi.inflate(100, date(2000, 1, 1), to=1950)
+            cpi.inflate(
+                CPITest.DOLLARS,
+                date(CPITest.TEST_YEAR_LATER, 1, 1),
+                to=CPITest.TEST_YEAR_EARLIER)
 
     def test_earliest_year(self):
-        self.assertEqual(cpi.EARLIEST_YEAR, 1913)
+        self.assertEqual(cpi.EARLIEST_YEAR, CPITest.EARLIEST_YEAR)
 
     def test_latest_year(self):
-        self.assertEqual(cpi.LATEST_YEAR, 2017)
+        self.assertEqual(cpi.LATEST_YEAR, CPITest.LATEST_YEAR)
 
     def test_earliest_month(self):
-        self.assertEqual(cpi.EARLIEST_MONTH, date(1913, 1, 1))
+        self.assertEqual(
+                cpi.EARLIEST_MONTH, date(CPITest.EARLIEST_YEAR, 1, 1))
 
     def test_latest_month(self):
-        self.assertEqual(cpi.LATEST_MONTH, date(2018, 5, 1))
+        self.assertEqual(cpi.LATEST_MONTH, date(CPITest.END_YEAR, 5, 1))
 
     def test_warning(self):
         warnings.warn(cpi.StaleDataWarning())
