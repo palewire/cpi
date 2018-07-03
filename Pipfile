@@ -10,6 +10,8 @@ twine = "*"
 coverage = "*"
 python-coveralls = "*"
 click = "*"
+python-dateutil = "*"
+pandas = "*"
 
 [dev-packages]
 

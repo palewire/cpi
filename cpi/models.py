@@ -6,15 +6,69 @@ Python objects for modeling Consumer Price Index (CPI) data structures.
 from datetime import date
 
 
-class ObjectList(list):
+class MappingList(list):
     """
-    A custom list that allows for lookups by the "id" attribute of objects.
+    A custom list that allows for lookups by attribute.
     """
-    def get(self, key):
+    def get_by_id(self, value):
         try:
-            return (obj for obj in self if obj.id == key).next()
-        except StopIteration:
-            raise KeyError("Object with id {} could not be found".format(key))
+            return list(filter(lambda obj: obj.id == value, self))[0]
+        except IndexError:
+            raise KeyError("Object with id {} could not be found".format(value))
+
+    def get_by_name(self, value):
+        try:
+            return list(filter(lambda obj: obj.name == value, self))[0]
+        except IndexError:
+            raise KeyError("Object with id {} could not be found".format(value))
+
+
+class SeriesList(list):
+    """
+    A custom list of indexes in a series.
+    """
+    SURVEYS = {
+        'All urban consumers': 'CU',
+        'Urban wage earners and clerical workers': 'CW'
+    }
+    SEASONALITIES = {
+        True: 'S',
+        False: 'U'
+    }
+
+    def __init__(self, periodicities, areas, items):
+        self.periodicities = periodicities
+        self.areas = areas
+        self.items = items
+
+    def get_by_id(self, value):
+        try:
+            return list(filter(lambda obj: obj.id == value, self))[0]
+        except IndexError:
+            raise KeyError("Object with id {} could not be found".format(value))
+
+    def get(self, survey, seasonally_adjusted, periodicity, area, items):
+        # Get all the codes for these humanized input.
+        survey_code = self.SURVEYS[survey]
+        seasonality_code = self.SEASONALITIES[seasonally_adjusted]
+        periodicity_code = self.periodicities.get_by_name(periodicity).code
+        area_code = self.areas.get_by_name(area).code
+        items_code = self.items.get_by_name(items).code
+
+        # Generate the series id
+        series_id = "{}{}{}{}{}".format(
+            survey_code,
+            seasonality_code,
+            periodicity_code,
+            area_code,
+            items_code
+        )
+
+        # Pull the series
+        try:
+            return list(filter(lambda obj: obj.id == series_id, self))[0]
+        except IndexError:
+            raise KeyError("Object with id {} could not be found".format(series_id))
 
 
 class Area(object):

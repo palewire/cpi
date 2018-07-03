@@ -6,7 +6,8 @@ Parse and prepare the Consumer Price Index (CPI) dataset.
 import os
 import csv
 import collections
-from .models import ObjectList, Area, Item, Period, Periodicity, Index, Series
+from .models import MappingList, SeriesList
+from .models import Area, Item, Period, Periodicity, Index, Series
 
 
 class BaseParser(object):
@@ -30,7 +31,7 @@ class ParseArea(BaseParser):
         """
         Returns a list Area objects.
         """
-        object_list = ObjectList()
+        object_list = MappingList()
         for row in self.get_file('cu.area'):
             obj = Area(row['area_code'], row['area_name'])
             object_list.append(obj)
@@ -45,7 +46,7 @@ class ParseItem(BaseParser):
         """
         Returns a list Area objects.
         """
-        object_list = ObjectList()
+        object_list = MappingList()
         for row in self.get_file('cu.item'):
             obj = Item(row['item_code'], row['item_name'])
             object_list.append(obj)
@@ -60,7 +61,7 @@ class ParsePeriod(BaseParser):
         """
         Returns a list Area objects.
         """
-        object_list = ObjectList()
+        object_list = MappingList()
         for row in self.get_file('cu.period'):
             obj = Period(row['period'], row['period_abbr'], row['period_name'])
             object_list.append(obj)
@@ -75,7 +76,7 @@ class ParsePeriodicity(BaseParser):
         """
         Returns a list Periodicity objects.
         """
-        object_list = ObjectList()
+        object_list = MappingList()
         for row in self.get_file('cu.periodicity'):
             obj = Periodicity(row['periodicity_code'], row['periodicity_name'])
             object_list.append(obj)
@@ -109,7 +110,7 @@ class ParseSeries(BaseParser):
         """
         Returns a list Series objects.
         """
-        object_list = ObjectList()
+        object_list = SeriesList(periodicities=self.periodicities, areas=self.areas, items=self.items)
         for row in self.get_file('cu.series'):
             parsed_id = self.parse_id(row['series_id'])
             obj = Series(
@@ -117,9 +118,9 @@ class ParseSeries(BaseParser):
                 row['series_title'],
                 self.SURVEYS[parsed_id['survey_code']],
                 row['seasonal'] == 'S',
-                self.periodicities.get(row['periodicity_code']),
-                self.areas.get(row['area_code']),
-                self.items.get(row['item_code']),
+                self.periodicities.get_by_id(row['periodicity_code']),
+                self.areas.get_by_id(row['area_code']),
+                self.items.get_by_id(row['item_code']),
                 int(row['begin_year']),
                 int(row['end_year'])
             )
@@ -142,9 +143,9 @@ class ParseIndex(BaseParser):
         for row in self.get_file("cu.data.1.AllItems"):
             # Create an object
             index = Index(
-                self.series.get(row['series_id']),
+                self.series.get_by_id(row['series_id']),
                 int(row['year']),
-                self.periods.get(row['period']),
+                self.periods.get_by_id(row['period']),
                 float(row['value'])
             )
 
