@@ -4,7 +4,7 @@
 Parses the mapping files that explain various codes contained within each series.
 """
 from .parser import BaseParser
-from .models import ObjectList, Area, Item, Period
+from .models import ObjectList, Area, Item, Period, Periodicity
 
 
 class ParseArea(BaseParser):
@@ -48,5 +48,20 @@ class ParsePeriod(BaseParser):
         object_list = ObjectList()
         for row in self.get_file('cu.period'):
             obj = Period(row['period'], row['period_abbr'], row['period_name'])
+            object_list.append(obj)
+        return object_list
+
+
+class ParsePeriodicity(BaseParser):
+    """
+    Parses the raw list of CPI periodicities.
+    """
+    def parse(self):
+        """
+        Returns a list Periodicity objects.
+        """
+        object_list = ObjectList()
+        for row in self.get_file('cu.periodicity'):
+            obj = Periodicity(row['periodicity_code'], row['periodicity_name'])
             object_list.append(obj)
         return object_list

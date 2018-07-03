@@ -77,6 +77,22 @@ class Period(object):
             return int(self.id.replace("M", ""))
 
 
+class Periodicity(object):
+    """
+    A time interval tracked by the CPI.
+    """
+    def __init__(self, code, name):
+        self.id = code
+        self.code = code
+        self.name = name
+
+    def __repr__(self):
+        return "<Periodicity: {}>".format(self.__str__())
+
+    def __str__(self):
+        return self.name
+
+
 class Series(object):
     """
     A set of CPI data observed over an extended period of time over consistent time intervals ranging from
