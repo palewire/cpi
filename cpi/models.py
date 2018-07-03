@@ -32,6 +32,22 @@ class Area(object):
         return self.name
 
 
+class Item(object):
+    """
+    A consumer item that has its price tracked.
+    """
+    def __init__(self, code, name):
+        self.id = code
+        self.code = code
+        self.name = name
+
+    def __repr__(self):
+        return "<Item: {}>".format(self.__str__())
+
+    def __str__(self):
+        return self.name
+
+
 class Period(object):
     """
     A time period tracked by the CPI.

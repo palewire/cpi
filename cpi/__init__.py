@@ -9,7 +9,7 @@ from datetime import date, datetime
 
 from .parser import ParseIndex
 from .download import Downloader
-from .mappings import ParseArea, ParsePeriod
+from .mappings import ParseArea, ParseItem, ParsePeriod
 from .errors import CPIDoesNotExist, StaleDataWarning
 
 import logging
@@ -18,6 +18,7 @@ logger.addHandler(logging.NullHandler())
 
 # Parse data for use
 AREAS = ParseArea().parse()
+ITEMS = ParseItem().parse()
 PERIODS = ParsePeriod().parse()
 
 p = ParseIndex()
