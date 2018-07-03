@@ -9,6 +9,21 @@ import collections
 from datetime import date
 
 
+class Area(object):
+    """
+    A geographical area where prices are gathered monthly.
+    """
+    def __init__(self, code, name):
+        self.code = code
+        self.name = name
+
+    def __repr__(self):
+        return "<Area: {}>".format(self.__str__())
+
+    def __str__(self):
+        return self.name
+
+
 class Series(object):
     """
     A set of CPI data observed over an extended period of time over consistent time intervals ranging from
@@ -19,6 +34,9 @@ class Series(object):
     """
     def __init__(self, id):
         self.id = id
+
+    def __repr__(self):
+        return "<Series: {}>".format(self.__str__())
 
     def __str__(self):
         return self.id
@@ -55,6 +73,9 @@ class Index(object):
         self.period_type = period_type
         self.value = value
 
+    def __repr__(self):
+        return "<Index: {}>".format(self.__str__())
+
     def __str__(self):
         return "{} ({}): {}".format(self.date, self.period_type, self.value)
 
@@ -62,6 +83,7 @@ class Index(object):
 class Data(object):
     THIS_DIR = os.path.dirname(__file__)
     FILE_LIST = [
+        "cu.area",
         "cu.series",
         "cu.data.1.AllItems",
     ]
@@ -70,6 +92,7 @@ class Data(object):
         self.file_dict = dict(
             (file, self.get_file(file)) for file in self.FILE_LIST
         )
+        self.areas = collections.defaultdict(collections.OrderedDict)
         self.by_year = collections.defaultdict(collections.OrderedDict)
         self.by_month = collections.defaultdict(collections.OrderedDict)
 
@@ -117,9 +140,14 @@ class Data(object):
         """
         Parse the raw BLS data into dictionaries for Python lookups.
         """
+        for row in self.file_dict['cu.area']:
+            area = Area(row['area_code'], row['area_name'])
+            self.areas[area.code] = area
+
         for row in self.file_dict["cu.data.1.AllItems"]:
             # Create a series
             series = Series(row['series_id'])
+            series.area = self.areas[series.area_code]
 
             # Clean up the values
             period_type = self.parse_periodtype(row['period'])
@@ -145,3 +173,4 @@ data = Data()
 data.parse()
 cpi_by_year = data.by_year
 cpi_by_month = data.by_month
+areas = data.areas.values()
