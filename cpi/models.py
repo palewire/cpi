@@ -5,11 +5,23 @@ Python objects for modeling Consumer Price Index (CPI) data structures.
 """
 
 
+class ObjectList(list):
+    """
+    A custom list that allows for lookups by the "id" attribute of objects.
+    """
+    def get(self, key):
+        try:
+            return (obj for obj in self if obj.id == key).next()
+        except StopIteration:
+            raise KeyError("Object with id {} could not be found".format(key))
+
+
 class Area(object):
     """
     A geographical area where prices are gathered monthly.
     """
     def __init__(self, code, name):
+        self.id = code
         self.code = code
         self.name = name
 

@@ -7,24 +7,12 @@ import os
 import csv
 import collections
 from datetime import date
-from .models import Area, Index, Series
+from .models import Area, Index, Series, ObjectList
 
 
-class Parser(object):
+
+class BaseParser(object):
     THIS_DIR = os.path.dirname(__file__)
-    FILE_LIST = [
-        "cu.area",
-        "cu.series",
-        "cu.data.1.AllItems",
-    ]
-
-    def __init__(self):
-        self.file_dict = dict(
-            (file, self.get_file(file)) for file in self.FILE_LIST
-        )
-        self.areas = collections.defaultdict(collections.OrderedDict)
-        self.by_year = collections.defaultdict(collections.OrderedDict)
-        self.by_month = collections.defaultdict(collections.OrderedDict)
 
     def get_file(self, file):
         """
@@ -34,6 +22,34 @@ class Parser(object):
         csv_path = os.path.join(self.THIS_DIR, "{}.csv".format(file))
         csv_file = open(csv_path, "r")
         return csv.DictReader(csv_file)
+
+
+class ParseArea(BaseParser):
+    """
+    Parses the raw list of CPI areas from the BLS.
+
+    Returns a list Area objects.
+    """
+    def parse(self):
+        area_list = ObjectList()
+        for row in self.get_file('cu.area'):
+            area = Area(row['area_code'], row['area_name'])
+            area_list.append(area)
+        return area_list
+
+
+class Parser(BaseParser):
+    FILE_LIST = [
+        "cu.series",
+        "cu.data.1.AllItems",
+    ]
+
+    def __init__(self):
+        self.file_dict = dict(
+            (file, self.get_file(file)) for file in self.FILE_LIST
+        )
+        self.by_year = collections.defaultdict(collections.OrderedDict)
+        self.by_month = collections.defaultdict(collections.OrderedDict)
 
     def parse_periodtype(self, period):
         """
@@ -70,14 +86,9 @@ class Parser(object):
         """
         Parse the raw BLS data into dictionaries for Python lookups.
         """
-        for row in self.file_dict['cu.area']:
-            area = Area(row['area_code'], row['area_name'])
-            self.areas[area.code] = area
-
         for row in self.file_dict["cu.data.1.AllItems"]:
             # Create a series
             series = Series(row['series_id'])
-            series.area = self.areas[series.area_code]
 
             # Clean up the values
             period_type = self.parse_periodtype(row['period'])
@@ -103,4 +114,3 @@ p = Parser()
 p.parse()
 cpi_by_year = p.by_year
 cpi_by_month = p.by_month
-areas = p.areas.values()
