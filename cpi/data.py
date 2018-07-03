@@ -24,7 +24,7 @@ class Series(object):
         return self.id
 
     @property
-    def survey_abbreviation(self):
+    def survey_code(self):
         return self.id[:2]
 
     @property
