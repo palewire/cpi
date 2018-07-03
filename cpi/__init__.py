@@ -8,9 +8,8 @@ import warnings
 from datetime import date, datetime
 
 from .download import Downloader
-from .parser import ParseIndex, ParseSeries
-from .mappings import ParseArea, ParseItem, ParsePeriod, ParsePeriodicity
 from .errors import CPIDoesNotExist, StaleDataWarning
+from .parsers import ParseArea, ParseItem, ParsePeriod, ParsePeriodicity, ParseIndex, ParseSeries
 
 import logging
 logger = logging.getLogger(__name__)

@@ -3,10 +3,83 @@
 """
 Parse and prepare the Consumer Price Index (CPI) dataset.
 """
+import os
+import csv
 import collections
-from .base import BaseParser
-from .models import Index, Series, ObjectList
-from .mappings import ParseArea, ParseItem, ParsePeriod, ParsePeriodicity
+from .models import ObjectList, Area, Item, Period, Periodicity, Index, Series
+
+
+class BaseParser(object):
+    THIS_DIR = os.path.dirname(__file__)
+
+    def get_file(self, file):
+        """
+        Returns the CPI data as a csv.DictReader object.
+        """
+        # Open up the CSV from the BLS
+        csv_path = os.path.join(self.THIS_DIR, "{}.csv".format(file))
+        csv_file = open(csv_path, "r")
+        return csv.DictReader(csv_file)
+
+
+class ParseArea(BaseParser):
+    """
+    Parses the raw list of CPI areas.
+    """
+    def parse(self):
+        """
+        Returns a list Area objects.
+        """
+        object_list = ObjectList()
+        for row in self.get_file('cu.area'):
+            obj = Area(row['area_code'], row['area_name'])
+            object_list.append(obj)
+        return object_list
+
+
+class ParseItem(BaseParser):
+    """
+    Parses the raw list of CPI items.
+    """
+    def parse(self):
+        """
+        Returns a list Area objects.
+        """
+        object_list = ObjectList()
+        for row in self.get_file('cu.item'):
+            obj = Item(row['item_code'], row['item_name'])
+            object_list.append(obj)
+        return object_list
+
+
+class ParsePeriod(BaseParser):
+    """
+    Parses the raw list of CPI periods.
+    """
+    def parse(self):
+        """
+        Returns a list Area objects.
+        """
+        object_list = ObjectList()
+        for row in self.get_file('cu.period'):
+            obj = Period(row['period'], row['period_abbr'], row['period_name'])
+            object_list.append(obj)
+        return object_list
+
+
+class ParsePeriodicity(BaseParser):
+    """
+    Parses the raw list of CPI periodicities.
+    """
+    def parse(self):
+        """
+        Returns a list Periodicity objects.
+        """
+        object_list = ObjectList()
+        for row in self.get_file('cu.periodicity'):
+            obj = Periodicity(row['periodicity_code'], row['periodicity_name'])
+            object_list.append(obj)
+        return object_list
 
 
 class ParseSeries(BaseParser):
