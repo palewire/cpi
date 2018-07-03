@@ -8,7 +8,7 @@ import warnings
 from datetime import date, datetime
 
 from .download import Downloader
-from .data import cpi_by_year, cpi_by_month
+from .parser import cpi_by_year, cpi_by_month
 from .errors import CPIDoesNotExist, StaleDataWarning
 
 import logging
