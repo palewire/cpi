@@ -114,34 +114,22 @@ class Series(object):
 
     Yes, that's the offical government definition. I'm not kidding.
     """
-    def __init__(self, id):
+    def __init__(self, id, title, survey, seasonally_adjusted, periodicity, area, items, begin_year, end_year):
         self.id = id
+        self.title = title
+        self.survey = survey
+        self.seasonally_adjusted = seasonally_adjusted
+        self.periodicity = periodicity
+        self.area = area
+        self.items = items
+        self.begin_year = begin_year
+        self.end_year = end_year
 
     def __repr__(self):
         return "<Series: {}>".format(self.__str__())
 
     def __str__(self):
-        return self.id
-
-    @property
-    def survey_code(self):
-        return self.id[:2]
-
-    @property
-    def seasonal_code(self):
-        return self.id[2:3]
-
-    @property
-    def periodicity_code(self):
-        return self.id[3:4]
-
-    @property
-    def area_code(self):
-        return self.id[4:8]
-
-    @property
-    def item_code(self):
-        return self.id[8:]
+        return "{}: {}".format(self.id, self.title)
 
 
 class Index(object):

@@ -7,8 +7,8 @@ import numbers
 import warnings
 from datetime import date, datetime
 
-from .parser import ParseIndex
 from .download import Downloader
+from .parser import ParseIndex, ParseSeries
 from .mappings import ParseArea, ParseItem, ParsePeriod, ParsePeriodicity
 from .errors import CPIDoesNotExist, StaleDataWarning
 
@@ -21,8 +21,9 @@ AREAS = ParseArea().parse()
 ITEMS = ParseItem().parse()
 PERIODS = ParsePeriod().parse()
 PERIODICITIES = ParsePeriodicity().parse()
+SERIES = ParseSeries(periodicities=PERIODICITIES, areas=AREAS, items=ITEMS).parse()
 
-p = ParseIndex(periods=PERIODS)
+p = ParseIndex(series=SERIES, periods=PERIODS)
 p.parse()
 cpi_by_year = p.by_year
 cpi_by_month = p.by_month
