@@ -1,4 +1,6 @@
+click
 requests
+python-dateutil
 
 # Testing
 twine

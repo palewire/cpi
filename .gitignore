@@ -1,5 +1,5 @@
 *.pyc
-cpi/data.tsv
+cpi/*.tsv
 *.egg-info
 dist
 build

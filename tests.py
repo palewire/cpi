@@ -2,12 +2,41 @@
 # -*- coding: utf-8 -*-
 import cpi
 import csv
+import pandas as pd
 import unittest
 import warnings
-import pandas as pd
+from click.testing import CliRunner
 from datetime import date, datetime
 
+from cpi import cli
 from cpi.errors import CPIDoesNotExist
+
+
+class CliTest(unittest.TestCase):
+
+    def invoke(self, *args):
+        runner = CliRunner()
+        result = runner.invoke(cli.inflate, args)
+        self.assertEqual(result.exit_code, 0)
+        string_value = result.output.replace("\n", "")
+        # Do some rounding to ensure the same results for Python 2 and 3
+        return str(round(float(string_value), 7))
+
+    def test_inflate_years(self):
+        self.assertEqual(self.invoke("100", "1950"), '1017.0954357')
+        self.assertEqual(self.invoke("100", "1950", "--to", "1960"), "122.8215768")
+        self.assertEqual(self.invoke("100", "1950", "--to", "1950"), "100.0")
+
+    def test_inflate_months(self):
+        self.assertEqual(self.invoke("100", "1950-01-01"), '1070.587234')
+        self.assertEqual(self.invoke("100", "1950-01-11"), "1070.587234")
+        self.assertEqual(
+            self.invoke("100", "1950-01-11", "--to", "1960-01-01"),
+            "124.6808511"
+        )
+        self.assertEqual(self.invoke("100", "1950-01-01 00:00:00", "--to", "1950-01-01"), "100.0")
+        self.assertEqual(self.invoke("100", "1950-01-01", "--to", "2018-01-01"), '1054.7531915')
+        self.assertEqual(self.invoke("100", "1950-01-01", "--to", "1960-01-01"), '124.6808511')
 
 
 class CPITest(unittest.TestCase):
@@ -29,11 +58,14 @@ class CPITest(unittest.TestCase):
             cpi.get(1900)
         with self.assertRaises(CPIDoesNotExist):
             cpi.get(date(1900, 1, 1))
+        with self.assertRaises(CPIDoesNotExist):
+            cpi.get(1950, series="FOOBAR")
 
     def test_get_value_error(self):
         with self.assertRaises(ValueError):
             cpi.get(1900.1)
             cpi.get(datetime.now())
+            cpi.get(3000)
 
     def test_inflate_years(self):
         self.assertEqual(
@@ -42,7 +74,8 @@ class CPITest(unittest.TestCase):
                 1017.0954356846472)
         self.assertEqual(
                 cpi.inflate(
-                    CPITest.DOLLARS, CPITest.TEST_YEAR_EARLIER, to=2017),
+                    CPITest.DOLLARS, CPITest.TEST_YEAR_EARLIER,
+                    to=CPITest.TEST_YEAR_LATEST),
                 1017.0954356846472)
         self.assertEqual(
                 cpi.inflate(
@@ -179,6 +212,7 @@ class CPITest(unittest.TestCase):
             cpi.inflate(df.at[1984, 'MEDIAN_HOUSEHOLD_INCOME'], 1984),
             df.at[1984, 'ADJUSTED']
         )
+
 
 if __name__ == '__main__':
     unittest.main()
