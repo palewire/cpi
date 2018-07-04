@@ -7,25 +7,16 @@ import numbers
 import warnings
 from datetime import date, datetime
 
+from .parsers import parse
 from .download import Downloader
 from .errors import CPIDoesNotExist, StaleDataWarning
-from .parsers import ParseArea, ParseItem, ParsePeriod, ParsePeriodicity, ParseSeries
 
 import logging
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
 # Parse data for use
-AREAS = ParseArea().parse()
-ITEMS = ParseItem().parse()
-PERIODS = ParsePeriod().parse()
-PERIODICITIES = ParsePeriodicity().parse()
-SERIES_LIST = ParseSeries(
-    periods=PERIODS,
-    periodicities=PERIODICITIES,
-    areas=AREAS,
-    items=ITEMS
-).parse()
+SERIES_LIST = parse()
 
 # set the default series to the CPI-U
 DEFAULT_SERIES_ID = "CUUR0000SA0"
@@ -103,11 +94,12 @@ def inflate(value, year_or_month, to=None, series=DEFAULT_SERIES_ID):
         if isinstance(to, numbers.Integral):
             to = int(to)
         elif isinstance(to, datetime):
+            # We want dates not datetimes
             to = to.date()
 
     # Sanitize the year_or_month
     if isinstance(year_or_month, numbers.Integral):
-        # We need to make sure that int64, int32 and ints
+        # We need to make sure that int64, int32 and other int-like objects
         # are the same type for the comparison to come.
         year_or_month = int(year_or_month)
     # If a datetime has been provided, shave it down to a date.

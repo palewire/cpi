@@ -151,3 +151,20 @@ class ParseSeries(BaseParser):
 
             # Sort it to the proper lookup
             series.indexes[index.period.type][index.date] = index
+
+
+def parse():
+    """
+    Parse all of the files and returns a ready-to-use series list.
+    """
+    areas = ParseArea().parse()
+    items = ParseItem().parse()
+    periods = ParsePeriod().parse()
+    periodicities = ParsePeriodicity().parse()
+    series_list = ParseSeries(
+        periods=periods,
+        periodicities=periodicities,
+        areas=areas,
+        items=items
+    ).parse()
+    return series_list
