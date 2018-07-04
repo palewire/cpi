@@ -24,7 +24,7 @@ from dateutil.parser import parse as dateparse
     '--series',
     type=click.STRING,
     nargs=1,
-    default=cpi.DEFAULT_SERIES,
+    default=cpi.DEFAULT_SERIES_ID,
     help='The CPI data series used for the conversion. The default is the CPI-U.'
 )
 def inflate(value, year_or_month, to=None, series=cpi.DEFAULT_SERIES):

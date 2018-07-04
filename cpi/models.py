@@ -177,7 +177,6 @@ class Series(object):
         items,
         begin_year,
         end_year,
-        indexes=collections.defaultdict(collections.OrderedDict)
     ):
         self.id = id
         self.title = title
@@ -188,7 +187,11 @@ class Series(object):
         self.items = items
         self.begin_year = begin_year
         self.end_year = end_year
-        self.indexes = indexes
+        self.indexes = {
+            'annual': collections.OrderedDict(),
+            'monthly': collections.OrderedDict(),
+            'semiannual': collections.OrderedDict(),
+        }
 
     def __repr__(self):
         return "<Series: {}>".format(self.__str__())
@@ -196,19 +199,20 @@ class Series(object):
     def __str__(self):
         return "{}: {}".format(self.id, self.title)
 
-    def get_monthly_indexes(self):
-        return [v for v in self.indexes.values() if v.period.type == 'monthly']
-
-    def get_annual_indexes(self):
-        return [v for v in self.indexes.values() if v.period.type == 'annual']
+    def get_index_by_date(self, date, period_type='annual'):
+        return self.indexes[period_type][date]
 
     @property
     def latest_month(self):
-        return max([i.date for i in self.get_monthly_indexes()])
+        return max(
+            [i.date for i in self.indexes['monthly'].values()]
+        )
 
     @property
     def latest_year(self):
-        return max([i.year for i in self.get_annual_indexes()])
+        return max(
+            [i.year for i in self.indexes['annual'].values()]
+        )
 
 
 class Index(object):

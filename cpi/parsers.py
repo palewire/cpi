@@ -150,9 +150,4 @@ class ParseSeries(BaseParser):
             )
 
             # Sort it to the proper lookup
-            if index.period.type == 'annual':
-                series.indexes[index.year] = index
-            elif index.period.type == 'monthly':
-                series.indexes[index.date] = index
-            elif index.period.type == 'semiannual':
-                series.indexes[index.date] = index
+            series.indexes[index.period.type][index.date] = index
