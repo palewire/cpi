@@ -9,7 +9,7 @@ from datetime import date, datetime
 
 from .download import Downloader
 from .errors import CPIDoesNotExist, StaleDataWarning
-from .parsers import ParseArea, ParseItem, ParsePeriod, ParsePeriodicity, ParseIndex, ParseSeries
+from .parsers import ParseArea, ParseItem, ParsePeriod, ParsePeriodicity, ParseSeries
 
 import logging
 logger = logging.getLogger(__name__)
@@ -20,25 +20,20 @@ AREAS = ParseArea().parse()
 ITEMS = ParseItem().parse()
 PERIODS = ParsePeriod().parse()
 PERIODICITIES = ParsePeriodicity().parse()
-SERIES = ParseSeries(periodicities=PERIODICITIES, areas=AREAS, items=ITEMS).parse()
-
-p = ParseIndex(series=SERIES, periods=PERIODS)
-p.parse()
-cpi_by_year = p.by_year
-cpi_by_month = p.by_month
-
+SERIES_LIST = ParseSeries(
+    periods=PERIODS,
+    periodicities=PERIODICITIES,
+    areas=AREAS,
+    items=ITEMS
+).parse()
 
 # set the default series to the CPI-U
-DEFAULT_SERIES = "CUUR0000SA0"
+DEFAULT_SERIES_ID = "CUUR0000SA0"
+DEFAULT_SERIES = SERIES_LIST.get_by_id(DEFAULT_SERIES_ID)
 
 # Establish the range of data available
-MONTHS = cpi_by_month[DEFAULT_SERIES].keys()
-EARLIEST_MONTH = min(MONTHS)
-LATEST_MONTH = max(MONTHS)
-
-YEARS = cpi_by_year[DEFAULT_SERIES].keys()
-EARLIEST_YEAR = min(YEARS)
-LATEST_YEAR = max(YEARS)
+LATEST_MONTH = DEFAULT_SERIES.latest_month
+LATEST_YEAR = DEFAULT_SERIES.latest_year
 
 # Figure out how out of date you are
 DAYS_SINCE_LATEST_MONTH = (date.today() - LATEST_MONTH).days
@@ -50,35 +45,34 @@ if DAYS_SINCE_LATEST_YEAR > (365*2.25) or DAYS_SINCE_LATEST_MONTH > 90:
     logger.warn("CPI data is out of date. To accurately inflate to today's dollars, you must run `cpi.update()`.")
 
 
-def get(year_or_month, series=DEFAULT_SERIES):
+def get(year_or_month, series=DEFAULT_SERIES_ID):
     """
     Returns the CPI value for a given year.
     """
     # Pull the appropriate data dict depending on the input type.
     if isinstance(year_or_month, numbers.Integral):
-        data_dict = cpi_by_year
+        pass
     elif isinstance(year_or_month, date):
         # If it's not set to the first day of the month, we should do that now.
         if year_or_month.day != 1:
             year_or_month = year_or_month.replace(day=1)
-        data_dict = cpi_by_month
     else:
         raise ValueError("Only integers and date objects are accepted.")
 
     # Pull the series from the data dict
     try:
-        series_dict = data_dict[series]
-    except KeyError:
+        series_dict = SERIES_LIST.get_by_id(series)
+    except (KeyError, IndexError):
         raise CPIDoesNotExist("CPI series {} not found".format(series))
 
     # Pull the value from the series_dict
     try:
-        return series_dict[year_or_month].value
-    except KeyError:
+        return series_dict.indexes[year_or_month].value
+    except (KeyError, IndexError):
         raise CPIDoesNotExist("CPI value not found for {}".format(year_or_month))
 
 
-def inflate(value, year_or_month, to=None, series=DEFAULT_SERIES):
+def inflate(value, year_or_month, to=None, series=DEFAULT_SERIES_ID):
     """
     Returns a dollar value adjusted for inflation.
 

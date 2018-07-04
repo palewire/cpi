@@ -3,6 +3,7 @@
 """
 Python objects for modeling Consumer Price Index (CPI) data structures.
 """
+import collections
 from datetime import date
 
 
@@ -65,10 +66,7 @@ class SeriesList(list):
         )
 
         # Pull the series
-        try:
-            return list(filter(lambda obj: obj.id == series_id, self))[0]
-        except IndexError:
-            raise KeyError("Object with id {} could not be found".format(series_id))
+        return self.get_by_id(series_id)
 
 
 class Area(object):
@@ -168,7 +166,19 @@ class Series(object):
 
     Yes, that's the offical government definition. I'm not kidding.
     """
-    def __init__(self, id, title, survey, seasonally_adjusted, periodicity, area, items, begin_year, end_year):
+    def __init__(
+        self,
+        id,
+        title,
+        survey,
+        seasonally_adjusted,
+        periodicity,
+        area,
+        items,
+        begin_year,
+        end_year,
+        indexes=collections.defaultdict(collections.OrderedDict)
+    ):
         self.id = id
         self.title = title
         self.survey = survey
@@ -178,12 +188,27 @@ class Series(object):
         self.items = items
         self.begin_year = begin_year
         self.end_year = end_year
+        self.indexes = indexes
 
     def __repr__(self):
         return "<Series: {}>".format(self.__str__())
 
     def __str__(self):
         return "{}: {}".format(self.id, self.title)
+
+    def get_monthly_indexes(self):
+        return [v for v in self.indexes.values() if v.period.type == 'monthly']
+
+    def get_annual_indexes(self):
+        return [v for v in self.indexes.values() if v.period.type == 'annual']
+
+    @property
+    def latest_month(self):
+        return max([i.date for i in self.get_monthly_indexes()])
+
+    @property
+    def latest_year(self):
+        return max([i.year for i in self.get_annual_indexes()])
 
 
 class Index(object):

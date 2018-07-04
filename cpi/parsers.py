@@ -5,7 +5,6 @@ Parse and prepare the Consumer Price Index (CPI) dataset.
 """
 import os
 import csv
-import collections
 from .models import MappingList, SeriesList
 from .models import Area, Item, Period, Periodicity, Index, Series
 
@@ -92,7 +91,8 @@ class ParseSeries(BaseParser):
         'CW': 'Urban wage earners and clerical workers'
     }
 
-    def __init__(self, periodicities=None, areas=None, items=None):
+    def __init__(self, periods=None, periodicities=None, areas=None, items=None):
+        self.periods = periods or ParsePeriod().parse()
         self.periodicities = periodicities or ParsePeriodicity().parse()
         self.areas = areas or ParseArea().parse()
         self.items = items or ParseItem().parse()
@@ -107,10 +107,19 @@ class ParseSeries(BaseParser):
         )
 
     def parse(self):
+        self.series_list = self.parse_series()
+        self.parse_indexes()
+        return self.series_list
+
+    def parse_series(self):
         """
         Returns a list Series objects.
         """
-        object_list = SeriesList(periodicities=self.periodicities, areas=self.areas, items=self.items)
+        object_list = SeriesList(
+            periodicities=self.periodicities,
+            areas=self.areas,
+            items=self.items
+        )
         for row in self.get_file('cu.series'):
             parsed_id = self.parse_id(row['series_id'])
             obj = Series(
@@ -127,23 +136,14 @@ class ParseSeries(BaseParser):
             object_list.append(obj)
         return object_list
 
-
-class ParseIndex(BaseParser):
-
-    def __init__(self, series=None, periods=None):
-        self.by_year = collections.defaultdict(collections.OrderedDict)
-        self.by_month = collections.defaultdict(collections.OrderedDict)
-        self.series = series or ParseSeries().parse()
-        self.periods = periods or ParsePeriod().parse()
-
-    def parse(self):
-        """
-        Parse the raw BLS data into dictionaries for Python lookups.
-        """
+    def parse_indexes(self):
         for row in self.get_file("cu.data.1.AllItems"):
+            # Get the series
+            series = self.series_list.get_by_id(row['series_id'])
+
             # Create an object
             index = Index(
-                self.series.get_by_id(row['series_id']),
+                series,
                 int(row['year']),
                 self.periods.get_by_id(row['period']),
                 float(row['value'])
@@ -151,6 +151,8 @@ class ParseIndex(BaseParser):
 
             # Sort it to the proper lookup
             if index.period.type == 'annual':
-                self.by_year[index.series.id][index.year] = index
+                series.indexes[index.year] = index
             elif index.period.type == 'monthly':
-                self.by_month[index.series.id][index.date] = index
+                series.indexes[index.date] = index
+            elif index.period.type == 'semiannual':
+                series.indexes[index.date] = index

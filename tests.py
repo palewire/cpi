@@ -104,14 +104,8 @@ class CPITest(unittest.TestCase):
         with self.assertRaises(TypeError):
             cpi.inflate(100, date(2000, 1, 1), to=1950)
 
-    def test_earliest_year(self):
-        self.assertEqual(cpi.EARLIEST_YEAR, 1913)
-
     def test_latest_year(self):
         self.assertEqual(cpi.LATEST_YEAR, 2017)
-
-    def test_earliest_month(self):
-        self.assertEqual(cpi.EARLIEST_MONTH, date(1913, 1, 1))
 
     def test_latest_month(self):
         self.assertEqual(cpi.LATEST_MONTH, date(2018, 5, 1))
