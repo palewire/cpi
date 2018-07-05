@@ -5,9 +5,9 @@ Custom errors.
 """
 
 
-class CPIDoesNotExist(Exception):
+class CPIObjectDoesNotExist(Exception):
     """
-    Error raised when a CPI is requested that doesn't exist.
+    Error raised when a CPI object is requested that doesn't exist.
     """
     pass
 

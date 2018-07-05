@@ -7,7 +7,7 @@ from cpi import cli
 import pandas as pd
 from datetime import date, datetime
 from click.testing import CliRunner
-from cpi.errors import CPIDoesNotExist
+from cpi.errors import CPIObjectDoesNotExist
 
 
 class CliTest(unittest.TestCase):
@@ -47,11 +47,11 @@ class CPITest(unittest.TestCase):
         self.assertEqual(cpi.get(date(1950, 1, 1), series="CUSR0000SA0"), 23.51)
 
     def test_get_errors(self):
-        with self.assertRaises(CPIDoesNotExist):
+        with self.assertRaises(CPIObjectDoesNotExist):
             cpi.get(1900)
-        with self.assertRaises(CPIDoesNotExist):
+        with self.assertRaises(CPIObjectDoesNotExist):
             cpi.get(date(1900, 1, 1))
-        with self.assertRaises(CPIDoesNotExist):
+        with self.assertRaises(CPIObjectDoesNotExist):
             cpi.get(1950, series="FOOBAR")
 
     def test_get_value_error(self):

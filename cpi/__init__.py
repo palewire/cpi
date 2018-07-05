@@ -9,7 +9,7 @@ from datetime import date, datetime
 
 from .parsers import parse
 from .download import Downloader
-from .errors import CPIDoesNotExist, StaleDataWarning
+from .errors import StaleDataWarning
 
 import logging
 logger = logging.getLogger(__name__)
@@ -53,16 +53,10 @@ def get(year_or_month, series=DEFAULT_SERIES_ID):
         raise ValueError("Only integers and date objects are accepted.")
 
     # Pull the series
-    try:
-        series = SERIES_LIST.get_by_id(series)
-    except (KeyError, IndexError):
-        raise CPIDoesNotExist("CPI series {} not found".format(series))
+    series = SERIES_LIST.get_by_id(series)
 
     # Pull the value from the series by date
-    try:
-        return series.get_index_by_date(year_or_month, period_type=period_type).value
-    except (KeyError, IndexError):
-        raise CPIDoesNotExist("CPI value not found for {}".format(year_or_month))
+    return series.get_index_by_date(year_or_month, period_type=period_type).value
 
 
 def inflate(value, year_or_month, to=None, series=DEFAULT_SERIES_ID):

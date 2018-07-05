@@ -5,6 +5,7 @@ Python objects for modeling Consumer Price Index (CPI) data structures.
 """
 import collections
 from datetime import date
+from .errors import CPIObjectDoesNotExist
 
 
 class MappingList(list):
@@ -15,13 +16,13 @@ class MappingList(list):
         try:
             return list(filter(lambda obj: obj.id == value, self))[0]
         except IndexError:
-            raise KeyError("Object with id {} could not be found".format(value))
+            raise CPIObjectDoesNotExist("Object with id {} could not be found".format(value))
 
     def get_by_name(self, value):
         try:
             return list(filter(lambda obj: obj.name == value, self))[0]
         except IndexError:
-            raise KeyError("Object with id {} could not be found".format(value))
+            raise CPIObjectDoesNotExist("Object with id {} could not be found".format(value))
 
 
 class SeriesList(list):
@@ -46,7 +47,7 @@ class SeriesList(list):
         try:
             return list(filter(lambda obj: obj.id == value, self))[0]
         except IndexError:
-            raise KeyError("Object with id {} could not be found".format(value))
+            raise CPIObjectDoesNotExist("Object with id {} could not be found".format(value))
 
     def get(self, survey, seasonally_adjusted, periodicity, area, items):
         # Get all the codes for these humanized input.
@@ -200,7 +201,10 @@ class Series(object):
         return "{}: {}".format(self.id, self.title)
 
     def get_index_by_date(self, date, period_type='annual'):
-        return self.indexes[period_type][date]
+        try:
+            return self.indexes[period_type][date]
+        except KeyError:
+            raise CPIObjectDoesNotExist("Index of {} type for {} does not exist".format(period_type, date))
 
     @property
     def latest_month(self):
