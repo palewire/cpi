@@ -3,9 +3,12 @@
 """
 Python objects for modeling Consumer Price Index (CPI) data structures.
 """
+import logging
 import collections
 from datetime import date
 from .errors import CPIObjectDoesNotExist
+logger = logging.getLogger(__name__)
+logger.addHandler(logging.NullHandler())
 
 
 class MappingList(list):
@@ -44,6 +47,7 @@ class SeriesList(list):
         self.items = items
 
     def get_by_id(self, value):
+        logger.debug("Retrieving series with id {}".format(value))
         try:
             return list(filter(lambda obj: obj.id == value, self))[0]
         except IndexError:

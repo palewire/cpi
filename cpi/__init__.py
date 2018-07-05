@@ -20,6 +20,13 @@ SERIES_LIST = parse()
 
 # set the default series to the CPI-U
 DEFAULT_SERIES_ID = "CUUR0000SA0"
+DEFAULTS_SERIES_ATTRS = {
+    'survey': 'All urban consumers',
+    'seasonally_adjusted': False,
+    'periodicity': 'Monthly',
+    'area': 'U.S. city average',
+    'items': 'All items'
+}
 DEFAULT_SERIES = SERIES_LIST.get_by_id(DEFAULT_SERIES_ID)
 
 # Establish the range of data available
@@ -36,7 +43,15 @@ if DAYS_SINCE_LATEST_YEAR > (365*2.25) or DAYS_SINCE_LATEST_MONTH > 90:
     logger.warn("CPI data is out of date. To accurately inflate to today's dollars, you must run `cpi.update()`.")
 
 
-def get(year_or_month, series=DEFAULT_SERIES_ID):
+def get(
+    year_or_month,
+    survey=DEFAULTS_SERIES_ATTRS['survey'],
+    seasonally_adjusted=DEFAULTS_SERIES_ATTRS['seasonally_adjusted'],
+    periodicity=DEFAULTS_SERIES_ATTRS['periodicity'],
+    area=DEFAULTS_SERIES_ATTRS['area'],
+    items=DEFAULTS_SERIES_ATTRS['items'],
+    series=None
+):
     """
     Returns the CPI value for a given year.
     """
@@ -53,13 +68,28 @@ def get(year_or_month, series=DEFAULT_SERIES_ID):
         raise ValueError("Only integers and date objects are accepted.")
 
     # Pull the series
-    series = SERIES_LIST.get_by_id(series)
+    if series:
+        # If the user has provided an explicit series id, we are going to ignore the humanized options.
+        series = SERIES_LIST.get_by_id(series)
+    else:
+        # Otherwise, we build the series id using the more humanized options
+        series = SERIES_LIST.get(survey, seasonally_adjusted, periodicity, area, items)
 
     # Pull the value from the series by date
     return series.get_index_by_date(year_or_month, period_type=period_type).value
 
 
-def inflate(value, year_or_month, to=None, series=DEFAULT_SERIES_ID):
+def inflate(
+    value,
+    year_or_month,
+    to=None,
+    survey=DEFAULTS_SERIES_ATTRS['survey'],
+    seasonally_adjusted=DEFAULTS_SERIES_ATTRS['seasonally_adjusted'],
+    periodicity=DEFAULTS_SERIES_ATTRS['periodicity'],
+    area=DEFAULTS_SERIES_ATTRS['area'],
+    items=DEFAULTS_SERIES_ATTRS['items'],
+    series=None
+):
     """
     Returns a dollar value adjusted for inflation.
 
@@ -107,8 +137,16 @@ def inflate(value, year_or_month, to=None, series=DEFAULT_SERIES_ID):
     # Otherwise, let's do the math.
     # The input value is multiplied by the CPI of the target year,
     # then divided into the CPI from the source year.
-    source_index = get(year_or_month, series=series)
-    target_index = get(to, series=series)
+    kwargs = {
+        'survey': survey,
+        'seasonally_adjusted': seasonally_adjusted,
+        'periodicity': periodicity,
+        'area': area,
+        'items': items,
+        'series': series
+    }
+    source_index = get(year_or_month, **kwargs)
+    target_index = get(to, **kwargs)
     return (value * target_index) / float(source_index)
 
 
