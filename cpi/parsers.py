@@ -160,7 +160,7 @@ class ParseSeries(BaseParser):
             )
 
             # Sort it to the proper lookup
-            series.indexes[index.period.type][index.date] = index
+            series._indexes[index.period.type][index.date] = index
 
 
 def parse():
