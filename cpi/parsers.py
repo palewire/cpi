@@ -138,9 +138,7 @@ class ParseSeries(BaseParser):
                 row['seasonal'] == 'S',
                 self.periodicities.get_by_id(row['periodicity_code']),
                 self.areas.get_by_id(row['area_code']),
-                self.items.get_by_id(row['item_code']),
-                int(row['begin_year']),
-                int(row['end_year'])
+                self.items.get_by_id(row['item_code'])
             )
             object_list.append(obj)
         return object_list

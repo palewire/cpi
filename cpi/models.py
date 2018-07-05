@@ -171,9 +171,7 @@ class Series(BaseObject):
         seasonally_adjusted,
         periodicity,
         area,
-        items,
-        begin_year,
-        end_year,
+        items
     ):
         self.id = id
         self.title = title
@@ -182,8 +180,6 @@ class Series(BaseObject):
         self.periodicity = periodicity
         self.area = area
         self.items = items
-        self.begin_year = begin_year
-        self.end_year = end_year
         self._indexes = {
             'annual': collections.OrderedDict(),
             'monthly': collections.OrderedDict(),
