@@ -41,7 +41,11 @@ class CPITest(unittest.TestCase):
 
     def test_get(self):
         self.assertEqual(cpi.get(1950), 24.1)
+        self.assertEqual(cpi.get(date(1950, 1, 1)), 23.5)
         self.assertEqual(cpi.get(2000), 172.2)
+        self.assertEqual(cpi.get(date(1950, 1, 1), series="CUSR0000SA0"), 23.51)
+
+    def test_get_errors(self):
         with self.assertRaises(CPIDoesNotExist):
             cpi.get(1900)
         with self.assertRaises(CPIDoesNotExist):
