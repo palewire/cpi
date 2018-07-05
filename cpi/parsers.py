@@ -5,8 +5,11 @@ Parse and prepare the Consumer Price Index (CPI) dataset.
 """
 import os
 import csv
+import logging
 from .models import MappingList, SeriesList
 from .models import Area, Item, Period, Periodicity, Index, Series
+logger = logging.getLogger(__name__)
+logger.addHandler(logging.NullHandler())
 
 
 class BaseParser(object):
@@ -157,6 +160,7 @@ def parse():
     """
     Parse all of the files and returns a ready-to-use series list.
     """
+    logger.info("Parsing data files from the BLS")
     areas = ParseArea().parse()
     items = ParseItem().parse()
     periods = ParsePeriod().parse()
