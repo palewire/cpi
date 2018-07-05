@@ -21,6 +21,7 @@ class BaseParser(object):
         """
         # Open up the CSV from the BLS
         csv_path = os.path.join(self.THIS_DIR, "{}.csv".format(file))
+        logger.debug("Opening {}".format(csv_path))
         csv_file = open(csv_path, "r")
         return csv.DictReader(csv_file)
 
@@ -33,6 +34,7 @@ class ParseArea(BaseParser):
         """
         Returns a list Area objects.
         """
+        logger.debug("Parsing area file")
         object_list = MappingList()
         for row in self.get_file('cu.area'):
             obj = Area(row['area_code'], row['area_name'])
@@ -48,6 +50,7 @@ class ParseItem(BaseParser):
         """
         Returns a list Area objects.
         """
+        logger.debug("Parsing item file")
         object_list = MappingList()
         for row in self.get_file('cu.item'):
             obj = Item(row['item_code'], row['item_name'])
@@ -63,6 +66,7 @@ class ParsePeriod(BaseParser):
         """
         Returns a list Area objects.
         """
+        logger.debug("Parsing period file")
         object_list = MappingList()
         for row in self.get_file('cu.period'):
             obj = Period(row['period'], row['period_abbr'], row['period_name'])
@@ -78,6 +82,7 @@ class ParsePeriodicity(BaseParser):
         """
         Returns a list Periodicity objects.
         """
+        logger.debug("Parsing periodicity file")
         object_list = MappingList()
         for row in self.get_file('cu.periodicity'):
             obj = Periodicity(row['periodicity_code'], row['periodicity_name'])
@@ -118,6 +123,7 @@ class ParseSeries(BaseParser):
         """
         Returns a list Series objects.
         """
+        logger.debug("Parsing series file")
         object_list = SeriesList(
             periodicities=self.periodicities,
             areas=self.areas,
@@ -140,6 +146,7 @@ class ParseSeries(BaseParser):
         return object_list
 
     def parse_indexes(self):
+        logger.debug("Parsing index files")
         for row in self.get_file("cu.data.1.AllItems"):
             # Get the series
             series = self.series_list.get_by_id(row['series_id'])
