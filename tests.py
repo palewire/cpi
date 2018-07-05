@@ -35,6 +35,7 @@ class CliTest(unittest.TestCase):
         self.assertEqual(self.invoke("100", "1950-01-01 00:00:00", "--to", "1950-01-01"), "100.0")
         self.assertEqual(self.invoke("100", "1950-01-01", "--to", "2018-01-01"), '1054.7531915')
         self.assertEqual(self.invoke("100", "1950-01-01", "--to", "1960-01-01"), '124.6808511')
+        self.assertEqual(self.invoke("100", "1950-01-01", "--series", "CUSR0000SA0"), '1065.6529137')
 
 
 class CPITest(unittest.TestCase):
@@ -71,6 +72,9 @@ class CPITest(unittest.TestCase):
         self.assertEqual(cpi.inflate(100, datetime(1950, 1, 1)), 1070.587234042553)
         self.assertEqual(cpi.inflate(100, date(1950, 1, 1), to=date(2018, 1, 1)), 1054.7531914893618)
         self.assertEqual(cpi.inflate(100, date(1950, 1, 1), to=date(1960, 1, 1)), 124.68085106382979)
+
+    def test_inflate_other_series(self):
+        self.assertEqual(cpi.inflate(100, date(1950, 1, 1), series="CUSR0000SA0"), 1065.6529136537642)
 
     def test_deflate(self):
         self.assertEqual(cpi.inflate(1017.0954356846472, 2017, to=1950), 100)
