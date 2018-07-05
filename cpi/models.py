@@ -55,8 +55,16 @@ class SeriesList(list):
 
     def get(self, survey, seasonally_adjusted, periodicity, area, items):
         # Get all the codes for these humanized input.
-        survey_code = self.SURVEYS[survey]
-        seasonality_code = self.SEASONALITIES[seasonally_adjusted]
+        try:
+            survey_code = self.SURVEYS[survey]
+        except KeyError:
+            raise CPIObjectDoesNotExist("Survey with the name {} does not exist".format(survey))
+
+        try:
+            seasonality_code = self.SEASONALITIES[seasonally_adjusted]
+        except KeyError:
+            raise CPIObjectDoesNotExist("Seasonality {} does not exist".format(seasonally_adjusted))
+
         periodicity_code = self.periodicities.get_by_name(periodicity).code
         area_code = self.areas.get_by_name(area).code
         items_code = self.items.get_by_name(items).code
