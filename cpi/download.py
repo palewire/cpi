@@ -36,7 +36,6 @@ class Downloader(object):
         # Download it
         url = "https://download.bls.gov/pub/time.series/cu/{}".format(file)
         logger.debug(" - {}".format(url))
-
         tsv_path = os.path.join(self.THIS_DIR, '{}.tsv'.format(file))
         response = requests.get(url)
         with open(tsv_path, 'w') as f:

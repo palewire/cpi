@@ -1,3 +1,8 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+Command-line interface.
+"""
 import cpi
 import click
 from dateutil.parser import parse as dateparse
