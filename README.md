@@ -81,7 +81,7 @@ $ inflate 100 1950 --to=1960
 
 You can also adjust month to month. You should submit the months as parseable date strings.
 
-```
+```bash
 $ inflate 100 1950-01-01 --to=2018-01-01
 1054.75319149
 ```
