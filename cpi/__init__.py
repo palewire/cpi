@@ -10,6 +10,7 @@ from datetime import date, datetime
 from .parsers import parse
 from .download import Downloader
 from .errors import StaleDataWarning
+from .defaults import DEFAULT_SERIES_ID, DEFAULTS_SERIES_ATTRS
 
 import logging
 logger = logging.getLogger(__name__)
@@ -19,14 +20,6 @@ logger.addHandler(logging.NullHandler())
 SERIES_LIST = parse()
 
 # set the default series to the CPI-U
-DEFAULT_SERIES_ID = "CUUR0000SA0"
-DEFAULTS_SERIES_ATTRS = {
-    'survey': 'All urban consumers',
-    'seasonally_adjusted': False,
-    'periodicity': 'Monthly',
-    'area': 'U.S. city average',
-    'items': 'All items'
-}
 DEFAULT_SERIES = SERIES_LIST.get_by_id(DEFAULT_SERIES_ID)
 
 # Establish the range of data available

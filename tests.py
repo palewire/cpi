@@ -44,6 +44,42 @@ class CPITest(unittest.TestCase):
         self.assertEqual(cpi.get(1950), 24.1)
         self.assertEqual(cpi.get(date(1950, 1, 1)), 23.5)
         self.assertEqual(cpi.get(2000), 172.2)
+
+    def test_get_by_kwargs(self):
+        # "CUUR0000SA0"
+        self.assertEqual(cpi.get(2000), 172.2)
+
+        # "CUSR0000SA0"
+        self.assertEqual(
+            cpi.get(date(2000, 1, 1), seasonally_adjusted=True),
+            169.30
+        )
+        # ... which doesn't have annual values
+        with self.assertRaises(CPIObjectDoesNotExist):
+            cpi.get(2000, seasonally_adjusted=True)
+
+        # "CUSR0000SA0E"
+        # ... which we don't have loaded yet as data
+        with self.assertRaises(CPIObjectDoesNotExist):
+            cpi.get(2000, seasonally_adjusted=True, items="Energy")
+
+        # "CUURS49ASA0"
+        self.assertEqual(
+            cpi.get(2000, area="Los Angeles-Long Beach-Anaheim, CA"),
+            171.6
+        )
+        self.assertEqual(
+            cpi.get(date(2000, 1, 1), area="Los Angeles-Long Beach-Anaheim, CA"),
+            167.9
+        )
+
+        # "CUURS49AAA0"
+        self.assertEqual(
+            cpi.get(2000, items="All items - old base", area="Los Angeles-Long Beach-Anaheim, CA"),
+            506.8
+        )
+
+    def test_get_by_series_id(self):
         self.assertEqual(cpi.get(date(1950, 1, 1), series="CUSR0000SA0"), 23.51)
 
     def test_get_errors(self):

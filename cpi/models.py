@@ -65,17 +65,13 @@ class SeriesList(list):
         except KeyError:
             raise CPIObjectDoesNotExist("Seasonality {} does not exist".format(seasonally_adjusted))
 
-        periodicity_code = self.periodicities.get_by_name(periodicity).code
-        area_code = self.areas.get_by_name(area).code
-        items_code = self.items.get_by_name(items).code
-
         # Generate the series id
         series_id = "{}{}{}{}{}".format(
             survey_code,
             seasonality_code,
-            periodicity_code,
-            area_code,
-            items_code
+            self.periodicities.get_by_name(periodicity).code,
+            self.areas.get_by_name(area).code,
+            self.items.get_by_name(items).code
         )
 
         # Pull the series
