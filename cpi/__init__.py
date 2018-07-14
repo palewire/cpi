@@ -145,7 +145,7 @@ def inflate(
 
 def update():
     """
-    Updates the core Consumer Price Index dataset at the core of this library.
+    Updates the Consumer Price Index dataset at the core of this library.
 
     Requires an Internet connection.
     """
