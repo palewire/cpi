@@ -21,7 +21,27 @@ class Downloader(object):
         "cu.period",
         "cu.periodicity",
         "cu.series",
+        "cu.data.0.Current",
         "cu.data.1.AllItems",
+        "cu.data.2.Summaries",
+        "cu.data.3.AsizeNorthEast",
+        "cu.data.4.AsizeNorthCentral",
+        "cu.data.5.AsizeSouth",
+        "cu.data.6.AsizeWest",
+        "cu.data.7.OtherNorthEast",
+        "cu.data.8.OtherNorthCentral",
+        "cu.data.9.OtherSouth",
+        "cu.data.10.OtherWest",
+        "cu.data.11.USFoodBeverage",
+        "cu.data.12.USHousing",
+        "cu.data.13.USApparel",
+        "cu.data.14.USTransportation",
+        "cu.data.15.USMedical",
+        "cu.data.16.USRecreation",
+        "cu.data.17.USEducationAndCommunication",
+        "cu.data.18.USOtherGoodsAndServices",
+        "cu.data.19.PopulationSize",
+        "cu.data.20.USCommoditiesServicesSpecial"
     ]
 
     def update(self):

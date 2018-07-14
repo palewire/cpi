@@ -109,6 +109,29 @@ class ParseSeries(BaseParser):
         'CU': 'All urban consumers',
         'CW': 'Urban wage earners and clerical workers'
     }
+    FILE_LIST = [
+        "cu.data.0.Current",
+        "cu.data.1.AllItems",
+        "cu.data.2.Summaries",
+        "cu.data.3.AsizeNorthEast",
+        "cu.data.4.AsizeNorthCentral",
+        "cu.data.5.AsizeSouth",
+        "cu.data.6.AsizeWest",
+        "cu.data.7.OtherNorthEast",
+        "cu.data.8.OtherNorthCentral",
+        "cu.data.9.OtherSouth",
+        "cu.data.10.OtherWest",
+        "cu.data.11.USFoodBeverage",
+        "cu.data.12.USHousing",
+        "cu.data.13.USApparel",
+        "cu.data.14.USTransportation",
+        "cu.data.15.USMedical",
+        "cu.data.16.USRecreation",
+        "cu.data.17.USEducationAndCommunication",
+        "cu.data.18.USOtherGoodsAndServices",
+        "cu.data.19.PopulationSize",
+        "cu.data.20.USCommoditiesServicesSpecial"
+    ]
 
     def __init__(self, periods=None, periodicities=None, areas=None, items=None):
         self.periods = periods or ParsePeriod().parse()
@@ -156,20 +179,28 @@ class ParseSeries(BaseParser):
 
     def parse_indexes(self):
         logger.debug("Parsing index files")
-        for row in self.get_file("cu.data.1.AllItems"):
-            # Get the series
-            series = self.series_list.get_by_id(row['series_id'])
+        # Loop through all the files ...
+        for file in self.FILE_LIST:
+            # ... and for each file ...
+            for row in self.get_file(file):
+                # Get the series
+                series = self.series_list.get_by_id(row['series_id'])
 
-            # Create an object
-            index = Index(
-                series,
-                int(row['year']),
-                self.periods.get_by_id(row['period']),
-                float(row['value'])
-            )
+                # Create an object
+                index = Index(
+                    series,
+                    int(row['year']),
+                    self.periods.get_by_id(row['period']),
+                    float(row['value'])
+                )
 
-            # Sort it to the proper lookup
-            series._indexes[index.period.type][index.date] = index
+                # If the value has already been loaded ...
+                if index.date in series._indexes[index.period.type]:
+                    # ... verify this value matches what we have ...
+                    assert index == series._indexes[index.period.type][index.date]
+                else:
+                    # ... and if the series doesn't have the index yet, add it.
+                    series._indexes[index.period.type][index.date] = index
 
 
 def parse():

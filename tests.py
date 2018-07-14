@@ -73,7 +73,19 @@ class CPITest(unittest.TestCase):
             167.9
         )
 
-        # "CUURS49AAA0"
+        # "CUURS49ASA0E"
+        self.assertEqual(
+            cpi.get(2000, items="Energy", area="Los Angeles-Long Beach-Anaheim, CA"),
+            132.0
+        )
+
+        # "CUURA421SAT"
+        self.assertEqual(
+            cpi.get(2000, items="Transportation", area="Los Angeles-Long Beach-Anaheim, CA"),
+            154.2
+        )
+
+        # "CUURA421SA0E"
         self.assertEqual(
             cpi.get(2000, items="All items - old base", area="Los Angeles-Long Beach-Anaheim, CA"),
             506.8
@@ -81,6 +93,12 @@ class CPITest(unittest.TestCase):
 
     def test_get_by_series_id(self):
         self.assertEqual(cpi.get(date(1950, 1, 1), series="CUSR0000SA0"), 23.51)
+
+    def test_series_indexes(self):
+        for series in cpi.SERIES_LIST:
+            self.assertTrue(len(series.indexes) > 0)
+            series.latest_month
+            series.latest_year
 
     def test_get_errors(self):
         with self.assertRaises(CPIObjectDoesNotExist):

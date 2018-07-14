@@ -113,6 +113,9 @@ class Area(BaseObject):
     def __str__(self):
         return self.name
 
+    def __eq__(self, other):
+        return self.id == other.id
+
 
 class Item(BaseObject):
     """
@@ -125,6 +128,9 @@ class Item(BaseObject):
 
     def __str__(self):
         return self.name
+
+    def __eq__(self, other):
+        return self.id == other.id
 
 
 class Period(BaseObject):
@@ -139,6 +145,9 @@ class Period(BaseObject):
 
     def __str__(self):
         return self.name
+
+    def __eq__(self, other):
+        return self.id == other.id
 
     @property
     def month(self):
@@ -177,6 +186,9 @@ class Periodicity(BaseObject):
     def __str__(self):
         return self.name
 
+    def __eq__(self, other):
+        return self.id == other.id
+
 
 class Series(BaseObject):
     """
@@ -212,6 +224,9 @@ class Series(BaseObject):
     def __str__(self):
         return "{}: {}".format(self.id, self.title)
 
+    def __eq__(self, other):
+        return self.id == other.id
+
     @property
     def indexes(self):
         flat = []
@@ -220,19 +235,15 @@ class Series(BaseObject):
         return flat
 
     @property
-    def earliest_date(self):
-        return min([i.date for i in self.indexes])
-
-    @property
-    def latest_date(self):
-        return min([i.date for i in self.indexes])
-
-    @property
     def latest_month(self):
+        if not self._indexes['monthly']:
+            return None
         return max([i.date for i in self._indexes['monthly'].values()])
 
     @property
     def latest_year(self):
+        if not self._indexes['annual']:
+            return None
         return max([i.year for i in self._indexes['annual'].values()])
 
     def get_index_by_date(self, date, period_type='annual'):
@@ -254,6 +265,14 @@ class Index(BaseObject):
 
     def __str__(self):
         return "{} ({}): {}".format(self.date, self.period, self.value)
+
+    def __eq__(self, other):
+        return (
+            self.value == other.value and
+            self.series == other.series and
+            self.year == other.year and
+            self.period == other.period
+        )
 
     @property
     def date(self):
