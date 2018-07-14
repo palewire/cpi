@@ -17,7 +17,7 @@ class BaseParser(object):
 
     def get_file(self, file):
         """
-        Returns the CPI data as a csv.DictReader object.
+        Returns the CPI data file provided as a list of dictionaries.
         """
         # Connect to database
         db_path = os.path.join(self.THIS_DIR, "cpi.db")

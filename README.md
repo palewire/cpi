@@ -42,7 +42,7 @@ You can also adjust month to month. You should submit the months as `datetime.da
 ```python
 >>> from datetime import date
 >>> cpi.inflate(100, date(1950, 1, 1), to=date(2018, 1, 1))
-1054.7531914893618
+1072.2936170212768
 ```
 
 You can adjust values using any of the other series published by the BLS as part of its "All Urban Consumers (CU)" survey. They offer more precise measures for different regions and items.
