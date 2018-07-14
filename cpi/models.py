@@ -15,17 +15,32 @@ class MappingList(list):
     """
     A custom list that allows for lookups by attribute.
     """
+    def __init__(self):
+        self._id_dict = {}
+        self._name_dict = {}
+
     def get_by_id(self, value):
         try:
-            return list(filter(lambda obj: obj.id == value, self))[0]
-        except IndexError:
+            return self._id_dict[value]
+        except KeyError:
             raise CPIObjectDoesNotExist("Object with id {} could not be found".format(value))
 
     def get_by_name(self, value):
         try:
-            return list(filter(lambda obj: obj.name == value, self))[0]
-        except IndexError:
+            return self._name_dict[value]
+        except KeyError:
             raise CPIObjectDoesNotExist("Object with id {} could not be found".format(value))
+
+    def append(self, item):
+        """
+        Override to default append method that allows dictionary-style lookups
+        """
+        # Add to dictionary lookup
+        self._id_dict[item.id] = item
+        self._name_dict[item.name] = item
+
+        # Append to list
+        super(MappingList, self).append(item)
 
 
 class SeriesList(list):
