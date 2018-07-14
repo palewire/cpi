@@ -22,7 +22,7 @@ $ pip install cpi
 
 ## Working with Python
 
-Adjusting for inflation is as simple as providing a dollar value followed by the year it is from to  the `inflate` method. By default it is adjusted to its value in the most recent year available.
+Adjusting for inflation is as simple as providing a dollar value followed by the year it is from to  the `inflate` method. By default it is adjusted to its value in the most recent year available using "CPI-U" index recommended as a default by the Bureau of Labor Statistics.
 
 ```python
 >>> import cpi
@@ -45,6 +45,36 @@ You can also adjust month to month. You should submit the months as `datetime.da
 1054.7531914893618
 ```
 
+You can adjust values using any of the other series published by the BLS as part of its "All Urban Consumers (CU)" survey. They offer more precise measure for different regions and items.
+
+Submit one of the areas to inflate dollars in that region.
+
+```python
+>>> cpi.inflate(100, 1950, area="Los Angeles-Long Beach-Anaheim, CA")
+1081.054852320675
+```
+
+You can do the same to inflate the price of specific items lumped into the basket of goods that make up the overall index.
+
+```python
+>>> cpi.inflate(100, 1980, items="Housing")
+309.77681874229353
+```
+
+And you can do both together.
+
+```python
+>>> cpi.inflate(100, 1980, items="Housing", area="Los Angeles-Long Beach-Anaheim, CA")
+344.5364396654719
+```
+
+Each of the 7,800 variations on the CU survey has a unique identifier. If you know which one you want, you can submit it directly.
+
+```python
+>>> cpi.inflate(100, 2000, series="CUUSS12ASETB01")
+165.15176374077112
+```
+
 If you'd like to retrieve the CPI value itself for any year, use the `get` method.
 
 ```python
@@ -57,6 +87,13 @@ You can also do that by month.
 ```python
 >>> cpi.get(date(1950, 1, 1))
 23.5
+```
+
+The same keyword arguments are available.
+
+```python
+>>> cpi.get(1980, items="Housing", area="Los Angeles-Long Beach-Anaheim, CA")
+83.7
 ```
 
 That's it!
@@ -129,7 +166,7 @@ An inflation-adjusted column can quickly be added to a pandas DataFrame using th
 
 The adjustment is made using data provided by [The Bureau of Labor Statistics](https://www.bls.gov/cpi/home.htm) at the U.S. Department of Labor.
 
-Currently the library only supports inflation adjustments using annual values from the so-called "CPI-U" survey, which is an average of all prices paid by all urban consumers. It is available from 1913 to the present. It is not seasonally adjusted. The dataset is identified by the BLS as "CUUR0000SA0." It is used as the default for most basic inflation calculations.
+Currently the library only supports inflation adjustments using series from the "All Urban Consumers (CU)" survey. The so-called "CPI-U" survey is the default, which is an average of all prices paid by all urban consumers. It is available from 1913 to the present. It is not seasonally adjusted. The dataset is identified by the BLS as "CUUR0000SA0." It is used as the default for most basic inflation calculations. All other series measuring all urban consumers are available by taking advantage of the library's options. The alternative survey of "Urban Wage Earners and Clerical Workers" is not yet available.
 
 ## Updating the CPI
 
