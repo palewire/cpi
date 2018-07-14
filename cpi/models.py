@@ -45,12 +45,27 @@ class SeriesList(list):
         self.periodicities = periodicities
         self.areas = areas
         self.items = items
+        self._dict = {}
+
+    def append(self, item):
+        """
+        Override to default append method that allows validation and dictionary-style lookups
+        """
+        # Valid item type
+        if not isinstance(item, Series):
+            raise TypeError("Only Series objects can be added to this list.")
+
+        # Add to dictionary lookup
+        self._dict[item.id] = item
+
+        # Append to list
+        super(SeriesList, self).append(item)
 
     def get_by_id(self, value):
         logger.debug("Retrieving series with id {}".format(value))
         try:
-            return list(filter(lambda obj: obj.id == value, self))[0]
-        except IndexError:
+            return self._dict[value]
+        except KeyError:
             raise CPIObjectDoesNotExist("Object with id {} could not be found".format(value))
 
     def get(self, survey, seasonally_adjusted, periodicity, area, items):
