@@ -100,6 +100,9 @@ class BaseObject(object):
     def __repr__(self):
         return "<{}: {}>".format(self.__class__.__name__, self.__str__())
 
+    def __eq__(self, other):
+        return self.id == other.id
+
 
 class Area(BaseObject):
     """
@@ -112,9 +115,6 @@ class Area(BaseObject):
 
     def __str__(self):
         return self.name
-
-    def __eq__(self, other):
-        return self.id == other.id
 
 
 class Item(BaseObject):
@@ -129,9 +129,6 @@ class Item(BaseObject):
     def __str__(self):
         return self.name
 
-    def __eq__(self, other):
-        return self.id == other.id
-
 
 class Period(BaseObject):
     """
@@ -145,9 +142,6 @@ class Period(BaseObject):
 
     def __str__(self):
         return self.name
-
-    def __eq__(self, other):
-        return self.id == other.id
 
     @property
     def month(self):
@@ -186,9 +180,6 @@ class Periodicity(BaseObject):
     def __str__(self):
         return self.name
 
-    def __eq__(self, other):
-        return self.id == other.id
-
 
 class Series(BaseObject):
     """
@@ -223,9 +214,6 @@ class Series(BaseObject):
 
     def __str__(self):
         return "{}: {}".format(self.id, self.title)
-
-    def __eq__(self, other):
-        return self.id == other.id
 
     @property
     def indexes(self):
