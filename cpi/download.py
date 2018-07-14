@@ -5,8 +5,10 @@ Download the latest annual Consumer Price Index (CPI) dataset.
 """
 import os
 import csv
+import sqlite3
 import logging
 import requests
+import pandas as pd
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
@@ -28,6 +30,28 @@ class Downloader(object):
         """
         logger.debug("Downloading {} files from the BLS".format(len(self.FILE_LIST)))
         [self.get_tsv(file) for file in self.FILE_LIST]
+        logger.debug("Loading data into SQLite database")
+        [self.insert_tsv(file) for file in self.FILE_LIST]
+
+    def insert_tsv(self, file):
+        # Connect to db
+        db_path = os.path.join(self.THIS_DIR, 'cpi.db')
+        conn = sqlite3.connect(db_path)
+
+        # Read file
+        logger.debug(" - {}".format(file))
+        csv_path = os.path.join(self.THIS_DIR, '{}.csv'.format(file))
+        csv_reader = list(csv.DictReader(open(csv_path, 'r')))
+
+        # Convert it to a DataFrame
+        df = pd.DataFrame(csv_reader)
+        df.drop([None], axis=1, inplace=True, errors="ignore")
+
+        # Write file to db
+        df.to_sql(file, conn, if_exists="replace", index=False)
+
+        # Close connection
+        conn.close()
 
     def get_tsv(self, file):
         """

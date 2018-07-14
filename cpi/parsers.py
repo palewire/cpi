@@ -4,7 +4,7 @@
 Parse and prepare the Consumer Price Index (CPI) dataset.
 """
 import os
-import csv
+import sqlite3
 import logging
 from .models import MappingList, SeriesList
 from .models import Area, Item, Period, Periodicity, Index, Series
@@ -19,11 +19,22 @@ class BaseParser(object):
         """
         Returns the CPI data as a csv.DictReader object.
         """
-        # Open up the CSV from the BLS
-        csv_path = os.path.join(self.THIS_DIR, "{}.csv".format(file))
-        logger.debug("Opening {}".format(csv_path))
-        csv_file = open(csv_path, "r")
-        return csv.DictReader(csv_file)
+        # Connect to database
+        db_path = os.path.join(self.THIS_DIR, "cpi.db")
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        # Query this file
+        query = cursor.execute('SELECT * FROM "{}"'.format(file))
+        columns = [d[0] for d in query.description]
+        result_list = [dict(zip(columns, r)) for r in query.fetchall()]
+
+        # Close database connection
+        cursor.close()
+        cursor.connection.close()
+
+        # Return data
+        return result_list
 
 
 class ParseArea(BaseParser):

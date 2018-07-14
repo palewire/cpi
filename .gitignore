@@ -1,5 +1,6 @@
 *.pyc
 cpi/*.tsv
+cpi/*.csv
 *.egg-info
 dist
 build
