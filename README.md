@@ -45,16 +45,16 @@ You can also adjust month to month. You should submit the months as `datetime.da
 1054.7531914893618
 ```
 
-You can adjust values using any of the other series published by the BLS as part of its "All Urban Consumers (CU)" survey. They offer more precise measure for different regions and items.
+You can adjust values using any of the other series published by the BLS as part of its "All Urban Consumers (CU)" survey. They offer more precise measures for different regions and items.
 
-Submit one of the areas to inflate dollars in that region.
+Submit one of the 60 areas tracked by the agency to inflate dollars in that region.
 
 ```python
 >>> cpi.inflate(100, 1950, area="Los Angeles-Long Beach-Anaheim, CA")
 1081.054852320675
 ```
 
-You can do the same to inflate the price of specific items lumped into the basket of goods that make up the overall index.
+You can do the same to inflate the price of 400 specific items lumped into the basket of goods that make up the overall index.
 
 ```python
 >>> cpi.inflate(100, 1980, items="Housing")
