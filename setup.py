@@ -5,7 +5,7 @@ from distutils.core import Command
 
 setup(
     name='cpi',
-    version='0.1.1',
+    version='0.1.2',
     description="Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)",
     author='Ben Welsh',
     author_email='ben.welsh@gmail.com',
@@ -18,6 +18,7 @@ setup(
         "requests>=2.19.1",
         "click>=6.7",
         "python-dateutil>=2.7.3",
+        "pandas>=0.23.1",
     ),
     entry_points="""
         [console_scripts]
