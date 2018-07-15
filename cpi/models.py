@@ -234,7 +234,7 @@ class Series(BaseObject):
     def indexes(self):
         flat = []
         for l in self._indexes.values():
-            flat.extend(l)
+            flat.extend(l.values())
         return flat
 
     @property
