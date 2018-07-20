@@ -12,6 +12,8 @@ python-coveralls = "*"
 click = "*"
 python-dateutil = "*"
 pandas = "*"
+jupyterlab = "*"
+altair = "*"
 
 [dev-packages]
 
