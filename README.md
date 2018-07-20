@@ -71,7 +71,7 @@ And you can do both together.
 Each of the 7,800 variations on the CU survey has a unique identifier. If you know which one you want, you can submit it directly.
 
 ```python
->>> cpi.inflate(100, 2000, series="CUUSS12ASETB01")
+>>> cpi.inflate(100, 2000, series_id="CUUSS12ASETB01")
 165.15176374077112
 ```
 
@@ -133,7 +133,7 @@ Usage: inflate [OPTIONS] VALUE YEAR_OR_MONTH
 
 Options:
   --to TEXT      The year or month to adjust the value to.
-  --series TEXT  The CPI data series used for the conversion. The default is the CPI-U.
+  --series_id TEXT  The CPI data series used for the conversion. The default is the CPI-U.
   --help         Show this message and exit.
 ```
 
