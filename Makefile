@@ -1,4 +1,4 @@
-.PHONY: download test ship
+.PHONY: download test ship update
 
 download:
 	python cpi/download.py
@@ -14,3 +14,8 @@ ship:
 	rm -rf build/
 	python setup.py sdist bdist_wheel
 	twine upload dist/* --skip-existing
+
+
+update:
+	python cpi/download.py
+	python mkdocs.py

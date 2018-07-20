@@ -1,0 +1,17 @@
+abbreviation,code,id,name
+JAN,M01,M01,January
+FEB,M02,M02,February
+MAR,M03,M03,March
+APR,M04,M04,April
+MAY,M05,M05,May
+JUN,M06,M06,June
+JUL,M07,M07,July
+AUG,M08,M08,August
+SEP,M09,M09,September
+OCT,M10,M10,October
+NOV,M11,M11,November
+DEC,M12,M12,December
+AN AV,M13,M13,Annual Average
+HALF1,S01,S01,First Half
+HALF2,S02,S02,Second Half
+AN AV,S03,S03,Annual Average
