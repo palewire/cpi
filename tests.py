@@ -102,6 +102,11 @@ class CPITest(unittest.TestCase):
             self.assertTrue(len(series.indexes) > 0)
             series.latest_month
             series.latest_year
+            series.__str__()
+            series.__dict__()
+            for index in series.indexes:
+                index.__str__()
+                index.__dict__()
 
     def test_get_errors(self):
         with self.assertRaises(CPIObjectDoesNotExist):

@@ -118,6 +118,9 @@ class BaseObject(object):
     def __eq__(self, other):
         return self.id == other.id
 
+    def __str__(self):
+        return self.name
+
 
 class Area(BaseObject):
     """
@@ -128,8 +131,12 @@ class Area(BaseObject):
         self.code = code
         self.name = name
 
-    def __str__(self):
-        return self.name
+    def __dict__(self):
+        return {
+            "id": self.id,
+            "code": self.code,
+            "name": self.name
+        }
 
 
 class Item(BaseObject):
@@ -141,8 +148,12 @@ class Item(BaseObject):
         self.code = code
         self.name = name
 
-    def __str__(self):
-        return self.name
+    def __dict__(self):
+        return {
+            "id": self.id,
+            "code": self.code,
+            "name": self.name
+        }
 
 
 class Period(BaseObject):
@@ -155,8 +166,13 @@ class Period(BaseObject):
         self.abbreviation = abbreviation
         self.name = name
 
-    def __str__(self):
-        return self.name
+    def __dict__(self):
+        return {
+            "id": self.id,
+            "code": self.code,
+            "abbreviation": self.abbreviation,
+            "name": self.name
+        }
 
     @property
     def month(self):
@@ -192,8 +208,12 @@ class Periodicity(BaseObject):
         self.code = code
         self.name = name
 
-    def __str__(self):
-        return self.name
+    def __dict__(self):
+        return {
+            "id": self.id,
+            "code": self.code,
+            "name": self.name
+        }
 
 
 class Series(BaseObject):
@@ -229,6 +249,17 @@ class Series(BaseObject):
 
     def __str__(self):
         return "{}: {}".format(self.id, self.title)
+
+    def __dict__(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "survey": self.survey,
+            "seasonally_adjusted": self.seasonally_adjusted,
+            "periodicity": self.periodicity.__dict__(),
+            "area": self.area.__dict__(),
+            "items": self.items.__dict__()
+        }
 
     @property
     def indexes(self):
@@ -276,6 +307,14 @@ class Index(BaseObject):
             self.year == other.year and
             self.period == other.period
         )
+
+    def __dict__(self):
+        return {
+            "series": self.series.__dict__(),
+            "year": self.year,
+            "period": self.period.__dict__(),
+            "value": self.value
+        }
 
     @property
     def date(self):
