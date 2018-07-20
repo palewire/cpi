@@ -26,13 +26,13 @@ from dateutil.parser import parse as dateparse
     help="The year or month to adjust the value to."
 )
 @click.option(
-    '--series',
+    '--series_id',
     type=click.STRING,
     nargs=1,
     default=cpi.DEFAULT_SERIES_ID,
     help='The CPI data series used for the conversion. The default is the CPI-U.'
 )
-def inflate(value, year_or_month, to=None, series=cpi.DEFAULT_SERIES):
+def inflate(value, year_or_month, to=None, series_id=cpi.DEFAULT_SERIES):
     """
     Returns a dollar value adjusted for inflation.
     """
@@ -56,7 +56,7 @@ def inflate(value, year_or_month, to=None, series=cpi.DEFAULT_SERIES):
             click.ClickException("Source date must be a year as an integer or a month as a parseable date string.")
 
     # Run the command
-    result = cpi.inflate(value, year_or_month, to=to, series=series)
+    result = cpi.inflate(value, year_or_month, to=to, series_id=series_id)
 
     # Print out the result to the terminal
     click.echo(result)

@@ -35,7 +35,7 @@ class CliTest(unittest.TestCase):
         self.assertEqual(self.invoke("100", "1950-01-01 00:00:00", "--to", "1950-01-01"), "100.0")
         self.assertEqual(self.invoke("100", "1950-01-01", "--to", "2018-01-01"), '1054.7531915')
         self.assertEqual(self.invoke("100", "1950-01-01", "--to", "1960-01-01"), '124.6808511')
-        self.assertEqual(self.invoke("100", "1950-01-01", "--series", "CUSR0000SA0"), '1067.0225436')
+        self.assertEqual(self.invoke("100", "1950-01-01", "--series_id", "CUSR0000SA0"), '1067.0225436')
 
 
 class CPITest(unittest.TestCase):
@@ -92,10 +92,13 @@ class CPITest(unittest.TestCase):
         )
 
     def test_get_by_series_id(self):
-        self.assertEqual(cpi.get(date(1950, 1, 1), series="CUSR0000SA0"), 23.51)
+        self.assertEqual(cpi.get(date(1950, 1, 1), series_id="CUSR0000SA0"), 23.51)
+
+    def test_series_list(self):
+        cpi.series.get_by_id("CUSR0000SA0")
 
     def test_series_indexes(self):
-        for series in cpi.SERIES_LIST:
+        for series in cpi.series:
             self.assertTrue(len(series.indexes) > 0)
             series.latest_month
             series.latest_year
@@ -106,7 +109,7 @@ class CPITest(unittest.TestCase):
         with self.assertRaises(CPIObjectDoesNotExist):
             cpi.get(date(1900, 1, 1))
         with self.assertRaises(CPIObjectDoesNotExist):
-            cpi.get(1950, series="FOOBAR")
+            cpi.get(1950, series_id="FOOBAR")
 
     def test_get_value_error(self):
         with self.assertRaises(ValueError):
@@ -116,7 +119,7 @@ class CPITest(unittest.TestCase):
 
     def test_inflate_years(self):
         self.assertEqual(cpi.inflate(100, 1950), 1017.0954356846472)
-        self.assertEqual(cpi.inflate(100, 1950, series="CUUR0000SA0"), 1017.0954356846472)
+        self.assertEqual(cpi.inflate(100, 1950, series_id="CUUR0000SA0"), 1017.0954356846472)
         self.assertEqual(cpi.inflate(100, 1950, to=2017), 1017.0954356846472)
         self.assertEqual(cpi.inflate(100, 1950, to=1960), 122.82157676348547)
         self.assertEqual(cpi.inflate(100.0, 1950, to=1950), 100)
@@ -129,7 +132,7 @@ class CPITest(unittest.TestCase):
         self.assertEqual(cpi.inflate(100, date(1950, 1, 1), to=date(1960, 1, 1)), 124.68085106382979)
 
     def test_inflate_other_series(self):
-        self.assertEqual(cpi.inflate(100, date(1950, 1, 1), series="CUSR0000SA0"), 1067.0225435984687)
+        self.assertEqual(cpi.inflate(100, date(1950, 1, 1), series_id="CUSR0000SA0"), 1067.0225435984687)
 
     def test_deflate(self):
         self.assertEqual(cpi.inflate(1017.0954356846472, 2017, to=1950), 100)

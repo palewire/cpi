@@ -201,21 +201,3 @@ class ParseSeries(BaseParser):
                 else:
                     # ... and if the series doesn't have the index yet, add it.
                     series._indexes[index.period.type][index.date] = index
-
-
-def parse():
-    """
-    Parse all of the files and returns a ready-to-use series list.
-    """
-    logger.info("Parsing data files from the BLS")
-    areas = ParseArea().parse()
-    items = ParseItem().parse()
-    periods = ParsePeriod().parse()
-    periodicities = ParsePeriodicity().parse()
-    series_list = ParseSeries(
-        periods=periods,
-        periodicities=periodicities,
-        areas=areas,
-        items=items
-    ).parse()
-    return series_list

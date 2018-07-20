@@ -7,7 +7,7 @@ import numbers
 import warnings
 from datetime import date, datetime
 
-from .parsers import parse
+from . import parsers
 from .download import Downloader
 from .errors import StaleDataWarning
 from .defaults import DEFAULT_SERIES_ID, DEFAULTS_SERIES_ATTRS
@@ -16,11 +16,22 @@ import logging
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
+
 # Parse data for use
-SERIES_LIST = parse()
+logger.info("Parsing data files from the BLS")
+areas = parsers.ParseArea().parse()
+items = parsers.ParseItem().parse()
+periods = parsers.ParsePeriod().parse()
+periodicities = parsers.ParsePeriodicity().parse()
+series = parsers.ParseSeries(
+    periods=periods,
+    periodicities=periodicities,
+    areas=areas,
+    items=items
+).parse()
 
 # set the default series to the CPI-U
-DEFAULT_SERIES = SERIES_LIST.get_by_id(DEFAULT_SERIES_ID)
+DEFAULT_SERIES = series.get_by_id(DEFAULT_SERIES_ID)
 
 # Establish the range of data available
 LATEST_MONTH = DEFAULT_SERIES.latest_month
@@ -43,7 +54,7 @@ def get(
     periodicity=DEFAULTS_SERIES_ATTRS['periodicity'],
     area=DEFAULTS_SERIES_ATTRS['area'],
     items=DEFAULTS_SERIES_ATTRS['items'],
-    series=None
+    series_id=None
 ):
     """
     Returns the CPI value for a given year.
@@ -61,15 +72,15 @@ def get(
         raise ValueError("Only integers and date objects are accepted.")
 
     # Pull the series
-    if series:
+    if series_id:
         # If the user has provided an explicit series id, we are going to ignore the humanized options.
-        series = SERIES_LIST.get_by_id(series)
+        series_obj = series.get_by_id(series_id)
     else:
         # Otherwise, we build the series id using the more humanized options
-        series = SERIES_LIST.get(survey, seasonally_adjusted, periodicity, area, items)
+        series_obj = series.get(survey, seasonally_adjusted, periodicity, area, items)
 
     # Pull the value from the series by date
-    return series.get_index_by_date(year_or_month, period_type=period_type).value
+    return series_obj.get_index_by_date(year_or_month, period_type=period_type).value
 
 
 def inflate(
@@ -81,7 +92,7 @@ def inflate(
     periodicity=DEFAULTS_SERIES_ATTRS['periodicity'],
     area=DEFAULTS_SERIES_ATTRS['area'],
     items=DEFAULTS_SERIES_ATTRS['items'],
-    series=None
+    series_id=None
 ):
     """
     Returns a dollar value adjusted for inflation.
@@ -136,7 +147,7 @@ def inflate(
         'periodicity': periodicity,
         'area': area,
         'items': items,
-        'series': series
+        'series_id': series_id
     }
     source_index = get(year_or_month, **kwargs)
     target_index = get(to, **kwargs)
