@@ -9,3 +9,4 @@ coverage
 python-coveralls
 pandas
 numpy
+-e git+git://github.com/jakevdp/altair.git@iso-dates#egg=altair
