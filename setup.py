@@ -5,7 +5,7 @@ from distutils.core import Command
 
 setup(
     name='cpi',
-    version='0.1.3',
+    version='0.1.4',
     description="Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)",
     author='Ben Welsh',
     author_email='ben.welsh@gmail.com',
@@ -30,6 +30,7 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'License :: OSI Approved :: MIT License',
     ],
 )
