@@ -26,8 +26,8 @@ class CliTest(unittest.TestCase):
         self.assertEqual(self.invoke("100", "1950", "--to", "1950"), "100.0")
 
     def test_inflate_months(self):
-        self.assertEqual(self.invoke("100", "1950-01-01"), '1072.293617')
-        self.assertEqual(self.invoke("100", "1950-01-11"), "1072.293617")
+        self.assertEqual(self.invoke("100", "1950-01-01"), '1072.3659574')
+        self.assertEqual(self.invoke("100", "1950-01-11"), "1072.3659574")
         self.assertEqual(
             self.invoke("100", "1950-01-11", "--to", "1960-01-01"),
             "124.6808511"
@@ -130,14 +130,14 @@ class CPITest(unittest.TestCase):
         self.assertEqual(cpi.inflate(100.0, 1950, to=1950), 100)
 
     def test_inflate_months(self):
-        self.assertEqual(cpi.inflate(100, date(1950, 1, 1)), 1072.2936170212768)
-        self.assertEqual(cpi.inflate(100, date(1950, 1, 11)), 1072.2936170212768)
+        self.assertEqual(cpi.inflate(100, date(1950, 1, 1)), 1072.3659574468084)
+        self.assertEqual(cpi.inflate(100, date(1950, 1, 11)), 1072.3659574468084)
         self.assertEqual(cpi.inflate(100, datetime(1950, 1, 1)), 1072.2936170212768)
         self.assertEqual(cpi.inflate(100, date(1950, 1, 1), to=date(2018, 1, 1)), 1054.7531914893618)
         self.assertEqual(cpi.inflate(100, date(1950, 1, 1), to=date(1960, 1, 1)), 124.68085106382979)
 
     def test_inflate_other_series(self):
-        self.assertEqual(cpi.inflate(100, date(1950, 1, 1), series_id="CUSR0000SA0"), 1067.0225435984687)
+        self.assertEqual(cpi.inflate(100, date(1950, 1, 1), series_id="CUSR0000SA0"), 1068.8472990216928)
 
     def test_deflate(self):
         self.assertEqual(cpi.inflate(1017.0954356846472, 2017, to=1950), 100)
@@ -179,7 +179,7 @@ class CPITest(unittest.TestCase):
         self.assertEqual(cpi.LATEST_YEAR, 2017)
 
     def test_latest_month(self):
-        self.assertEqual(cpi.LATEST_MONTH, date(2018, 6, 1))
+        self.assertEqual(cpi.LATEST_MONTH, date(2018, 7, 1))
 
     def test_warning(self):
         warnings.warn(cpi.StaleDataWarning())
