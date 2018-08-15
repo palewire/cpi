@@ -3,12 +3,15 @@
 """
 Download the latest annual Consumer Price Index (CPI) dataset.
 """
+# Files
 import os
 import csv
 import sqlite3
-import logging
 import requests
 import pandas as pd
+
+# Logging
+import logging
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
