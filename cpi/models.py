@@ -349,7 +349,7 @@ class Index(BaseObject):
         return {
             "series": self.series.__dict__(),
             "year": self.year,
-            "date": self.date,
+            "date": str(self.date),
             "period": self.period.__dict__(),
             "value": self.value
         }
