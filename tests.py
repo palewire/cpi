@@ -192,6 +192,8 @@ class CPITest(unittest.TestCase):
             cpi.inflate(df.at[1984, 'MEDIAN_HOUSEHOLD_INCOME'], 1984),
             df.at[1984, 'ADJUSTED']
         )
+        cpi.series.to_dataframe()
+        cpi.series.get().to_dataframe()
 
 
 if __name__ == '__main__':
