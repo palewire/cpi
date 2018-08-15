@@ -59,6 +59,14 @@ def get(
     """
     Returns the CPI value for a given year.
     """
+    # Pull the series
+    if series_id:
+        # If the user has provided an explicit series id, we are going to ignore the humanized options.
+        series_obj = series.get_by_id(series_id)
+    else:
+        # Otherwise, we build the series id using the more humanized options
+        series_obj = series.get(survey, seasonally_adjusted, periodicity, area, items)
+
     # Prep the lookup value depending on the input type.
     if isinstance(year_or_month, numbers.Integral):
         year_or_month = date(year_or_month, 1, 1)
@@ -70,14 +78,6 @@ def get(
             year_or_month = year_or_month.replace(day=1)
     else:
         raise ValueError("Only integers and date objects are accepted.")
-
-    # Pull the series
-    if series_id:
-        # If the user has provided an explicit series id, we are going to ignore the humanized options.
-        series_obj = series.get_by_id(series_id)
-    else:
-        # Otherwise, we build the series id using the more humanized options
-        series_obj = series.get(survey, seasonally_adjusted, periodicity, area, items)
 
     # Pull the value from the series by date
     return series_obj.get_index_by_date(year_or_month, period_type=period_type).value

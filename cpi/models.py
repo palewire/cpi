@@ -3,10 +3,15 @@
 """
 Python objects for modeling Consumer Price Index (CPI) data structures.
 """
-import logging
 import collections
 from datetime import date
+
+# CPI tools
 from .errors import CPIObjectDoesNotExist
+from .defaults import DEFAULTS_SERIES_ATTRS
+
+# Logging
+import logging
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
@@ -77,13 +82,28 @@ class SeriesList(list):
         super(SeriesList, self).append(item)
 
     def get_by_id(self, value):
+        """
+        Returns the CPI series object with the provided identifier code.
+        """
         logger.debug("Retrieving series with id {}".format(value))
         try:
             return self._dict[value]
         except KeyError:
             raise CPIObjectDoesNotExist("Object with id {} could not be found".format(value))
 
-    def get(self, survey, seasonally_adjusted, periodicity, area, items):
+    def get(
+        self,
+        survey=DEFAULTS_SERIES_ATTRS['survey'],
+        seasonally_adjusted=DEFAULTS_SERIES_ATTRS['seasonally_adjusted'],
+        periodicity=DEFAULTS_SERIES_ATTRS['periodicity'],
+        area=DEFAULTS_SERIES_ATTRS['area'],
+        items=DEFAULTS_SERIES_ATTRS['items']
+    ):
+        """
+        Returns a single CPI Series object based on the input.
+
+        The default series is returned if not configuration is made to the keyword arguments.
+        """
         # Get all the codes for these humanized input.
         try:
             survey_code = self.SURVEYS[survey]

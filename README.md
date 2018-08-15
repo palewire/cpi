@@ -96,6 +96,35 @@ The same keyword arguments are available.
 83.7
 ```
 
+If you'd like to retrieve a particular CPI series for inspection, use the `series` attribute's `get` method. No configuration returns the default series.
+
+```python
+>>> cpi.series.get()
+<Series: CUUR0000SA0: All items in U.S. city average, all urban consumers, not seasonally adjusted>
+```
+
+Alter the configuration options to retrieve variations based on item, area and other metadata.
+
+```python
+>>> cpi.series.get(items="Housing", area="Los Angeles-Long Beach-Anaheim, CA")
+<Series: CUURS49ASAH: Housing in Los Angeles-Long Beach-Anaheim, CA, all urban consumers, not seasonally adjusted>
+```
+
+If you know a series's identifier code, you can submit that directly to `get_by_id`.
+
+```python
+>>> cpi.series.get_by_id('CUURS49ASAH')
+<Series: CUURS49ASAH: Housing in Los Angeles-Long Beach-Anaheim, CA, all urban consumers, not seasonally adjusted>
+```
+
+Once retrieved, the complete set of index values for a series is accessible via the `indexes` property.
+
+```python
+>>> series = cpi.series.get(items="Housing", area="Los Angeles-Long Beach-Anaheim, CA")
+>>> series.indexes
+[<Index: 1997-01-01 (January): 155.4>, <Index: 1997-02-01 (February): 155.6>, <Index: 1997-03-01 (March): 155.5>, <Index: 1997-04-01 (April): 155.2>, <Index: 1997-05-01 (May): 156.1>, <Index: 1997-06-01 (June): 156.4>, <Index: 1997-07-01 (July): 156.9>, <Index: 1997-08-01 (August): 156.7>, <Index: 1997-09-01 (September): 157.1>, <Index: 1997-10-01 (October): 157.9>, ...
+```
+
 That's it!
 
 ## Working with the command line
