@@ -130,11 +130,11 @@ SEFD,SEFD,Pork
 SEFD01,SEFD01,"Bacon, breakfast sausage, and related products"
 SEFD02,SEFD02,Ham
 SEFD03,SEFD03,Pork chops
-SEFD04,SEFD04,Other pork including roasts and picnics
+SEFD04,SEFD04,"Other pork including roasts, steaks, and ribs"
 SEFE,SEFE,Other meats
 SEFF,SEFF,Poultry
 SEFF01,SEFF01,Chicken
-SEFF02,SEFF02,Other poultry including turkey
+SEFF02,SEFF02,Other uncooked poultry including turkey
 SEFG,SEFG,Fish and seafood
 SEFG01,SEFG01,Fresh fish and seafood
 SEFG02,SEFG02,Processed fish and seafood
@@ -281,7 +281,7 @@ SERC01,SERC01,Sports vehicles including bicycles
 SERC02,SERC02,Sports equipment
 SERD,SERD,Photography
 SERD01,SERD01,Photographic equipment and supplies
-SERD02,SERD02,Photographers and film processing
+SERD02,SERD02,Photographers and photo processing
 SERE,SERE,Other recreational goods
 SERE01,SERE01,Toys
 SERE02,SERE02,"Sewing machines, fabric and supplies"
@@ -388,7 +388,7 @@ SS62011,SS62011,Automobile service clubs
 SS62031,SS62031,"Admission to movies, theaters, and concerts"
 SS62032,SS62032,Admission to sporting events
 SS62051,SS62051,Photographer fees
-SS62052,SS62052,Film processing
+SS62052,SS62052,Photo Processing
 SS62053,SS62053,Pet services
 SS62054,SS62054,Veterinarian services
 SS62055,SS62055,Rental of video discs and other media
