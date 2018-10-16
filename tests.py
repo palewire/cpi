@@ -10,35 +10,25 @@ from click.testing import CliRunner
 from cpi.errors import CPIObjectDoesNotExist
 
 
-class CliTest(unittest.TestCase):
-
-    def invoke(self, *args):
-        runner = CliRunner()
-        result = runner.invoke(cli.inflate, args)
-        self.assertEqual(result.exit_code, 0)
-        string_value = result.output.replace("\n", "")
-        # Do some rounding to ensure the same results for Python 2 and 3
-        return str(round(float(string_value), 7))
-
-    def test_inflate_years(self):
-        self.assertEqual(self.invoke("100", "1950"), '1017.0954357')
-        self.assertEqual(self.invoke("100", "1950", "--to", "1960"), "122.8215768")
-        self.assertEqual(self.invoke("100", "1950", "--to", "1950"), "100.0")
-
-    def test_inflate_months(self):
-        self.assertEqual(self.invoke("100", "1950-01-01"), '1072.9617021')
-        self.assertEqual(self.invoke("100", "1950-01-11"), "1072.9617021")
-        self.assertEqual(
-            self.invoke("100", "1950-01-11", "--to", "1960-01-01"),
-            "124.6808511"
-        )
-        self.assertEqual(self.invoke("100", "1950-01-01 00:00:00", "--to", "1950-01-01"), "100.0")
-        self.assertEqual(self.invoke("100", "1950-01-01", "--to", "2018-01-01"), '1054.7531915')
-        self.assertEqual(self.invoke("100", "1950-01-01", "--to", "1960-01-01"), '124.6808511')
-        self.assertEqual(self.invoke("100", "1950-01-01", "--series_id", "CUSR0000SA0"), '1071.2292641')
+class BaseCPITest(unittest.TestCase):
+    """
+    These global variables change with each data update.
+    """
+    LATEST_YEAR = 2017
+    LATEST_YEAR_1950_ALL_ITEMS = 1017.0954356846472
+    LATEST_YEAR_1950_CUSR0000SA0 = 1017.0954356846472
+    LATEST_MONTH = date(2018, 9, 1)
+    LATEST_MONTH_1950_ALL_ITEMS = 1074.2085106382979
+    LATEST_MONTH_1950_CUSR0000SA0 = 1071.8587834963846
 
 
-class CPITest(unittest.TestCase):
+class CPITest(BaseCPITest):
+
+    def test_latest_year(self):
+        self.assertEqual(cpi.LATEST_YEAR, self.LATEST_YEAR)
+
+    def test_latest_month(self):
+        self.assertEqual(cpi.LATEST_MONTH, self.LATEST_MONTH)
 
     def test_get(self):
         self.assertEqual(cpi.get(1950), 24.1)
@@ -123,21 +113,24 @@ class CPITest(unittest.TestCase):
             cpi.get(3000)
 
     def test_inflate_years(self):
-        self.assertEqual(cpi.inflate(100, 1950), 1017.0954356846472)
-        self.assertEqual(cpi.inflate(100, 1950, series_id="CUUR0000SA0"), 1017.0954356846472)
+        self.assertEqual(cpi.inflate(100, 1950), self.LATEST_YEAR_1950_ALL_ITEMS)
+        self.assertEqual(cpi.inflate(100, 1950, series_id="CUUR0000SA0"), self.LATEST_YEAR_1950_CUSR0000SA0)
         self.assertEqual(cpi.inflate(100, 1950, to=2017), 1017.0954356846472)
         self.assertEqual(cpi.inflate(100, 1950, to=1960), 122.82157676348547)
         self.assertEqual(cpi.inflate(100.0, 1950, to=1950), 100)
 
     def test_inflate_months(self):
-        self.assertEqual(cpi.inflate(100, date(1950, 1, 1)), 1072.9617021276595)
-        self.assertEqual(cpi.inflate(100, date(1950, 1, 11)), 1072.9617021276595)
-        self.assertEqual(cpi.inflate(100, datetime(1950, 1, 1)), 1072.9617021276595)
+        self.assertEqual(cpi.inflate(100, date(1950, 1, 1)), self.LATEST_MONTH_1950_ALL_ITEMS)
+        self.assertEqual(cpi.inflate(100, date(1950, 1, 11)), self.LATEST_MONTH_1950_ALL_ITEMS)
+        self.assertEqual(cpi.inflate(100, datetime(1950, 1, 1)), self.LATEST_MONTH_1950_ALL_ITEMS)
         self.assertEqual(cpi.inflate(100, date(1950, 1, 1), to=date(2018, 1, 1)), 1054.7531914893618)
         self.assertEqual(cpi.inflate(100, date(1950, 1, 1), to=date(1960, 1, 1)), 124.68085106382979)
 
     def test_inflate_other_series(self):
-        self.assertEqual(cpi.inflate(100, date(1950, 1, 1), series_id="CUSR0000SA0"), 1071.2292641429178)
+        self.assertEqual(
+            cpi.inflate(100, date(1950, 1, 1), series_id="CUSR0000SA0"),
+            self.LATEST_MONTH_1950_CUSR0000SA0
+        )
 
     def test_deflate(self):
         self.assertEqual(cpi.inflate(1017.0954356846472, 2017, to=1950), 100)
@@ -175,12 +168,6 @@ class CPITest(unittest.TestCase):
         with self.assertRaises(TypeError):
             cpi.inflate(100, date(2000, 1, 1), to=1950)
 
-    def test_latest_year(self):
-        self.assertEqual(cpi.LATEST_YEAR, 2017)
-
-    def test_latest_month(self):
-        self.assertEqual(cpi.LATEST_MONTH, date(2018, 8, 1))
-
     def test_warning(self):
         warnings.warn(cpi.StaleDataWarning())
 
@@ -194,6 +181,40 @@ class CPITest(unittest.TestCase):
         )
         cpi.series.to_dataframe()
         cpi.series.get().to_dataframe()
+
+
+class CliTest(BaseCPITest):
+
+    def invoke(self, *args):
+        runner = CliRunner()
+        result = runner.invoke(cli.inflate, args)
+        self.assertEqual(result.exit_code, 0)
+        string_value = result.output.replace("\n", "")
+        # Do some rounding to ensure the same results for Python 2 and 3
+        return str(round(float(string_value), 7))
+
+    def test_inflate_years(self):
+        self.assertEqual(self.invoke("100", "1950"), '1017.0954357')
+        self.assertEqual(self.invoke("100", "1950", "--to", "1960"), "122.8215768")
+        self.assertEqual(self.invoke("100", "1950", "--to", "1950"), "100.0")
+
+    def test_inflate_months(self):
+        self.assertEqual(self.invoke("100", "1950-01-01"), str(round(self.LATEST_MONTH_1950_ALL_ITEMS, 7)))
+        self.assertEqual(self.invoke("100", "1950-01-11"), str(round(self.LATEST_MONTH_1950_ALL_ITEMS, 7)))
+        self.assertEqual(
+            self.invoke("100", "1950-01-11", "--to", "1960-01-01"),
+            "124.6808511"
+        )
+        self.assertEqual(self.invoke("100", "1950-01-01 00:00:00", "--to", "1950-01-01"), "100.0")
+        self.assertEqual(
+            self.invoke("100", "1950-01-01", "--to", "2018-01-01"),
+            '1054.7531915'
+        )
+        self.assertEqual(self.invoke("100", "1950-01-01", "--to", "1960-01-01"), '124.6808511')
+        self.assertEqual(
+            self.invoke("100", "1950-01-01", "--series_id", "CUSR0000SA0"),
+            str(round(self.LATEST_MONTH_1950_CUSR0000SA0, 7))
+        )
 
 
 if __name__ == '__main__':
