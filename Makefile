@@ -21,4 +21,5 @@ ship:
 
 update:
 	python cpi/download.py
+	runipy notebooks/analysis.ipynb
 	python mkdocs.py
