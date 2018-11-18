@@ -1,8 +1,11 @@
-.PHONY: download test ship update
+.PHONY: download notebook test ship update
 
 download:
 	python cpi/download.py
 
+
+notebook:
+	runipy notebooks/analysis.ipynb
 
 test:
 	flake8 cpi
