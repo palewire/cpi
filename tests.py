@@ -14,12 +14,12 @@ class BaseCPITest(unittest.TestCase):
     """
     These global variables change with each data update.
     """
-    LATEST_YEAR = 2017
-    LATEST_YEAR_1950_ALL_ITEMS = 1017.0954356846472
-    LATEST_YEAR_1950_CUSR0000SA0 = 1017.0954356846472
-    LATEST_MONTH = date(2018, 11, 1)
-    LATEST_MONTH_1950_ALL_ITEMS = 1072.5021276595746
-    LATEST_MONTH_1950_CUSR0000SA0 = 1075.6103785623138
+    LATEST_YEAR = 2018
+    LATEST_YEAR_1950_ALL_ITEMS = 1041.9377593360996
+    LATEST_YEAR_1950_CUSR0000SA0 = 1041.9377593360996
+    LATEST_MONTH = date(2018, 12, 1)
+    LATEST_MONTH_1950_ALL_ITEMS = 1069.0765957446808
+    LATEST_MONTH_1950_CUSR0000SA0 = 1075.0021267545724
 
 
 class CPITest(BaseCPITest):
@@ -194,7 +194,7 @@ class CliTest(BaseCPITest):
         return str(round(float(string_value), 7))
 
     def test_inflate_years(self):
-        self.assertEqual(self.invoke("100", "1950"), '1017.0954357')
+        self.assertEqual(self.invoke("100", "1950"), str(round(self.LATEST_YEAR_1950_CUSR0000SA0, 7)))
         self.assertEqual(self.invoke("100", "1950", "--to", "1960"), "122.8215768")
         self.assertEqual(self.invoke("100", "1950", "--to", "1950"), "100.0")
 
