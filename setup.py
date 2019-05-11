@@ -5,7 +5,7 @@ from distutils.core import Command
 
 setup(
     name='cpi',
-    version='0.1.14',
+    version='0.1.15',
     description="Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)",
     author='Ben Welsh',
     author_email='ben.welsh@gmail.com',
