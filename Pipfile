@@ -16,6 +16,7 @@ jupyterlab = "*"
 altair = "*"
 
 [dev-packages]
+altair-latimes = "*"
 
 [requires]
 python_version = "3.6"
