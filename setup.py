@@ -1,15 +1,28 @@
 import os
 from setuptools import setup
-from distutils.core import Command
+
+
+def read(file_name):
+    """Read in the supplied file name from the root directory.
+    Args:
+        file_name (str): the name of the file
+    Returns: the content of the file
+    """
+    this_dir = os.path.dirname(__file__)
+    file_path = os.path.join(this_dir, file_name)
+    with open(file_path) as f:
+        return f.read()
 
 
 setup(
     name='cpi',
     version='0.1.16',
     description="Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)",
+    long_description=read("README.md"),
+    long_description_content_type="text/markdown",
     author='Ben Welsh',
-    author_email='ben.welsh@gmail.com',
-    url='http://www.github.com/datadesk/cpi',
+    author_email='b@palewi.re',
+    url='http://www.github.com/palewire/cpi',
     license="MIT",
     packages=("cpi",),
     include_package_data=True,
@@ -34,4 +47,9 @@ setup(
         'Programming Language :: Python :: 3.10',
         'License :: OSI Approved :: MIT License',
     ],
+    project_urls={
+        "Maintainer": "https://github.com/palewire",
+        "Source": "https://github.com/palewire/cpi>",
+        "Tracker": "https://github.com/palewire/cpi/issues",
+    },
 )
