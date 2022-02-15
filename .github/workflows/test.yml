@@ -55,9 +55,13 @@ jobs:
         name: Install Python dependencies
         run: pipenv install --dev --pre --python ${{ matrix.python }}
 
+      - id: update
+        name: Run update
+        run: pipenv run make update
+
       - id: tests
         name: Run tests
-        run: pipenv run python test.py
+        run: pipenv run python tests.py
 
   test-build:
     name: Build Python package
