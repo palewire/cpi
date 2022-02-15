@@ -1,0 +1,102 @@
+name: Test
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  lint-python:
+    name: Lint Python code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - id: install-pipenv
+        name: Install pipenv
+        run: pipx install pipenv
+
+      - id: install-python
+        name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+          cache: 'pipenv'
+
+      - id: install-python-dependencies
+        name: Install Python dependencies
+        run: pipenv install --dev --pre
+
+      - id: lint
+        name: Lint Python code
+        run: pipenv run flake8 ./ --verbose
+
+  test-python:
+    strategy:
+      matrix:
+        python: ['3.7', '3.8', '3.9', '3.10']
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - id: install-pipenv
+        name: Install pipenv
+        run: pipx install pipenv
+
+      - id: install-python
+        name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+          cache: 'pipenv'
+
+      - id: install-python-dependencies
+        name: Install Python dependencies
+        run: pipenv install --dev --pre
+
+      - id: tests
+        name: Run tests
+        run: pipenv run python test.py
+
+  test-build:
+    name: Build Python package
+    runs-on: ubuntu-latest
+    needs: [test-python]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - id: install-pipenv
+        name: Install pipenv
+        run: pipx install pipenv
+
+      - id: install-python
+        name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+          cache: 'pipenv'
+
+      - id: install-python-dependencies
+        name: Install Python dependencies
+        run: pipenv install --dev --pre
+
+      - id: build
+        name: Build release
+        run: |
+          pipenv run python setup.py sdist
+          pipenv run python setup.py bdist_wheel
+          ls -l dist
+
+      - id: check
+        name: Check release
+        run: pipenv run twine check dist/*
+
+      - id: save
+        name: Save artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-${{ github.run_number }}
+          path: ./dist
+          if-no-files-found: error

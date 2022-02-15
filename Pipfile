@@ -4,19 +4,19 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-requests = ">=2.20.0"
+requests = "*"
+click = "*"
+python-dateutil = "*"
+pandas = "*"
+
+[dev-packages]
+jupyterlab = "*"
+altair = "*"
+altair-latimes = "*"
 twine = "*"
 "flake8" = "*"
 coverage = "*"
 python-coveralls = "*"
-click = "*"
-python-dateutil = "*"
-pandas = "*"
-jupyterlab = "*"
-altair = "*"
-
-[dev-packages]
-altair-latimes = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.9"

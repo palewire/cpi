@@ -1,8 +1,0 @@
-[run]
-include =
-    cpi/*.py
-
-[report]
-exclude_lines =
-    pragma: no cover
-    add_introspection_rules
