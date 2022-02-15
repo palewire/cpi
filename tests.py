@@ -4,6 +4,7 @@ import cpi
 import warnings
 import unittest
 from cpi import cli
+import numpy as np
 import pandas as pd
 from datetime import date, datetime
 from click.testing import CliRunner
@@ -14,12 +15,12 @@ class BaseCPITest(unittest.TestCase):
     """
     These global variables change with each data update.
     """
-    LATEST_YEAR = 2018
-    LATEST_YEAR_1950_ALL_ITEMS = 1041.9377593360996
-    LATEST_YEAR_1950_CUSR0000SA0 = 1041.9377593360996
-    LATEST_MONTH = date(2019, 11, 1)
-    LATEST_MONTH_1950_ALL_ITEMS = 1094.5021276595746
-    LATEST_MONTH_1950_CUSR0000SA0 = 1097.1331348362398
+    LATEST_YEAR = 2021
+    LATEST_YEAR_1950_ALL_ITEMS = 1124.3568464730292
+    LATEST_YEAR_1950_CUSR0000SA0 = 1124.3568464730292
+    LATEST_MONTH = date(2022, 1, 1)
+    LATEST_MONTH_1950_ALL_ITEMS = 1196.3744680851064
+    LATEST_MONTH_1950_CUSR0000SA0 = 1199.2045937898765
 
 
 class CPITest(BaseCPITest):
@@ -138,23 +139,23 @@ class CPITest(BaseCPITest):
 
     def test_numpy_dtypes(self):
         self.assertEqual(
-            cpi.get(pd.np.int64(1950)),
+            cpi.get(np.int64(1950)),
             cpi.get(1950)
         )
         self.assertEqual(
-            cpi.inflate(100, pd.np.int32(1950)),
+            cpi.inflate(100, np.int32(1950)),
             cpi.inflate(100, 1950),
         )
         self.assertEqual(
-            cpi.inflate(100, pd.np.int64(1950), to=pd.np.int64(1960)),
+            cpi.inflate(100, np.int64(1950), to=np.int64(1960)),
             cpi.inflate(100, 1950, to=1960),
         )
         self.assertEqual(
-            cpi.inflate(100, pd.np.int64(1950), to=pd.np.int32(1960)),
+            cpi.inflate(100, np.int64(1950), to=np.int32(1960)),
             cpi.inflate(100, 1950, to=1960),
         )
         self.assertEqual(
-            cpi.inflate(100, pd.np.int64(1950), to=1960),
+            cpi.inflate(100, np.int64(1950), to=1960),
             cpi.inflate(100, 1950, to=1960),
         )
         self.assertEqual(
@@ -170,6 +171,17 @@ class CPITest(BaseCPITest):
 
     def test_warning(self):
         warnings.warn(cpi.StaleDataWarning())
+
+    def test_pandas(self):
+        df = pd.read_csv("test.csv")
+        df['ADJUSTED'] = df.apply(lambda x: cpi.inflate(x.MEDIAN_HOUSEHOLD_INCOME, x.YEAR), axis=1)
+        df = df.set_index("YEAR")
+        self.assertEqual(
+            cpi.inflate(df.at[1984, 'MEDIAN_HOUSEHOLD_INCOME'], 1984),
+            df.at[1984, 'ADJUSTED']
+        )
+        cpi.series.to_dataframe()
+        cpi.series.get().to_dataframe()
 
 
 class CliTest(BaseCPITest):

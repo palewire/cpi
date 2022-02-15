@@ -154,6 +154,96 @@ Options:
   --help         Show this message and exit.
 ```
 
+## Working with pandas
+
+An inflation-adjusted column can quickly be added to a pandas DataFrame using the `apply` method. Here is an example using data tracking the median household income in the United States from [The Federal Reserve Bank of St. Louis](https://fred.stlouisfed.org/series/MEHOINUSA646N).
+
+```python
+>>> import cpi
+>>> import pandas as pd
+>>> df = pd.read("test.csv")
+>>> df.head()
+   YEAR  MEDIAN_HOUSEHOLD_INCOME
+0  1984                    22415
+1  1985                    23618
+2  1986                    24897
+3  1987                    26061
+4  1988                    27225
+>>> df['ADJUSTED'] = df.apply(lambda x: cpi.inflate(x.MEDIAN_HOUSEHOLD_INCOME, x.YEAR), axis=1)
+>>> df.head()
+   YEAR  MEDIAN_HOUSEHOLD_INCOME      ADJUSTED
+0  1984                    22415  52881.278152
+1  1985                    23618  53803.384387
+2  1986                    24897  55682.049635
+3  1987                    26061  56233.030986
+4  1988                    27225  56410.752325
+```
+
+The lists of CPI series and each's index values can be converted to a DataFrame using the `to_dataframe` method.
+
+Here's how to get the series list:
+
+```python
+>>> series_df = cpi.series.to_dataframe()
+>>>> series_df.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 7795 entries, 0 to 7794
+Data columns (total 13 columns):
+area_code              7795 non-null object
+area_id                7795 non-null object
+area_name              7795 non-null object
+id                     7795 non-null object
+items_code             7795 non-null object
+items_id               7795 non-null object
+items_name             7795 non-null object
+periodicity_code       7795 non-null object
+periodicity_id         7795 non-null object
+periodicity_name       7795 non-null object
+seasonally_adjusted    7795 non-null bool
+survey                 7795 non-null object
+title                  7795 non-null object
+dtypes: bool(1), object(12)
+memory usage: 738.5+ KB
+```
+
+Here's how to get a series's index values:
+
+```python
+>>> series_obj = cpi.series.get(
+>>>    items="Housing",
+>>>    area="Los Angeles-Long Beach-Anaheim, CA"
+>>> )
+>>> index_df = series_obj.to_dataframe()
+>>> index_df.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 553 entries, 0 to 552
+Data columns (total 22 columns):
+date                          553 non-null object
+period_abbreviation           553 non-null object
+period_code                   553 non-null object
+period_id                     553 non-null object
+period_month                  553 non-null int64
+period_name                   553 non-null object
+period_type                   553 non-null object
+series_area_code              553 non-null object
+series_area_id                553 non-null object
+series_area_name              553 non-null object
+series_id                     553 non-null object
+series_items_code             553 non-null object
+series_items_id               553 non-null object
+series_items_name             553 non-null object
+series_periodicity_code       553 non-null object
+series_periodicity_id         553 non-null object
+series_periodicity_name       553 non-null object
+series_seasonally_adjusted    553 non-null bool
+series_survey                 553 non-null object
+series_title                  553 non-null object
+value                         553 non-null float64
+year                          553 non-null int64
+dtypes: bool(1), float64(1), int64(2), object(18)
+memory usage: 91.3+ KB
+```
+
 ## Source
 
 The adjustment is made using data provided by [The Bureau of Labor Statistics](https://www.bls.gov/cpi/home.htm) at the U.S. Department of Labor.

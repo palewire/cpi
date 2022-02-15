@@ -5,6 +5,7 @@ Python objects for modeling Consumer Price Index (CPI) data structures.
 """
 import collections
 from datetime import date
+from pandas import json_normalize
 
 # CPI tools
 from .errors import CPIObjectDoesNotExist
@@ -66,6 +67,13 @@ class SeriesList(list):
         self.areas = areas
         self.items = items
         self._dict = {}
+
+    def to_dataframe(self):
+        """
+        Returns the list as a pandas DataFrame.
+        """
+        dict_list = [obj.__dict__() for obj in self]
+        return json_normalize(dict_list, sep="_")
 
     def append(self, item):
         """
@@ -282,6 +290,13 @@ class Series(BaseObject):
             "area": self.area.__dict__(),
             "items": self.items.__dict__()
         }
+
+    def to_dataframe(self):
+        """
+        Returns this series and all its indexes as a pandas DataFrame.
+        """
+        dict_list = [obj.__dict__() for obj in self.indexes]
+        return json_normalize(dict_list, sep="_")
 
     @property
     def indexes(self):
