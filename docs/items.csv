@@ -1,4 +1,4 @@
-code,id,name
+id,code,name
 AA0,AA0,All items - old base
 AA0R,AA0R,Purchasing power of the consumer dollar - old base
 SA0,SA0,All items
@@ -9,7 +9,7 @@ SA0L12E,SA0L12E,"All items less food, shelter, and energy"
 SA0L12E4,SA0L12E4,"All items less food, shelter, energy, and used cars and trucks"
 SA0L1E,SA0L1E,All items less food and energy
 SA0L2,SA0L2,All items less shelter
-SA0L5,SA0L5,All items  less medical care
+SA0L5,SA0L5,All items less medical care
 SA0LE,SA0LE,All items less energy
 SA0R,SA0R,Purchasing power of the consumer dollar
 SA311,SA311,Apparel less footwear
@@ -76,7 +76,7 @@ SAT1,SAT1,Private transportation
 SATCLTB,SATCLTB,Transportation commodities less motor fuel
 SEAA,SEAA,Men's apparel
 SEAA01,SEAA01,"Men's suits, sport coats, and outerwear"
-SEAA02,SEAA02,Men's furnishings
+SEAA02,SEAA02,"Men's underwear, nightwear, swimwear and accessories"
 SEAA03,SEAA03,Men's shirts and sweaters
 SEAA04,SEAA04,Men's pants and shorts
 SEAB,SEAB,Boys' apparel
@@ -84,7 +84,7 @@ SEAC,SEAC,Women's apparel
 SEAC01,SEAC01,Women's outerwear
 SEAC02,SEAC02,Women's dresses
 SEAC03,SEAC03,Women's suits and separates
-SEAC04,SEAC04,"Women's underwear, nightwear, sportswear and accessories"
+SEAC04,SEAC04,"Women's underwear, nightwear, swimwear and accessories"
 SEAD,SEAD,Girls' apparel
 SEAE,SEAE,Footwear
 SEAE01,SEAE01,Men's footwear
@@ -98,16 +98,16 @@ SEEA,SEEA,Educational books and supplies
 SEEB,SEEB,"Tuition, other school fees, and childcare"
 SEEB01,SEEB01,College tuition and fees
 SEEB02,SEEB02,Elementary and high school tuition and fees
-SEEB03,SEEB03,Child care and nursery school
+SEEB03,SEEB03,Day care and preschool
 SEEB04,SEEB04,Technical and business school tuition and fees
 SEEC,SEEC,Postage and delivery services
 SEEC01,SEEC01,Postage
 SEEC02,SEEC02,Delivery services
 SEED,SEED,Telephone services
 SEED03,SEED03,Wireless telephone services
-SEED04,SEED04,Land-line telephone services
+SEED04,SEED04,Residential telephone services
 SEEE,SEEE,"Information technology, hardware and services"
-SEEE01,SEEE01,Personal computers and peripheral equipment
+SEEE01,SEEE01,"Computers, peripherals, and smart home assistants"
 SEEE02,SEEE02,Computer software and accessories
 SEEE03,SEEE03,Internet services and electronic information providers
 SEEE04,SEEE04,"Telephone hardware, calculators, and other consumer information items"
@@ -166,7 +166,7 @@ SEFP,SEFP,Beverage materials including coffee and tea
 SEFP01,SEFP01,Coffee
 SEFP02,SEFP02,Other beverage materials including tea
 SEFR,SEFR,Sugar and sweets
-SEFR01,SEFR01,Sugar and artificial sweeteners
+SEFR01,SEFR01,Sugar and sugar substitutes
 SEFR02,SEFR02,Candy and chewing gum
 SEFR03,SEFR03,Other sweets
 SEFS,SEFS,Fats and oils
@@ -395,6 +395,7 @@ SS62055,SS62055,Rental of video discs and other media
 SS68021,SS68021,Checking account and other bank services
 SS68023,SS68023,Tax return preparation and other accounting fees
 SSEA011,SSEA011,College textbooks
+SSEE041,SSEE041,Smartphones
 SSFV031A,SSFV031A,Food at elementary and secondary schools
 SSGE013,SSGE013,Infants' equipment
 SSHJ031,SSHJ031,Infants' furniture

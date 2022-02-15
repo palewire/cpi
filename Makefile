@@ -1,25 +1,20 @@
-.PHONY: download notebook test ship update
-
-download:
-	python cpi/download.py
-
-
-notebook:
-	runipy notebooks/analysis.ipynb
-
 test:
-	flake8 cpi
-	coverage run tests.py
-	coverage report -m
+	pipenv run flake8 cpi
+	pipenv run python tests.py
 
 
 ship:
 	rm -rf build/
-	python setup.py sdist bdist_wheel
-	twine upload dist/* --skip-existing
+	pipenv run python setup.py sdist bdist_wheel
+	pipenv run twine upload dist/* --skip-existing
 
 
 update:
-	python cpi/download.py
-	runipy notebooks/analysis.ipynb
-	python mkdocs.py
+	pipenv run python cpi/download.py
+	pipenv run jupyter-execute notebooks/analysis.ipynb
+	pipenv run python mkdocs.py
+
+
+.PHONY: test \
+        ship \
+		update
