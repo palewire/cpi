@@ -78,6 +78,6 @@ setup(
         "Source": "https://github.com/palewire/cpi>",
         "Tracker": "https://github.com/palewire/cpi/issues",
     },
-    setup_requires=["pytest-runner", "setuptools_scm"],
+    setup_requires=["setuptools_scm"],
     use_scm_version={"version_scheme": version_scheme, "local_scheme": local_version},
 )
