@@ -54,6 +54,10 @@ jobs:
         name: Install Python dependencies
         run: pipenv install click python-dateutil pandas numpy --skip-lock --python ${{ matrix.python }}
 
+      - id: download-data
+        name: Download download
+        run: pipenv run python cpi/download.py
+
       - id: tests
         name: Run tests
         run: pipenv run python tests.py
