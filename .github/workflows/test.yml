@@ -48,7 +48,7 @@ jobs:
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pip install click python-dateutil pandas
+        run: python setup.py install
 
       - id: tests
         name: Run tests
