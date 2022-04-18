@@ -16,7 +16,7 @@ def read(file_name):
 
 setup(
     name='cpi',
-    version='0.1.16',
+    version='1.0.0',
     description="Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
