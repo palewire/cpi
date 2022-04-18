@@ -45,7 +45,6 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python }}
-          cache: 'pip'
 
       - id: install-python-dependencies
         name: Install Python dependencies
