@@ -53,7 +53,7 @@ jobs:
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pipenv install requests click python-dateutil pandas
+        run: pipenv install requests click python-dateutil pandas --python ${{ matrix.python }}
 
       - id: update
         name: Run update
