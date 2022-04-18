@@ -17,7 +17,7 @@ jobs:
 
       - id: install-python
         name: Install Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: '3.9'
           cache: 'pipenv'
@@ -46,7 +46,7 @@ jobs:
 
       - id: install-python
         name: Install Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python }}
           cache: 'pipenv'
@@ -77,7 +77,7 @@ jobs:
 
       - id: install-python
         name: Install Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: '3.9'
           cache: 'pipenv'
@@ -113,7 +113,7 @@ jobs:
     needs: [test-build]
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
     steps:
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
         with:
           python-version: '3.9'
 
