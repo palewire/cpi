@@ -40,6 +40,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - id: install-pipenv
+        name: Install pipenv
+        run: pipx install pipenv
+
       - id: install-python
         name: Install Python
         uses: actions/setup-python@v3
@@ -48,11 +52,11 @@ jobs:
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: python setup.py install
+        run: pipenv install click python-dateutil pandas numpy --skip-lock --python ${{ matrix.python }}
 
       - id: tests
         name: Run tests
-        run: python tests.py
+        run: pipenv run python tests.py
 
   test-build:
     name: Build Python package

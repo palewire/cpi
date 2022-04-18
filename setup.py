@@ -57,7 +57,6 @@ setup(
         "requests",
         "click",
         "python-dateutil",
-        "numpy",
         "pandas",
     ),
     entry_points="""
