@@ -44,6 +44,7 @@ def local_version(version):
 setup(
     name='cpi',
     description="Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)",
+    version="1.0.5",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     author='Ben Welsh',
@@ -78,6 +79,4 @@ setup(
         "Source": "https://github.com/palewire/cpi>",
         "Tracker": "https://github.com/palewire/cpi/issues",
     },
-    setup_requires=["setuptools_scm"],
-    use_scm_version={"version_scheme": version_scheme, "local_scheme": local_version},
 )
