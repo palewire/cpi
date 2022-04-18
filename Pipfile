@@ -17,6 +17,7 @@ twine = "*"
 "flake8" = "*"
 coverage = "*"
 python-coveralls = "*"
+setuptools-scm = "*"
 
 [requires]
 python_version = "3.9"
