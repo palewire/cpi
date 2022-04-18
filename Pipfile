@@ -15,8 +15,6 @@ altair = "*"
 altair-latimes = "*"
 twine = "*"
 "flake8" = "*"
-coverage = "*"
-python-coveralls = "*"
 setuptools-scm = "*"
 
 [requires]
