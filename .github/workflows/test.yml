@@ -53,7 +53,7 @@ jobs:
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pipenv install --python ${{ matrix.python }}
+        run: pipenv install requests click python-dateutil pandas
 
       - id: update
         name: Run update
@@ -85,7 +85,7 @@ jobs:
       - id: install-python-dependencies
         name: Install Python dependencies
         run: |
-          pipenv install
+          pipenv install requests click python-dateutil pandas
           pipenv install twine setuptools-scm
 
       - id: build
