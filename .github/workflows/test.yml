@@ -24,7 +24,7 @@ jobs:
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pipenv install --dev
+        run: pipenv install flake8
 
       - id: lint
         name: Lint Python code
@@ -53,7 +53,7 @@ jobs:
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pipenv install --dev --python ${{ matrix.python }}
+        run: pipenv install --python ${{ matrix.python }}
 
       - id: update
         name: Run update
@@ -84,7 +84,9 @@ jobs:
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pipenv install --dev
+        run: |
+          pipenv install
+          pipenv install twine setuptools-scm
 
       - id: build
         name: Build release
