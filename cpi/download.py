@@ -1,22 +1,24 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 Download the latest annual Consumer Price Index (CPI) dataset.
 """
-# Files
-import os
 import csv
-import sqlite3
-import requests
-import pandas as pd
 
 # Logging
 import logging
+
+# Files
+import os
+import sqlite3
+
+import pandas as pd
+import requests
+
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
 
-class Downloader(object):
+class Downloader:
     THIS_DIR = os.path.dirname(__file__)
     FILE_LIST = [
         "cu.area",
@@ -44,27 +46,27 @@ class Downloader(object):
         "cu.data.17.USEducationAndCommunication",
         "cu.data.18.USOtherGoodsAndServices",
         "cu.data.19.PopulationSize",
-        "cu.data.20.USCommoditiesServicesSpecial"
+        "cu.data.20.USCommoditiesServicesSpecial",
     ]
 
     def update(self):
         """
         Update the Consumer Price Index dataset that powers this library.
         """
-        logger.debug("Downloading {} files from the BLS".format(len(self.FILE_LIST)))
+        logger.debug(f"Downloading {len(self.FILE_LIST)} files from the BLS")
         [self.get_tsv(file) for file in self.FILE_LIST]
         logger.debug("Loading data into SQLite database")
         [self.insert_tsv(file) for file in self.FILE_LIST]
 
     def insert_tsv(self, file):
         # Connect to db
-        db_path = os.path.join(self.THIS_DIR, 'cpi.db')
+        db_path = os.path.join(self.THIS_DIR, "cpi.db")
         conn = sqlite3.connect(db_path)
 
         # Read file
-        logger.debug(" - {}".format(file))
-        csv_path = os.path.join(self.THIS_DIR, '{}.csv'.format(file))
-        csv_reader = list(csv.DictReader(open(csv_path, 'r')))
+        logger.debug(f" - {file}")
+        csv_path = os.path.join(self.THIS_DIR, f"{file}.csv")
+        csv_reader = list(csv.DictReader(open(csv_path)))
 
         # Convert it to a DataFrame
         df = pd.DataFrame(csv_reader)
@@ -81,20 +83,20 @@ class Downloader(object):
         Download TSV file from the BLS.
         """
         # Download it
-        url = "https://download.bls.gov/pub/time.series/cu/{}".format(file)
-        logger.debug(" - {}".format(url))
-        tsv_path = os.path.join(self.THIS_DIR, '{}.tsv'.format(file))
+        url = f"https://download.bls.gov/pub/time.series/cu/{file}"
+        logger.debug(f" - {url}")
+        tsv_path = os.path.join(self.THIS_DIR, f"{file}.tsv")
         response = requests.get(url)
-        with open(tsv_path, 'w') as f:
+        with open(tsv_path, "w") as f:
             f.write(response.text)
 
         # Convert it to csv
-        reader = csv.reader(open(tsv_path, 'r'), delimiter="\t")
-        csv_path = os.path.join(self.THIS_DIR, '{}.csv'.format(file))
-        writer = csv.writer(open(csv_path, 'w'))
+        reader = csv.reader(open(tsv_path), delimiter="\t")
+        csv_path = os.path.join(self.THIS_DIR, f"{file}.csv")
+        writer = csv.writer(open(csv_path, "w"))
         for row in reader:
             writer.writerow([cell.strip() for cell in row])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     Downloader().update()

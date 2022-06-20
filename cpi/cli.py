@@ -1,11 +1,11 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 Command-line interface.
 """
-import cpi
 import click
 from dateutil.parser import parse as dateparse
+
+import cpi
 
 
 @click.command()
@@ -20,17 +20,14 @@ from dateutil.parser import parse as dateparse
     required=True,
 )
 @click.option(
-    '--to',
-    nargs=1,
-    default=None,
-    help="The year or month to adjust the value to."
+    "--to", nargs=1, default=None, help="The year or month to adjust the value to."
 )
 @click.option(
-    '--series_id',
+    "--series_id",
     type=click.STRING,
     nargs=1,
     default=cpi.DEFAULT_SERIES_ID,
-    help='The CPI data series used for the conversion. The default is the CPI-U.'
+    help="The CPI data series used for the conversion. The default is the CPI-U.",
 )
 def inflate(value, year_or_month, to=None, series_id=cpi.DEFAULT_SERIES):
     """
@@ -46,14 +43,18 @@ def inflate(value, year_or_month, to=None, series_id=cpi.DEFAULT_SERIES):
     try:
         year_or_month = _parse_date(year_or_month)
     except ValueError:
-        click.ClickException("Source date must be a year as an integer or a month as a parseable date string.")
+        click.ClickException(
+            "Source date must be a year as an integer or a month as a parseable date string."
+        )
 
     # Sanitize the `to` date.
     if to:
         try:
             to = _parse_date(to)
         except ValueError:
-            click.ClickException("Source date must be a year as an integer or a month as a parseable date string.")
+            click.ClickException(
+                "Source date must be a year as an integer or a month as a parseable date string."
+            )
 
     # Run the command
     result = cpi.inflate(value, year_or_month, to=to, series_id=series_id)

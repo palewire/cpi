@@ -1,18 +1,17 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)
 """
+import logging
 import numbers
 import warnings
 from datetime import date, datetime
 
 from . import parsers
+from .defaults import DEFAULT_SERIES_ID, DEFAULTS_SERIES_ATTRS
 from .download import Downloader
 from .errors import StaleDataWarning
-from .defaults import DEFAULT_SERIES_ID, DEFAULTS_SERIES_ATTRS
 
-import logging
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
@@ -24,10 +23,7 @@ items = parsers.ParseItem().parse()
 periods = parsers.ParsePeriod().parse()
 periodicities = parsers.ParsePeriodicity().parse()
 series = parsers.ParseSeries(
-    periods=periods,
-    periodicities=periodicities,
-    areas=areas,
-    items=items
+    periods=periods, periodicities=periodicities, areas=areas, items=items
 ).parse()
 
 # set the default series to the CPI-U
@@ -42,19 +38,21 @@ DAYS_SINCE_LATEST_MONTH = (date.today() - LATEST_MONTH).days
 DAYS_SINCE_LATEST_YEAR = (date.today() - date(LATEST_YEAR, 1, 1)).days
 
 # If it's more than two and a half years out of date, raise a warning.
-if DAYS_SINCE_LATEST_YEAR > (365*2.25) or DAYS_SINCE_LATEST_MONTH > 90:
+if DAYS_SINCE_LATEST_YEAR > (365 * 2.25) or DAYS_SINCE_LATEST_MONTH > 90:
     warnings.warn(StaleDataWarning())
-    logger.warn("CPI data is out of date. To accurately inflate to today's dollars, you must run `cpi.update()`.")
+    logger.warn(
+        "CPI data is out of date. To accurately inflate to today's dollars, you must run `cpi.update()`."
+    )
 
 
 def get(
     year_or_month,
-    survey=DEFAULTS_SERIES_ATTRS['survey'],
-    seasonally_adjusted=DEFAULTS_SERIES_ATTRS['seasonally_adjusted'],
-    periodicity=DEFAULTS_SERIES_ATTRS['periodicity'],
-    area=DEFAULTS_SERIES_ATTRS['area'],
-    items=DEFAULTS_SERIES_ATTRS['items'],
-    series_id=None
+    survey=DEFAULTS_SERIES_ATTRS["survey"],
+    seasonally_adjusted=DEFAULTS_SERIES_ATTRS["seasonally_adjusted"],
+    periodicity=DEFAULTS_SERIES_ATTRS["periodicity"],
+    area=DEFAULTS_SERIES_ATTRS["area"],
+    items=DEFAULTS_SERIES_ATTRS["items"],
+    series_id=None,
 ):
     """
     Returns the CPI value for a given year.
@@ -70,9 +68,9 @@ def get(
     # Prep the lookup value depending on the input type.
     if isinstance(year_or_month, numbers.Integral):
         year_or_month = date(year_or_month, 1, 1)
-        period_type = 'annual'
+        period_type = "annual"
     elif isinstance(year_or_month, date):
-        period_type = 'monthly'
+        period_type = "monthly"
         # If it's not set to the first day of the month, we should do that now.
         if year_or_month.day != 1:
             year_or_month = year_or_month.replace(day=1)
@@ -87,12 +85,12 @@ def inflate(
     value,
     year_or_month,
     to=None,
-    survey=DEFAULTS_SERIES_ATTRS['survey'],
-    seasonally_adjusted=DEFAULTS_SERIES_ATTRS['seasonally_adjusted'],
-    periodicity=DEFAULTS_SERIES_ATTRS['periodicity'],
-    area=DEFAULTS_SERIES_ATTRS['area'],
-    items=DEFAULTS_SERIES_ATTRS['items'],
-    series_id=None
+    survey=DEFAULTS_SERIES_ATTRS["survey"],
+    seasonally_adjusted=DEFAULTS_SERIES_ATTRS["seasonally_adjusted"],
+    periodicity=DEFAULTS_SERIES_ATTRS["periodicity"],
+    area=DEFAULTS_SERIES_ATTRS["area"],
+    items=DEFAULTS_SERIES_ATTRS["items"],
+    series_id=None,
 ):
     """
     Returns a dollar value adjusted for inflation.
@@ -136,18 +134,20 @@ def inflate(
 
     # Make sure the two dates are the same type
     if type(year_or_month) != type(to):
-        raise TypeError("Years can only be converted to other years. Months only to other months.")
+        raise TypeError(
+            "Years can only be converted to other years. Months only to other months."
+        )
 
     # Otherwise, let's do the math.
     # The input value is multiplied by the CPI of the target year,
     # then divided into the CPI from the source year.
     kwargs = {
-        'survey': survey,
-        'seasonally_adjusted': seasonally_adjusted,
-        'periodicity': periodicity,
-        'area': area,
-        'items': items,
-        'series_id': series_id
+        "survey": survey,
+        "seasonally_adjusted": seasonally_adjusted,
+        "periodicity": periodicity,
+        "area": area,
+        "items": items,
+        "series_id": series_id,
     }
     source_index = get(year_or_month, **kwargs)
     target_index = get(to, **kwargs)

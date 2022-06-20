@@ -1,18 +1,20 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 Python objects for modeling Consumer Price Index (CPI) data structures.
 """
 import collections
-from datetime import date
-from pandas import json_normalize
-
-# CPI tools
-from .errors import CPIObjectDoesNotExist
-from .defaults import DEFAULTS_SERIES_ATTRS
 
 # Logging
 import logging
+from datetime import date
+
+from pandas import json_normalize
+
+from .defaults import DEFAULTS_SERIES_ATTRS
+
+# CPI tools
+from .errors import CPIObjectDoesNotExist
+
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
@@ -21,6 +23,7 @@ class MappingList(list):
     """
     A custom list that allows for lookups by attribute.
     """
+
     def __init__(self):
         self._id_dict = {}
         self._name_dict = {}
@@ -29,13 +32,13 @@ class MappingList(list):
         try:
             return self._id_dict[value]
         except KeyError:
-            raise CPIObjectDoesNotExist("Object with id {} could not be found".format(value))
+            raise CPIObjectDoesNotExist(f"Object with id {value} could not be found")
 
     def get_by_name(self, value):
         try:
             return self._name_dict[value]
         except KeyError:
-            raise CPIObjectDoesNotExist("Object with id {} could not be found".format(value))
+            raise CPIObjectDoesNotExist(f"Object with id {value} could not be found")
 
     def append(self, item):
         """
@@ -46,21 +49,19 @@ class MappingList(list):
         self._name_dict[item.name] = item
 
         # Append to list
-        super(MappingList, self).append(item)
+        super().append(item)
 
 
 class SeriesList(list):
     """
     A custom list of indexes in a series.
     """
+
     SURVEYS = {
-        'All urban consumers': 'CU',
-        'Urban wage earners and clerical workers': 'CW'
+        "All urban consumers": "CU",
+        "Urban wage earners and clerical workers": "CW",
     }
-    SEASONALITIES = {
-        True: 'S',
-        False: 'U'
-    }
+    SEASONALITIES = {True: "S", False: "U"}
 
     def __init__(self, periodicities, areas, items):
         self.periodicities = periodicities
@@ -87,25 +88,25 @@ class SeriesList(list):
         self._dict[item.id] = item
 
         # Append to list
-        super(SeriesList, self).append(item)
+        super().append(item)
 
     def get_by_id(self, value):
         """
         Returns the CPI series object with the provided identifier code.
         """
-        logger.debug("Retrieving series with id {}".format(value))
+        logger.debug(f"Retrieving series with id {value}")
         try:
             return self._dict[value]
         except KeyError:
-            raise CPIObjectDoesNotExist("Object with id {} could not be found".format(value))
+            raise CPIObjectDoesNotExist(f"Object with id {value} could not be found")
 
     def get(
         self,
-        survey=DEFAULTS_SERIES_ATTRS['survey'],
-        seasonally_adjusted=DEFAULTS_SERIES_ATTRS['seasonally_adjusted'],
-        periodicity=DEFAULTS_SERIES_ATTRS['periodicity'],
-        area=DEFAULTS_SERIES_ATTRS['area'],
-        items=DEFAULTS_SERIES_ATTRS['items']
+        survey=DEFAULTS_SERIES_ATTRS["survey"],
+        seasonally_adjusted=DEFAULTS_SERIES_ATTRS["seasonally_adjusted"],
+        periodicity=DEFAULTS_SERIES_ATTRS["periodicity"],
+        area=DEFAULTS_SERIES_ATTRS["area"],
+        items=DEFAULTS_SERIES_ATTRS["items"],
     ):
         """
         Returns a single CPI Series object based on the input.
@@ -116,12 +117,14 @@ class SeriesList(list):
         try:
             survey_code = self.SURVEYS[survey]
         except KeyError:
-            raise CPIObjectDoesNotExist("Survey with the name {} does not exist".format(survey))
+            raise CPIObjectDoesNotExist(f"Survey with the name {survey} does not exist")
 
         try:
             seasonality_code = self.SEASONALITIES[seasonally_adjusted]
         except KeyError:
-            raise CPIObjectDoesNotExist("Seasonality {} does not exist".format(seasonally_adjusted))
+            raise CPIObjectDoesNotExist(
+                f"Seasonality {seasonally_adjusted} does not exist"
+            )
 
         # Generate the series id
         series_id = "{}{}{}{}{}".format(
@@ -129,19 +132,20 @@ class SeriesList(list):
             seasonality_code,
             self.periodicities.get_by_name(periodicity).code,
             self.areas.get_by_name(area).code,
-            self.items.get_by_name(items).code
+            self.items.get_by_name(items).code,
         )
 
         # Pull the series
         return self.get_by_id(series_id)
 
 
-class BaseObject(object):
+class BaseObject:
     """
     An abstract base class for all the models.
     """
+
     def __repr__(self):
-        return "<{}: {}>".format(self.__class__.__name__, self.__str__())
+        return f"<{self.__class__.__name__}: {self.__str__()}>"
 
     def __eq__(self, other):
         return self.id == other.id
@@ -154,40 +158,35 @@ class Area(BaseObject):
     """
     A geographical area where prices are gathered monthly.
     """
+
     def __init__(self, code, name):
         self.id = code
         self.code = code
         self.name = name
 
     def __dict__(self):
-        return {
-            "id": self.id,
-            "code": self.code,
-            "name": self.name
-        }
+        return {"id": self.id, "code": self.code, "name": self.name}
 
 
 class Item(BaseObject):
     """
     A consumer item that has its price tracked.
     """
+
     def __init__(self, code, name):
         self.id = code
         self.code = code
         self.name = name
 
     def __dict__(self):
-        return {
-            "id": self.id,
-            "code": self.code,
-            "name": self.name
-        }
+        return {"id": self.id, "code": self.code, "name": self.name}
 
 
 class Period(BaseObject):
     """
     A time period tracked by the CPI.
     """
+
     def __init__(self, code, abbreviation, name):
         self.id = code
         self.code = code
@@ -201,7 +200,7 @@ class Period(BaseObject):
             "abbreviation": self.abbreviation,
             "name": self.name,
             "month": self.month,
-            "type": self.type
+            "type": self.type,
         }
 
     @property
@@ -233,17 +232,14 @@ class Periodicity(BaseObject):
     """
     A time interval tracked by the CPI.
     """
+
     def __init__(self, code, name):
         self.id = code
         self.code = code
         self.name = name
 
     def __dict__(self):
-        return {
-            "id": self.id,
-            "code": self.code,
-            "name": self.name
-        }
+        return {"id": self.id, "code": self.code, "name": self.name}
 
 
 class Series(BaseObject):
@@ -254,15 +250,9 @@ class Series(BaseObject):
 
     Yes, that's the offical government definition. I'm not kidding.
     """
+
     def __init__(
-        self,
-        id,
-        title,
-        survey,
-        seasonally_adjusted,
-        periodicity,
-        area,
-        items
+        self, id, title, survey, seasonally_adjusted, periodicity, area, items
     ):
         self.id = id
         self.title = title
@@ -272,13 +262,13 @@ class Series(BaseObject):
         self.area = area
         self.items = items
         self._indexes = {
-            'annual': collections.OrderedDict(),
-            'monthly': collections.OrderedDict(),
-            'semiannual': collections.OrderedDict(),
+            "annual": collections.OrderedDict(),
+            "monthly": collections.OrderedDict(),
+            "semiannual": collections.OrderedDict(),
         }
 
     def __str__(self):
-        return "{}: {}".format(self.id, self.title)
+        return f"{self.id}: {self.title}"
 
     def __dict__(self):
         return {
@@ -288,7 +278,7 @@ class Series(BaseObject):
             "seasonally_adjusted": self.seasonally_adjusted,
             "periodicity": self.periodicity.__dict__(),
             "area": self.area.__dict__(),
-            "items": self.items.__dict__()
+            "items": self.items.__dict__(),
         }
 
     def to_dataframe(self):
@@ -307,27 +297,30 @@ class Series(BaseObject):
 
     @property
     def latest_month(self):
-        if not self._indexes['monthly']:
+        if not self._indexes["monthly"]:
             return None
-        return max([i.date for i in self._indexes['monthly'].values()])
+        return max(i.date for i in self._indexes["monthly"].values())
 
     @property
     def latest_year(self):
-        if not self._indexes['annual']:
+        if not self._indexes["annual"]:
             return None
-        return max([i.year for i in self._indexes['annual'].values()])
+        return max(i.year for i in self._indexes["annual"].values())
 
-    def get_index_by_date(self, date, period_type='annual'):
+    def get_index_by_date(self, date, period_type="annual"):
         try:
             return self._indexes[period_type][date]
         except KeyError:
-            raise CPIObjectDoesNotExist("Index of {} type for {} does not exist".format(period_type, date))
+            raise CPIObjectDoesNotExist(
+                f"Index of {period_type} type for {date} does not exist"
+            )
 
 
 class Index(BaseObject):
     """
     A Consumer Price Index value generated by the Bureau of Labor Statistics.
     """
+
     def __init__(self, series, year, period, value):
         self.series = series
         self.year = year
@@ -335,14 +328,14 @@ class Index(BaseObject):
         self.value = value
 
     def __str__(self):
-        return "{} ({}): {}".format(self.date, self.period, self.value)
+        return f"{self.date} ({self.period}): {self.value}"
 
     def __eq__(self, other):
         return (
-            self.value == other.value and
-            self.series == other.series and
-            self.year == other.year and
-            self.period == other.period
+            self.value == other.value
+            and self.series == other.series
+            and self.year == other.year
+            and self.period == other.period
         )
 
     def __dict__(self):
@@ -351,7 +344,7 @@ class Index(BaseObject):
             "year": self.year,
             "date": str(self.date),
             "period": self.period.__dict__(),
-            "value": self.value
+            "value": self.value,
         }
 
     @property

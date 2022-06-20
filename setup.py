@@ -1,4 +1,5 @@
 import os
+
 from setuptools import setup
 
 
@@ -42,13 +43,13 @@ def local_version(version):
 
 
 setup(
-    name='cpi',
+    name="cpi",
     description="Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
-    author='Ben Welsh',
-    author_email='b@palewi.re',
-    url='http://www.github.com/palewire/cpi',
+    author="Ben Welsh",
+    author_email="b@palewi.re",
+    url="http://www.github.com/palewire/cpi",
     license="MIT",
     packages=("cpi",),
     include_package_data=True,
@@ -64,14 +65,14 @@ setup(
         inflate=cpi.cli:inflate
     """,
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: 3.10',
-        'License :: OSI Approved :: MIT License',
+        "Development Status :: 5 - Production/Stable",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "License :: OSI Approved :: MIT License",
     ],
     project_urls={
         "Maintainer": "https://github.com/palewire",
