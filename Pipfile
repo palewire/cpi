@@ -16,6 +16,9 @@ altair-latimes = "*"
 twine = "*"
 "flake8" = "*"
 setuptools-scm = "*"
+pre-commit = "*"
+sphinx = "*"
+myst-parser = "*"
 
 [requires]
 python_version = "3.9"
