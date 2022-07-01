@@ -47,14 +47,14 @@ cpi.inflate(100, date(1950, 1, 1), to=date(2018, 1, 1))
 
 You can adjust values using any of the other series published by the BLS as part of its "All Urban Consumers (CU)" survey. They offer more precise measures for different regions and items.
 
-Submit one of the 60 areas tracked by the agency to inflate dollars in that region. You can find a complete list in [the repository](https://github.com/palewire/cpi/blob/master/data/areas.csv).
+Submit one of the 60 areas tracked by the agency to inflate dollars in that region. You can find a complete list in [the repository](https://github.com/palewire/cpi/blob/main/data/areas.csv).
 
 ```python
 cpi.inflate(100, 1950, area="Los Angeles-Long Beach-Anaheim, CA")
 1081.054852320675
 ```
 
-You can do the same to inflate the price of 400 specific items lumped into the basket of goods that make up the overall index.  You can find a complete list in [the repository](https://github.com/palewire/cpi/blob/master/data/items.csv).
+You can do the same to inflate the price of 400 specific items lumped into the basket of goods that make up the overall index.  You can find a complete list in [the repository](https://github.com/palewire/cpi/blob/main/data/items.csv).
 
 ```python
 cpi.inflate(100, 1980, items="Housing")
