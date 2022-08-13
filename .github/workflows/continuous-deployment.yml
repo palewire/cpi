@@ -82,7 +82,8 @@ jobs:
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pipenv install twine setuptools-scm --skip-lock --python 3.9
+        run: pipenv install --dev --python `which python`
+        shell: bash
 
       - id: build
         name: Build release
@@ -90,10 +91,12 @@ jobs:
           pipenv run python setup.py sdist
           pipenv run python setup.py bdist_wheel
           ls -l dist
+        shell: bash
 
       - id: check
         name: Check release
         run: pipenv run twine check dist/*
+        shell: bash
 
       - id: save
         name: Save artifact
