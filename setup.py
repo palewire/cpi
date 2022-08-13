@@ -1,3 +1,4 @@
+"""Package and distribute the library."""
 import os
 
 from setuptools import setup
@@ -55,7 +56,7 @@ setup(
     license="MIT",
     packages=("cpi",),
     include_package_data=True,
-    zip_safe=False,  # because we're including static files
+    zip_safe=False,
     install_requires=(
         "requests",
         "click",
