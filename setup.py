@@ -36,7 +36,9 @@ def version_scheme(version):
 def local_version(version):
     """
     Local version scheme hack for setuptools_scm.
+
     Appears to be necessary to due to the bug documented here: https://github.com/pypa/setuptools_scm/issues/342
+
     If that issue is resolved, this method can be removed.
     """
     return ""
