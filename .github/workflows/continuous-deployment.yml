@@ -88,6 +88,7 @@ jobs:
       - id: build
         name: Build release
         run: |
+          pipenv run python cpi/download.py
           pipenv run python setup.py sdist
           pipenv run python setup.py bdist_wheel
           ls -l dist
