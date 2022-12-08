@@ -32,7 +32,7 @@ jobs:
   test-python:
     strategy:
       matrix:
-        python: ['3.7', '3.8', '3.9', '3.10']
+        python: ['3.8', '3.9', '3.10']
     name: Test
     runs-on: ubuntu-latest
     steps:
@@ -51,7 +51,7 @@ jobs:
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pipenv install --dev --python `which python` --skip-lock
+        run: pipenv install --python `which python`
 
       - id: download-data
         name: Download download
