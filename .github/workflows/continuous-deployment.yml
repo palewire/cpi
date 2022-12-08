@@ -11,10 +11,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - id: install-pipenv
-        name: Install pipenv
-        run: pipx install pipenv
-
       - id: install-python
         name: Install Python
         uses: actions/setup-python@v4
@@ -24,7 +20,7 @@ jobs:
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pipenv install flake8
+        run: pipenv install --dev --python `which python`
 
       - id: lint
         name: Lint Python code
@@ -40,15 +36,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - id: install-pipenv
-        name: Install pipenv
-        run: pipx install pipenv
-
       - id: install-python
         name: Install Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
+          cache: 'pipenv'
 
       - id: install-python-dependencies
         name: Install Python dependencies
@@ -70,15 +63,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - id: install-pipenv
-        name: Install pipenv
-        run: pipx install pipenv
-
       - id: install-python
         name: Install Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
+          cache: 'pipenv'
 
       - id: install-python-dependencies
         name: Install Python dependencies
