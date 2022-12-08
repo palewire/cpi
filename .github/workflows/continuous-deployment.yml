@@ -44,14 +44,13 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
-          cache: 'pipenv'
 
       - name: Install pipenv
         run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pipenv install --python `which python`
+        run: pipenv run pip install requests click python-dateutil pandas
 
       - id: download-data
         name: Download download
