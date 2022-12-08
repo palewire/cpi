@@ -51,7 +51,7 @@ jobs:
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pipenv install --dev --python `which python`
+        run: pipenv install --dev --python `which python` --skip-lock
 
       - id: download-data
         name: Download download
