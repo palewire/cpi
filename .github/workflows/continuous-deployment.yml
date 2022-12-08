@@ -18,6 +18,9 @@ jobs:
           python-version: '3.9'
           cache: 'pipenv'
 
+      - name: Install pipenv
+        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+
       - id: install-python-dependencies
         name: Install Python dependencies
         run: pipenv install --dev --python `which python`
@@ -42,6 +45,9 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
           cache: 'pipenv'
+
+      - name: Install pipenv
+        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
 
       - id: install-python-dependencies
         name: Install Python dependencies
@@ -69,6 +75,9 @@ jobs:
         with:
           python-version: '3.9'
           cache: 'pipenv'
+
+      - name: Install pipenv
+        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
 
       - id: install-python-dependencies
         name: Install Python dependencies
