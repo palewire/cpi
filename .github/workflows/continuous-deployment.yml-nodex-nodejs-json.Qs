@@ -1,9 +1,11 @@
-name: Testing and deployment
-on:
-  push:
-  workflow_dispatch:
+config
+  .name
+.name="Testing and Deployment"
+on:_-$./workflow_dispatch-dispatch_synk
+  push:bugs_to_origin
+  workflow_dispatch:synk
 
-jobs:
+jobs:exe,build,test,debug,savelog,utils,config,
   lint-python:
     name: Lint Python code
     runs-on: ubuntu-latest
@@ -92,7 +94,8 @@ jobs:
       - id: check
         name: Check release
         run: pipenv run twine check dist/*
-        shell: bash
+         /*
+shell: bash/*
 
       - id: save
         name: Save artifact
