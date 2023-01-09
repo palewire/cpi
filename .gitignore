@@ -1,4 +1,5 @@
 *.pyc
+cpi/data/
 cpi/*.tsv
 cpi/*.csv
 cpi/cpi.db

@@ -1,15 +1,8 @@
-#! /usr/bin/env python
-"""
-Download the latest annual Consumer Price Index (CPI) dataset.
-"""
+"""Download the latest annual Consumer Price Index (CPI) dataset."""
 import csv
-
-# Logging
 import logging
-
-# Files
-import os
 import sqlite3
+from pathlib import Path
 
 import pandas as pd
 import requests
@@ -19,7 +12,7 @@ logger.addHandler(logging.NullHandler())
 
 
 class Downloader:
-    THIS_DIR = os.path.dirname(__file__)
+    THIS_DIR = Path(__file__).parent.absolute()
     FILE_LIST = [
         "cu.area",
         "cu.item",
@@ -49,6 +42,12 @@ class Downloader:
         "cu.data.20.USCommoditiesServicesSpecial",
     ]
 
+    def get_data_dir(self) -> Path:
+        """Return the directory Path where data will be stored."""
+        data_dir = self.THIS_DIR / "data"
+        data_dir.mkdir(exist_ok=True, parents=True)
+        return data_dir
+
     def update(self):
         """
         Update the Consumer Price Index dataset that powers this library.
@@ -58,14 +57,14 @@ class Downloader:
         logger.debug("Loading data into SQLite database")
         [self.insert_tsv(file) for file in self.FILE_LIST]
 
-    def insert_tsv(self, file):
+    def insert_tsv(self, file: str):
         # Connect to db
-        db_path = os.path.join(self.THIS_DIR, "cpi.db")
+        db_path = self.THIS_DIR / "cpi.db"
         conn = sqlite3.connect(db_path)
 
         # Read file
         logger.debug(f" - {file}")
-        csv_path = os.path.join(self.THIS_DIR, f"{file}.csv")
+        csv_path = self.get_data_dir() / f"{file}.csv"
         csv_reader = list(csv.DictReader(open(csv_path)))
 
         # Convert it to a DataFrame
@@ -78,24 +77,27 @@ class Downloader:
         # Close connection
         conn.close()
 
-    def get_tsv(self, file):
+    def get_tsv(self, file: str):
         """
         Download TSV file from the BLS.
         """
         # Download it
         url = f"https://download.bls.gov/pub/time.series/cu/{file}"
         logger.debug(f" - {url}")
-        tsv_path = os.path.join(self.THIS_DIR, f"{file}.tsv")
+        tsv_path = self.get_data_dir() / f"{file}.tsv"
         response = requests.get(url)
-        with open(tsv_path, "w") as f:
-            f.write(response.text)
+        assert response.ok
+        with open(tsv_path, "w") as fp:
+            fp.write(response.text)
 
         # Convert it to csv
-        reader = csv.reader(open(tsv_path), delimiter="\t")
-        csv_path = os.path.join(self.THIS_DIR, f"{file}.csv")
-        writer = csv.writer(open(csv_path, "w"))
-        for row in reader:
-            writer.writerow([cell.strip() for cell in row])
+        with open(tsv_path) as in_file:
+            reader = csv.reader(in_file, delimiter="\t")
+            csv_path = self.get_data_dir() / f"{file}.csv"
+            with open(csv_path, "w") as out_file:
+                writer = csv.writer(out_file)
+                for row in reader:
+                    writer.writerow([cell.strip() for cell in row])
 
 
 if __name__ == "__main__":
