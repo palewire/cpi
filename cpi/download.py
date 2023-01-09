@@ -51,10 +51,30 @@ class Downloader:
         data_dir.mkdir(exist_ok=True, parents=True)
         return data_dir
 
+    def rm(self):
+        """Remove any existing files."""
+        db_path = self.THIS_DIR / "cpi.db"
+        if db_path.exists():
+            logger.debug(f"Deleting {db_path}")
+            db_path.unlink()
+        data_dir = self.get_data_dir()
+        for f in data_dir.glob(".csv"):
+            logger.debug(f"Deleting {f}")
+            f.unlink()
+        for f in data_dir.glob(".tsv"):
+            logger.debug(f"Deleting {f}")
+            f.unlink()
+
     def update(self):
         """Update the Consumer Price Index dataset that powers this library."""
+        # Delete existing files
+        self.rm()
+
+        # Download the TSVs
         logger.debug(f"Downloading {len(self.FILE_LIST)} files from the BLS")
         [self.get_tsv(file) for file in self.FILE_LIST]
+
+        # Insert the TSVs
         logger.debug("Loading data into SQLite database")
         [self.insert_tsv(file) for file in self.FILE_LIST]
 
