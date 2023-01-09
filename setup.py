@@ -1,13 +1,17 @@
 """Package and distribute the library."""
 import os
+import time
 
 from setuptools import setup
+from setuptools_scm.version import guess_next_version
 
 
 def read(file_name):
     """Read in the supplied file name from the root directory.
+
     Args:
         file_name (str): the name of the file
+
     Returns: the content of the file
     """
     this_dir = os.path.dirname(__file__)
@@ -17,15 +21,12 @@ def read(file_name):
 
 
 def version_scheme(version):
-    """
-    Version scheme hack for setuptools_scm.
+    """Version scheme hack for setuptools_scm.
+
     Appears to be necessary to due to the bug documented here: https://github.com/pypa/setuptools_scm/issues/342
+
     If that issue is resolved, this method can be removed.
     """
-    import time
-
-    from setuptools_scm.version import guess_next_version
-
     if version.exact:
         return version.format_with("{tag}")
     else:
@@ -71,7 +72,6 @@ setup(
         "Development Status :: 5 - Production/Stable",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",

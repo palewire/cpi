@@ -2,6 +2,7 @@
 import csv
 import logging
 import sqlite3
+import typing
 from pathlib import Path
 
 import pandas as pd
@@ -12,8 +13,10 @@ logger.addHandler(logging.NullHandler())
 
 
 class Downloader:
-    THIS_DIR = Path(__file__).parent.absolute()
-    FILE_LIST = [
+    """Download the latest data."""
+
+    THIS_DIR: Path = Path(__file__).parent.absolute()
+    FILE_LIST: typing.List[str] = [
         "cu.area",
         "cu.item",
         "cu.period",
@@ -49,15 +52,14 @@ class Downloader:
         return data_dir
 
     def update(self):
-        """
-        Update the Consumer Price Index dataset that powers this library.
-        """
+        """Update the Consumer Price Index dataset that powers this library."""
         logger.debug(f"Downloading {len(self.FILE_LIST)} files from the BLS")
         [self.get_tsv(file) for file in self.FILE_LIST]
         logger.debug("Loading data into SQLite database")
         [self.insert_tsv(file) for file in self.FILE_LIST]
 
     def insert_tsv(self, file: str):
+        """Load the provided TSV file."""
         # Connect to db
         db_path = self.THIS_DIR / "cpi.db"
         conn = sqlite3.connect(db_path)
@@ -78,9 +80,7 @@ class Downloader:
         conn.close()
 
     def get_tsv(self, file: str):
-        """
-        Download TSV file from the BLS.
-        """
+        """Download TSV file from the BLS."""
         # Download it
         url = f"https://download.bls.gov/pub/time.series/cu/{file}"
         logger.debug(f" - {url}")
