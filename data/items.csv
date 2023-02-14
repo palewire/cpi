@@ -178,7 +178,7 @@ SEFT01,SEFT01,Soups
 SEFT02,SEFT02,Frozen and freeze dried prepared foods
 SEFT03,SEFT03,Snacks
 SEFT04,SEFT04,"Spices, seasonings, condiments, sauces"
-SEFT05,SEFT05,Baby food
+SEFT05,SEFT05,Baby food and formula
 SEFT06,SEFT06,Other miscellaneous foods
 SEFV,SEFV,Food away from home
 SEFV01,SEFV01,Full service meals and snacks
@@ -266,9 +266,9 @@ SEMF02,SEMF02,Nonprescription drugs
 SEMG,SEMG,Medical equipment and supplies
 SERA,SERA,Video and audio
 SERA01,SERA01,Televisions
-SERA02,SERA02,Cable and satellite television service
+SERA02,SERA02,"Cable, satellite, and live streaming television service"
 SERA03,SERA03,Other video equipment
-SERA04,SERA04,"Video discs and other media, including rental of video"
+SERA04,SERA04,"Purchase, subscription, and rental of video"
 SERA05,SERA05,Audio equipment
 SERA06,SERA06,Recorded music and music subscriptions
 SERAC,SERAC,Video and audio products
@@ -391,7 +391,7 @@ SS62051,SS62051,Photographer fees
 SS62052,SS62052,Photo Processing
 SS62053,SS62053,Pet services
 SS62054,SS62054,Veterinarian services
-SS62055,SS62055,Rental of video discs and other media
+SS62055,SS62055,Subscription and rental of video and video games
 SS68021,SS68021,Checking account and other bank services
 SS68023,SS68023,Tax return preparation and other accounting fees
 SSEA011,SSEA011,College textbooks
