@@ -57,6 +57,10 @@ jobs:
         name: Run tests
         run: python tests.py
 
+      - id: update
+        name: Test update
+        run: python cpi/download.py
+
   test-build:
     name: Build Python package
     runs-on: ubuntu-latest
