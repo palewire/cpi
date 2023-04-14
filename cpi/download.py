@@ -105,7 +105,10 @@ class Downloader:
         url = f"https://download.bls.gov/pub/time.series/cu/{file}"
         logger.debug(f" - {url}")
         tsv_path = self.get_data_dir() / f"{file}.tsv"
-        response = requests.get(url)
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+        }
+        response = requests.get(url, headers=headers, timeout=30)
         assert response.ok
         with open(tsv_path, "w") as fp:
             fp.write(response.text)
