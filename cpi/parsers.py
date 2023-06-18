@@ -6,16 +6,8 @@ import logging
 import os
 import sqlite3
 
-from .models import (
-    Area,
-    Index,
-    Item,
-    MappingList,
-    Period,
-    Periodicity,
-    Series,
-    SeriesList,
-)
+from .models import (Area, Index, Item, MappingList, Period, Periodicity,
+                     Series, SeriesList)
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())

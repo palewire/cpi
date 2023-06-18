@@ -3,7 +3,6 @@
 Python objects for modeling Consumer Price Index (CPI) data structures.
 """
 import collections
-
 # Logging
 import logging
 from datetime import date
@@ -11,7 +10,6 @@ from datetime import date
 from pandas import json_normalize
 
 from .defaults import DEFAULTS_SERIES_ATTRS
-
 # CPI tools
 from .errors import CPIObjectDoesNotExist
 
