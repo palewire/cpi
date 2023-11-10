@@ -133,7 +133,7 @@ def inflate(
         year_or_month = year_or_month.date()
 
     # Make sure the two dates are the same type
-    if type(year_or_month) != type(to):
+    if type(year_or_month) is not type(to):
         raise TypeError(
             "Years can only be converted to other years. Months only to other months."
         )
