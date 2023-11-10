@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - id: install-python
         name: Install Python
@@ -32,12 +32,12 @@ jobs:
   test-python:
     strategy:
       matrix:
-        python: ['3.8', '3.9', '3.10']
+        python: ['3.9', '3.10', '3.11']
     name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - id: install-python
         name: Install Python
@@ -67,7 +67,7 @@ jobs:
     needs: [test-python]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - id: install-python
         name: Install Python
