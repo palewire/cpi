@@ -184,7 +184,7 @@ class CPITest(BaseCPITest):
             cpi.inflate(100, date(2000, 1, 1), to=1950)
 
     def test_warning(self):
-        warnings.warn(cpi.StaleDataWarning())
+        warnings.warn(cpi.StaleDataWarning(), stacklevel=2)
 
     def test_pandas(self):
         df = pd.read_csv("test.csv")

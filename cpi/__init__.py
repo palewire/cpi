@@ -39,7 +39,7 @@ DAYS_SINCE_LATEST_YEAR = (date.today() - date(LATEST_YEAR, 1, 1)).days
 
 # If it's more than two and a half years out of date, raise a warning.
 if DAYS_SINCE_LATEST_YEAR > (365 * 2.25) or DAYS_SINCE_LATEST_MONTH > 90:
-    warnings.warn(StaleDataWarning())
+    warnings.warn(StaleDataWarning(), stacklevel=2)
     logger.warn(
         "CPI data is out of date. To accurately inflate to today's dollars, you must run `cpi.update()`."
     )
