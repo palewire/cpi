@@ -42,7 +42,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.PALEWIRE_DOCS_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.PALEWIRE_DOCS_AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.DOCS_AWS_REGION }}
+          aws-region: ${{ secrets.PALEWIRE_DOCS_AWS_REGION }}
 
       - id: upload-to-s3
         name: Upload documentation to Amazon S3
