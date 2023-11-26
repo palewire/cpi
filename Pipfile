@@ -19,7 +19,7 @@ setuptools-scm = "*"
 pre-commit = "*"
 sphinx = "*"
 sphinx-autobuild = "*"
-sphinx-palewire-theme = "*"
+sphinx-palewire-theme = "==0.0.6"
 myst-parser = "*"
 
 [requires]

@@ -1,9 +1,6 @@
-```{include} _templates/nav.html
-```
-
 # cpi
 
-A Python library that quickly adjusts U.S. dollars for inflation using the Consumer Price Index (CPI).
+A Python library that quickly adjusts U.S. dollars for inflation using the [Consumer Price Index](https://www.bls.gov/cpi/).
 
 ```{contents} Table of contents
 :local:
@@ -12,7 +9,7 @@ A Python library that quickly adjusts U.S. dollars for inflation using the Consu
 
 ## Installation
 
-The library can be installed from the Python Package Index with any of the standard Python installation tools.
+The library can be installed from the [Python Package Index](https://pypi.org/project/cpi/) with any of the standard Python installation tools, such as [pipenv](https://pipenv.pypa.io/en/latest/).
 
 ```bash
 pipenv install cpi
@@ -20,7 +17,7 @@ pipenv install cpi
 
 ## Working with Python
 
-Adjusting for inflation is as simple as providing a dollar value followed by the year it is from to  the `inflate` method. By default it is adjusted to its value in the most recent year available using "CPI-U" index recommended as a default by the Bureau of Labor Statistics.
+Adjusting prices for inflation is as simple as providing a dollar value along with its year of origin to the `inflate` method.
 
 ```python
 import cpi
@@ -29,7 +26,9 @@ cpi.inflate(100, 1950)
 1017.0954356846472
 ```
 
-If you'd like to adjust to a different year, submit it as an integer to the optional `to` keyword argument.
+ By default the value is adjusted to the most recent year. Unless otherwise specified, "CPI-U" index for all urban consumers is used to make the conversion, the method recommended by the U.S. Bureau of Labor Statistics.
+
+If you'd like to adjust to a different year, you can submit it as an integer to the optional `to` keyword argument.
 
 ```python
 cpi.inflate(100, 1950, to=1960)
@@ -123,7 +122,21 @@ series.indexes
 
 That's it!
 
-## Working with the command line
+## Working with pandas
+
+An inflation-adjusted column can quickly be added to a pandas DataFrame using the `apply` method. Here is an example using data tracking the median household income in the United States from [The Federal Reserve Bank of St. Louis](https://fred.stlouisfed.org/series/MEHOINUSA646N).
+
+```python
+import cpi
+import pandas as pd
+
+df = pd.read("test.csv")
+df["ADJUSTED"] = df.apply(
+    lambda x: cpi.inflate(x.MEDIAN_HOUSEHOLD_INCOME, x.YEAR), axis=1
+)
+```
+
+## Working from the command line
 
 The Python package also installs a command-line interface for `inflate` that is available on the terminal.
 
@@ -162,20 +175,6 @@ Options:
   --help         Show this message and exit.
 ```
 
-## Working with pandas
-
-An inflation-adjusted column can quickly be added to a pandas DataFrame using the `apply` method. Here is an example using data tracking the median household income in the United States from [The Federal Reserve Bank of St. Louis](https://fred.stlouisfed.org/series/MEHOINUSA646N).
-
-```python
-import cpi
-import pandas as pd
-
-df = pd.read("test.csv")
-df["ADJUSTED"] = df.apply(
-    lambda x: cpi.inflate(x.MEDIAN_HOUSEHOLD_INCOME, x.YEAR), axis=1
-)
-```
-
 The lists of CPI series and each's index values can be converted to a DataFrame using the `to_dataframe` method.
 
 Here's how to get the series list:
@@ -191,13 +190,13 @@ series_obj = cpi.series.get(items="Housing", area="Los Angeles-Long Beach-Anahei
 index_df = series_obj.to_dataframe()
 ```
 
-## Source
+## About our source
 
 The adjustment is made using data provided by [The Bureau of Labor Statistics](https://www.bls.gov/cpi/home.htm) at the U.S. Department of Labor.
 
 Currently the library only supports inflation adjustments using series from the "All Urban Consumers (CU)" survey. The so-called "CPI-U" survey is the default, which is an average of all prices paid by all urban consumers. It is available from 1913 to the present. It is not seasonally adjusted. The dataset is identified by the BLS as "CUUR0000SA0." It is used as the default for most basic inflation calculations. All other series measuring all urban consumers are available by taking advantage of the library's options. The alternative survey of "Urban Wage Earners and Clerical Workers" is not yet available.
 
-## Updating the CPI
+## Updating the data
 
 Since the BLS routinely releases new CPI new values, this library must periodically download the latest data. This library *does not* do this automatically. You must update the BLS dataset stored alongside the code yourself by running the following method:
 
@@ -205,9 +204,8 @@ Since the BLS routinely releases new CPI new values, this library must periodica
 cpi.update()
 ```
 
-## Links
+## Other resources
 
-* Docs: [palewi.re/docs/cpi/](https://palewi.re/docs/cpi/)
 * Code: [github.com/datadesk/cpi](https://github.com/datadesk/cpi/)
 * Issues: [github.com/datadesk/cpi/issues](https://github.com/datadesk/cpi/issues)
 * Packaging: [pypi.python.org/pypi/cpi](https://pypi.python.org/pypi/cpi)
