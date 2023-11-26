@@ -18,6 +18,8 @@ twine = "*"
 setuptools-scm = "*"
 pre-commit = "*"
 sphinx = "*"
+sphinx-autobuild = "*"
+sphinx-palewire-theme = "*"
 myst-parser = "*"
 
 [requires]
