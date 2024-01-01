@@ -13,7 +13,7 @@ jobs:
 
       - id: install-python
         name: Install Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.9'
           cache: 'pipenv'
@@ -41,7 +41,7 @@ jobs:
 
       - id: install-python
         name: Install Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
 
@@ -71,7 +71,7 @@ jobs:
 
       - id: install-python
         name: Install Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.9'
           cache: 'pipenv'
