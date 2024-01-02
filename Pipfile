@@ -23,4 +23,4 @@ sphinx-palewire-theme = "==0.0.10"
 myst-parser = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.11"
