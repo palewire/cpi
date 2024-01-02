@@ -110,8 +110,12 @@ class Downloader:
             "User-Agent": get_user_agent(),
         }
         response = requests.get(url, headers=headers, timeout=30)
-        print(response.text)
-        assert response.ok
+        try:
+            assert response.ok
+        except AssertionError:
+            logger.error(f"Error downloading {url}")
+            logger.error(f"Response: {response.text}")
+            raise AssertionError(f"Error downloading {url}")
         with open(tsv_path, "w") as fp:
             fp.write(response.text)
 
