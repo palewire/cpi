@@ -107,7 +107,7 @@ class Downloader:
         logger.debug(f" - {url}")
         tsv_path = self.get_data_dir() / f"{file}.tsv"
         headers = {
-            "User-Agent": get_user_agent(),
+            "User-Agent": "b@palewi.re",
         }
         response = requests.get(url, headers=headers, timeout=30)
         try:
@@ -127,20 +127,6 @@ class Downloader:
                 writer = csv.writer(out_file)
                 for row in reader:
                     writer.writerow([cell.strip() for cell in row])
-
-
-def get_user_agent() -> str:
-    """Provide a user-agent string.
-
-    Returns a string ready to use as a header in web request.
-    """
-    user_agent_list = [
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15",
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
-    ]
-    return random.choice(user_agent_list)
 
 
 if __name__ == "__main__":
