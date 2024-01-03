@@ -3,7 +3,6 @@ import csv
 import logging
 import sqlite3
 import typing
-import random
 from pathlib import Path
 
 import pandas as pd
