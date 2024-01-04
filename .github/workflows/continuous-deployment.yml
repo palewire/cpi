@@ -1,7 +1,12 @@
-name: Testing and deployment
+name: Continuous deployment
+
 on:
   push:
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   lint-python:
@@ -33,7 +38,7 @@ jobs:
     strategy:
       matrix:
         python: ['3.9', '3.10', '3.11']
-    name: Test
+    name: "Test: pip"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -65,7 +70,7 @@ jobs:
     strategy:
       matrix:
         python: ['3.9', '3.10', '3.11']
-    name: Test
+    name: "Test: conda"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
