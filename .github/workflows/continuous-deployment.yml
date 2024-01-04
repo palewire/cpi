@@ -50,7 +50,7 @@ jobs:
         run: pip install requests click python-dateutil pandas
 
       - id: download-data
-        name: Download download
+        name: Download data
         run: python cpi/download.py
 
       - id: tests
@@ -58,13 +58,47 @@ jobs:
         run: python tests.py
 
       - id: update
-        name: Test update
+        name: Update data
         run: python cpi/download.py
+
+  test-conda:
+    strategy:
+      matrix:
+        python: ['3.9', '3.10', '3.11']
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - id: install-python
+        name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - id: install-python-dependencies
+        name: Install Python dependencies
+        run: |
+          $CONDA/bin/conda create -n base python=${{ matrix.python }}
+          $CONDA/bin/conda install -n base requests click python-dateutil pandas
+
+      - id: download-data
+        name: Download data
+        run: $CONDA/bin/conda run -n base python cpi/download.py
+
+      - id: tests
+        name: Run tests
+        run: $CONDA/bin/conda run -n base python tests.py
+
+      - id: update
+        name: Update data
+        run: $CONDA/bin/conda run -n base python cpi/download.py
 
   test-build:
     name: Build Python package
     runs-on: ubuntu-latest
-    needs: [test-python]
+    needs: [test-python, test-conda]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
