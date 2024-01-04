@@ -80,20 +80,20 @@ jobs:
       - id: install-python-dependencies
         name: Install Python dependencies
         run: |
-          $CONDA/bin/conda create -n base python=${{ matrix.python }}
-          $CONDA/bin/conda install -n base requests click python-dateutil pandas
+          $CONDA/bin/conda create -n cpi python=${{ matrix.python }}
+          $CONDA/bin/conda install -n cpi requests click python-dateutil pandas
 
       - id: download-data
         name: Download data
-        run: $CONDA/bin/conda run -n base python cpi/download.py
+        run: $CONDA/bin/conda run -n cpi python cpi/download.py
 
       - id: tests
         name: Run tests
-        run: $CONDA/bin/conda run -n base python tests.py
+        run: $CONDA/bin/conda run -n cpi python tests.py
 
       - id: update
         name: Update data
-        run: $CONDA/bin/conda run -n base python cpi/download.py
+        run: $CONDA/bin/conda run -n cpi python cpi/download.py
 
   test-build:
     name: Build Python package
