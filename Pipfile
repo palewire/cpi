@@ -8,6 +8,7 @@ requests = "*"
 click = "*"
 python-dateutil = "*"
 pandas = "*"
+sphinx-palewire-theme = "==0.0.18"
 
 [dev-packages]
 jupyterlab = "*"
