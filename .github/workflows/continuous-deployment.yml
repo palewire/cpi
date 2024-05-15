@@ -37,7 +37,7 @@ jobs:
   test-python:
     strategy:
       matrix:
-        python: ['3.9', '3.10', '3.11']
+        python: ['3.9', '3.10', '3.11', '3.12']
     name: "Test: pip"
     runs-on: ubuntu-latest
     steps:
@@ -69,7 +69,7 @@ jobs:
   test-conda:
     strategy:
       matrix:
-        python: ['3.9', '3.10', '3.11']
+        python: ['3.9', '3.10', '3.11', '3.12']
     name: "Test: conda"
     runs-on: ubuntu-latest
     steps:
