@@ -59,7 +59,7 @@ class Downloader:
 
         # Download the TSVs
         logger.debug(f"Downloading {len(self.FILE_LIST)} files from the BLS")
-        df_list = dict((name, self.get_df(name)) for name in self.FILE_LIST)
+        df_list = {name: self.get_df(name) for name in self.FILE_LIST}
 
         # Insert the TSVs
         logger.debug("Loading data into SQLite database")
@@ -93,12 +93,13 @@ class Downloader:
             logger.error(f"Error downloading {url}")
             logger.error(f"Response: {response.text}")
             raise AssertionError(f"Error downloading {url} - {response.text}")
-        
+
         # Read in the contents as an io.StringIO object
         df = pd.read_csv(io.StringIO(response.text), sep="\t")
 
         # .strip() every value in the dataframe
-        df.replace('(^\s+|\s+$)', '', regex=True, inplace=True)
+        df_obj = df.select_dtypes("object")
+        df[df_obj.columns] = df_obj.apply(lambda x: x.str.strip())
 
         # .strip every column name
         df.columns = [c.strip() for c in df.columns]
