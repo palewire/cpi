@@ -6,16 +6,7 @@ import logging
 import os
 import sqlite3
 
-from .models import (
-    Area,
-    Index,
-    Item,
-    MappingList,
-    Period,
-    Periodicity,
-    Series,
-    SeriesList,
-)
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
@@ -45,21 +36,30 @@ class BaseParser:
         # Return data
         return result_list
 
+    def parse(self) -> list[dict]:
+        raise NotImplementedError
+
+    def get_df(self) -> pd.DataFrame:
+        """Convert the database table to a polished dataframe."""
+        return pd.DataFrame(self.parse()).drop_duplicates()
+
 
 class ParseArea(BaseParser):
-    """
-    Parses the raw list of CPI areas.
-    """
+    """Parse the raw list of CPI areas."""
 
     def parse(self):
         """
         Returns a list Area objects.
         """
         logger.debug("Parsing area file")
-        object_list = MappingList()
+        object_list = []
         for row in self.get_file("cu.area"):
-            obj = Area(row["area_code"], row["area_name"])
-            object_list.append(obj)
+            d = dict(
+                id=row["area_code"],
+                code=row["area_code"],
+                name=row["area_name"],
+            )
+            object_list.append(d)
         return object_list
 
 
@@ -73,10 +73,14 @@ class ParseItem(BaseParser):
         Returns a list Area objects.
         """
         logger.debug("Parsing item file")
-        object_list = MappingList()
+        object_list = []
         for row in self.get_file("cu.item"):
-            obj = Item(row["item_code"], row["item_name"])
-            object_list.append(obj)
+            d = dict(
+                id=row["item_code"],
+                code=row["item_code"],
+                name=row["item_name"],
+            )
+            object_list.append(d)
         return object_list
 
 
@@ -90,10 +94,15 @@ class ParsePeriod(BaseParser):
         Returns a list Area objects.
         """
         logger.debug("Parsing period file")
-        object_list = MappingList()
+        object_list = []
         for row in self.get_file("cu.period"):
-            obj = Period(row["period"], row["period_abbr"], row["period_name"])
-            object_list.append(obj)
+            d = dict(
+                id=row["period"],
+                code=row["period"],
+                abbreviation=row["period_abbr"],
+                name=row["period_name"],
+            )
+            object_list.append(d)
         return object_list
 
 
@@ -107,10 +116,14 @@ class ParsePeriodicity(BaseParser):
         Returns a list Periodicity objects.
         """
         logger.debug("Parsing periodicity file")
-        object_list = MappingList()
+        object_list = []
         for row in self.get_file("cu.periodicity"):
-            obj = Periodicity(row["periodicity_code"], row["periodicity_name"])
-            object_list.append(obj)
+            d = dict(
+                id=row["periodicity_code"],
+                code=row["periodicity_code"],
+                name=row["periodicity_name"],
+            )
+            object_list.append(d)
         return object_list
 
 
@@ -123,6 +136,38 @@ class ParseSeries(BaseParser):
         "CU": "All urban consumers",
         "CW": "Urban wage earners and clerical workers",
     }
+
+    def parse_id(self, id):
+        return dict(
+            survey_code=id[:2],
+            seasonal_code=id[2:3],
+            periodicity_code=id[3:4],
+            area_code=id[4:8],
+            item_code=id[8:],
+        )
+
+    def parse(self):
+        """Parse the data."""
+        logger.debug("Parsing series file")
+        object_list = []
+        for row in self.get_file("cu.series"):
+            parsed_id = self.parse_id(row["series_id"])
+            d = dict(
+                id=row["series_id"],
+                title=row["series_title"],
+                survey=self.SURVEYS[parsed_id["survey_code"]],
+                seasonally_adjusted=row["seasonal"] == "S",
+                periodicity=row["periodicity_code"],
+                area=row["area_code"],
+                items=row["item_code"],
+            )
+            object_list.append(d)
+        return object_list
+
+
+class ParseIndex(BaseParser):
+    """Parse indexes."""
+
     FILE_LIST = [
         "cu.data.0.Current",
         "cu.data.1.AllItems",
@@ -147,69 +192,19 @@ class ParseSeries(BaseParser):
         "cu.data.20.USCommoditiesServicesSpecial",
     ]
 
-    def __init__(self, periods=None, periodicities=None, areas=None, items=None):
-        self.periods = periods or ParsePeriod().parse()
-        self.periodicities = periodicities or ParsePeriodicity().parse()
-        self.areas = areas or ParseArea().parse()
-        self.items = items or ParseItem().parse()
-
-    def parse_id(self, id):
-        return dict(
-            survey_code=id[:2],
-            seasonal_code=id[2:3],
-            periodicity_code=id[3:4],
-            area_code=id[4:8],
-            item_code=id[8:],
-        )
-
     def parse(self):
-        self.series_list = self.parse_series()
-        self.parse_indexes()
-        return self.series_list
-
-    def parse_series(self):
-        """
-        Returns a list Series objects.
-        """
-        logger.debug("Parsing series file")
-        object_list = SeriesList(
-            periodicities=self.periodicities, areas=self.areas, items=self.items
-        )
-        for row in self.get_file("cu.series"):
-            parsed_id = self.parse_id(row["series_id"])
-            obj = Series(
-                row["series_id"],
-                row["series_title"],
-                self.SURVEYS[parsed_id["survey_code"]],
-                row["seasonal"] == "S",
-                self.periodicities.get_by_id(row["periodicity_code"]),
-                self.areas.get_by_id(row["area_code"]),
-                self.items.get_by_id(row["item_code"]),
-            )
-            object_list.append(obj)
-        return object_list
-
-    def parse_indexes(self):
         logger.debug("Parsing index files")
         # Loop through all the files ...
+        object_list = []
         for file in self.FILE_LIST:
             # ... and for each file ...
             for row in self.get_file(file):
-                # Get the series
-                series = self.series_list.get_by_id(row["series_id"])
-
                 # Create an object
-                index = Index(
-                    series,
-                    int(row["year"]),
-                    self.periods.get_by_id(row["period"]),
-                    float(row["value"]),
+                d = dict(
+                    series=row["series_id"],
+                    year=int(row["year"]),
+                    period=row["period"],
+                    value=float(row["value"]),
                 )
-
-                # If the value has already been loaded ...
-                if index.date in series._indexes[index.period.type]:
-                    # ... verify this value matches what we have ...
-                    assert index == series._indexes[index.period.type][index.date]
-                else:
-                    # ... and if the series doesn't have the index yet, add it.
-                    series._indexes[index.period.type][index.date] = index
+                object_list.append(d)
+        return object_list

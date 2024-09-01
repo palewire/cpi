@@ -6,8 +6,9 @@ import logging
 import numbers
 import warnings
 from datetime import date, datetime
+from pathlib import Path
 
-from . import parsers
+from . import models
 from .defaults import DEFAULT_SERIES_ID, DEFAULTS_SERIES_ATTRS
 from .download import Downloader
 from .errors import StaleDataWarning
@@ -15,19 +16,19 @@ from .errors import StaleDataWarning
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
+# Check if the cpi.db database exists, if not, download it.
+this_dir = Path(__file__).parent.absolute()
+db_path = this_dir / "cpi.db"
+if not db_path.exists():
+    logger.info("CPI database not found. Downloading...")
+    Downloader().update()
 
-# Parse data for use
-logger.info("Parsing data files from the BLS")
-areas = parsers.ParseArea().parse()
-items = parsers.ParseItem().parse()
-periods = parsers.ParsePeriod().parse()
-periodicities = parsers.ParsePeriodicity().parse()
-series = parsers.ParseSeries(
-    periods=periods, periodicities=periodicities, areas=areas, items=items
-).parse()
+# Create a list of all available series, will be lazy loaded as we go
+series = models.SeriesList()
 
-# set the default series to the CPI-U
-DEFAULT_SERIES = series.get_by_id(DEFAULT_SERIES_ID)
+# Set the default series to the CPI-U
+DEFAULT_SERIES = models.Series.get_by_id(DEFAULT_SERIES_ID)
+series.append(DEFAULT_SERIES)
 
 # Establish the range of data available
 LATEST_MONTH = DEFAULT_SERIES.latest_month
@@ -44,6 +45,12 @@ if DAYS_SINCE_LATEST_YEAR > (365 * 2.25) or DAYS_SINCE_LATEST_MONTH > 90:
         "CPI data is out of date. To accurately inflate to today's dollars, you must run `cpi.update()`."
     )
 
+# Create aliases for accessing the other data tables
+areas = models.Area
+periods = models.Period
+periodicities = models.Periodicity
+items = models.Item
+
 
 def get(
     year_or_month,
@@ -54,9 +61,7 @@ def get(
     items=DEFAULTS_SERIES_ATTRS["items"],
     series_id=None,
 ):
-    """
-    Returns the CPI value for a given year.
-    """
+    """Returns the CPI value for a given year."""
     # Pull the series
     if series_id:
         # If the user has provided an explicit series id, we are going to ignore the humanized options.
