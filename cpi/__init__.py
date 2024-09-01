@@ -7,7 +7,7 @@ import numbers
 import warnings
 from datetime import date, datetime
 
-from . import parsers
+from . import models
 from .defaults import DEFAULT_SERIES_ID, DEFAULTS_SERIES_ATTRS
 from .download import Downloader
 from .errors import StaleDataWarning
@@ -15,19 +15,11 @@ from .errors import StaleDataWarning
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
+series = models.SeriesList()
 
-# Parse data for use
-logger.info("Parsing data files from the BLS")
-areas = parsers.ParseArea().parse()
-items = parsers.ParseItem().parse()
-periods = parsers.ParsePeriod().parse()
-periodicities = parsers.ParsePeriodicity().parse()
-series = parsers.ParseSeries(
-    periods=periods, periodicities=periodicities, areas=areas, items=items
-).parse()
-
-# set the default series to the CPI-U
-DEFAULT_SERIES = series.get_by_id(DEFAULT_SERIES_ID)
+# Set the default series to the CPI-U
+DEFAULT_SERIES = models.Series.get_by_id(DEFAULT_SERIES_ID)
+series.append(DEFAULT_SERIES)
 
 # Establish the range of data available
 LATEST_MONTH = DEFAULT_SERIES.latest_month
@@ -54,9 +46,7 @@ def get(
     items=DEFAULTS_SERIES_ATTRS["items"],
     series_id=None,
 ):
-    """
-    Returns the CPI value for a given year.
-    """
+    """Returns the CPI value for a given year."""
     # Pull the series
     if series_id:
         # If the user has provided an explicit series id, we are going to ignore the humanized options.

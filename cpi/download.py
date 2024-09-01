@@ -8,6 +8,8 @@ from pathlib import Path
 import pandas as pd
 import requests
 
+from cpi import parsers
+
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
@@ -57,16 +59,53 @@ class Downloader:
         # Delete existing files
         self.rm()
 
+        # Load the default files
+        self.load_file_list(self.FILE_LIST)
+
+        # Process flat CSVs we can use in our API
+        self.process_files()
+
+        # Drop the raw files now that we don't need them
+        self.drop_file_list(self.FILE_LIST)
+
+    def get_db_conn(self) -> sqlite3.Connection:
+        """Connect to db."""
+        db_path = self.THIS_DIR / "cpi.db"
+        return sqlite3.connect(db_path)
+
+    def process_files(self) -> None:
+        """Process the raw data files into simplified tables."""
+        logger.info("Parsing data files from the BLS")
+        conn = self.get_db_conn()
+
+        areas = parsers.ParseArea().get_df()
+        areas.to_sql("areas", conn, if_exists="replace", index=False)
+
+        items = parsers.ParseItem().get_df()
+        items.to_sql("items", conn, if_exists="replace", index=False)
+
+        periods = parsers.ParsePeriod().get_df()
+        periods.to_sql("periods", conn, if_exists="replace", index=False)
+
+        periodicities = parsers.ParsePeriodicity().get_df()
+        periodicities.to_sql("periodicities", conn, if_exists="replace", index=False)
+
+        series = parsers.ParseSeries().get_df()
+        series.to_sql("series", conn, if_exists="replace", index=False)
+
+        index = parsers.ParseIndex().get_df()
+        index.to_sql("index", conn, if_exists="replace", index=False)
+
+        conn.close()
+
+    def load_file_list(self, file_list: typing.List[str]) -> None:
         # Download the TSVs
-        logger.debug(f"Downloading {len(self.FILE_LIST)} files from the BLS")
-        df_list = {name: self.get_df(name) for name in self.FILE_LIST}
+        logger.debug(f"Downloading {len(file_list)} files from the BLS")
+        df_list = {name: self.get_df(name) for name in file_list}
 
         # Insert the TSVs
         logger.debug("Loading data into SQLite database")
-
-        # Connect to db
-        db_path = self.THIS_DIR / "cpi.db"
-        conn = sqlite3.connect(db_path)
+        conn = self.get_db_conn()
 
         # Load them one by one
         for name, df in df_list.items():
@@ -74,6 +113,24 @@ class Downloader:
             df.to_sql(name, conn, if_exists="replace", index=False)
 
         # Close connection
+        conn.close()
+
+    def drop_file_list(self, file_list: typing.List[str]) -> None:
+        """Drop the raw data from BLS."""
+        logger.debug("Dropping data from SQLite database")
+
+        # Connect
+        conn = self.get_db_conn()
+
+        # Do tables one by one
+        for name in file_list:
+            logger.debug(f"- {name}")
+            conn.execute(f"DROP TABLE '{name}';")
+
+        # Clear space
+        conn.execute("VACUUM;")
+
+        # Close the connection
         conn.close()
 
     def get_df(self, file: str) -> pd.DataFrame:
