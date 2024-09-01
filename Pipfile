@@ -8,6 +8,7 @@ requests = "*"
 click = "*"
 python-dateutil = "*"
 pandas = "*"
+numpy = "*"
 
 [dev-packages]
 jupyterlab = "*"
@@ -20,6 +21,9 @@ sphinx = "*"
 sphinx-autobuild = "*"
 sphinx-palewire-theme = "*"
 myst-parser = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-xdist = "*"
 
 [requires]
 python_version = "3.11"

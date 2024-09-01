@@ -52,7 +52,7 @@ def query(sql: str, params: list | tuple | None = None) -> list[dict]:
     return result_list
 
 
-def queryone(sql: str, params: list | tuple) -> dict:
+def queryone(sql: str, params: list | tuple | None = None) -> dict:
     """Query the cpi.db database and return a single result.
 
     Args:
