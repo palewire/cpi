@@ -46,11 +46,17 @@ cpi.inflate(100, date(1950, 1, 1), to=date(2018, 1, 1))
 
 You can adjust values using any of the other series published by the BLS as part of its "All Urban Consumers (CU)" survey. They offer more precise measures for different regions and items.
 
-Submit one of the 60 areas tracked by the agency to inflate dollars in that region. You can find a complete list in [the repository](https://github.com/palewire/cpi/blob/main/data/areas.csv).
+Submit one of the 60 areas tracked by the agency to inflate dollars in that region.
 
 ```python
 cpi.inflate(100, 1950, area="Los Angeles-Long Beach-Anaheim, CA")
 1081.054852320675
+```
+
+You can find a complete list in [the repository](https://github.com/palewire/cpi/blob/main/data/areas.csv) or by running the following command:
+
+```python
+cpi.areas.all()
 ```
 
 You can do the same to inflate the price of 400 specific items lumped into the basket of goods that make up the overall index.  You can find a complete list in [the repository](https://github.com/palewire/cpi/blob/main/data/items.csv).
@@ -177,7 +183,7 @@ Options:
 
 The lists of CPI series and each's index values can be converted to a DataFrame using the `to_dataframe` method.
 
-Here's how to get the series list:
+Here's how to get the list of series you've loaded thus far:
 
 ```python
 series_df = cpi.series.to_dataframe()
@@ -206,7 +212,7 @@ cpi.update()
 
 ## Other resources
 
-* Code: [github.com/datadesk/cpi](https://github.com/datadesk/cpi/)
-* Issues: [github.com/datadesk/cpi/issues](https://github.com/datadesk/cpi/issues)
+* Code: [github.com/palewire/cpi](https://github.com/palewire/cpi/)
+* Issues: [github.com/palewire/cpi/issues](https://github.com/palewire/cpi/issues)
 * Packaging: [pypi.python.org/pypi/cpi](https://pypi.python.org/pypi/cpi)
-* Testing: [github.com/datadesk/cpi/actions](https://github.com/datadesk/cpi/actions)
+* Testing: [github.com/palewire/cpi/actions](https://github.com/palewire/cpi/actions)

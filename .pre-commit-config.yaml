@@ -15,30 +15,19 @@ repos:
     -   id: check-ast
     -   id: check-merge-conflict
 
--   repo: https://github.com/psf/black
-    rev: 23.3.0
+-   repo: 'https://github.com/astral-sh/ruff-pre-commit'
+    rev: v0.6.3
     hooks:
-    -   id: black
+    -   id: ruff
+        args:
+        -   '--fix'
+    -   id: ruff-format
 
 -   repo: https://github.com/asottile/blacken-docs
     rev: 1.16.0
     hooks:
     -   id: blacken-docs
         additional_dependencies: [black]
-
--   repo: https://github.com/timothycrosley/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
-        args: ["--profile", "black", "--filter-files"]
-
--   repo: https://github.com/pycqa/flake8
-    rev: 6.1.0
-    hooks:
-    - id: flake8
-      additional_dependencies:
-        - flake8-bugbear
-        # - flake8-docstrings
 
 -   repo: https://github.com/asottile/pyupgrade
     rev: v3.15.0
