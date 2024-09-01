@@ -1,6 +1,8 @@
 """Configure Sphinx configuration."""
+
 import os
 import sys
+from typing import Any
 from datetime import datetime
 
 # Insert the parent directory into the path
@@ -21,8 +23,8 @@ copyright = f"{year} palewire"
 exclude_patterns = ["_build"]
 
 html_theme = "palewire"
-html_sidebars = {}
-html_theme_options = {
+html_sidebars: dict[Any, Any] = {}
+html_theme_options: dict[str, Any] = {
     "canonical_url": f"https://palewi.re/docs/{project}/",
     "nosidebar": True,
 }

@@ -2,6 +2,7 @@
 """
 Default values.
 """
+
 DEFAULT_SERIES_ID = "CUUR0000SA0"
 DEFAULTS_SERIES_ATTRS = {
     "survey": "All urban consumers",
