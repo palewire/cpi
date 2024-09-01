@@ -1,4 +1,5 @@
 import warnings
+from pathlib import Path
 from datetime import date, datetime
 
 import pytest
@@ -8,6 +9,7 @@ from click.testing import CliRunner
 
 import cpi
 from cpi import cli
+from cpi.models import queryone
 from cpi.errors import CPIObjectDoesNotExist
 
 
@@ -179,8 +181,16 @@ def test_warning():
     warnings.warn(cpi.StaleDataWarning(), stacklevel=2)
 
 
+def test_bad_queryone():
+    with pytest.raises(CPIObjectDoesNotExist):
+        queryone("SELECT * FROM series WHERE id = 'FOOBAR'")
+    with pytest.raises(ValueError):
+        queryone("SELECT * FROM series")
+
+
 def test_pandas():
-    df = pd.read_csv("test.csv")
+    this_dir = Path(__file__).parent.absolute()
+    df = pd.read_csv(this_dir / "test.csv")
     df["ADJUSTED"] = df.apply(
         lambda x: cpi.inflate(x.MEDIAN_HOUSEHOLD_INCOME, x.YEAR), axis=1
     )

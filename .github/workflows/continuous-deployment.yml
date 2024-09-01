@@ -70,7 +70,7 @@ jobs:
 
       - id: tests
         name: Run tests
-        run: pytest -n auto --cov=cpi --cov-report term-missing tests.py
+        run: pytest -n auto --cov=cpi --cov-report term-missing tests
 
       - id: update
         name: Update data
@@ -104,7 +104,7 @@ jobs:
 
       - id: tests
         name: Run tests
-        run: $CONDA/bin/conda run -n cpi pytest -n auto --cov=cpi tests.py --cov-report term-missing tests.py
+        run: $CONDA/bin/conda run -n cpi pytest -n auto --cov=cpi --cov-report term-missing tests
 
       - id: update
         name: Update data
