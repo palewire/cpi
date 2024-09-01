@@ -1,3 +1,16 @@
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: '0.8'
+    jupytext_version: '1.4.1'
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 # cpi
 
 A Python library that quickly adjusts U.S. dollars for inflation using the [Consumer Price Index](https://www.bls.gov/cpi/).
@@ -17,111 +30,111 @@ pipenv install cpi
 
 ## Working with Python
 
+Before you can use it, you need to add the library to your Python script with an `import` statement.
+
+```{code-cell}
+import cpi
+```
+
 Adjusting prices for inflation is as simple as providing a dollar value along with its year of origin to the `inflate` method.
 
-```python
-import cpi
-
+```{code-cell}
 cpi.inflate(100, 1950)
-1017.0954356846472
 ```
 
  By default the value is adjusted to the most recent year. Unless otherwise specified, "CPI-U" index for all urban consumers is used to make the conversion, the method recommended by the U.S. Bureau of Labor Statistics.
 
 If you'd like to adjust to a different year, you can submit it as an integer to the optional `to` keyword argument.
 
-```python
+```{code-cell}
 cpi.inflate(100, 1950, to=1960)
-122.82157676348547
 ```
 
 You can also adjust month to month. You should submit the months as `datetime.date` objects.
 
-```python
+```{code-cell}
 from datetime import date
 
 cpi.inflate(100, date(1950, 1, 1), to=date(2018, 1, 1))
-1072.2936170212768
 ```
 
 You can adjust values using any of the other series published by the BLS as part of its "All Urban Consumers (CU)" survey. They offer more precise measures for different regions and items.
 
 Submit one of the 60 areas tracked by the agency to inflate dollars in that region.
 
-```python
+```{code-cell}
 cpi.inflate(100, 1950, area="Los Angeles-Long Beach-Anaheim, CA")
-1081.054852320675
 ```
 
 You can find a complete list in [the repository](https://github.com/palewire/cpi/blob/main/data/areas.csv) or by running the following command:
 
-```python
+```{code-cell}
 cpi.areas.all()
 ```
 
-You can do the same to inflate the price of 400 specific items lumped into the basket of goods that make up the overall index.  You can find a complete list in [the repository](https://github.com/palewire/cpi/blob/main/data/items.csv).
+You can do the same to inflate the price of 400 specific items lumped into the basket of goods that make up the overall index.
 
-```python
+```{code-cell}
 cpi.inflate(100, 1980, items="Housing")
-309.77681874229353
+```
+
+You can find a complete list in [the repository](https://github.com/palewire/cpi/blob/main/data/items.csv) or by running the following command:
+
+```{code-cell}
+cpi.items.all()
 ```
 
 And you can do both together.
 
-```python
+```{code-cell}
 cpi.inflate(100, 1980, items="Housing", area="Los Angeles-Long Beach-Anaheim, CA")
-344.5364396654719
 ```
 
 Each of the 7,800 variations on the CU survey has a unique identifier. If you know which one you want, you can submit it directly.
 
-```python
+```{code-cell}
 cpi.inflate(100, 2000, series_id="CUUSS12ASETB01")
-165.15176374077112
 ```
 
 If you'd like to retrieve the CPI value itself for any year, use the `get` method.
 
-```python
+```{code-cell}
 cpi.get(1950)
-24.1
 ```
 
 You can also do that by month.
 
-```python
+```{code-cell}
 cpi.get(date(1950, 1, 1))
-23.5
 ```
 
 The same keyword arguments are available.
 
-```python
+```{code-cell}
 cpi.get(1980, items="Housing", area="Los Angeles-Long Beach-Anaheim, CA")
-83.7
 ```
 
 If you'd like to retrieve a particular CPI series for inspection, use the `series` attribute's `get` method. No configuration returns the default series.
 
-```python
+```{code-cell}
 cpi.series.get()
 ```
 
 Alter the configuration options to retrieve variations based on item, area and other metadata.
 
-```python
+```{code-cell}
 cpi.series.get(items="Housing", area="Los Angeles-Long Beach-Anaheim, CA")
 ```
 
 If you know a series's identifier code, you can submit that directly to `get_by_id`.
 
-```python
+```{code-cell}
 cpi.series.get_by_id("CUURS49ASAH")
 ```
 
 Once retrieved, the complete set of index values for a series is accessible via the `indexes` property.
 
-```python
+```{code-cell}
 series = cpi.series.get(items="Housing", area="Los Angeles-Long Beach-Anaheim, CA")
 series.indexes
 ```
@@ -132,7 +145,7 @@ That's it!
 
 An inflation-adjusted column can quickly be added to a pandas DataFrame using the `apply` method. Here is an example using data tracking the median household income in the United States from [The Federal Reserve Bank of St. Louis](https://fred.stlouisfed.org/series/MEHOINUSA646N).
 
-```python
+```{code-cell}
 import cpi
 import pandas as pd
 
@@ -150,21 +163,18 @@ It works the same as the Python library. First give it a value. Then a source ye
 
 ```bash
 inflate 100 1950
-1017.09543568
 ```
 
 If you'd like to adjust to a different year, submit it as an integer to the `--to` option.
 
 ```bash
 inflate 100 1950 --to=1960
-122.821576763
 ```
 
 You can also adjust month to month. You should submit the months as parseable date strings.
 
 ```bash
 inflate 100 1950-01-01 --to=2018-01-01
-1054.75319149
 ```
 
 Here are all its options.
@@ -179,21 +189,6 @@ Options:
   --to TEXT      The year or month to adjust the value to.
   --series_id TEXT  The CPI data series used for the conversion. The default is the CPI-U.
   --help         Show this message and exit.
-```
-
-The lists of CPI series and each's index values can be converted to a DataFrame using the `to_dataframe` method.
-
-Here's how to get the list of series you've loaded thus far:
-
-```python
-series_df = cpi.series.to_dataframe()
-```
-
-Here's how to get a series's index values:
-
-```python
-series_obj = cpi.series.get(items="Housing", area="Los Angeles-Long Beach-Anaheim, CA")
-index_df = series_obj.to_dataframe()
 ```
 
 ## About our source

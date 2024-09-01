@@ -22,21 +22,15 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pipenv'
-
-      - id: install-pipenv
-        name: Install pipenv
-        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-        shell: bash
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pipenv sync --dev
+        run: pip install cpi sphinx sphinx-palewire-theme myst-nb myst-parser
         shell: bash
 
       - id: build-sphinx-documentation
         name: Build Sphinx documentation
-        run: pipenv run make html
+        run: sphinx-build -b html src _build
         shell: bash
         working-directory: docs
 
@@ -45,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: release-candidate
-          path: ./docs/_build/html/
+          path: ./docs/_build/
 
   deploy:
     name: Deploy

@@ -20,4 +20,8 @@ help:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 livehtml:
-	sphinx-autobuild -b html $(SOURCEDIR) $(BUILDDIR)/html
+	sphinx-autobuild --ignore=`pwd`/jupyter_execute \
+	--ignore=`pwd`/_build/jupyter_execute \
+	--ignore=`pwd`/_build_html/jupyter_execute \
+	-b html \
+	./src ./_build_html

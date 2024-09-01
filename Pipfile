@@ -24,6 +24,7 @@ myst-parser = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-xdist = "*"
+myst-nb = "*"
 
 [requires]
 python_version = "3.11"
