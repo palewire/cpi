@@ -45,6 +45,12 @@ if DAYS_SINCE_LATEST_YEAR > (365 * 2.25) or DAYS_SINCE_LATEST_MONTH > 90:
         "CPI data is out of date. To accurately inflate to today's dollars, you must run `cpi.update()`."
     )
 
+# Create aliases for accessing the other data tables
+areas = models.Area
+periods = models.Period
+periodicities = models.Periodicity
+items = models.Item
+
 
 def get(
     year_or_month,

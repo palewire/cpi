@@ -90,8 +90,17 @@ class CPITest(BaseCPITest):
     def test_series_list(self):
         cpi.series.get_by_id("CUSR0000SA0")
 
+    def test_metadata_lists(self):
+        self.assertTrue(len(cpi.areas.all()) > 0)
+        self.assertTrue(len(cpi.periods.all()) > 0)
+        self.assertTrue(len(cpi.periodicities.all()) > 0)
+        self.assertTrue(len(cpi.items.all()) > 0)
+
     def test_series_indexes(self):
-        for series in cpi.series:
+        # Make sure we can lazy load the full database
+        series_list = cpi.series.all()
+        self.assertTrue(len(series_list) > 1)
+        for series in series_list:
             self.assertTrue(len(series.indexes) > 0)
             series.latest_month
             series.latest_year

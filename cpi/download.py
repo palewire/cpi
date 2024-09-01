@@ -51,8 +51,27 @@ class Downloader:
         """Remove any existing files."""
         db_path = self.THIS_DIR / "cpi.db"
         if db_path.exists():
-            logger.debug(f"Deleting {db_path}")
-            db_path.unlink()
+            logger.debug("Clearing database")
+            # Drop all tables in the database
+            conn = self.get_db_conn()
+            table_list = [
+                "areas",
+                "items",
+                "periods",
+                "periodicities",
+                "series",
+                "indexes",
+            ]
+            for t in table_list:
+                conn.execute(f"DROP TABLE IF EXISTS '{t}';")
+            conn.close()
+            self.vaccum()
+
+    def vaccum(self) -> None:
+        """Vaccum the database."""
+        conn = self.get_db_conn()
+        conn.execute("VACUUM;")
+        conn.close()
 
     def update(self) -> None:
         """Update the Consumer Price Index dataset that powers this library."""
@@ -94,7 +113,7 @@ class Downloader:
         series.to_sql("series", conn, if_exists="replace", index=False)
 
         index = parsers.ParseIndex().get_df()
-        index.to_sql("index", conn, if_exists="replace", index=False)
+        index.to_sql("indexes", conn, if_exists="replace", index=False)
 
         conn.close()
 
@@ -127,11 +146,11 @@ class Downloader:
             logger.debug(f"- {name}")
             conn.execute(f"DROP TABLE '{name}';")
 
-        # Clear space
-        conn.execute("VACUUM;")
-
         # Close the connection
         conn.close()
+
+        # Vaccum the database
+        self.vaccum()
 
     def get_df(self, file: str) -> pd.DataFrame:
         """Download TSV file from the BLS."""

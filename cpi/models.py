@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
 
-def query(sql: str, params: list | tuple | None) -> list[dict]:
+def query(sql: str, params: list | tuple | None = None) -> list[dict]:
     """Query the cpi.db database and return the result.
 
     Args:
@@ -105,6 +105,12 @@ class BaseObject:
         """Returns the object with the provided name."""
         d = queryone(f"SELECT * from '{cls.table_name}' WHERE name=?", (value,))
         return cls(**d)
+
+    @classmethod
+    def all(cls):
+        """Returns a list of all objects in the table."""
+        dict_list = query(f"SELECT * FROM '{cls.table_name}'")
+        return [cls(**d) for d in dict_list]
 
 
 class Area(BaseObject):
@@ -312,7 +318,7 @@ class Series(BaseObject):
         d["items"] = Item.get_by_id(d["items"])
 
         # Get the indexes
-        dict_list = query("SELECT * FROM 'index' WHERE series=?", (value,))
+        dict_list = query("SELECT * FROM 'indexes' WHERE series=?", (value,))
         d["indexes"] = []
         for i in dict_list:
             obj = Index(
@@ -377,6 +383,14 @@ class SeriesList(list):
         # Return it
         return obj
 
+    def all(self) -> list[Series]:
+        """Get all of the series from our database."""
+        # Query all of the series ids from the database
+        series_list = query("SELECT id FROM 'series';")
+
+        # Get all of them, to ensure they're all loaded in the cache
+        return [self.get_by_id(d["id"]) for d in series_list]
+
     def get(
         self,
         survey=DEFAULTS_SERIES_ATTRS["survey"],
@@ -385,8 +399,7 @@ class SeriesList(list):
         area=DEFAULTS_SERIES_ATTRS["area"],
         items=DEFAULTS_SERIES_ATTRS["items"],
     ) -> Series:
-        """
-        Returns a single CPI Series object based on the input.
+        """Returns a single CPI Series object based on the input.
 
         The default series is returned if not configuration is made to the keyword arguments.
         """
