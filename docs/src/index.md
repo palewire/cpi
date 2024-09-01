@@ -149,7 +149,7 @@ An inflation-adjusted column can quickly be added to a pandas DataFrame using th
 import cpi
 import pandas as pd
 
-df = pd.read("test.csv")
+df = pd.read("https://raw.githubusercontent.com/palewire/cpi/main/tests/test.csv")
 df["ADJUSTED"] = df.apply(
     lambda x: cpi.inflate(x.MEDIAN_HOUSEHOLD_INCOME, x.YEAR), axis=1
 )
