@@ -69,7 +69,7 @@ cpi.inflate(100, 1950, area="Los Angeles-Long Beach-Anaheim, CA")
 You can find a complete list in [the repository](https://github.com/palewire/cpi/blob/main/data/areas.csv) or by running the following command:
 
 ```{code-cell}
-cpi.areas.all()
+cpi.areas.all()[:5]
 ```
 
 You can do the same to inflate the price of 400 specific items lumped into the basket of goods that make up the overall index.
@@ -81,7 +81,7 @@ cpi.inflate(100, 1980, items="Housing")
 You can find a complete list in [the repository](https://github.com/palewire/cpi/blob/main/data/items.csv) or by running the following command:
 
 ```{code-cell}
-cpi.items.all()
+cpi.items.all()[:5]
 ```
 
 And you can do both together.
