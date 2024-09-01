@@ -2,6 +2,7 @@
 """
 Command-line interface.
 """
+
 import click
 from dateutil.parser import parse as dateparse
 

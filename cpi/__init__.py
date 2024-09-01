@@ -2,6 +2,7 @@
 """
 Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)
 """
+
 import logging
 import numbers
 import warnings

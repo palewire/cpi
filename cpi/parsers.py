@@ -2,6 +2,7 @@
 """
 Parse and prepare the Consumer Price Index (CPI) dataset.
 """
+
 import logging
 import os
 import sqlite3
