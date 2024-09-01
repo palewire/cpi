@@ -1,4 +1,5 @@
 """Download the latest annual Consumer Price Index (CPI) dataset."""
+
 import io
 import logging
 import sqlite3

@@ -1,4 +1,5 @@
 """Python objects for modeling Consumer Price Index (CPI) data structures."""
+
 from __future__ import annotations
 
 import logging
