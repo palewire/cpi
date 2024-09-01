@@ -179,7 +179,7 @@ class Downloader:
         df[df_obj.columns] = df_obj.apply(lambda x: x.str.strip())
 
         # .strip every column name
-        df.columns = [c.strip() for c in df.columns]
+        df.columns = [col.strip() for col in df.columns]
 
         # Clean file
         df.drop([None], axis=1, inplace=True, errors="ignore")
