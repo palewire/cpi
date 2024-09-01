@@ -17,11 +17,12 @@ logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
 
-def query(sql: str) -> list[dict]:
+def query(sql: str, params: list | tuple | None) -> list[dict]:
     """Query the cpi.db database and return the result.
 
     Args:
         sql (str): The SQL query to execute.
+        params (list | tuple): The parameters to pass to the query.
 
     Returns:
         list[dict]: A list of dictionaries representing the result of the query.
@@ -36,7 +37,10 @@ def query(sql: str) -> list[dict]:
     cursor = conn.cursor()
 
     # Query the sql
-    query = cursor.execute(sql)
+    if not params:
+        query = cursor.execute(sql)
+    else:
+        query = cursor.execute(sql, params)
     columns = [d[0] for d in query.description]
     result_list = [dict(zip(columns, r)) for r in query.fetchall()]
 
@@ -47,11 +51,12 @@ def query(sql: str) -> list[dict]:
     return result_list
 
 
-def queryone(sql: str) -> dict:
+def queryone(sql: str, params: list | tuple) -> dict:
     """Query the cpi.db database and return a single result.
 
     Args:
         sql (str): The SQL query to execute.
+        params (list | tuple): The parameters to pass to the query.
 
     Returns:
         dict: A dictionary representing the result of the query.
@@ -61,10 +66,10 @@ def queryone(sql: str) -> dict:
         ValueError: If more than one object exists.
 
     Examples:
-        >>> queryone("SELECT * FROM 'areas' WHERE id='0000';")
+        >>> queryone("SELECT * FROM 'areas' WHERE id=?", ('0000',))
         {'id': '0000', 'code': 'US', 'name': 'United States'}
     """
-    dict_list = query(sql)
+    dict_list = query(sql, params)
     try:
         assert len(dict_list) == 1
     except AssertionError:
@@ -92,13 +97,13 @@ class BaseObject:
     @classmethod
     def get_by_id(cls, value: str):
         """Returns the object with the provided identifier code."""
-        d = queryone(f"SELECT * from '{cls.table_name}' WHERE id='{value}';")
+        d = queryone(f"SELECT * from '{cls.table_name}' WHERE id=?", (value,))
         return cls(**d)
 
     @classmethod
     def get_by_name(cls, value: str):
         """Returns the object with the provided name."""
-        d = queryone(f"SELECT * from '{cls.table_name}' WHERE name='{value}';")
+        d = queryone(f"SELECT * from '{cls.table_name}' WHERE name=?", (value,))
         return cls(**d)
 
 
@@ -297,7 +302,7 @@ class Series(BaseObject):
     @classmethod
     def get_by_id(cls, value: str):
         # If it's not there, try querying the database
-        d = queryone(f"SELECT * FROM 'series' WHERE id='{value}';")
+        d = queryone("SELECT * FROM 'series' WHERE id=?", (value,))
 
         # Get the other bits
         seasonalities = {1: True, 0: False}
@@ -307,7 +312,7 @@ class Series(BaseObject):
         d["items"] = Item.get_by_id(d["items"])
 
         # Get the indexes
-        dict_list = query(f"SELECT * FROM 'index' WHERE series='{value}';")
+        dict_list = query("SELECT * FROM 'index' WHERE series=?", (value,))
         d["indexes"] = []
         for i in dict_list:
             obj = Index(
