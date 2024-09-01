@@ -6,6 +6,7 @@ import logging
 import numbers
 import warnings
 from datetime import date, datetime
+from pathlib import Path
 
 from . import models
 from .defaults import DEFAULT_SERIES_ID, DEFAULTS_SERIES_ATTRS
@@ -15,6 +16,14 @@ from .errors import StaleDataWarning
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
+# Check if the cpi.db database exists, if not, download it.
+this_dir = Path(__file__).parent.absolute()
+db_path = this_dir / "cpi.db"
+if not db_path.exists():
+    logger.info("CPI database not found. Downloading...")
+    Downloader().update()
+
+# Create a list of all available series, will be lazy loaded as we go
 series = models.SeriesList()
 
 # Set the default series to the CPI-U
