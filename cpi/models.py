@@ -1,7 +1,6 @@
-#! /usr/bin/env python
-"""
-Python objects for modeling Consumer Price Index (CPI) data structures.
-"""
+"""Python objects for modeling Consumer Price Index (CPI) data structures."""
+from __future__ import annotations
+
 import logging
 import sqlite3
 from datetime import date
@@ -17,12 +16,23 @@ from .errors import CPIObjectDoesNotExist
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
-THIS_DIR: Path = Path(__file__).parent.absolute()
-
 
 def query(sql: str) -> list[dict]:
+    """Query the cpi.db database and return the result.
+
+    Args:
+        sql (str): The SQL query to execute.
+
+    Returns:
+        list[dict]: A list of dictionaries representing the result of the query.
+
+    Examples:
+        >>> query("SELECT * FROM 'areas';")
+        [{'id': '0000', 'code': 'US', 'name': 'United States'}, ...]
+    """
     # Connect
-    conn = sqlite3.connect(THIS_DIR / "cpi.db")
+    this_dir = Path(__file__).parent.absolute()
+    conn = sqlite3.connect(this_dir / "cpi.db")
     cursor = conn.cursor()
 
     # Query the sql
@@ -38,6 +48,22 @@ def query(sql: str) -> list[dict]:
 
 
 def queryone(sql: str) -> dict:
+    """Query the cpi.db database and return a single result.
+
+    Args:
+        sql (str): The SQL query to execute.
+
+    Returns:
+        dict: A dictionary representing the result of the query.
+
+    Raises:
+        CPIObjectDoesNotExist: If the object does not exist.
+        ValueError: If more than one object exists.
+
+    Examples:
+        >>> queryone("SELECT * FROM 'areas' WHERE id='0000';")
+        {'id': '0000', 'code': 'US', 'name': 'United States'}
+    """
     dict_list = query(sql)
     try:
         assert len(dict_list) == 1
@@ -49,43 +75,10 @@ def queryone(sql: str) -> dict:
     return dict_list[0]
 
 
-class MappingList(list):
-    """
-    A custom list that allows for lookups by attribute.
-    """
-
-    def __init__(self):
-        self._id_dict = {}
-        self._name_dict = {}
-
-    def get_by_id(self, value):
-        try:
-            return self._id_dict[value]
-        except KeyError:
-            raise CPIObjectDoesNotExist(f"Object with id {value} could not be found")
-
-    def get_by_name(self, value):
-        try:
-            return self._name_dict[value]
-        except KeyError:
-            raise CPIObjectDoesNotExist(f"Object with id {value} could not be found")
-
-    def append(self, item):
-        """
-        Override to default append method that allows dictionary-style lookups
-        """
-        # Add to dictionary lookup
-        self._id_dict[item.id] = item
-        self._name_dict[item.name] = item
-
-        # Append to list
-        super().append(item)
-
-
 class BaseObject:
-    """
-    An abstract base class for all the models.
-    """
+    """An abstract base class for all the models."""
+
+    table_name: str | None = None  #: The name of the table in the database.
 
     def __repr__(self):
         return f"<{self.__class__.__name__}: {self.__str__()}>"
@@ -96,11 +89,23 @@ class BaseObject:
     def __str__(self):
         return self.name
 
+    @classmethod
+    def get_by_id(cls, value: str):
+        """Returns the object with the provided identifier code."""
+        d = queryone(f"SELECT * from '{cls.table_name}' WHERE id='{value}';")
+        return cls(**d)
+
+    @classmethod
+    def get_by_name(cls, value: str):
+        """Returns the object with the provided name."""
+        d = queryone(f"SELECT * from '{cls.table_name}' WHERE name='{value}';")
+        return cls(**d)
+
 
 class Area(BaseObject):
-    """
-    A geographical area where prices are gathered monthly.
-    """
+    """A geographical area where prices are gathered monthly."""
+
+    table_name = "areas"
 
     def __init__(self, id, code, name):
         self.id = id
@@ -109,22 +114,12 @@ class Area(BaseObject):
 
     def __dict__(self):
         return {"id": self.id, "code": self.code, "name": self.name}
-
-    @staticmethod
-    def get_by_id(value: str):
-        d = queryone(f"SELECT * from 'areas' WHERE id='{value}';")
-        return Area(**d)
-
-    @staticmethod
-    def get_by_name(value: str):
-        d = queryone(f"SELECT * from 'areas' WHERE name='{value}';")
-        return Area(**d)
 
 
 class Item(BaseObject):
-    """
-    A consumer item that has its price tracked.
-    """
+    """A type of consumer good or goods that has its price tracked."""
+
+    table_name = "items"
 
     def __init__(self, id, code, name):
         self.id = id
@@ -134,21 +129,11 @@ class Item(BaseObject):
     def __dict__(self):
         return {"id": self.id, "code": self.code, "name": self.name}
 
-    @staticmethod
-    def get_by_id(value: str):
-        d = queryone(f"SELECT * from 'items' WHERE id='{value}';")
-        return Item(**d)
-
-    @staticmethod
-    def get_by_name(value: str):
-        d = queryone(f"SELECT * from 'items' WHERE name='{value}';")
-        return Item(**d)
-
 
 class Period(BaseObject):
-    """
-    A time period tracked by the CPI.
-    """
+    """A time period tracked by the CPI."""
+
+    table_name = "periods"
 
     def __init__(self, id, code, abbreviation, name):
         self.id = id
@@ -190,21 +175,11 @@ class Period(BaseObject):
         else:
             return "monthly"
 
-    @staticmethod
-    def get_by_id(value: str):
-        d = queryone(f"SELECT * from 'periods' WHERE id='{value}';")
-        return Period(**d)
-
-    @staticmethod
-    def get_by_name(value: str):
-        d = queryone(f"SELECT * from 'periods' WHERE name='{value}';")
-        return Period(**d)
-
 
 class Periodicity(BaseObject):
-    """
-    A time interval tracked by the CPI.
-    """
+    """A time interval tracked by the CPI."""
+
+    table_name = "periodicities"
 
     def __init__(self, id, code, name):
         self.id = code
@@ -213,16 +188,6 @@ class Periodicity(BaseObject):
 
     def __dict__(self):
         return {"id": self.id, "code": self.code, "name": self.name}
-
-    @staticmethod
-    def get_by_id(value: str):
-        d = queryone(f"SELECT * from 'periodicities' WHERE id='{value}';")
-        return Periodicity(**d)
-
-    @staticmethod
-    def get_by_name(value: str):
-        d = queryone(f"SELECT * from 'periodicities' WHERE name='{value}';")
-        return Periodicity(**d)
 
 
 class Index(BaseObject):
@@ -329,14 +294,10 @@ class Series(BaseObject):
                 f"Index of {period_type} type for {date} does not exist"
             )
 
-    @staticmethod
-    def get_by_id(value: str):
+    @classmethod
+    def get_by_id(cls, value: str):
         # If it's not there, try querying the database
         d = queryone(f"SELECT * FROM 'series' WHERE id='{value}';")
-
-        # Throw an error if it can't be found
-        if not d:
-            raise CPIObjectDoesNotExist(f"Object with id {value} could not be found")
 
         # Get the other bits
         seasonalities = {1: True, 0: False}
@@ -358,7 +319,7 @@ class Series(BaseObject):
             d["indexes"].append(obj)
 
         # Convert it into a Series object
-        return Series(**d)
+        return cls(**d)
 
 
 class SeriesList(list):
