@@ -13,3 +13,4 @@ build
 *.*#
 .ipynb_checkpoints
 todo
+.ruff-cache

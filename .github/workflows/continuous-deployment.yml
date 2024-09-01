@@ -13,26 +13,13 @@ jobs:
     name: Lint Python code
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - id: checkout
+        name: Checkout
         uses: actions/checkout@v4
 
-      - id: install-python
-        name: Install Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pipenv'
-
-      - name: Install pipenv
-        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-
-      - id: install-python-dependencies
-        name: Install Python dependencies
-        run: pipenv install --dev --python `which python`
-
-      - id: lint
-        name: Lint Python code
-        run: pipenv run flake8 ./ --verbose
+      - id: ruff
+        checkout: Ruff
+        uses: chartboost/ruff-action@v1
 
   test-python:
     strategy:
