@@ -8,19 +8,17 @@ requests = "*"
 click = "*"
 python-dateutil = "*"
 pandas = "*"
-sphinx-palewire-theme = "==0.0.18"
 
 [dev-packages]
 jupyterlab = "*"
 altair = "*"
 altair-latimes = "*"
 twine = "*"
-"flake8" = "*"
 setuptools-scm = "*"
 pre-commit = "*"
 sphinx = "*"
 sphinx-autobuild = "*"
-sphinx-palewire-theme = "==0.0.12"
+sphinx-palewire-theme = "*"
 myst-parser = "*"
 
 [requires]
