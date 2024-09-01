@@ -8,6 +8,7 @@ requests = "*"
 click = "*"
 python-dateutil = "*"
 pandas = "*"
+numpy = "*"
 
 [dev-packages]
 jupyterlab = "*"
