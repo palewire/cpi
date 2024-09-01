@@ -41,7 +41,7 @@ jobs:
 
       - id: mypy
         name: Run mypy
-        run: mypy ./cpi --ignore-missing-imports --verbose
+        run: mypy ./cpi --ignore-missing-imports
         shell: bash
 
   test-python:
