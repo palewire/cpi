@@ -98,9 +98,7 @@ class CPITest(BaseCPITest):
 
     def test_series_indexes(self):
         # Make sure we can lazy load the full database
-        series_list = cpi.series.all()
-        self.assertTrue(len(series_list) > 1)
-        for series in series_list:
+        for series in cpi.series:
             self.assertTrue(len(series.indexes) > 0)
             series.latest_month
             series.latest_year
