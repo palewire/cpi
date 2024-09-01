@@ -21,6 +21,29 @@ jobs:
         name: Ruff
         uses: chartboost/ruff-action@v1
 
+  mypy-python:
+    name: Static-types check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - id: setup-python
+        name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - id: install-python-dependencies
+        name: Install Python dependencies
+        run: pip install mypy types-requests types-python-dateutil pandas-stubs
+        shell: bash
+
+      - id: mypy
+        name: Run mypy
+        run: mypy ./cpi --ignore-missing-imports --verbose
+        shell: bash
+
   test-python:
     strategy:
       matrix:
