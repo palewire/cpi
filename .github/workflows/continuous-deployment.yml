@@ -62,7 +62,7 @@ jobs:
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pip install requests click python-dateutil pandas
+        run: pip install requests click python-dateutil pandas pytest pytest-cov pytest-xdist
 
       - id: download-data
         name: Download data
@@ -70,7 +70,7 @@ jobs:
 
       - id: tests
         name: Run tests
-        run: python tests.py
+        run: pytest -n auto --cov=cpi --cov-report term-missing tests.py
 
       - id: update
         name: Update data
@@ -96,7 +96,7 @@ jobs:
         name: Install Python dependencies
         run: |
           $CONDA/bin/conda create -n cpi python=${{ matrix.python }}
-          $CONDA/bin/conda install -n cpi requests click python-dateutil pandas
+          $CONDA/bin/conda install -n cpi requests click python-dateutil pandas pytest pytest-cov pytest-xdist
 
       - id: download-data
         name: Download data
@@ -104,7 +104,7 @@ jobs:
 
       - id: tests
         name: Run tests
-        run: $CONDA/bin/conda run -n cpi python tests.py
+        run: $CONDA/bin/conda run -n cpi pytest -n auto --cov=cpi tests.py --cov-report term-missing tests.py
 
       - id: update
         name: Update data
