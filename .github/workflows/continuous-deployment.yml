@@ -56,7 +56,7 @@ jobs:
 
       - id: download-data
         name: Download data
-        run: python cpi/download.py
+        run: python -m cpi.download
 
       - id: tests
         name: Run tests
@@ -64,7 +64,7 @@ jobs:
 
       - id: update
         name: Update data
-        run: python cpi/download.py
+        run: python -c 'import cpi; cpi.update()'
 
   test-conda:
     strategy:
@@ -90,7 +90,7 @@ jobs:
 
       - id: download-data
         name: Download data
-        run: $CONDA/bin/conda run -n cpi python cpi/download.py
+        run: $CONDA/bin/conda run -n cpi python -m cpi.download
 
       - id: tests
         name: Run tests
@@ -98,7 +98,7 @@ jobs:
 
       - id: update
         name: Update data
-        run: $CONDA/bin/conda run -n cpi python cpi/download.py
+        run: $CONDA/bin/conda run -n cpi python -c 'import cpi; cpi.update()'
 
   test-build:
     name: Build Python package
