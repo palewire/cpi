@@ -56,7 +56,7 @@ jobs:
 
       - id: download-data
         name: Download data
-        run: python -m cpi.download
+        run: python cpi/download.py
 
       - id: tests
         name: Run tests
@@ -90,7 +90,7 @@ jobs:
 
       - id: download-data
         name: Download data
-        run: $CONDA/bin/conda run -n cpi python -m cpi.download
+        run: $CONDA/bin/conda run -n cpi python cpi/download.py
 
       - id: tests
         name: Run tests

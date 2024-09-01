@@ -6,9 +6,8 @@ import typing
 from pathlib import Path
 
 import pandas as pd
+import parsers
 import requests
-
-from cpi import parsers
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
