@@ -21,6 +21,10 @@ logger.addHandler(logging.NullHandler())
 this_dir = Path(__file__).parent.absolute()
 db_path = this_dir / "cpi.db"
 if not db_path.exists():
+    warnings.warn(
+        "CPI database not found. Downloading... This may take a few minutes.",
+        stacklevel=2,
+    )
     logger.info("CPI database not found. Downloading...")
     Downloader().update()
 
