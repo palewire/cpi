@@ -126,7 +126,7 @@ jobs:
 
       - id: install-python-dependencies
         name: Install Python dependencies
-        run: pip install requests click python-dateutil pandas twine setuptools-scm
+        run: pip install requests click python-dateutil pandas twine setuptools-scm wheel
         shell: bash
 
       - id: create-db
