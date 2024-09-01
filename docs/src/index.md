@@ -136,7 +136,7 @@ Once retrieved, the complete set of index values for a series is accessible via 
 
 ```{code-cell}
 series = cpi.series.get(items="Housing", area="Los Angeles-Long Beach-Anaheim, CA")
-series.indexes
+series.indexes[:5]
 ```
 
 That's it!
