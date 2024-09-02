@@ -322,13 +322,18 @@ class Series(BaseObject):
 
         # Get the indexes
         dict_list = query("SELECT * FROM 'indexes' WHERE series=?", (value,))
+
+        # Cache the periods to reduce queries
+        period_cache = {p.id: p for p in Period.all()}
+
+        # Load the indexes one by one
         d["indexes"] = []
         for i in dict_list:
             obj = Index(
                 series_id=d["id"],
-                year=i["year"],
-                period=Period.get_by_id(i["period"]),
-                value=i["value"],
+                year=int(i["year"]),
+                period=period_cache[i["period"]],
+                value=float(i["value"]),
             )
             d["indexes"].append(obj)
 
