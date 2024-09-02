@@ -6,6 +6,7 @@ Parse and prepare the Consumer Price Index (CPI) dataset.
 import logging
 import os
 import sqlite3
+from datetime import date
 
 import pandas as pd
 
@@ -205,7 +206,31 @@ class ParseIndex(BaseParser):
                     series=row["series_id"],
                     year=int(row["year"]),
                     period=row["period"],
+                    period_type=self.get_period_type(row["period"]),
+                    date=self.get_date(row["period"], row["year"]),
                     value=float(row["value"]),
                 )
                 object_list.append(d)
         return object_list
+
+    def get_period_type(self, period: str) -> str:
+        """Returns the period type."""
+        if period in ["M13", "S03"]:
+            return "annual"
+        elif period in ["S01", "S02"]:
+            return "semiannual"
+        else:
+            return "monthly"
+
+    def get_month(self, month: str) -> int:
+        """Returns the month integer for the period."""
+        if month in ["M13", "S01", "S03"]:
+            return 1
+        elif month == "S02":
+            return 7
+        else:
+            return int(month.replace("M", ""))
+
+    def get_date(self, period: str, year: str) -> date:
+        """Convert the period and year into a date."""
+        return date(int(year), self.get_month(period), 1)

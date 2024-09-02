@@ -99,7 +99,7 @@ def test_metadata_lists():
 def test_series_indexes():
     # Make sure we can lazy load the full database
     for series in cpi.series:
-        assert len(series.indexes) > 0
+        assert len(series._indexes) > 0
         series.latest_month
         series.latest_year
         series.__str__()
