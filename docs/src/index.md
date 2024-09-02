@@ -42,7 +42,7 @@ Adjusting prices for inflation is as simple as providing a dollar value along wi
 cpi.inflate(100, 1950)
 ```
 
- By default the value is adjusted to the most recent year. Unless otherwise specified, "CPI-U" index for all urban consumers is used to make the conversion, the method recommended by the U.S. Bureau of Labor Statistics.
+By default, the value is adjusted to the most recent year. Unless otherwise specified, the "CPI-U" index for all urban consumers is used to make the conversion, the method recommended by the U.S. Bureau of Labor Statistics.
 
 If you'd like to adjust to a different year, you can submit it as an integer to the optional `to` keyword argument.
 
@@ -58,9 +58,9 @@ from datetime import date
 cpi.inflate(100, date(1950, 1, 1), to=date(2018, 1, 1))
 ```
 
-You can adjust values using any of the other series published by the BLS as part of its "All Urban Consumers (CU)" survey. They offer more precise measures for different regions and items.
+You can adjust values using any other series published by the BLS as part of its "All Urban Consumers (CU)" survey. They offer more precise measures for different regions and items.
 
-Submit one of the 60 areas tracked by the agency to inflate dollars in that region.
+Submit one of the 60 agency-tracked areas to inflate dollars in that region.
 
 ```{code-cell}
 cpi.inflate(100, 1950, area="Los Angeles-Long Beach-Anaheim, CA")
@@ -126,13 +126,13 @@ Alter the configuration options to retrieve variations based on item, area and o
 cpi.series.get(items="Housing", area="Los Angeles-Long Beach-Anaheim, CA")
 ```
 
-If you know a series's identifier code, you can submit that directly to `get_by_id`.
+If you know a series' identifier code, you can submit it directly to `get_by_id`.
 
 ```{code-cell}
 cpi.series.get_by_id("CUURS49ASAH")
 ```
 
-Once retrieved, the complete set of index values for a series is accessible via the `indexes` property.
+Once retrieved, a series's complete set of index values is accessible via the `indexes` property.
 
 ```{code-cell}
 series = cpi.series.get(items="Housing", area="Los Angeles-Long Beach-Anaheim, CA")
@@ -143,7 +143,7 @@ That's it!
 
 ## Working with pandas
 
-An inflation-adjusted column can quickly be added to a pandas DataFrame using the `apply` method. Here is an example using data tracking the median household income in the United States from [The Federal Reserve Bank of St. Louis](https://fred.stlouisfed.org/series/MEHOINUSA646N).
+Using the ' apply ' method, an inflation-adjusted column can quickly be added to a pandas DataFrame. Here is an example using data tracking the median household income in the United States from [The Federal Reserve Bank of St. Louis](https://fred.stlouisfed.org/series/MEHOINUSA646N).
 
 ```{code-cell}
 import cpi
@@ -157,9 +157,9 @@ df["ADJUSTED"] = df.apply(
 
 ## Working from the command line
 
-The Python package also installs a command-line interface for `inflate` that is available on the terminal.
+The Python package also installs a command-line interface for `inflate` available on the terminal.
 
-It works the same as the Python library. First give it a value. Then a source year. By default it is adjusted to its value in the most recent year available.
+It works the same as the Python library. First, give it a value, then a source year. By default, it is adjusted to its value in the most recent available year.
 
 ```bash
 inflate 100 1950
@@ -195,11 +195,11 @@ Options:
 
 The adjustment is made using data provided by [The Bureau of Labor Statistics](https://www.bls.gov/cpi/home.htm) at the U.S. Department of Labor.
 
-Currently the library only supports inflation adjustments using series from the "All Urban Consumers (CU)" survey. The so-called "CPI-U" survey is the default, which is an average of all prices paid by all urban consumers. It is available from 1913 to the present. It is not seasonally adjusted. The dataset is identified by the BLS as "CUUR0000SA0." It is used as the default for most basic inflation calculations. All other series measuring all urban consumers are available by taking advantage of the library's options. The alternative survey of "Urban Wage Earners and Clerical Workers" is not yet available.
+Currently, the library only supports inflation adjustments using a series from the "All Urban Consumers (CU)" survey. The so-called "CPI-U" survey is the default, an average of all prices paid by all urban consumers. It has been available since 1913. It is not seasonally adjusted. The BLS identifies the dataset as "CUUR0000SA0." It is used as the default for most basic inflation calculations. All other series measuring all urban consumers are available by taking advantage of the library's options. The alternative "Urban Wage Earners and Clerical Workers" survey is not yet available.
 
 ## Updating the data
 
-Since the BLS routinely releases new CPI new values, this library must periodically download the latest data. This library *does not* do this automatically. You must update the BLS dataset stored alongside the code yourself by running the following method:
+Since the BLS routinely releases new CPI values, this library must periodically download the latest data. This library *does not* do this automatically. You must update the BLS dataset stored alongside the code yourself by running the following method:
 
 ```python
 cpi.update()
