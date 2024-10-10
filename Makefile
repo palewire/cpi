@@ -1,5 +1,5 @@
 update:
-	pipenv run python cpi/download.py
+	pipenv run python -m cpi.download
 	pipenv run jupyter-execute notebooks/analysis.ipynb
 	pipenv run python sample.py
 

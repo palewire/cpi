@@ -1,361 +1,361 @@
-year,date,value,series_id,series_title,series_survey,series_seasonally_adjusted,series_periodicity_id,series_periodicity_code,series_periodicity_name,series_area_id,series_area_code,series_area_name,series_items_id,series_items_code,series_items_name,period_id,period_code,period_abbreviation,period_name,period_month,period_type,pct_change
-2014,2014-08-01,237.852,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M08,M08,AUG,August,8,monthly,0.016996113341628316
-2014,2014-09-01,238.031,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M09,M09,SEP,September,9,monthly,0.01657918675715031
-2014,2014-10-01,237.433,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M10,M10,OCT,October,10,monthly,0.01664340215632043
-2014,2014-11-01,236.151,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M11,M11,NOV,November,11,monthly,0.013223551823708934
-2014,2014-12-01,234.812,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M12,M12,DEC,December,12,monthly,0.007564932696557447
-2015,2015-01-01,233.707,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M01,M01,JAN,January,1,monthly,-0.0008934831306964819
-2015,2015-02-01,234.722,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M02,M02,FEB,February,2,monthly,-0.00025129801815304553
-2015,2015-03-01,236.119,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M03,M03,MAR,March,3,monthly,-0.0007363739086643228
-2015,2015-04-01,236.599,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M04,M04,APR,April,4,monthly,-0.001995174461766891
-2015,2015-05-01,237.805,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M05,M05,MAY,May,5,monthly,-0.00039932744850779134
-2015,2015-06-01,238.638,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M06,M06,JUN,June,6,monthly,0.0012377120368545214
-2015,2015-07-01,238.654,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M07,M07,JUL,July,7,monthly,0.001695697796432194
-2015,2015-08-01,238.316,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M08,M08,AUG,August,8,monthly,0.001950792930057288
-2015,2015-09-01,237.945,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M09,M09,SEP,September,9,monthly,-0.0003612974780596856
-2015,2015-10-01,237.838,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M10,M10,OCT,October,10,monthly,0.0017057443573555986
-2015,2015-11-01,237.336,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M11,M11,NOV,November,11,monthly,0.005017975786678841
-2015,2015-12-01,236.525,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M12,M12,DEC,December,12,monthly,0.007295197860415881
-2016,2016-01-01,236.916,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M01,M01,JAN,January,1,monthly,0.013730868138309926
-2016,2016-02-01,237.111,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M02,M02,FEB,February,2,monthly,0.010177997801654737
-2016,2016-03-01,238.132,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M03,M03,MAR,March,3,monthly,0.008525362211427412
-2016,2016-04-01,239.261,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M04,M04,APR,April,4,monthly,0.011251104188944261
-2016,2016-05-01,240.229,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M05,M05,MAY,May,5,monthly,0.010193225541935691
-2016,2016-06-01,241.018,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M06,M06,JUN,June,6,monthly,0.009973264945230875
-2016,2016-07-01,240.628,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M07,M07,JUL,July,7,monthly,0.008271388704987004
-2016,2016-08-01,240.849,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M08,M08,AUG,August,8,monthly,0.010628745027610353
-2016,2016-09-01,241.428,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M09,M09,SEP,September,9,monthly,0.014637836474815646
-2016,2016-10-01,241.729,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M10,M10,OCT,October,10,monthly,0.016359875209176034
-2016,2016-11-01,241.353,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M11,M11,NOV,November,11,monthly,0.016925371625037933
-2016,2016-12-01,241.432,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M12,M12,DEC,December,12,monthly,0.02074622132966919
-2017,2017-01-01,242.839,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M01,M01,JAN,January,1,monthly,0.025000422090529995
-2017,2017-02-01,243.603,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M02,M02,FEB,February,2,monthly,0.027379581714893186
-2017,2017-03-01,243.801,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M03,M03,MAR,March,3,monthly,0.023806124334402767
-2017,2017-04-01,244.524,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M04,M04,APR,April,4,monthly,0.02199689878417299
-2017,2017-05-01,244.733,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M05,M05,MAY,May,5,monthly,0.018748777208413614
-2017,2017-06-01,244.955,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M06,M06,JUN,June,6,monthly,0.01633487955256463
-2017,2017-07-01,244.786,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M07,M07,JUL,July,7,monthly,0.01727978456372492
-2017,2017-08-01,245.519,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M08,M08,AUG,August,8,monthly,0.019389742120581754
-2017,2017-09-01,246.819,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M09,M09,SEP,September,9,monthly,0.022329638650032235
-2017,2017-10-01,246.663,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M10,M10,OCT,October,10,monthly,0.020411287019761692
-2017,2017-11-01,246.669,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M11,M11,NOV,November,11,monthly,0.02202582938683184
-2017,2017-12-01,246.524,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M12,M12,DEC,December,12,monthly,0.021090824745684245
-2018,2018-01-01,247.867,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M01,M01,JAN,January,1,monthly,0.020705076202751638
-2018,2018-02-01,248.991,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M02,M02,FEB,February,2,monthly,0.022117954212386604
-2018,2018-03-01,249.554,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M03,M03,MAR,March,3,monthly,0.023597114039729084
-2018,2018-04-01,250.546,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M04,M04,APR,April,4,monthly,0.02462743943334811
-2018,2018-05-01,251.588,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M05,M05,MAY,May,5,monthly,0.028010117148075553
-2018,2018-06-01,251.989,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M06,M06,JUN,June,6,monthly,0.0287154783531669
-2018,2018-07-01,252.006,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M07,M07,JUL,July,7,monthly,0.029495150866471143
-2018,2018-08-01,252.146,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M08,M08,AUG,August,8,monthly,0.026991801041874375
-2018,2018-09-01,252.439,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M09,M09,SEP,September,9,monthly,0.022769721941990007
-2018,2018-10-01,252.885,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M10,M10,OCT,October,10,monthly,0.025224699286070296
-2018,2018-11-01,252.038,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M11,M11,NOV,November,11,monthly,0.021766010321524032
-2018,2018-12-01,251.233,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M12,M12,DEC,December,12,monthly,0.019101588486313714
-2019,2019-01-01,251.712,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M01,M01,JAN,January,1,monthly,0.015512351381991252
-2019,2019-02-01,252.776,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M02,M02,FEB,February,2,monthly,0.01520135265933309
-2019,2019-03-01,254.202,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M03,M03,MAR,March,3,monthly,0.018625227405691724
-2019,2019-04-01,255.548,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M04,M04,APR,April,4,monthly,0.019964397755302565
-2019,2019-05-01,256.092,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M05,M05,MAY,May,5,monthly,0.017902284687663972
-2019,2019-06-01,256.143,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M06,M06,JUN,June,6,monthly,0.016484846560762545
-2019,2019-07-01,256.571,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M07,M07,JUL,July,7,monthly,0.018114648063935146
-2019,2019-08-01,256.558,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M08,M08,AUG,August,8,monthly,0.017497798894291483
-2019,2019-09-01,256.759,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M09,M09,SEP,September,9,monthly,0.017113045131695204
-2019,2019-10-01,257.346,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M10,M10,OCT,October,10,monthly,0.017640429444213845
-2019,2019-11-01,257.208,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M11,M11,NOV,November,11,monthly,0.020512779818916194
-2019,2019-12-01,256.974,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M12,M12,DEC,December,12,monthly,0.022851297401217163
-2020,2020-01-01,257.971,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M01,M01,JAN,January,1,monthly,0.024865719552504606
-2020,2020-02-01,258.678,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M02,M02,FEB,February,2,monthly,0.023348735639459495
-2020,2020-03-01,258.115,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M03,M03,MAR,March,3,monthly,0.015393269919198094
-2020,2020-04-01,256.389,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M04,M04,APR,April,4,monthly,0.003290966863368272
-2020,2020-05-01,256.394,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M05,M05,MAY,May,5,monthly,0.0011792637021070806
-2020,2020-06-01,257.797,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M06,M06,JUN,June,6,monthly,0.006457330475554857
-2020,2020-07-01,259.101,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M07,M07,JUL,July,7,monthly,0.009860818253037085
-2020,2020-08-01,259.918,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M08,M08,AUG,August,8,monthly,0.013096453823307153
-2020,2020-09-01,260.28,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M09,M09,SEP,September,9,monthly,0.013713248610564666
-2020,2020-10-01,260.388,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M10,M10,OCT,October,10,monthly,0.011820661677274913
-2020,2020-11-01,260.229,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M11,M11,NOV,November,11,monthly,0.011745357842679605
-2020,2020-12-01,260.474,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M12,M12,DEC,December,12,monthly,0.013620054947193205
-2021,2021-01-01,261.582,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M01,M01,JAN,January,1,monthly,0.013997697415600863
-2021,2021-02-01,263.014,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M02,M02,FEB,February,2,monthly,0.016762152173745104
-2021,2021-03-01,264.877,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M03,M03,MAR,March,3,monthly,0.02619762508959189
-2021,2021-04-01,267.054,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M04,M04,APR,April,4,monthly,0.041596948387021104
-2021,2021-05-01,269.195,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M05,M05,MAY,May,5,monthly,0.04992706537594471
-2021,2021-06-01,271.696,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M06,M06,JUN,June,6,monthly,0.053914514133213354
-2021,2021-07-01,273.003,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M07,M07,JUL,July,7,monthly,0.05365475239385398
-2021,2021-08-01,273.567,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M08,M08,AUG,August,8,monthly,0.05251271554874992
-2021,2021-09-01,274.31,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M09,M09,SEP,September,9,monthly,0.053903488550791634
-2021,2021-10-01,276.589,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M10,M10,OCT,October,10,monthly,0.062218689033288976
-2021,2021-11-01,277.948,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M11,M11,NOV,November,11,monthly,0.06809002839806477
-2021,2021-12-01,278.802,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M12,M12,DEC,December,12,monthly,0.07036402865545144
-2022,2022-01-01,281.148,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M01,M01,JAN,January,1,monthly,0.07479872468289117
-2022,2022-02-01,283.716,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M02,M02,FEB,February,2,monthly,0.07871063897739283
-2022,2022-03-01,287.504,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M03,M03,MAR,March,3,monthly,0.08542455554842432
-2022,2022-04-01,289.109,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M04,M04,APR,April,4,monthly,0.08258629340882373
-2022,2022-05-01,292.296,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M05,M05,MAY,May,5,monthly,0.08581511543676523
-2022,2022-06-01,296.311,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M06,M06,JUN,June,6,monthly,0.09059757964784154
-2022,2022-07-01,296.276,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M07,M07,JUL,July,7,monthly,0.0852481474562552
-2022,2022-08-01,296.171,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M08,M08,AUG,August,8,monthly,0.08262692503116242
-2022,2022-09-01,296.808,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M09,M09,SEP,September,9,monthly,0.0820166964383362
-2022,2022-10-01,298.012,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M10,M10,OCT,October,10,monthly,0.07745427330804922
-2022,2022-11-01,297.711,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M11,M11,NOV,November,11,monthly,0.07110322794191726
-2022,2022-12-01,296.797,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M12,M12,DEC,December,12,monthly,0.0645440133141082
-2023,2023-01-01,299.17,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M01,M01,JAN,January,1,monthly,0.06410146968856267
-2023,2023-02-01,300.84,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M02,M02,FEB,February,2,monthly,0.06035613077866597
-2023,2023-03-01,301.836,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M03,M03,MAR,March,3,monthly,0.04984974122099173
-2023,2023-04-01,303.363,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M04,M04,APR,April,4,monthly,0.049303203981889254
-2023,2023-05-01,304.127,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M05,M05,MAY,May,5,monthly,0.040476092727919744
-2023,2023-06-01,305.109,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M06,M06,JUN,June,6,monthly,0.029691776545588855
-2023,2023-07-01,305.691,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M07,M07,JUL,July,7,monthly,0.03177780177942169
-2023,2023-08-01,307.026,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M08,M08,AUG,August,8,monthly,0.03665112384399549
-2023,2023-09-01,307.789,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M09,M09,SEP,September,9,monthly,0.0369969812134443
-2023,2023-10-01,307.671,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M10,M10,OCT,October,10,monthly,0.03241144651893202
-2023,2023-11-01,307.051,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M11,M11,NOV,November,11,monthly,0.03137270708841777
-2023,2023-12-01,306.746,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M12,M12,DEC,December,12,monthly,0.033521228314302265
-2024,2024-01-01,308.417,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M01,M01,JAN,January,1,monthly,0.030908847812280538
-2024,2024-02-01,310.326,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M02,M02,FEB,February,2,monthly,0.031531711208615976
-2024,2024-03-01,312.332,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M03,M03,MAR,March,3,monthly,0.034773850700380304
-2024,2024-04-01,313.548,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M04,M04,APR,April,4,monthly,0.03357363950119163
-2024,2024-05-01,314.069,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M05,M05,MAY,May,5,monthly,0.032690290569400204
-2024,2024-06-01,314.175,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M06,M06,JUN,June,6,monthly,0.029713971072633072
-2024,2024-07-01,314.54,CUUR0000SA0,"All items in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0,SA0,All items,M07,M07,JUL,July,7,monthly,0.028947531984913066
-2014,2014-08-01,250.951,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M08,M08,AUG,August,8,monthly,0.00375983456727913
-2014,2014-09-01,247.077,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M09,M09,SEP,September,9,monthly,-0.0057783697432327585
-2014,2014-10-01,234.745,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M10,M10,OCT,October,10,monthly,-0.015843269440391716
-2014,2014-11-01,221.844,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M11,M11,NOV,November,11,monthly,-0.048435248095532235
-2014,2014-12-01,209.785,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M12,M12,DEC,December,12,monthly,-0.1055546554561656
-2015,2015-01-01,192.619,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M01,M01,JAN,January,1,monthly,-0.19591652716957975
-2015,2015-02-01,196.597,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M02,M02,FEB,February,2,monthly,-0.18775331452109345
-2015,2015-03-01,204.731,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M03,M03,MAR,March,3,monthly,-0.1828508479582348
-2015,2015-04-01,203.715,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M04,M04,APR,April,4,monthly,-0.19390068733009658
-2015,2015-05-01,214.33,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M05,M05,MAY,May,5,monthly,-0.16271456586791255
-2015,2015-06-01,220.861,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M06,M06,JUN,June,6,monthly,-0.15007042307721918
-2015,2015-07-01,219.852,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M07,M07,JUL,July,7,monthly,-0.14755318777698934
-2015,2015-08-01,213.248,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M08,M08,AUG,August,8,monthly,-0.15024048519432087
-2015,2015-09-01,201.641,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M09,M09,SEP,September,9,monthly,-0.18389408969673426
-2015,2015-10-01,194.501,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M10,M10,OCT,October,10,monthly,-0.17143709131184903
-2015,2015-11-01,189.267,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M11,M11,NOV,November,11,monthly,-0.1468464326283334
-2015,2015-12-01,183.378,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M12,M12,DEC,December,12,monthly,-0.12587649259956624
-2016,2016-01-01,180.171,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M01,M01,JAN,January,1,monthly,-0.06462498507416203
-2016,2016-02-01,172.061,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M02,M02,FEB,February,2,monthly,-0.12480353209865869
-2016,2016-03-01,179.017,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M03,M03,MAR,March,3,monthly,-0.12559895667974075
-2016,2016-04-01,185.652,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M04,M04,APR,April,4,monthly,-0.0886679920477138
-2016,2016-05-01,192.673,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M05,M05,MAY,May,5,monthly,-0.10104511734241595
-2016,2016-06-01,200.035,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M06,M06,JUN,June,6,monthly,-0.09429460158199043
-2016,2016-07-01,195.94,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M07,M07,JUL,July,7,monthly,-0.10876407765223883
-2016,2016-08-01,193.524,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M08,M08,AUG,August,8,monthly,-0.0924932472989195
-2016,2016-09-01,195.852,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M09,M09,SEP,September,9,monthly,-0.028709439052573615
-2016,2016-10-01,194.786,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M10,M10,OCT,October,10,monthly,0.001465288096205164
-2016,2016-11-01,191.402,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M11,M11,NOV,November,11,monthly,0.011280360548854285
-2016,2016-12-01,193.306,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M12,M12,DEC,December,12,monthly,0.054139536912825026
-2017,2017-01-01,199.608,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M01,M01,JAN,January,1,monthly,0.10788084652913077
-2017,2017-02-01,198.195,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M02,M02,FEB,February,2,monthly,0.15188799321170965
-2017,2017-03-01,198.597,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M03,M03,MAR,March,3,monthly,0.10937508728221346
-2017,2017-04-01,202.869,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M04,M04,APR,April,4,monthly,0.0927380259840993
-2017,2017-05-01,203.132,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M05,M05,MAY,May,5,monthly,0.05428368271631201
-2017,2017-06-01,204.646,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M06,M06,JUN,June,6,monthly,0.02305096608093571
-2017,2017-07-01,202.554,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M07,M07,JUL,July,7,monthly,0.033755231193222546
-2017,2017-08-01,205.894,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M08,M08,AUG,August,8,monthly,0.06391972055145612
-2017,2017-09-01,215.711,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M09,M09,SEP,September,9,monthly,0.10139799440393782
-2017,2017-10-01,207.29,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M10,M10,OCT,October,10,monthly,0.06419352520201649
-2017,2017-11-01,209.383,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M11,M11,NOV,November,11,monthly,0.09394363695259211
-2017,2017-12-01,206.598,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M12,M12,DEC,December,12,monthly,0.06876144558368602
-2018,2018-01-01,210.663,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M01,M01,JAN,January,1,monthly,0.05538355176145249
-2018,2018-02-01,213.519,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M02,M02,FEB,February,2,monthly,0.07731779308257036
-2018,2018-03-01,212.554,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M03,M03,MAR,March,3,monthly,0.0702780001712009
-2018,2018-04-01,218.83,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M04,M04,APR,April,4,monthly,0.07867638722525383
-2018,2018-05-01,226.81,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M05,M05,MAY,May,5,monthly,0.11656459838922473
-2018,2018-06-01,229.137,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M06,M06,JUN,June,6,monthly,0.1196749508908066
-2018,2018-07-01,227.107,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M07,M07,JUL,July,7,monthly,0.12121705816720474
-2018,2018-08-01,226.939,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M08,M08,AUG,August,8,monthly,0.10221278910507348
-2018,2018-09-01,226.165,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M09,M09,SEP,September,9,monthly,0.04846298983361996
-2018,2018-10-01,225.757,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M10,M10,OCT,October,10,monthly,0.08908775145930825
-2018,2018-11-01,215.91,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M11,M11,NOV,November,11,monthly,0.031172540273088023
-2018,2018-12-01,205.905,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M12,M12,DEC,December,12,monthly,-0.003354340313071802
-2019,2019-01-01,200.563,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M01,M01,JAN,January,1,monthly,-0.04794387244081788
-2019,2019-02-01,202.74,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M02,M02,FEB,February,2,monthly,-0.050482626838829314
-2019,2019-03-01,211.724,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M03,M03,MAR,March,3,monthly,-0.003904890051469323
-2019,2019-04-01,222.499,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M04,M04,APR,April,4,monthly,0.016766439702051716
-2019,2019-05-01,225.773,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M05,M05,MAY,May,5,monthly,-0.004572108813544418
-2019,2019-06-01,221.373,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M06,M06,JUN,June,6,monthly,-0.033883659120962584
-2019,2019-07-01,222.492,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M07,M07,JUL,July,7,monthly,-0.02032081794044216
-2019,2019-08-01,216.978,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M08,M08,AUG,August,8,monthly,-0.04389285226426476
-2019,2019-09-01,215.418,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M09,M09,SEP,September,9,monthly,-0.04751840470452984
-2019,2019-10-01,216.351,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M10,M10,OCT,October,10,monthly,-0.04166426733168849
-2019,2019-11-01,214.636,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M11,M11,NOV,November,11,monthly,-0.005900606734287384
-2019,2019-12-01,212.982,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M12,M12,DEC,December,12,monthly,0.03437021927587969
-2020,2020-01-01,213.043,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M01,M01,JAN,January,1,monthly,0.06222483708360982
-2020,2020-02-01,208.354,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M02,M02,FEB,February,2,monthly,0.02769063825589435
-2020,2020-03-01,199.573,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M03,M03,MAR,March,3,monthly,-0.057390754000491095
-2020,2020-04-01,183.081,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M04,M04,APR,April,4,monthly,-0.17716034678807546
-2020,2020-05-01,183.076,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M05,M05,MAY,May,5,monthly,-0.18911473028218606
-2020,2020-06-01,193.379,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M06,M06,JUN,June,6,monthly,-0.12645625256919313
-2020,2020-07-01,197.665,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M07,M07,JUL,July,7,monthly,-0.11158603455405136
-2020,2020-08-01,197.362,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M08,M08,AUG,August,8,monthly,-0.0904054788964781
-2020,2020-09-01,198.858,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M09,M09,SEP,September,9,monthly,-0.07687379884689305
-2020,2020-10-01,196.458,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M10,M10,OCT,October,10,monthly,-0.09194780703578909
-2020,2020-11-01,194.388,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M11,M11,NOV,November,11,monthly,-0.09433645800331725
-2020,2020-12-01,198.155,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M12,M12,DEC,December,12,monthly,-0.06961621169864118
-2021,2021-01-01,205.273,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M01,M01,JAN,January,1,monthly,-0.03647151044624797
-2021,2021-02-01,213.277,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M02,M02,FEB,February,2,monthly,0.02362805609683516
-2021,2021-03-01,225.861,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M03,M03,MAR,March,3,monthly,0.13172122481497994
-2021,2021-04-01,229.116,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M04,M04,APR,April,4,monthly,0.2514460812427288
-2021,2021-05-01,235.339,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M05,M05,MAY,May,5,monthly,0.2854716074198693
-2021,2021-06-01,240.72,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M06,M06,JUN,June,6,monthly,0.24480941570697956
-2021,2021-07-01,244.8,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M07,M07,JUL,July,7,monthly,0.2384590089292491
-2021,2021-08-01,246.639,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M08,M08,AUG,August,8,monthly,0.24967825619926853
-2021,2021-09-01,248.228,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M09,M09,SEP,September,9,monthly,0.24826760804191927
-2021,2021-10-01,255.338,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M10,M10,OCT,October,10,monthly,0.29970782559122044
-2021,2021-11-01,259.1,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M11,M11,NOV,November,11,monthly,0.3329012078934914
-2021,2021-12-01,256.207,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M12,M12,DEC,December,12,monthly,0.2929625797986424
-2022,2022-01-01,260.653,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M01,M01,JAN,January,1,monthly,0.2697870640561595
-2022,2022-02-01,267.771,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M02,M02,FEB,February,2,monthly,0.2555080951063642
-2022,2022-03-01,298.246,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M03,M03,MAR,March,3,monthly,0.32048472290479535
-2022,2022-04-01,298.469,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M04,M04,APR,April,4,monthly,0.30269819654672725
-2022,2022-05-01,316.761,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M05,M05,MAY,May,5,monthly,0.34597750479096123
-2022,2022-06-01,340.917,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M06,M06,JUN,June,6,monthly,0.41623878364905265
-2022,2022-07-01,325.407,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M07,M07,JUL,July,7,monthly,0.32927696078431357
-2022,2022-08-01,305.372,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M08,M08,AUG,August,8,monthly,0.23813346632122245
-2022,2022-09-01,297.343,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M09,M09,SEP,September,9,monthly,0.19786244903878702
-2022,2022-10-01,300.359,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M10,M10,OCT,October,10,monthly,0.17631923176338815
-2022,2022-11-01,292.953,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M11,M11,NOV,November,11,monthly,0.13065611732921623
-2022,2022-12-01,274.937,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M12,M12,DEC,December,12,monthly,0.07310495029409814
-2023,2023-01-01,283.33,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M01,M01,JAN,January,1,monthly,0.08700072510195533
-2023,2023-02-01,281.673,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M02,M02,FEB,February,2,monthly,0.05191749666692802
-2023,2023-03-01,279.084,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M03,M03,MAR,March,3,monthly,-0.06424897567779608
-2023,2023-04-01,283.352,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M04,M04,APR,April,4,monthly,-0.05064847605613987
-2023,2023-05-01,279.816,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M05,M05,MAY,May,5,monthly,-0.11663367649426559
-2023,2023-06-01,283.854,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M06,M06,JUN,June,6,monthly,-0.16738091676273104
-2023,2023-07-01,284.828,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M07,M07,JUL,July,7,monthly,-0.12470229589406501
-2023,2023-08-01,294.328,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M08,M08,AUG,August,8,monthly,-0.036165725737788756
-2023,2023-09-01,296.004,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M09,M09,SEP,September,9,monthly,-0.004503216823668277
-2023,2023-10-01,286.754,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M10,M10,OCT,October,10,monthly,-0.045295796030749735
-2023,2023-11-01,277.029,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M11,M11,NOV,November,11,monthly,-0.05435684222383785
-2023,2023-12-01,269.375,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M12,M12,DEC,December,12,monthly,-0.020230089074951718
-2024,2024-01-01,270.42,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M01,M01,JAN,January,1,monthly,-0.04556524194402278
-2024,2024-02-01,276.331,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M02,M02,FEB,February,2,monthly,-0.018965254035708035
-2024,2024-03-01,285.002,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M03,M03,MAR,March,3,monthly,0.021205085207321117
-2024,2024-04-01,290.76,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M04,M04,APR,April,4,monthly,0.026144159914170517
-2024,2024-05-01,290.139,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M05,M05,MAY,May,5,monthly,0.03689210052320102
-2024,2024-06-01,286.675,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M06,M06,JUN,June,6,monthly,0.00993820767014042
-2024,2024-07-01,287.868,CUUR0000SA0E,"Energy in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SA0E,SA0E,Energy,M07,M07,JUL,July,7,monthly,0.010673107980956997
-2014,2014-08-01,243.811,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M08,M08,AUG,August,8,monthly,0.02697909909606322
-2014,2014-09-01,244.63,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M09,M09,SEP,September,9,monthly,0.029925648992514375
-2014,2014-10-01,245.166,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M10,M10,OCT,October,10,monthly,0.030667883012220898
-2014,2014-11-01,245.192,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M11,M11,NOV,November,11,monthly,0.031774820001599036
-2014,2014-12-01,245.976,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M12,M12,DEC,December,12,monthly,0.03408178451164301
-2015,2015-01-01,246.538,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M01,M01,JAN,January,1,monthly,0.0320925014233564
-2015,2015-02-01,246.68,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M02,M02,FEB,February,2,monthly,0.02951487429468136
-2015,2015-03-01,246.045,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M03,M03,MAR,March,3,monthly,0.023490212064992244
-2015,2015-04-01,246.121,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M04,M04,APR,April,4,monthly,0.01982290324318292
-2015,2015-05-01,246.187,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M05,M05,MAY,May,5,monthly,0.015857623873502202
-2015,2015-06-01,246.68,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M06,M06,JUN,June,6,monthly,0.017967531342076404
-2015,2015-07-01,247.003,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M07,M07,JUL,July,7,monthly,0.016331048330686215
-2015,2015-08-01,247.671,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M08,M08,AUG,August,8,monthly,0.015831935392578655
-2015,2015-09-01,248.632,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M09,M09,SEP,September,9,monthly,0.016359399910068406
-2015,2015-10-01,249.052,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M10,M10,OCT,October,10,monthly,0.015850484977525392
-2015,2015-11-01,248.306,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M11,M11,NOV,November,11,monthly,0.012700251231687831
-2015,2015-12-01,247.903,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M12,M12,DEC,December,12,monthly,0.007834097635541548
-2016,2016-01-01,248.631,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M01,M01,JAN,January,1,monthly,0.008489563475001738
-2016,2016-02-01,248.8,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M02,M02,FEB,February,2,monthly,0.008594130047024473
-2016,2016-03-01,247.978,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M03,M03,MAR,March,3,monthly,0.007856286451665362
-2016,2016-04-01,248.413,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M04,M04,APR,April,4,monthly,0.009312492635736191
-2016,2016-05-01,247.86,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M05,M05,MAY,May,5,monthly,0.0067956472112662425
-2016,2016-06-01,247.482,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M06,M06,JUN,June,6,monthly,0.0032511756121289537
-2016,2016-07-01,247.554,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M07,M07,JUL,July,7,monthly,0.002230742136735353
-2016,2016-08-01,247.719,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M08,M08,AUG,August,8,monthly,0.00019380549196323926
-2016,2016-09-01,247.917,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M09,M09,SEP,September,9,monthly,-0.0028757360275427635
-2016,2016-10-01,248.073,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M10,M10,OCT,October,10,monthly,-0.003930905995535028
-2016,2016-11-01,247.435,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M11,M11,NOV,November,11,monthly,-0.0035077686403067743
-2016,2016-12-01,247.313,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M12,M12,DEC,December,12,monthly,-0.0023799631307406255
-2017,2017-01-01,248.242,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M01,M01,JAN,January,1,monthly,-0.0015645675720245
-2017,2017-02-01,248.791,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M02,M02,FEB,February,2,monthly,-3.617363344055047e-05
-2017,2017-03-01,249.165,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M03,M03,MAR,March,3,monthly,0.004786714950519633
-2017,2017-04-01,249.739,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M04,M04,APR,April,4,monthly,0.005337884893302558
-2017,2017-05-01,250.016,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M05,M05,MAY,May,5,monthly,0.008698458807391285
-2017,2017-06-01,249.653,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M06,M06,JUN,June,6,monthly,0.008772355161183354
-2017,2017-07-01,250.214,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M07,M07,JUL,July,7,monthly,0.010745130355397148
-2017,2017-08-01,250.493,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M08,M08,AUG,August,8,monthly,0.011198172122445227
-2017,2017-09-01,250.993,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M09,M09,SEP,September,9,monthly,0.012407378275793857
-2017,2017-10-01,251.364,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M10,M10,OCT,October,10,monthly,0.013266256303588131
-2017,2017-11-01,250.871,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M11,M11,NOV,November,11,monthly,0.013886475235920681
-2017,2017-12-01,251.238,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M12,M12,DEC,December,12,monthly,0.015870576961178884
-2018,2018-01-01,252.361,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M01,M01,JAN,January,1,monthly,0.016592679723817838
-2018,2018-02-01,252.266,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M02,M02,FEB,February,2,monthly,0.013967547057570417
-2018,2018-03-01,252.37,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M03,M03,MAR,March,3,monthly,0.012862962294062141
-2018,2018-04-01,253.209,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M04,M04,APR,April,4,monthly,0.01389450586412222
-2018,2018-05-01,253.098,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M05,M05,MAY,May,5,monthly,0.012327211058492438
-2018,2018-06-01,253.231,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M06,M06,JUN,June,6,monthly,0.014331892667021728
-2018,2018-07-01,253.746,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M07,M07,JUL,July,7,monthly,0.014115916775240489
-2018,2018-08-01,254.077,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M08,M08,AUG,August,8,monthly,0.014307785047885657
-2018,2018-09-01,254.393,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M09,M09,SEP,September,9,monthly,0.013546194515384968
-2018,2018-10-01,254.358,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M10,M10,OCT,October,10,monthly,0.011911013510287782
-2018,2018-11-01,254.379,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M11,M11,NOV,November,11,monthly,0.0139832822446595
-2018,2018-12-01,255.21,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M12,M12,DEC,December,12,monthly,0.015809710314522496
-2019,2019-01-01,256.417,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M01,M01,JAN,January,1,monthly,0.016072214010881103
-2019,2019-02-01,257.222,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M02,M02,FEB,February,2,monthly,0.01964592929685338
-2019,2019-03-01,257.724,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M03,M03,MAR,March,3,monthly,0.021214882910012944
-2019,2019-04-01,257.708,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M04,M04,APR,April,4,monthly,0.017767930839741153
-2019,2019-05-01,258.11,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M05,M05,MAY,May,5,monthly,0.01980260610514506
-2019,2019-06-01,258.064,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M06,M06,JUN,June,6,monthly,0.01908534105224091
-2019,2019-07-01,258.274,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M07,M07,JUL,July,7,monthly,0.01784461626981315
-2019,2019-08-01,258.41,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M08,M08,AUG,August,8,monthly,0.01705388523951412
-2019,2019-09-01,258.943,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M09,M09,SEP,September,9,monthly,0.017885712264095188
-2019,2019-10-01,259.632,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M10,M10,OCT,October,10,monthly,0.020734555233175245
-2019,2019-11-01,259.467,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M11,M11,NOV,November,11,monthly,0.0200016510796881
-2019,2019-12-01,259.823,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M12,M12,DEC,December,12,monthly,0.018075310528584243
-2020,2020-01-01,261.057,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M01,M01,JAN,January,1,monthly,0.018095524087716752
-2020,2020-02-01,261.876,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M02,M02,FEB,February,2,monthly,0.01809332016701526
-2020,2020-03-01,262.708,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M03,M03,MAR,March,3,monthly,0.019338517173410397
-2020,2020-04-01,266.757,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M04,M04,APR,April,4,monthly,0.03511338414018961
-2020,2020-05-01,268.439,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M05,M05,MAY,May,5,monthly,0.04001782185889735
-2020,2020-06-01,269.77,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M06,M06,JUN,June,6,monthly,0.04536084072168123
-2020,2020-07-01,268.863,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M07,M07,JUL,July,7,monthly,0.0409990939854572
-2020,2020-08-01,269.079,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M08,M08,AUG,August,8,monthly,0.04128710189234153
-2020,2020-09-01,269.163,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M09,M09,SEP,September,9,monthly,0.039468145499202745
-2020,2020-10-01,269.828,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M10,M10,OCT,October,10,monthly,0.03927096813952047
-2020,2020-11-01,269.069,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M11,M11,NOV,November,11,monthly,0.03700663282806693
-2020,2020-12-01,270.023,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M12,M12,DEC,December,12,monthly,0.039257494525119174
-2021,2021-01-01,270.938,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M01,M01,JAN,January,1,monthly,0.03784997146217095
-2021,2021-02-01,271.363,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M02,M02,FEB,February,2,monthly,0.03622706929997421
-2021,2021-03-01,271.812,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M03,M03,MAR,March,3,monthly,0.03465444523958161
-2021,2021-04-01,273.09,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M04,M04,APR,April,4,monthly,0.023740707835220753
-2021,2021-05-01,274.212,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M05,M05,MAY,May,5,monthly,0.021505816964002777
-2021,2021-06-01,276.206,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M06,M06,JUN,June,6,monthly,0.023857359973310732
-2021,2021-07-01,278.127,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M07,M07,JUL,July,7,monthly,0.03445621004005761
-2021,2021-08-01,279.135,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M08,M08,AUG,August,8,monthly,0.03737192423043045
-2021,2021-09-01,281.506,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M09,M09,SEP,September,9,monthly,0.045856971426236015
-2021,2021-10-01,284.205,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M10,M10,OCT,October,10,monthly,0.05328209081340707
-2021,2021-11-01,285.507,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M11,M11,NOV,November,11,monthly,0.06109213621784737
-2021,2021-12-01,286.966,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M12,M12,DEC,December,12,monthly,0.06274650677905202
-2022,2022-01-01,289.772,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M01,M01,JAN,January,1,monthly,0.06951405856690451
-2022,2022-02-01,292.794,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M02,M02,FEB,February,2,monthly,0.07897539458216474
-2022,2022-03-01,295.728,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M03,M03,MAR,March,3,monthly,0.08798728532956601
-2022,2022-04-01,298.711,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M04,M04,APR,April,4,monthly,0.09381888754623025
-2022,2022-05-01,302.038,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M05,M05,MAY,May,5,monthly,0.10147623007016482
-2022,2022-06-01,305.041,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M06,M06,JUN,June,6,monthly,0.10439671839134546
-2022,2022-07-01,308.532,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M07,M07,JUL,July,7,monthly,0.10932056218921571
-2022,2022-08-01,310.875,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M08,M08,AUG,August,8,monthly,0.11370842065667164
-2022,2022-09-01,313.142,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M09,M09,SEP,September,9,monthly,0.11238126363203627
-2022,2022-10-01,315.323,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M10,M10,OCT,October,10,monthly,0.10949138825847538
-2022,2022-11-01,315.857,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M11,M11,NOV,November,11,monthly,0.10630212218964874
-2022,2022-12-01,316.839,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M12,M12,DEC,December,12,monthly,0.10409944035181873
-2023,2023-01-01,319.136,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M01,M01,JAN,January,1,monthly,0.10133484256587955
-2023,2023-02-01,320.569,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M02,M02,FEB,February,2,monthly,0.09486191656932874
-2023,2023-03-01,320.863,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M03,M03,MAR,March,3,monthly,0.08499364280690358
-2023,2023-04-01,321.566,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M04,M04,APR,April,4,monthly,0.07651208023808942
-2023,2023-05-01,322.249,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M05,M05,MAY,May,5,monthly,0.06691542123838734
-2023,2023-06-01,322.556,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M06,M06,JUN,June,6,monthly,0.05741851095426509
-2023,2023-07-01,323.523,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M07,M07,JUL,July,7,monthly,0.04858815293065244
-2023,2023-08-01,324.1,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M08,M08,AUG,August,8,monthly,0.04254121431443503
-2023,2023-09-01,324.704,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M09,M09,SEP,September,9,monthly,0.03692254632083847
-2023,2023-10-01,325.731,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M10,M10,OCT,October,10,monthly,0.03300742413334912
-2023,2023-11-01,325.172,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M11,M11,NOV,November,11,monthly,0.029491193799725757
-2023,2023-12-01,325.409,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M12,M12,DEC,December,12,monthly,0.02704843785013833
-2024,2024-01-01,327.327,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M01,M01,JAN,January,1,monthly,0.02566617366890589
-2024,2024-02-01,327.731,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M02,M02,FEB,February,2,monthly,0.02234152397767719
-2024,2024-03-01,328.043,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M03,M03,MAR,March,3,monthly,0.02237715161922682
-2024,2024-04-01,328.678,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M04,M04,APR,April,4,monthly,0.022116766076015537
-2024,2024-05-01,329.12,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M05,M05,MAY,May,5,monthly,0.021322021169964733
-2024,2024-06-01,329.71,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M06,M06,JUN,June,6,monthly,0.022179094482818407
-2024,2024-07-01,330.561,CUUR0000SAF1,"Food in U.S. city average, all urban consumers, not seasonally adjusted",All urban consumers,False,R,R,Monthly,0000,0000,U.S. city average,SAF1,SAF1,Food,M07,M07,JUL,July,7,monthly,0.021754249311486173
+series_id,year,date,value,period_id,period_code,period_abbreviation,period_name,period_month,period_type,pct_change
+CUUR0000SA0,2014,2014-10-01,237.433,M10,M10,OCT,October,10,monthly,0.01664340215632043
+CUUR0000SA0,2014,2014-11-01,236.151,M11,M11,NOV,November,11,monthly,0.013223551823708934
+CUUR0000SA0,2014,2014-12-01,234.812,M12,M12,DEC,December,12,monthly,0.007564932696557447
+CUUR0000SA0,2015,2015-01-01,233.707,M01,M01,JAN,January,1,monthly,-0.0008934831306964819
+CUUR0000SA0,2015,2015-02-01,234.722,M02,M02,FEB,February,2,monthly,-0.00025129801815304553
+CUUR0000SA0,2015,2015-03-01,236.119,M03,M03,MAR,March,3,monthly,-0.0007363739086643228
+CUUR0000SA0,2015,2015-04-01,236.599,M04,M04,APR,April,4,monthly,-0.001995174461766891
+CUUR0000SA0,2015,2015-05-01,237.805,M05,M05,MAY,May,5,monthly,-0.00039932744850779134
+CUUR0000SA0,2015,2015-06-01,238.638,M06,M06,JUN,June,6,monthly,0.0012377120368545214
+CUUR0000SA0,2015,2015-07-01,238.654,M07,M07,JUL,July,7,monthly,0.001695697796432194
+CUUR0000SA0,2015,2015-08-01,238.316,M08,M08,AUG,August,8,monthly,0.001950792930057288
+CUUR0000SA0,2015,2015-09-01,237.945,M09,M09,SEP,September,9,monthly,-0.0003612974780596856
+CUUR0000SA0,2015,2015-10-01,237.838,M10,M10,OCT,October,10,monthly,0.0017057443573555986
+CUUR0000SA0,2015,2015-11-01,237.336,M11,M11,NOV,November,11,monthly,0.005017975786678841
+CUUR0000SA0,2015,2015-12-01,236.525,M12,M12,DEC,December,12,monthly,0.007295197860415881
+CUUR0000SA0,2016,2016-01-01,236.916,M01,M01,JAN,January,1,monthly,0.013730868138309926
+CUUR0000SA0,2016,2016-02-01,237.111,M02,M02,FEB,February,2,monthly,0.010177997801654737
+CUUR0000SA0,2016,2016-03-01,238.132,M03,M03,MAR,March,3,monthly,0.008525362211427412
+CUUR0000SA0,2016,2016-04-01,239.261,M04,M04,APR,April,4,monthly,0.011251104188944261
+CUUR0000SA0,2016,2016-05-01,240.229,M05,M05,MAY,May,5,monthly,0.010193225541935691
+CUUR0000SA0,2016,2016-06-01,241.018,M06,M06,JUN,June,6,monthly,0.009973264945230875
+CUUR0000SA0,2016,2016-07-01,240.628,M07,M07,JUL,July,7,monthly,0.008271388704987004
+CUUR0000SA0,2016,2016-08-01,240.849,M08,M08,AUG,August,8,monthly,0.010628745027610353
+CUUR0000SA0,2016,2016-09-01,241.428,M09,M09,SEP,September,9,monthly,0.014637836474815646
+CUUR0000SA0,2016,2016-10-01,241.729,M10,M10,OCT,October,10,monthly,0.016359875209176034
+CUUR0000SA0,2016,2016-11-01,241.353,M11,M11,NOV,November,11,monthly,0.016925371625037933
+CUUR0000SA0,2016,2016-12-01,241.432,M12,M12,DEC,December,12,monthly,0.02074622132966919
+CUUR0000SA0,2017,2017-01-01,242.839,M01,M01,JAN,January,1,monthly,0.025000422090529995
+CUUR0000SA0,2017,2017-02-01,243.603,M02,M02,FEB,February,2,monthly,0.027379581714893186
+CUUR0000SA0,2017,2017-03-01,243.801,M03,M03,MAR,March,3,monthly,0.023806124334402767
+CUUR0000SA0,2017,2017-04-01,244.524,M04,M04,APR,April,4,monthly,0.02199689878417299
+CUUR0000SA0,2017,2017-05-01,244.733,M05,M05,MAY,May,5,monthly,0.018748777208413614
+CUUR0000SA0,2017,2017-06-01,244.955,M06,M06,JUN,June,6,monthly,0.01633487955256463
+CUUR0000SA0,2017,2017-07-01,244.786,M07,M07,JUL,July,7,monthly,0.01727978456372492
+CUUR0000SA0,2017,2017-08-01,245.519,M08,M08,AUG,August,8,monthly,0.019389742120581754
+CUUR0000SA0,2017,2017-09-01,246.819,M09,M09,SEP,September,9,monthly,0.022329638650032235
+CUUR0000SA0,2017,2017-10-01,246.663,M10,M10,OCT,October,10,monthly,0.020411287019761692
+CUUR0000SA0,2017,2017-11-01,246.669,M11,M11,NOV,November,11,monthly,0.02202582938683184
+CUUR0000SA0,2017,2017-12-01,246.524,M12,M12,DEC,December,12,monthly,0.021090824745684245
+CUUR0000SA0,2018,2018-01-01,247.867,M01,M01,JAN,January,1,monthly,0.020705076202751638
+CUUR0000SA0,2018,2018-02-01,248.991,M02,M02,FEB,February,2,monthly,0.022117954212386604
+CUUR0000SA0,2018,2018-03-01,249.554,M03,M03,MAR,March,3,monthly,0.023597114039729084
+CUUR0000SA0,2018,2018-04-01,250.546,M04,M04,APR,April,4,monthly,0.02462743943334811
+CUUR0000SA0,2018,2018-05-01,251.588,M05,M05,MAY,May,5,monthly,0.028010117148075553
+CUUR0000SA0,2018,2018-06-01,251.989,M06,M06,JUN,June,6,monthly,0.0287154783531669
+CUUR0000SA0,2018,2018-07-01,252.006,M07,M07,JUL,July,7,monthly,0.029495150866471143
+CUUR0000SA0,2018,2018-08-01,252.146,M08,M08,AUG,August,8,monthly,0.026991801041874375
+CUUR0000SA0,2018,2018-09-01,252.439,M09,M09,SEP,September,9,monthly,0.022769721941990007
+CUUR0000SA0,2018,2018-10-01,252.885,M10,M10,OCT,October,10,monthly,0.025224699286070296
+CUUR0000SA0,2018,2018-11-01,252.038,M11,M11,NOV,November,11,monthly,0.021766010321524032
+CUUR0000SA0,2018,2018-12-01,251.233,M12,M12,DEC,December,12,monthly,0.019101588486313714
+CUUR0000SA0,2019,2019-01-01,251.712,M01,M01,JAN,January,1,monthly,0.015512351381991252
+CUUR0000SA0,2019,2019-02-01,252.776,M02,M02,FEB,February,2,monthly,0.01520135265933309
+CUUR0000SA0,2019,2019-03-01,254.202,M03,M03,MAR,March,3,monthly,0.018625227405691724
+CUUR0000SA0,2019,2019-04-01,255.548,M04,M04,APR,April,4,monthly,0.019964397755302565
+CUUR0000SA0,2019,2019-05-01,256.092,M05,M05,MAY,May,5,monthly,0.017902284687663972
+CUUR0000SA0,2019,2019-06-01,256.143,M06,M06,JUN,June,6,monthly,0.016484846560762545
+CUUR0000SA0,2019,2019-07-01,256.571,M07,M07,JUL,July,7,monthly,0.018114648063935146
+CUUR0000SA0,2019,2019-08-01,256.558,M08,M08,AUG,August,8,monthly,0.017497798894291483
+CUUR0000SA0,2019,2019-09-01,256.759,M09,M09,SEP,September,9,monthly,0.017113045131695204
+CUUR0000SA0,2019,2019-10-01,257.346,M10,M10,OCT,October,10,monthly,0.017640429444213845
+CUUR0000SA0,2019,2019-11-01,257.208,M11,M11,NOV,November,11,monthly,0.020512779818916194
+CUUR0000SA0,2019,2019-12-01,256.974,M12,M12,DEC,December,12,monthly,0.022851297401217163
+CUUR0000SA0,2020,2020-01-01,257.971,M01,M01,JAN,January,1,monthly,0.024865719552504606
+CUUR0000SA0,2020,2020-02-01,258.678,M02,M02,FEB,February,2,monthly,0.023348735639459495
+CUUR0000SA0,2020,2020-03-01,258.115,M03,M03,MAR,March,3,monthly,0.015393269919198094
+CUUR0000SA0,2020,2020-04-01,256.389,M04,M04,APR,April,4,monthly,0.003290966863368272
+CUUR0000SA0,2020,2020-05-01,256.394,M05,M05,MAY,May,5,monthly,0.0011792637021070806
+CUUR0000SA0,2020,2020-06-01,257.797,M06,M06,JUN,June,6,monthly,0.006457330475554857
+CUUR0000SA0,2020,2020-07-01,259.101,M07,M07,JUL,July,7,monthly,0.009860818253037085
+CUUR0000SA0,2020,2020-08-01,259.918,M08,M08,AUG,August,8,monthly,0.013096453823307153
+CUUR0000SA0,2020,2020-09-01,260.28,M09,M09,SEP,September,9,monthly,0.013713248610564666
+CUUR0000SA0,2020,2020-10-01,260.388,M10,M10,OCT,October,10,monthly,0.011820661677274913
+CUUR0000SA0,2020,2020-11-01,260.229,M11,M11,NOV,November,11,monthly,0.011745357842679605
+CUUR0000SA0,2020,2020-12-01,260.474,M12,M12,DEC,December,12,monthly,0.013620054947193205
+CUUR0000SA0,2021,2021-01-01,261.582,M01,M01,JAN,January,1,monthly,0.013997697415600863
+CUUR0000SA0,2021,2021-02-01,263.014,M02,M02,FEB,February,2,monthly,0.016762152173745104
+CUUR0000SA0,2021,2021-03-01,264.877,M03,M03,MAR,March,3,monthly,0.02619762508959189
+CUUR0000SA0,2021,2021-04-01,267.054,M04,M04,APR,April,4,monthly,0.041596948387021104
+CUUR0000SA0,2021,2021-05-01,269.195,M05,M05,MAY,May,5,monthly,0.04992706537594471
+CUUR0000SA0,2021,2021-06-01,271.696,M06,M06,JUN,June,6,monthly,0.053914514133213354
+CUUR0000SA0,2021,2021-07-01,273.003,M07,M07,JUL,July,7,monthly,0.05365475239385398
+CUUR0000SA0,2021,2021-08-01,273.567,M08,M08,AUG,August,8,monthly,0.05251271554874992
+CUUR0000SA0,2021,2021-09-01,274.31,M09,M09,SEP,September,9,monthly,0.053903488550791634
+CUUR0000SA0,2021,2021-10-01,276.589,M10,M10,OCT,October,10,monthly,0.062218689033288976
+CUUR0000SA0,2021,2021-11-01,277.948,M11,M11,NOV,November,11,monthly,0.06809002839806477
+CUUR0000SA0,2021,2021-12-01,278.802,M12,M12,DEC,December,12,monthly,0.07036402865545144
+CUUR0000SA0,2022,2022-01-01,281.148,M01,M01,JAN,January,1,monthly,0.07479872468289117
+CUUR0000SA0,2022,2022-02-01,283.716,M02,M02,FEB,February,2,monthly,0.07871063897739283
+CUUR0000SA0,2022,2022-03-01,287.504,M03,M03,MAR,March,3,monthly,0.08542455554842432
+CUUR0000SA0,2022,2022-04-01,289.109,M04,M04,APR,April,4,monthly,0.08258629340882373
+CUUR0000SA0,2022,2022-05-01,292.296,M05,M05,MAY,May,5,monthly,0.08581511543676523
+CUUR0000SA0,2022,2022-06-01,296.311,M06,M06,JUN,June,6,monthly,0.09059757964784154
+CUUR0000SA0,2022,2022-07-01,296.276,M07,M07,JUL,July,7,monthly,0.0852481474562552
+CUUR0000SA0,2022,2022-08-01,296.171,M08,M08,AUG,August,8,monthly,0.08262692503116242
+CUUR0000SA0,2022,2022-09-01,296.808,M09,M09,SEP,September,9,monthly,0.0820166964383362
+CUUR0000SA0,2022,2022-10-01,298.012,M10,M10,OCT,October,10,monthly,0.07745427330804922
+CUUR0000SA0,2022,2022-11-01,297.711,M11,M11,NOV,November,11,monthly,0.07110322794191726
+CUUR0000SA0,2022,2022-12-01,296.797,M12,M12,DEC,December,12,monthly,0.0645440133141082
+CUUR0000SA0,2023,2023-01-01,299.17,M01,M01,JAN,January,1,monthly,0.06410146968856267
+CUUR0000SA0,2023,2023-02-01,300.84,M02,M02,FEB,February,2,monthly,0.06035613077866597
+CUUR0000SA0,2023,2023-03-01,301.836,M03,M03,MAR,March,3,monthly,0.04984974122099173
+CUUR0000SA0,2023,2023-04-01,303.363,M04,M04,APR,April,4,monthly,0.049303203981889254
+CUUR0000SA0,2023,2023-05-01,304.127,M05,M05,MAY,May,5,monthly,0.040476092727919744
+CUUR0000SA0,2023,2023-06-01,305.109,M06,M06,JUN,June,6,monthly,0.029691776545588855
+CUUR0000SA0,2023,2023-07-01,305.691,M07,M07,JUL,July,7,monthly,0.03177780177942169
+CUUR0000SA0,2023,2023-08-01,307.026,M08,M08,AUG,August,8,monthly,0.03665112384399549
+CUUR0000SA0,2023,2023-09-01,307.789,M09,M09,SEP,September,9,monthly,0.0369969812134443
+CUUR0000SA0,2023,2023-10-01,307.671,M10,M10,OCT,October,10,monthly,0.03241144651893202
+CUUR0000SA0,2023,2023-11-01,307.051,M11,M11,NOV,November,11,monthly,0.03137270708841777
+CUUR0000SA0,2023,2023-12-01,306.746,M12,M12,DEC,December,12,monthly,0.033521228314302265
+CUUR0000SA0,2024,2024-01-01,308.417,M01,M01,JAN,January,1,monthly,0.030908847812280538
+CUUR0000SA0,2024,2024-02-01,310.326,M02,M02,FEB,February,2,monthly,0.031531711208615976
+CUUR0000SA0,2024,2024-03-01,312.332,M03,M03,MAR,March,3,monthly,0.034773850700380304
+CUUR0000SA0,2024,2024-04-01,313.548,M04,M04,APR,April,4,monthly,0.03357363950119163
+CUUR0000SA0,2024,2024-05-01,314.069,M05,M05,MAY,May,5,monthly,0.032690290569400204
+CUUR0000SA0,2024,2024-06-01,314.175,M06,M06,JUN,June,6,monthly,0.029713971072633072
+CUUR0000SA0,2024,2024-07-01,314.54,M07,M07,JUL,July,7,monthly,0.028947531984913066
+CUUR0000SA0,2024,2024-08-01,314.796,M08,M08,AUG,August,8,monthly,0.025307302964569622
+CUUR0000SA0,2024,2024-09-01,315.301,M09,M09,SEP,September,9,monthly,0.02440633031069983
+CUUR0000SA0E,2014,2014-10-01,234.745,M10,M10,OCT,October,10,monthly,-0.015843269440391716
+CUUR0000SA0E,2014,2014-11-01,221.844,M11,M11,NOV,November,11,monthly,-0.048435248095532235
+CUUR0000SA0E,2014,2014-12-01,209.785,M12,M12,DEC,December,12,monthly,-0.1055546554561656
+CUUR0000SA0E,2015,2015-01-01,192.619,M01,M01,JAN,January,1,monthly,-0.19591652716957975
+CUUR0000SA0E,2015,2015-02-01,196.597,M02,M02,FEB,February,2,monthly,-0.18775331452109345
+CUUR0000SA0E,2015,2015-03-01,204.731,M03,M03,MAR,March,3,monthly,-0.1828508479582348
+CUUR0000SA0E,2015,2015-04-01,203.715,M04,M04,APR,April,4,monthly,-0.19390068733009658
+CUUR0000SA0E,2015,2015-05-01,214.33,M05,M05,MAY,May,5,monthly,-0.16271456586791255
+CUUR0000SA0E,2015,2015-06-01,220.861,M06,M06,JUN,June,6,monthly,-0.15007042307721918
+CUUR0000SA0E,2015,2015-07-01,219.852,M07,M07,JUL,July,7,monthly,-0.14755318777698934
+CUUR0000SA0E,2015,2015-08-01,213.248,M08,M08,AUG,August,8,monthly,-0.15024048519432087
+CUUR0000SA0E,2015,2015-09-01,201.641,M09,M09,SEP,September,9,monthly,-0.18389408969673426
+CUUR0000SA0E,2015,2015-10-01,194.501,M10,M10,OCT,October,10,monthly,-0.17143709131184903
+CUUR0000SA0E,2015,2015-11-01,189.267,M11,M11,NOV,November,11,monthly,-0.1468464326283334
+CUUR0000SA0E,2015,2015-12-01,183.378,M12,M12,DEC,December,12,monthly,-0.12587649259956624
+CUUR0000SA0E,2016,2016-01-01,180.171,M01,M01,JAN,January,1,monthly,-0.06462498507416203
+CUUR0000SA0E,2016,2016-02-01,172.061,M02,M02,FEB,February,2,monthly,-0.12480353209865869
+CUUR0000SA0E,2016,2016-03-01,179.017,M03,M03,MAR,March,3,monthly,-0.12559895667974075
+CUUR0000SA0E,2016,2016-04-01,185.652,M04,M04,APR,April,4,monthly,-0.0886679920477138
+CUUR0000SA0E,2016,2016-05-01,192.673,M05,M05,MAY,May,5,monthly,-0.10104511734241595
+CUUR0000SA0E,2016,2016-06-01,200.035,M06,M06,JUN,June,6,monthly,-0.09429460158199043
+CUUR0000SA0E,2016,2016-07-01,195.94,M07,M07,JUL,July,7,monthly,-0.10876407765223883
+CUUR0000SA0E,2016,2016-08-01,193.524,M08,M08,AUG,August,8,monthly,-0.0924932472989195
+CUUR0000SA0E,2016,2016-09-01,195.852,M09,M09,SEP,September,9,monthly,-0.028709439052573615
+CUUR0000SA0E,2016,2016-10-01,194.786,M10,M10,OCT,October,10,monthly,0.001465288096205164
+CUUR0000SA0E,2016,2016-11-01,191.402,M11,M11,NOV,November,11,monthly,0.011280360548854285
+CUUR0000SA0E,2016,2016-12-01,193.306,M12,M12,DEC,December,12,monthly,0.054139536912825026
+CUUR0000SA0E,2017,2017-01-01,199.608,M01,M01,JAN,January,1,monthly,0.10788084652913077
+CUUR0000SA0E,2017,2017-02-01,198.195,M02,M02,FEB,February,2,monthly,0.15188799321170965
+CUUR0000SA0E,2017,2017-03-01,198.597,M03,M03,MAR,March,3,monthly,0.10937508728221346
+CUUR0000SA0E,2017,2017-04-01,202.869,M04,M04,APR,April,4,monthly,0.0927380259840993
+CUUR0000SA0E,2017,2017-05-01,203.132,M05,M05,MAY,May,5,monthly,0.05428368271631201
+CUUR0000SA0E,2017,2017-06-01,204.646,M06,M06,JUN,June,6,monthly,0.02305096608093571
+CUUR0000SA0E,2017,2017-07-01,202.554,M07,M07,JUL,July,7,monthly,0.033755231193222546
+CUUR0000SA0E,2017,2017-08-01,205.894,M08,M08,AUG,August,8,monthly,0.06391972055145612
+CUUR0000SA0E,2017,2017-09-01,215.711,M09,M09,SEP,September,9,monthly,0.10139799440393782
+CUUR0000SA0E,2017,2017-10-01,207.29,M10,M10,OCT,October,10,monthly,0.06419352520201649
+CUUR0000SA0E,2017,2017-11-01,209.383,M11,M11,NOV,November,11,monthly,0.09394363695259211
+CUUR0000SA0E,2017,2017-12-01,206.598,M12,M12,DEC,December,12,monthly,0.06876144558368602
+CUUR0000SA0E,2018,2018-01-01,210.663,M01,M01,JAN,January,1,monthly,0.05538355176145249
+CUUR0000SA0E,2018,2018-02-01,213.519,M02,M02,FEB,February,2,monthly,0.07731779308257036
+CUUR0000SA0E,2018,2018-03-01,212.554,M03,M03,MAR,March,3,monthly,0.0702780001712009
+CUUR0000SA0E,2018,2018-04-01,218.83,M04,M04,APR,April,4,monthly,0.07867638722525383
+CUUR0000SA0E,2018,2018-05-01,226.81,M05,M05,MAY,May,5,monthly,0.11656459838922473
+CUUR0000SA0E,2018,2018-06-01,229.137,M06,M06,JUN,June,6,monthly,0.1196749508908066
+CUUR0000SA0E,2018,2018-07-01,227.107,M07,M07,JUL,July,7,monthly,0.12121705816720474
+CUUR0000SA0E,2018,2018-08-01,226.939,M08,M08,AUG,August,8,monthly,0.10221278910507348
+CUUR0000SA0E,2018,2018-09-01,226.165,M09,M09,SEP,September,9,monthly,0.04846298983361996
+CUUR0000SA0E,2018,2018-10-01,225.757,M10,M10,OCT,October,10,monthly,0.08908775145930825
+CUUR0000SA0E,2018,2018-11-01,215.91,M11,M11,NOV,November,11,monthly,0.031172540273088023
+CUUR0000SA0E,2018,2018-12-01,205.905,M12,M12,DEC,December,12,monthly,-0.003354340313071802
+CUUR0000SA0E,2019,2019-01-01,200.563,M01,M01,JAN,January,1,monthly,-0.04794387244081788
+CUUR0000SA0E,2019,2019-02-01,202.74,M02,M02,FEB,February,2,monthly,-0.050482626838829314
+CUUR0000SA0E,2019,2019-03-01,211.724,M03,M03,MAR,March,3,monthly,-0.003904890051469323
+CUUR0000SA0E,2019,2019-04-01,222.499,M04,M04,APR,April,4,monthly,0.016766439702051716
+CUUR0000SA0E,2019,2019-05-01,225.773,M05,M05,MAY,May,5,monthly,-0.004572108813544418
+CUUR0000SA0E,2019,2019-06-01,221.373,M06,M06,JUN,June,6,monthly,-0.033883659120962584
+CUUR0000SA0E,2019,2019-07-01,222.492,M07,M07,JUL,July,7,monthly,-0.02032081794044216
+CUUR0000SA0E,2019,2019-08-01,216.978,M08,M08,AUG,August,8,monthly,-0.04389285226426476
+CUUR0000SA0E,2019,2019-09-01,215.418,M09,M09,SEP,September,9,monthly,-0.04751840470452984
+CUUR0000SA0E,2019,2019-10-01,216.351,M10,M10,OCT,October,10,monthly,-0.04166426733168849
+CUUR0000SA0E,2019,2019-11-01,214.636,M11,M11,NOV,November,11,monthly,-0.005900606734287384
+CUUR0000SA0E,2019,2019-12-01,212.982,M12,M12,DEC,December,12,monthly,0.03437021927587969
+CUUR0000SA0E,2020,2020-01-01,213.043,M01,M01,JAN,January,1,monthly,0.06222483708360982
+CUUR0000SA0E,2020,2020-02-01,208.354,M02,M02,FEB,February,2,monthly,0.02769063825589435
+CUUR0000SA0E,2020,2020-03-01,199.573,M03,M03,MAR,March,3,monthly,-0.057390754000491095
+CUUR0000SA0E,2020,2020-04-01,183.081,M04,M04,APR,April,4,monthly,-0.17716034678807546
+CUUR0000SA0E,2020,2020-05-01,183.076,M05,M05,MAY,May,5,monthly,-0.18911473028218606
+CUUR0000SA0E,2020,2020-06-01,193.379,M06,M06,JUN,June,6,monthly,-0.12645625256919313
+CUUR0000SA0E,2020,2020-07-01,197.665,M07,M07,JUL,July,7,monthly,-0.11158603455405136
+CUUR0000SA0E,2020,2020-08-01,197.362,M08,M08,AUG,August,8,monthly,-0.0904054788964781
+CUUR0000SA0E,2020,2020-09-01,198.858,M09,M09,SEP,September,9,monthly,-0.07687379884689305
+CUUR0000SA0E,2020,2020-10-01,196.458,M10,M10,OCT,October,10,monthly,-0.09194780703578909
+CUUR0000SA0E,2020,2020-11-01,194.388,M11,M11,NOV,November,11,monthly,-0.09433645800331725
+CUUR0000SA0E,2020,2020-12-01,198.155,M12,M12,DEC,December,12,monthly,-0.06961621169864118
+CUUR0000SA0E,2021,2021-01-01,205.273,M01,M01,JAN,January,1,monthly,-0.03647151044624797
+CUUR0000SA0E,2021,2021-02-01,213.277,M02,M02,FEB,February,2,monthly,0.02362805609683516
+CUUR0000SA0E,2021,2021-03-01,225.861,M03,M03,MAR,March,3,monthly,0.13172122481497994
+CUUR0000SA0E,2021,2021-04-01,229.116,M04,M04,APR,April,4,monthly,0.2514460812427288
+CUUR0000SA0E,2021,2021-05-01,235.339,M05,M05,MAY,May,5,monthly,0.2854716074198693
+CUUR0000SA0E,2021,2021-06-01,240.72,M06,M06,JUN,June,6,monthly,0.24480941570697956
+CUUR0000SA0E,2021,2021-07-01,244.8,M07,M07,JUL,July,7,monthly,0.2384590089292491
+CUUR0000SA0E,2021,2021-08-01,246.639,M08,M08,AUG,August,8,monthly,0.24967825619926853
+CUUR0000SA0E,2021,2021-09-01,248.228,M09,M09,SEP,September,9,monthly,0.24826760804191927
+CUUR0000SA0E,2021,2021-10-01,255.338,M10,M10,OCT,October,10,monthly,0.29970782559122044
+CUUR0000SA0E,2021,2021-11-01,259.1,M11,M11,NOV,November,11,monthly,0.3329012078934914
+CUUR0000SA0E,2021,2021-12-01,256.207,M12,M12,DEC,December,12,monthly,0.2929625797986424
+CUUR0000SA0E,2022,2022-01-01,260.653,M01,M01,JAN,January,1,monthly,0.2697870640561595
+CUUR0000SA0E,2022,2022-02-01,267.771,M02,M02,FEB,February,2,monthly,0.2555080951063642
+CUUR0000SA0E,2022,2022-03-01,298.246,M03,M03,MAR,March,3,monthly,0.32048472290479535
+CUUR0000SA0E,2022,2022-04-01,298.469,M04,M04,APR,April,4,monthly,0.30269819654672725
+CUUR0000SA0E,2022,2022-05-01,316.761,M05,M05,MAY,May,5,monthly,0.34597750479096123
+CUUR0000SA0E,2022,2022-06-01,340.917,M06,M06,JUN,June,6,monthly,0.41623878364905265
+CUUR0000SA0E,2022,2022-07-01,325.407,M07,M07,JUL,July,7,monthly,0.32927696078431357
+CUUR0000SA0E,2022,2022-08-01,305.372,M08,M08,AUG,August,8,monthly,0.23813346632122245
+CUUR0000SA0E,2022,2022-09-01,297.343,M09,M09,SEP,September,9,monthly,0.19786244903878702
+CUUR0000SA0E,2022,2022-10-01,300.359,M10,M10,OCT,October,10,monthly,0.17631923176338815
+CUUR0000SA0E,2022,2022-11-01,292.953,M11,M11,NOV,November,11,monthly,0.13065611732921623
+CUUR0000SA0E,2022,2022-12-01,274.937,M12,M12,DEC,December,12,monthly,0.07310495029409814
+CUUR0000SA0E,2023,2023-01-01,283.33,M01,M01,JAN,January,1,monthly,0.08700072510195533
+CUUR0000SA0E,2023,2023-02-01,281.673,M02,M02,FEB,February,2,monthly,0.05191749666692802
+CUUR0000SA0E,2023,2023-03-01,279.084,M03,M03,MAR,March,3,monthly,-0.06424897567779608
+CUUR0000SA0E,2023,2023-04-01,283.352,M04,M04,APR,April,4,monthly,-0.05064847605613987
+CUUR0000SA0E,2023,2023-05-01,279.816,M05,M05,MAY,May,5,monthly,-0.11663367649426559
+CUUR0000SA0E,2023,2023-06-01,283.854,M06,M06,JUN,June,6,monthly,-0.16738091676273104
+CUUR0000SA0E,2023,2023-07-01,284.828,M07,M07,JUL,July,7,monthly,-0.12470229589406501
+CUUR0000SA0E,2023,2023-08-01,294.328,M08,M08,AUG,August,8,monthly,-0.036165725737788756
+CUUR0000SA0E,2023,2023-09-01,296.004,M09,M09,SEP,September,9,monthly,-0.004503216823668277
+CUUR0000SA0E,2023,2023-10-01,286.754,M10,M10,OCT,October,10,monthly,-0.045295796030749735
+CUUR0000SA0E,2023,2023-11-01,277.029,M11,M11,NOV,November,11,monthly,-0.05435684222383785
+CUUR0000SA0E,2023,2023-12-01,269.375,M12,M12,DEC,December,12,monthly,-0.020230089074951718
+CUUR0000SA0E,2024,2024-01-01,270.42,M01,M01,JAN,January,1,monthly,-0.04556524194402278
+CUUR0000SA0E,2024,2024-02-01,276.331,M02,M02,FEB,February,2,monthly,-0.018965254035708035
+CUUR0000SA0E,2024,2024-03-01,285.002,M03,M03,MAR,March,3,monthly,0.021205085207321117
+CUUR0000SA0E,2024,2024-04-01,290.76,M04,M04,APR,April,4,monthly,0.026144159914170517
+CUUR0000SA0E,2024,2024-05-01,290.139,M05,M05,MAY,May,5,monthly,0.03689210052320102
+CUUR0000SA0E,2024,2024-06-01,286.675,M06,M06,JUN,June,6,monthly,0.00993820767014042
+CUUR0000SA0E,2024,2024-07-01,287.868,M07,M07,JUL,July,7,monthly,0.010673107980956997
+CUUR0000SA0E,2024,2024-08-01,282.614,M08,M08,AUG,August,8,monthly,-0.039799135658177276
+CUUR0000SA0E,2024,2024-09-01,275.74,M09,M09,SEP,September,9,monthly,-0.06845853434413052
+CUUR0000SAF1,2014,2014-10-01,245.166,M10,M10,OCT,October,10,monthly,0.030667883012220898
+CUUR0000SAF1,2014,2014-11-01,245.192,M11,M11,NOV,November,11,monthly,0.031774820001599036
+CUUR0000SAF1,2014,2014-12-01,245.976,M12,M12,DEC,December,12,monthly,0.03408178451164301
+CUUR0000SAF1,2015,2015-01-01,246.538,M01,M01,JAN,January,1,monthly,0.0320925014233564
+CUUR0000SAF1,2015,2015-02-01,246.68,M02,M02,FEB,February,2,monthly,0.02951487429468136
+CUUR0000SAF1,2015,2015-03-01,246.045,M03,M03,MAR,March,3,monthly,0.023490212064992244
+CUUR0000SAF1,2015,2015-04-01,246.121,M04,M04,APR,April,4,monthly,0.01982290324318292
+CUUR0000SAF1,2015,2015-05-01,246.187,M05,M05,MAY,May,5,monthly,0.015857623873502202
+CUUR0000SAF1,2015,2015-06-01,246.68,M06,M06,JUN,June,6,monthly,0.017967531342076404
+CUUR0000SAF1,2015,2015-07-01,247.003,M07,M07,JUL,July,7,monthly,0.016331048330686215
+CUUR0000SAF1,2015,2015-08-01,247.671,M08,M08,AUG,August,8,monthly,0.015831935392578655
+CUUR0000SAF1,2015,2015-09-01,248.632,M09,M09,SEP,September,9,monthly,0.016359399910068406
+CUUR0000SAF1,2015,2015-10-01,249.052,M10,M10,OCT,October,10,monthly,0.015850484977525392
+CUUR0000SAF1,2015,2015-11-01,248.306,M11,M11,NOV,November,11,monthly,0.012700251231687831
+CUUR0000SAF1,2015,2015-12-01,247.903,M12,M12,DEC,December,12,monthly,0.007834097635541548
+CUUR0000SAF1,2016,2016-01-01,248.631,M01,M01,JAN,January,1,monthly,0.008489563475001738
+CUUR0000SAF1,2016,2016-02-01,248.8,M02,M02,FEB,February,2,monthly,0.008594130047024473
+CUUR0000SAF1,2016,2016-03-01,247.978,M03,M03,MAR,March,3,monthly,0.007856286451665362
+CUUR0000SAF1,2016,2016-04-01,248.413,M04,M04,APR,April,4,monthly,0.009312492635736191
+CUUR0000SAF1,2016,2016-05-01,247.86,M05,M05,MAY,May,5,monthly,0.0067956472112662425
+CUUR0000SAF1,2016,2016-06-01,247.482,M06,M06,JUN,June,6,monthly,0.0032511756121289537
+CUUR0000SAF1,2016,2016-07-01,247.554,M07,M07,JUL,July,7,monthly,0.002230742136735353
+CUUR0000SAF1,2016,2016-08-01,247.719,M08,M08,AUG,August,8,monthly,0.00019380549196323926
+CUUR0000SAF1,2016,2016-09-01,247.917,M09,M09,SEP,September,9,monthly,-0.0028757360275427635
+CUUR0000SAF1,2016,2016-10-01,248.073,M10,M10,OCT,October,10,monthly,-0.003930905995535028
+CUUR0000SAF1,2016,2016-11-01,247.435,M11,M11,NOV,November,11,monthly,-0.0035077686403067743
+CUUR0000SAF1,2016,2016-12-01,247.313,M12,M12,DEC,December,12,monthly,-0.0023799631307406255
+CUUR0000SAF1,2017,2017-01-01,248.242,M01,M01,JAN,January,1,monthly,-0.0015645675720245
+CUUR0000SAF1,2017,2017-02-01,248.791,M02,M02,FEB,February,2,monthly,-3.617363344055047e-05
+CUUR0000SAF1,2017,2017-03-01,249.165,M03,M03,MAR,March,3,monthly,0.004786714950519633
+CUUR0000SAF1,2017,2017-04-01,249.739,M04,M04,APR,April,4,monthly,0.005337884893302558
+CUUR0000SAF1,2017,2017-05-01,250.016,M05,M05,MAY,May,5,monthly,0.008698458807391285
+CUUR0000SAF1,2017,2017-06-01,249.653,M06,M06,JUN,June,6,monthly,0.008772355161183354
+CUUR0000SAF1,2017,2017-07-01,250.214,M07,M07,JUL,July,7,monthly,0.010745130355397148
+CUUR0000SAF1,2017,2017-08-01,250.493,M08,M08,AUG,August,8,monthly,0.011198172122445227
+CUUR0000SAF1,2017,2017-09-01,250.993,M09,M09,SEP,September,9,monthly,0.012407378275793857
+CUUR0000SAF1,2017,2017-10-01,251.364,M10,M10,OCT,October,10,monthly,0.013266256303588131
+CUUR0000SAF1,2017,2017-11-01,250.871,M11,M11,NOV,November,11,monthly,0.013886475235920681
+CUUR0000SAF1,2017,2017-12-01,251.238,M12,M12,DEC,December,12,monthly,0.015870576961178884
+CUUR0000SAF1,2018,2018-01-01,252.361,M01,M01,JAN,January,1,monthly,0.016592679723817838
+CUUR0000SAF1,2018,2018-02-01,252.266,M02,M02,FEB,February,2,monthly,0.013967547057570417
+CUUR0000SAF1,2018,2018-03-01,252.37,M03,M03,MAR,March,3,monthly,0.012862962294062141
+CUUR0000SAF1,2018,2018-04-01,253.209,M04,M04,APR,April,4,monthly,0.01389450586412222
+CUUR0000SAF1,2018,2018-05-01,253.098,M05,M05,MAY,May,5,monthly,0.012327211058492438
+CUUR0000SAF1,2018,2018-06-01,253.231,M06,M06,JUN,June,6,monthly,0.014331892667021728
+CUUR0000SAF1,2018,2018-07-01,253.746,M07,M07,JUL,July,7,monthly,0.014115916775240489
+CUUR0000SAF1,2018,2018-08-01,254.077,M08,M08,AUG,August,8,monthly,0.014307785047885657
+CUUR0000SAF1,2018,2018-09-01,254.393,M09,M09,SEP,September,9,monthly,0.013546194515384968
+CUUR0000SAF1,2018,2018-10-01,254.358,M10,M10,OCT,October,10,monthly,0.011911013510287782
+CUUR0000SAF1,2018,2018-11-01,254.379,M11,M11,NOV,November,11,monthly,0.0139832822446595
+CUUR0000SAF1,2018,2018-12-01,255.21,M12,M12,DEC,December,12,monthly,0.015809710314522496
+CUUR0000SAF1,2019,2019-01-01,256.417,M01,M01,JAN,January,1,monthly,0.016072214010881103
+CUUR0000SAF1,2019,2019-02-01,257.222,M02,M02,FEB,February,2,monthly,0.01964592929685338
+CUUR0000SAF1,2019,2019-03-01,257.724,M03,M03,MAR,March,3,monthly,0.021214882910012944
+CUUR0000SAF1,2019,2019-04-01,257.708,M04,M04,APR,April,4,monthly,0.017767930839741153
+CUUR0000SAF1,2019,2019-05-01,258.11,M05,M05,MAY,May,5,monthly,0.01980260610514506
+CUUR0000SAF1,2019,2019-06-01,258.064,M06,M06,JUN,June,6,monthly,0.01908534105224091
+CUUR0000SAF1,2019,2019-07-01,258.274,M07,M07,JUL,July,7,monthly,0.01784461626981315
+CUUR0000SAF1,2019,2019-08-01,258.41,M08,M08,AUG,August,8,monthly,0.01705388523951412
+CUUR0000SAF1,2019,2019-09-01,258.943,M09,M09,SEP,September,9,monthly,0.017885712264095188
+CUUR0000SAF1,2019,2019-10-01,259.632,M10,M10,OCT,October,10,monthly,0.020734555233175245
+CUUR0000SAF1,2019,2019-11-01,259.467,M11,M11,NOV,November,11,monthly,0.0200016510796881
+CUUR0000SAF1,2019,2019-12-01,259.823,M12,M12,DEC,December,12,monthly,0.018075310528584243
+CUUR0000SAF1,2020,2020-01-01,261.057,M01,M01,JAN,January,1,monthly,0.018095524087716752
+CUUR0000SAF1,2020,2020-02-01,261.876,M02,M02,FEB,February,2,monthly,0.01809332016701526
+CUUR0000SAF1,2020,2020-03-01,262.708,M03,M03,MAR,March,3,monthly,0.019338517173410397
+CUUR0000SAF1,2020,2020-04-01,266.757,M04,M04,APR,April,4,monthly,0.03511338414018961
+CUUR0000SAF1,2020,2020-05-01,268.439,M05,M05,MAY,May,5,monthly,0.04001782185889735
+CUUR0000SAF1,2020,2020-06-01,269.77,M06,M06,JUN,June,6,monthly,0.04536084072168123
+CUUR0000SAF1,2020,2020-07-01,268.863,M07,M07,JUL,July,7,monthly,0.0409990939854572
+CUUR0000SAF1,2020,2020-08-01,269.079,M08,M08,AUG,August,8,monthly,0.04128710189234153
+CUUR0000SAF1,2020,2020-09-01,269.163,M09,M09,SEP,September,9,monthly,0.039468145499202745
+CUUR0000SAF1,2020,2020-10-01,269.828,M10,M10,OCT,October,10,monthly,0.03927096813952047
+CUUR0000SAF1,2020,2020-11-01,269.069,M11,M11,NOV,November,11,monthly,0.03700663282806693
+CUUR0000SAF1,2020,2020-12-01,270.023,M12,M12,DEC,December,12,monthly,0.039257494525119174
+CUUR0000SAF1,2021,2021-01-01,270.938,M01,M01,JAN,January,1,monthly,0.03784997146217095
+CUUR0000SAF1,2021,2021-02-01,271.363,M02,M02,FEB,February,2,monthly,0.03622706929997421
+CUUR0000SAF1,2021,2021-03-01,271.812,M03,M03,MAR,March,3,monthly,0.03465444523958161
+CUUR0000SAF1,2021,2021-04-01,273.09,M04,M04,APR,April,4,monthly,0.023740707835220753
+CUUR0000SAF1,2021,2021-05-01,274.212,M05,M05,MAY,May,5,monthly,0.021505816964002777
+CUUR0000SAF1,2021,2021-06-01,276.206,M06,M06,JUN,June,6,monthly,0.023857359973310732
+CUUR0000SAF1,2021,2021-07-01,278.127,M07,M07,JUL,July,7,monthly,0.03445621004005761
+CUUR0000SAF1,2021,2021-08-01,279.135,M08,M08,AUG,August,8,monthly,0.03737192423043045
+CUUR0000SAF1,2021,2021-09-01,281.506,M09,M09,SEP,September,9,monthly,0.045856971426236015
+CUUR0000SAF1,2021,2021-10-01,284.205,M10,M10,OCT,October,10,monthly,0.05328209081340707
+CUUR0000SAF1,2021,2021-11-01,285.507,M11,M11,NOV,November,11,monthly,0.06109213621784737
+CUUR0000SAF1,2021,2021-12-01,286.966,M12,M12,DEC,December,12,monthly,0.06274650677905202
+CUUR0000SAF1,2022,2022-01-01,289.772,M01,M01,JAN,January,1,monthly,0.06951405856690451
+CUUR0000SAF1,2022,2022-02-01,292.794,M02,M02,FEB,February,2,monthly,0.07897539458216474
+CUUR0000SAF1,2022,2022-03-01,295.728,M03,M03,MAR,March,3,monthly,0.08798728532956601
+CUUR0000SAF1,2022,2022-04-01,298.711,M04,M04,APR,April,4,monthly,0.09381888754623025
+CUUR0000SAF1,2022,2022-05-01,302.038,M05,M05,MAY,May,5,monthly,0.10147623007016482
+CUUR0000SAF1,2022,2022-06-01,305.041,M06,M06,JUN,June,6,monthly,0.10439671839134546
+CUUR0000SAF1,2022,2022-07-01,308.532,M07,M07,JUL,July,7,monthly,0.10932056218921571
+CUUR0000SAF1,2022,2022-08-01,310.875,M08,M08,AUG,August,8,monthly,0.11370842065667164
+CUUR0000SAF1,2022,2022-09-01,313.142,M09,M09,SEP,September,9,monthly,0.11238126363203627
+CUUR0000SAF1,2022,2022-10-01,315.323,M10,M10,OCT,October,10,monthly,0.10949138825847538
+CUUR0000SAF1,2022,2022-11-01,315.857,M11,M11,NOV,November,11,monthly,0.10630212218964874
+CUUR0000SAF1,2022,2022-12-01,316.839,M12,M12,DEC,December,12,monthly,0.10409944035181873
+CUUR0000SAF1,2023,2023-01-01,319.136,M01,M01,JAN,January,1,monthly,0.10133484256587955
+CUUR0000SAF1,2023,2023-02-01,320.569,M02,M02,FEB,February,2,monthly,0.09486191656932874
+CUUR0000SAF1,2023,2023-03-01,320.863,M03,M03,MAR,March,3,monthly,0.08499364280690358
+CUUR0000SAF1,2023,2023-04-01,321.566,M04,M04,APR,April,4,monthly,0.07651208023808942
+CUUR0000SAF1,2023,2023-05-01,322.249,M05,M05,MAY,May,5,monthly,0.06691542123838734
+CUUR0000SAF1,2023,2023-06-01,322.556,M06,M06,JUN,June,6,monthly,0.05741851095426509
+CUUR0000SAF1,2023,2023-07-01,323.523,M07,M07,JUL,July,7,monthly,0.04858815293065244
+CUUR0000SAF1,2023,2023-08-01,324.1,M08,M08,AUG,August,8,monthly,0.04254121431443503
+CUUR0000SAF1,2023,2023-09-01,324.704,M09,M09,SEP,September,9,monthly,0.03692254632083847
+CUUR0000SAF1,2023,2023-10-01,325.731,M10,M10,OCT,October,10,monthly,0.03300742413334912
+CUUR0000SAF1,2023,2023-11-01,325.172,M11,M11,NOV,November,11,monthly,0.029491193799725757
+CUUR0000SAF1,2023,2023-12-01,325.409,M12,M12,DEC,December,12,monthly,0.02704843785013833
+CUUR0000SAF1,2024,2024-01-01,327.327,M01,M01,JAN,January,1,monthly,0.02566617366890589
+CUUR0000SAF1,2024,2024-02-01,327.731,M02,M02,FEB,February,2,monthly,0.02234152397767719
+CUUR0000SAF1,2024,2024-03-01,328.043,M03,M03,MAR,March,3,monthly,0.02237715161922682
+CUUR0000SAF1,2024,2024-04-01,328.678,M04,M04,APR,April,4,monthly,0.022116766076015537
+CUUR0000SAF1,2024,2024-05-01,329.12,M05,M05,MAY,May,5,monthly,0.021322021169964733
+CUUR0000SAF1,2024,2024-06-01,329.71,M06,M06,JUN,June,6,monthly,0.022179094482818407
+CUUR0000SAF1,2024,2024-07-01,330.561,M07,M07,JUL,July,7,monthly,0.021754249311486173
+CUUR0000SAF1,2024,2024-08-01,330.75,M08,M08,AUG,August,8,monthly,0.020518358531317338
+CUUR0000SAF1,2024,2024-09-01,332.083,M09,M09,SEP,September,9,monthly,0.022725312900364614
