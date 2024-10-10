@@ -4,4 +4,7 @@ update:
 	pipenv run python sample.py
 
 
+test:
+	pipenv run pytest -n auto --cov=cpi --cov-report term-missing tests
+
 .PHONY: update
