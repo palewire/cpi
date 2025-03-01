@@ -1795,7 +1795,6 @@
                 "sha256:55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760",
                 "sha256:70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6"
             ],
-            "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==2.32.3"
         },
@@ -1838,6 +1837,14 @@
             ],
             "markers": "python_full_version >= '3.8.0'",
             "version": "==13.9.4"
+        },
+        "roman-numerals-py": {
+            "hashes": [
+                "sha256:9da2ad2fb670bcf24e81070ceb3be72f6c11c440d73bd579fbeca1e9f330954c",
+                "sha256:be4bf804f083a4ce001b5eb7e3c0862479d10f94c936f6c4e5f250aa5ff5bd2d"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==3.1.0"
         },
         "rpds-py": {
             "hashes": [
@@ -2014,12 +2021,12 @@
         },
         "sphinx": {
             "hashes": [
-                "sha256:09719015511837b76bf6e03e42eb7595ac8c2e41eeb9c29c5b755c6b677992a2",
-                "sha256:43c1911eecb0d3e161ad78611bc905d1ad0e523e4ddc202a58a821773dc4c927"
+                "sha256:b5d2bb3cdf6207fcacde9f92085d2b97667b05b9c346eaec426ca4be8af505e9",
+                "sha256:e4b932951b9c18b039f73b72e4e63afe967d90408700ec222b981ac24647c01e"
             ],
             "index": "pypi",
-            "markers": "python_version >= '3.10'",
-            "version": "==8.1.3"
+            "markers": "python_version >= '3.11'",
+            "version": "==8.2.1"
         },
         "sphinx-autobuild": {
             "hashes": [
