@@ -200,6 +200,9 @@ class ParseIndex(BaseParser):
         for file in self.FILE_LIST:
             # ... and for each file ...
             for row in self.get_file(file):
+                # Skip rows where value is '-' (missing data) or None
+                if row["value"] == "-" or row["value"] is None:
+                    continue
                 # Create an object
                 d = dict(
                     series=row["series_id"],
