@@ -163,7 +163,7 @@ jobs:
     steps:
       - id: fetch
         name: Fetch artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: build-${{ github.run_number }}
           path: ./dist
