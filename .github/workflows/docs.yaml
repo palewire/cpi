@@ -48,7 +48,7 @@ jobs:
     if: ${{ github.ref_name == 'main' }}
     steps:
       - name: Download release candidate
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: release-candidate
           path: ./docs/
