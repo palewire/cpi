@@ -1311,11 +1311,12 @@
         },
         "mistune": {
             "hashes": [
-                "sha256:02106ac2aa4f66e769debbfa028509a275069dcffce0dfa578edd7b991ee700a",
-                "sha256:e0740d635f515119f7d1feb6f9b192ee60f0cc649f80a8f944f905706a21654c"
+                "sha256:78cdb0ba5e938053ccf63651b352508d2efa9411dc8810bfb05f2dc5140c0048",
+                "sha256:7c8e5501d38bac1582e067e46c8343f17d57ea1aaa735823f3aba1fd59c88a28"
             ],
+            "index": "pypi",
             "markers": "python_version >= '3.8'",
-            "version": "==3.1.1"
+            "version": "==3.2.1"
         },
         "more-itertools": {
             "hashes": [
