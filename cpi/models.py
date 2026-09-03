@@ -441,4 +441,4 @@ class SeriesList(list[Series]):
         )
 
         # Pull the series
-        return Series.get_by_id(series_id)
+        return self.get_by_id(series_id)
