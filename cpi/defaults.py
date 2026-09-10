@@ -10,4 +10,3 @@ DEFAULTS_SERIES_ATTRS = {
     "area": "U.S. city average",
     "items": "All items",
 }
-DEFAULT_DB_PATH = Path(__file__).parent.absolute() / "cpi.db"

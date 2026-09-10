@@ -9,10 +9,12 @@ from pathlib import Path
 
 from pandas import json_normalize
 
-from .defaults import DEFAULTS_SERIES_ATTRS, DEFAULT_DB_PATH
+from .defaults import DEFAULTS_SERIES_ATTRS
 
 # CPI tools
 from .errors import CPIObjectDoesNotExist
+
+DEFAULT_DB_PATH = Path(__file__).parent.absolute() / "cpi.db"
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
