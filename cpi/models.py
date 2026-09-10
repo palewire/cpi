@@ -9,7 +9,7 @@ from pathlib import Path
 
 from pandas import json_normalize
 
-from .defaults import DEFAULTS_SERIES_ATTRS
+from .defaults import DEFAULTS_SERIES_ATTRS, DEFAULT_DB_PATH
 
 # CPI tools
 from .errors import CPIObjectDoesNotExist
@@ -33,8 +33,7 @@ def query(sql: str, params: list | tuple | None = None) -> list[dict]:
         [{'id': '0000', 'code': 'US', 'name': 'United States'}, ...]
     """
     # Connect
-    this_dir = Path(__file__).parent.absolute()
-    conn = sqlite3.connect(this_dir / "cpi.db")
+    conn = sqlite3.connect(DEFAULT_DB_PATH)
     cursor = conn.cursor()
 
     # Query the sql
