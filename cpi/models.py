@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import os
 import sqlite3
 from datetime import date
 from pathlib import Path
@@ -15,6 +16,7 @@ from .defaults import DEFAULTS_SERIES_ATTRS
 from .errors import CPIObjectDoesNotExist
 
 DEFAULT_DB_PATH = Path(__file__).parent.absolute() / "cpi.db"
+db_path = Path(os.environ.get("CPI_DB_PATH", DEFAULT_DB_PATH))
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())

@@ -18,8 +18,7 @@ logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
 # Check if the cpi.db database exists, if not, download it.
-this_dir = Path(__file__).parent.absolute()
-db_path = this_dir / "cpi.db"
+db_path = models.db_path
 if not db_path.exists():
     warnings.warn(
         "CPI database not found. Downloading... This may take a few minutes.",
