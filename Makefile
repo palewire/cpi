@@ -58,6 +58,7 @@ check: lint format-check type-check dependency-check workflow-check ## Run fast 
 
 build: ## Build and validate source and wheel distributions
 	rm -rf dist
+	test -f cpi/cpi.db
 	$(UV) build --sdist --wheel
 	$(RUN) twine check dist/*
 	$(RUN) check-wheel-contents dist/*.whl

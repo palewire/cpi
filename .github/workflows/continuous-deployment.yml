@@ -123,6 +123,9 @@ jobs:
           enable-cache: true
           cache-dependency-glob: "uv.lock"
 
+      - name: Initialize CPI database
+        run: uv run --no-env-file python -c 'import cpi'
+
       - name: Build distributions
         run: make build
 

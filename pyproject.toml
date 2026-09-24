@@ -72,6 +72,9 @@ include-package-data = true
 packages = ["cpi"]
 zip-safe = false
 
+[tool.setuptools.package-data]
+cpi = ["cpi.db"]
+
 [tool.setuptools_scm]
 version_scheme = "guess-next-dev"
 local_scheme = "no-local-version"

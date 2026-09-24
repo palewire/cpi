@@ -12,6 +12,7 @@ recursive-include .agents *.md
 recursive-include .devcontainer *
 recursive-include .github *
 recursive-include cpi *.py
+include cpi/cpi.db
 recursive-include data *.csv
 recursive-include docs *.md *.py Makefile
 recursive-include notebooks *.ipynb *.csv *.json *.py
