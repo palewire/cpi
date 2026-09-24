@@ -14,6 +14,9 @@ copyright = f"{year} palewire"
 
 exclude_patterns = ["_build"]
 
+# Keep runtime warnings from notebook examples out of the rendered docs.
+nb_output_stderr = "remove"
+
 html_theme = "palewire"
 html_sidebars: dict[Any, Any] = {}
 html_theme_options: dict[str, Any] = {
