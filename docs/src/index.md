@@ -22,10 +22,10 @@ A Python library that quickly adjusts U.S. dollars for inflation using the [Cons
 
 ## Installation
 
-The library can be installed from the [Python Package Index](https://pypi.org/project/cpi/) with any of the standard Python installation tools, such as [pipenv](https://pipenv.pypa.io/en/latest/).
+The library can be installed from the [Python Package Index](https://pypi.org/project/cpi/) with pip or uv. For example, install it with `python -m pip install cpi`.
 
 ```bash
-pipenv install cpi
+python -m pip install cpi
 ```
 
 ## Working with Python

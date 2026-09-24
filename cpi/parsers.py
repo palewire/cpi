@@ -6,6 +6,7 @@ Parse and prepare the Consumer Price Index (CPI) dataset.
 import logging
 import os
 import sqlite3
+from typing import Any
 
 import pandas as pd
 
@@ -37,7 +38,7 @@ class BaseParser:
         # Return data
         return result_list
 
-    def parse(self) -> list[dict]:
+    def parse(self) -> list[dict[str, Any]]:
         raise NotImplementedError
 
     def get_df(self) -> pd.DataFrame:

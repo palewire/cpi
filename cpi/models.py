@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import logging
 import sqlite3
-from datetime import date
+from collections.abc import Sequence
+from datetime import date as Date
+from typing import Any
 from pathlib import Path
 
 from pandas import json_normalize
@@ -18,7 +20,7 @@ logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
 
-def query(sql: str, params: list | tuple | None = None) -> list[dict]:
+def query(sql: str, params: Sequence[Any] | None = None) -> list[dict[str, Any]]:
     """Query the cpi.db database and return the result.
 
     Args:
@@ -52,7 +54,7 @@ def query(sql: str, params: list | tuple | None = None) -> list[dict]:
     return result_list
 
 
-def queryone(sql: str, params: list | tuple | None = None) -> dict:
+def queryone(sql: str, params: Sequence[Any] | None = None) -> dict[str, Any]:
     """Query the cpi.db database and return a single result.
 
     Args:
@@ -86,29 +88,32 @@ class BaseObject:
 
     table_name: str | None = None  #: The name of the table in the database.
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<{self.__class__.__name__}: {self.__str__()}>"
 
-    def __eq__(self, other):
-        return self.id == other.id
+    def __eq__(self, other: object) -> bool:
+        return bool(
+            getattr(other, "id", None) is not None
+            and getattr(self, "id", None) == getattr(other, "id", None)
+        )
 
-    def __str__(self):
-        return self.name
+    def __str__(self) -> str:
+        return str(getattr(self, "name"))
 
     @classmethod
-    def get_by_id(cls, value: str):
+    def get_by_id(cls, value: str) -> Any:
         """Returns the object with the provided identifier code."""
         d = queryone(f"SELECT * from '{cls.table_name}' WHERE id=?", (value,))
         return cls(**d)
 
     @classmethod
-    def get_by_name(cls, value: str):
+    def get_by_name(cls, value: str) -> Any:
         """Returns the object with the provided name."""
         d = queryone(f"SELECT * from '{cls.table_name}' WHERE name=?", (value,))
         return cls(**d)
 
     @classmethod
-    def all(cls):
+    def all(cls) -> list[Any]:
         """Returns a list of all objects in the table."""
         dict_list = query(f"SELECT * FROM '{cls.table_name}'")
         return [cls(**d) for d in dict_list]
@@ -164,7 +169,7 @@ class Period(BaseObject):
         }
 
     @property
-    def month(self):
+    def month(self) -> int:
         """
         Returns the month integer for the period.
         """
@@ -176,7 +181,7 @@ class Period(BaseObject):
             return int(self.id.replace("M", ""))
 
     @property
-    def type(self):
+    def type(self) -> str:
         """
         Returns a string classifying the period.
         """
@@ -213,10 +218,12 @@ class Index(BaseObject):
         self.period = period
         self.value = value
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.date} ({self.period}): {self.value}"
 
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Index):
+            return NotImplemented
         return (
             self.value == other.value
             and self.series_id == other.series_id
@@ -234,11 +241,11 @@ class Index(BaseObject):
         }
 
     @property
-    def date(self) -> date:
+    def date(self) -> Date:
         """
         Accepts a row from the raw BLS data. Returns a Python date object based on its period.
         """
-        return date(self.year, self.period.month, 1)
+        return Date(self.year, self.period.month, 1)
 
 
 class Series(BaseObject):
@@ -247,7 +254,7 @@ class Series(BaseObject):
     a specific consumer item in a specific geographical area whose price is gathered monthly to a category
     of worker in a specific industry whose employment rate is being recorded monthly, etc.
 
-    Yes, that's the offical government definition. I'm not kidding.
+    Yes, that's the official government definition. I'm not kidding.
     """
 
     def __init__(
@@ -270,7 +277,7 @@ class Series(BaseObject):
         self.items = items
         self.indexes = indexes
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.id}: {self.title}"
 
     def __dict__(self):
@@ -292,14 +299,14 @@ class Series(BaseObject):
         return json_normalize(dict_list, sep="_")
 
     @property
-    def latest_month(self) -> date:
+    def latest_month(self) -> Date:
         return max([i.date for i in self.indexes if i.period.type == "monthly"])
 
     @property
     def latest_year(self) -> int:
         return max([i.year for i in self.indexes if i.period.type == "annual"])
 
-    def get_index_by_date(self, date: date, period_type="annual"):
+    def get_index_by_date(self, date: Date, period_type: str = "annual") -> Index:
         period_list = [i for i in self.indexes if i.period.type == period_type]
         try:
             return next(i for i in period_list if i.date == date)
@@ -309,7 +316,7 @@ class Series(BaseObject):
             )
 
     @classmethod
-    def get_by_id(cls, value: str):
+    def get_by_id(cls, value: str) -> Series:
         # If it's not there, try querying the database
         d = queryone("SELECT * FROM 'series' WHERE id=?", (value,))
 
@@ -341,7 +348,7 @@ class Series(BaseObject):
         return cls(**d)
 
 
-class SeriesList(list):
+class SeriesList(list[Series]):
     """
     A custom list of indexes in a series.
     """
@@ -372,7 +379,7 @@ class SeriesList(list):
         # Append to list
         super().append(obj)
 
-    def get_by_id(self, value) -> Series:
+    def get_by_id(self, value: str) -> Series:
         """Returns the CPI series object with the provided identifier code."""
         logger.debug(f"Retrieving series with id {value}")
 
@@ -401,11 +408,11 @@ class SeriesList(list):
 
     def get(
         self,
-        survey=DEFAULTS_SERIES_ATTRS["survey"],
-        seasonally_adjusted=DEFAULTS_SERIES_ATTRS["seasonally_adjusted"],
-        periodicity=DEFAULTS_SERIES_ATTRS["periodicity"],
-        area=DEFAULTS_SERIES_ATTRS["area"],
-        items=DEFAULTS_SERIES_ATTRS["items"],
+        survey: str = DEFAULTS_SERIES_ATTRS["survey"],
+        seasonally_adjusted: bool = DEFAULTS_SERIES_ATTRS["seasonally_adjusted"],
+        periodicity: str = DEFAULTS_SERIES_ATTRS["periodicity"],
+        area: str = DEFAULTS_SERIES_ATTRS["area"],
+        items: str = DEFAULTS_SERIES_ATTRS["items"],
     ) -> Series:
         """Returns a single CPI Series object based on the input.
 

@@ -16,3 +16,6 @@ todo
 .ruff-cache
 jupyter_execute
 _build_html
+.venv/
+.pytest_cache/
+.mypy_cache/

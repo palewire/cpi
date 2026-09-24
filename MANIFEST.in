@@ -1,4 +1,20 @@
 include LICENSE
 include README.md
+include *.md
+include Makefile
+include pyproject.toml
+include uv.lock
+include .python-version
+include .pre-commit-config.yaml
+include .secrets.baseline
+include *.py
+recursive-include .agents *.md
+recursive-include .devcontainer *
+recursive-include .github *
+recursive-include cpi *.py
 include cpi/cpi.db
-recursive-include notebooks *
+recursive-include data *.csv
+recursive-include docs *.md *.py Makefile
+recursive-include notebooks *.ipynb *.csv *.json *.py
+prune notebooks/.ipynb_checkpoints
+recursive-include tests *.py *.csv

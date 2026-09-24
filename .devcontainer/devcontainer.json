@@ -1,8 +1,33 @@
 {
-	"name": "Python 3",
-	"image": "mcr.microsoft.com/devcontainers/python:0-3.9",
-	"features": {
-		"ghcr.io/devcontainers-contrib/features/pipenv:1": {}
-	},
-	"postCreateCommand": "sh .devcontainer/postCreateCommand.sh"
+  "name": "CPI",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "VARIANT": "3.13-bookworm"
+    }
+  },
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": true,
+  "containerEnv": {
+    "UV_LINK_MODE": "copy"
+  },
+  "postCreateCommand": "sh .devcontainer/postCreateCommand.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "astral-sh.ruff",
+        "ms-python.python",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {
+        "editor.codeActionsOnSave": {
+          "source.fixAll.ruff": "explicit",
+          "source.organizeImports.ruff": "explicit"
+        },
+        "editor.formatOnSave": true,
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+        "python.testing.pytestEnabled": true
+      }
+    }
+  }
 }
