@@ -89,6 +89,20 @@ def test_series_list():
     cpi.series.get_by_id("CUSR0000SA0")
 
 
+def test_series_list_get_uses_cached_series(monkeypatch):
+    cached_series = cpi.DEFAULT_SERIES
+    monkeypatch.setattr(cpi.series, "_dict", {cached_series.id: cached_series})
+
+    def fail_if_database_lookup(cls, value):
+        pytest.fail("SeriesList.get() bypassed the series cache")
+
+    monkeypatch.setattr(
+        cpi.models.Series, "get_by_id", classmethod(fail_if_database_lookup)
+    )
+
+    assert cpi.series.get() is cached_series
+
+
 def test_metadata_lists():
     assert len(cpi.areas.all()) > 0
     assert len(cpi.periods.all()) > 0
