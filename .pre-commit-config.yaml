@@ -1,44 +1,73 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
+default_install_hook_types: [pre-commit, pre-push]
+default_stages: [pre-commit]
+
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: check-yaml
-    -   id: check-added-large-files
-    -   id: fix-byte-order-marker
-    -   id: check-case-conflict
-    -   id: check-json
-    -   id: mixed-line-ending
-    -   id: check-ast
-    -   id: check-merge-conflict
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-added-large-files
+        args: [--maxkb=1500]
+      - id: fix-byte-order-marker
+      - id: check-case-conflict
+      - id: mixed-line-ending
+      - id: check-ast
+      - id: check-merge-conflict
+      - id: detect-private-key
 
--   repo: 'https://github.com/astral-sh/ruff-pre-commit'
+  - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.11
     hooks:
-    -   id: ruff
-        args:
-        -   '--fix'
-    -   id: ruff-format
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
 
--   repo: https://github.com/asottile/blacken-docs
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.12
+    hooks:
+      - id: actionlint
+
+  - repo: https://github.com/asottile/blacken-docs
     rev: 1.20.0
     hooks:
-    -   id: blacken-docs
+      - id: blacken-docs
         additional_dependencies: [black]
+        files: ^(?:README\.md|docs/.*\.(?:md|rst))$
 
--   repo: https://github.com/asottile/pyupgrade
-    rev: v3.21.2
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
     hooks:
-    -   id: pyupgrade
-        args: [--py37-plus]
+      - id: detect-secrets
+        args: [--baseline, .secrets.baseline]
+        exclude: ^tests/.*$
 
--   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.19.1
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.3
     hooks:
-    -   id: mypy
-        additional_dependencies:
-          - types-requests
-          - types-python-dateutil
+      - id: codespell
+        exclude: ^uv\.lock$
+
+  - repo: local
+    hooks:
+      - id: zizmor
+        name: zizmor
+        entry: uv run --no-env-file zizmor .github/workflows
+        language: system
+        files: ^\.github/workflows/.*\.ya?ml$
+        pass_filenames: false
+
+      - id: ty
+        name: ty
+        entry: uv run --no-env-file ty check cpi
+        language: system
+        types: [python]
+        pass_filenames: false
+        require_serial: true
+        stages: [pre-push]
+        always_run: true

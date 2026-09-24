@@ -1,0 +1,106 @@
+[build-system]
+requires = ["setuptools>=80", "setuptools-scm>=9"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cpi"
+dynamic = ["version"]
+description = "Quickly adjust U.S. dollars for inflation using the Consumer Price Index (CPI)"
+readme = { file = "README.md", content-type = "text/markdown" }
+license = "MIT"
+authors = [{ name = "Ben Welsh", email = "b@palewi.re" }]
+requires-python = ">=3.9"
+dependencies = [
+    "click",
+    "pandas",
+    "python-dateutil",
+    "requests",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+Documentation = "https://palewi.re/docs/cpi/"
+Maintainer = "https://github.com/palewire"
+Source = "https://github.com/palewire/cpi"
+Tracker = "https://github.com/palewire/cpi/issues"
+
+[project.scripts]
+inflate = "cpi.cli:inflate"
+
+[dependency-groups]
+dev = [
+    "black",
+    "blacken-docs",
+    "check-manifest",
+    "check-wheel-contents",
+    "deptry",
+    "pre-commit",
+    "ruff==0.14.11",
+    "setuptools-scm",
+    "twine",
+    "ty",
+    "zizmor",
+]
+test = [
+    "pytest",
+    "pytest-cov",
+    "pytest-xdist",
+]
+docs = [
+    "myst-nb",
+    "myst-parser",
+    "sphinx",
+    "sphinx-autobuild",
+    "sphinx-palewire-theme",
+]
+notebooks = [
+    "altair",
+    "altair-latimes",
+    "nbclient",
+    "jupyterlab",
+]
+
+[tool.setuptools]
+include-package-data = true
+packages = ["cpi"]
+zip-safe = false
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "no-local-version"
+
+[tool.ruff]
+target-version = "py39"
+line-length = 88
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ty.environment]
+python-version = "3.9"
+
+[tool.ty.src]
+include = ["cpi"]
+exclude = ["tests/**", "build/**", ".venv/**", ".github/**", "**/__pycache__"]
+
+[tool.ty.rules]
+invalid-argument-type = "error"
+invalid-return-type = "error"
+invalid-key = "error"
+invalid-assignment = "error"
+invalid-method-override = "error"
+unresolved-attribute = "error"
+possibly-missing-attribute = "error"
+missing-type-argument = "error"
+no-matching-overload = "error"
+unsound-return-statement = "error"
+possibly-unresolved-reference = "warn"
+unused-ignore-comment = "error"

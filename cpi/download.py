@@ -66,10 +66,10 @@ class Downloader:
             for t in table_list:
                 conn.execute(f"DROP TABLE IF EXISTS '{t}';")
             conn.close()
-            self.vaccum()
+            self.vacuum()
 
-    def vaccum(self) -> None:
-        """Vaccum the database."""
+    def vacuum(self) -> None:
+        """Vacuum the database."""
         conn = self.get_db_conn()
         conn.execute("VACUUM;")
         conn.close()
@@ -150,8 +150,8 @@ class Downloader:
         # Close the connection
         conn.close()
 
-        # Vaccum the database
-        self.vaccum()
+        # Vacuum the database.
+        self.vacuum()
 
     def get_df(self, file: str) -> pd.DataFrame:
         """Download TSV file from the BLS."""

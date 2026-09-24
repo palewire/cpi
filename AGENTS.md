@@ -1,31 +1,39 @@
-# Repository guide for coding agents
+# Agent Guide
 
-## Project overview
+## Project
 
-`cpi` is a Python library and command-line tool for looking up U.S. Bureau of Labor Statistics Consumer Price Index values and adjusting dollar amounts for inflation. The package reads its data from a local SQLite database built from BLS tables.
+`cpi` is a Python library and command-line tool for looking up U.S. Bureau of Labor Statistics Consumer Price Index values and adjusting dollar amounts for inflation. It reads data from a local SQLite database built from BLS tables. The `inflate` command is exposed through `cpi.cli:inflate`.
 
-## Development environment
+## Setup and checks
 
-- The project uses Pipenv; `Pipfile` targets Python 3.11.
-- `make test` runs the test suite with pytest, xdist, and coverage.
-- Run configured hooks with `pipenv run pre-commit run --all-files` when changing project files. The pinned hooks include whitespace and file checks, Ruff, Blacken-docs, pyupgrade, and mypy.
-- Use the existing code style and add Python type hints when practical. Keep compatibility with Python 3.9 through 3.12, which are tested in CI.
+- Python 3.9 through 3.12 are supported. The development environment defaults to Python 3.13, configured in `.python-version`.
+- Install the exact locked development environment with `make bootstrap` (`uv sync --all-groups --locked`).
+- Use `make check` for Ruff lint/format and mypy checks, `make test` for the pytest suite, and `make verify` for checks, tests, and package build validation.
+- Use `make format` only when formatting source changes is intended. `make hooks` runs all pre-commit hooks and may modify files.
+- Keep Ruff pinned in `pyproject.toml`, `.pre-commit-config.yaml`, and CI aligned. Upgrade it deliberately and review any newly reported findings rather than letting CI select an unpinned release.
 
-## CPI data refreshes
+## Data updates
 
-- `make update` runs `python -m cpi.download`, executes `notebooks/analysis.ipynb`, and runs `sample.py`. It downloads the current BLS source files, replaces the local SQLite tables, and regenerates tracked data and notebook outputs. It requires network access and can take several minutes.
-- The database at `cpi/cpi.db` is ignored by Git. Do not commit it or delete it unless the user specifically asks for a local data rebuild.
-- Monthly data refreshes change the `LATEST_MONTH` and related expected values near the top of `tests/test_input.py`. Update those values from the refreshed data, then run `make test` again.
-- Review generated changes under `data/` and `notebooks/` after a refresh. Keep the updated outputs needed by the project, and avoid including unrelated notebook edits or local artifacts.
-- Annual expectations in the test file should only be changed when annual CPI data changes.
+- `make update` runs the BLS downloader, executes `notebooks/analysis.ipynb` in place, and regenerates `sample.py` outputs. It needs network access and may take several minutes.
+- The database at `cpi/cpi.db` is ignored by Git. Do not delete or overwrite it unless the user specifically asks for a local data rebuild.
+- Monthly refreshes may require updating constants near the top of `tests/test_input.py`. Follow `.agents/skills/monthly-cpi-data-update/SKILL.md` for the full workflow and checks.
+- Review generated changes under `data/` and `notebooks/`; do not include unrelated notebook edits, caches, SQLite databases, coverage files, or build artifacts.
 
-## Release workflow
+## Agent and worktree safety
 
-- Package versions are derived from Git tags by `setuptools_scm`; release tags use the `vMAJOR.MINOR.PATCH` form.
-- Pushing a version tag starts the continuous-deployment workflow. It runs linting, typing, tests, builds and checks the package, then publishes to PyPI when the required jobs succeed and the repository's PyPI secret is available.
-- Creating and pushing a version tag publishes a public package release. Do this only when the user explicitly requests a release. Do not claim PyPI publication until the tagged workflow completes successfully.
+- Edit only the current checkout. Do not modify the primary checkout or sibling worktrees.
+- Avoid broad clean, reset, or delete operations. Do not stop services that may be shared with another checkout or agent.
+- Coordinate ownership of shared files such as lockfiles, generated data, notebooks, and snapshots before parallel work.
+- Do not hand-edit generated data or notebook outputs; use the documented generator commands.
 
-## Scope and safety
+## Packaging and releases
 
-- Keep changes focused on the requested work and do not commit local databases, caches, coverage files, or build artifacts.
-- Do not push commits, create tags, publish releases, or modify external services unless the user has explicitly requested that action.
+- Package metadata lives in `pyproject.toml`; versions come from Git tags through `setuptools-scm`.
+- `make build` creates and checks source and wheel distributions. Keep package metadata, dependencies, the CLI entry point, and compatibility classifiers aligned.
+- Pushing a `vMAJOR.MINOR.PATCH` tag starts the release workflow and may publish the package through PyPI Trusted Publishing. The GitHub workflow must be configured as a trusted publisher for the `cpi` project. Creating or moving tags, publishing releases, or changing deployment settings requires explicit user authorization. Do not report a release as published until its workflow completes successfully.
+
+## Change guidelines
+
+- Keep implementation, tests, packaging, and documentation aligned.
+- Add tests for new behavior when appropriate.
+- Do not commit local databases, caches, `.venv`, coverage data, or build artifacts.

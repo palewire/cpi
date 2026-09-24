@@ -1,7 +1,13 @@
 name: Documentation
 
+permissions:
+  contents: read
+
 on:
   push:
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"
   workflow_dispatch:
 
 concurrency:
@@ -12,62 +18,97 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    if: github.event_name != 'schedule'
     steps:
-      - id: checkout
-        name: Checkout
-        uses: actions/checkout@v6
-
-      - id: setup-python
-        name: Setup Python
-        uses: actions/setup-python@v6
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          python-version: '3.11'
+          persist-credentials: false
 
-      - id: install-python-dependencies
-        name: Install Python dependencies
-        run: pip install cpi sphinx sphinx-palewire-theme myst-nb myst-parser
-        shell: bash
+      - name: Setup uv
+        uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: "0.12.5"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
 
-      - id: build-sphinx-documentation
-        name: Build Sphinx documentation
-        run: sphinx-build -b html src _build
-        shell: bash
-        working-directory: docs
+      - name: Install Python
+        run: uv python install 3.13
 
-      - id: upload-release-candidate
-        name: Upload release candidate
-        uses: actions/upload-artifact@v6
+      - name: Install documentation dependencies
+        run: make install-docs
+
+      - name: Build documentation
+        run: make docs-check
+
+      - name: Upload documentation artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: release-candidate
-          path: ./docs/_build/
+          path: ./docs/_build/html/
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Prune uv cache
+        run: uv cache prune --ci
+
+  linkcheck:
+    name: Check documentation links
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: "0.12.5"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Install documentation dependencies
+        run: make install-docs
+
+      - name: Check documentation links
+        run: make linkcheck
+
+      - name: Prune uv cache
+        run: uv cache prune --ci
 
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
     needs: build
-    if: ${{ github.ref_name == 'main' }}
+    if: github.event_name == 'push' && github.ref_name == 'main' && vars.DOCS_DEPLOY_ENABLED == 'true'
+    environment: docs-production
+    permissions:
+      contents: read
+      id-token: write
+    concurrency:
+      group: docs-deploy
+      cancel-in-progress: true
     steps:
-      - name: Download release candidate
-        uses: actions/download-artifact@v7
+      - name: Download documentation artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: release-candidate
-          path: ./docs/
+          path: docs-site
 
-      - id: configure-aws
-        name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v5
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
         with:
-          aws-access-key-id: ${{ secrets.PALEWIRE_DOCS_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.PALEWIRE_DOCS_AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.PALEWIRE_DOCS_AWS_REGION }}
+          role-to-assume: ${{ vars.DOCS_AWS_ROLE_ARN }}
+          aws-region: ${{ vars.DOCS_AWS_REGION }}
 
-      - id: upload-to-s3
-        name: Upload documentation to Amazon S3
-        uses: datadesk/delivery-deploy-action@v1
+      - name: Upload documentation to S3
+        uses: datadesk/delivery-deploy-action@10b74a35575e1590996420c38beed9b13e4d939f # v1
         with:
-          bucket: ${{ secrets.PALEWIRE_DOCS_AWS_BUCKET }}
-          base-path: cpi/
-          dir: ./docs/
+          bucket: ${{ secrets.DOCS_AWS_BUCKET }}
+          base-path: ${{ secrets.DOCS_AWS_BASE_PATH }}
+          dir: ./docs-site
           should-cache: false
           use-accelerate-endpoint: false
           public: true

@@ -19,14 +19,14 @@ Use this skill when updating the BLS data and generated outputs for the cpi proj
 1. Run make update and let it finish. If it fails, diagnose the cause before proceeding; do not silently skip notebook or sample generation.
 2. Run make test before changing expected values. The monthly assertions may fail because the expected month and CPI values are intentionally pinned in the test file. Inspect the failure output and confirm each discrepancy is explained by the refreshed database. Treat unrelated failures as problems to investigate, not stale expectations.
 3. If test failures do not make the latest month and values clear, read them from the refreshed database through the public API. For example, run:
-   pipenv run python -c 'from datetime import date; import cpi; print(cpi.LATEST_MONTH); print(cpi.inflate(100, date(1950, 1, 1))); print(cpi.inflate(100, date(1950, 1, 1), series_id="CUSR0000SA0"))'
+   uv run python -c 'from datetime import date; import cpi; print(cpi.LATEST_MONTH); print(cpi.inflate(100, date(1950, 1, 1))); print(cpi.inflate(100, date(1950, 1, 1), series_id="CUSR0000SA0"))'
 4. Update only the monthly constants at the top of tests/test_input.py from the refreshed database/test output:
    - LATEST_MONTH
    - LATEST_MONTH_1950_ALL_ITEMS
    - LATEST_MONTH_1950_CUSR0000SA0
 5. Leave annual constants alone unless annual CPI data or its tested values changed. Do not round or estimate the expected values; use the precise actual values used by the tests.
 6. Run make test again. Continue only when the suite passes; note any expected stale-data warning separately from failures.
-7. Run the configured pre-commit hooks on the changed files, then review git diff --check, git status, and the full diff. Confirm that generated changes under data/ and notebooks/ are relevant to the refresh and that no SQLite database, cache, coverage file, or build artifact is staged.
+7. Run the configured pre-commit hooks on the changed files using `make hooks`, then review git diff --check, git status, and the full diff. Confirm that generated changes under data/ and notebooks/ are relevant to the refresh and that no SQLite database, cache, coverage file, or build artifact is staged.
 
 ## Finish and release
 

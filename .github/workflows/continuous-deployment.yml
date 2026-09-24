@@ -1,7 +1,11 @@
 name: Continuous deployment
 
+permissions:
+  contents: read
+
 on:
   push:
+  pull_request:
   workflow_dispatch:
 
 concurrency:
@@ -9,172 +13,145 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint-python:
-    name: Lint Python code
-    runs-on: ubuntu-latest
-    steps:
-      - id: checkout
-        name: Checkout
-        uses: actions/checkout@v6
-
-      - id: ruff
-        name: Ruff
-        uses: chartboost/ruff-action@v1
-        with:
-          version: "0.14.11"
-
-  mypy-python:
-    name: Static-types check
+  check:
+    name: Check project
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
-
-      - id: setup-python
-        name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          python-version: '3.11'
+          persist-credentials: false
 
-      - id: install-python-dependencies
-        name: Install Python dependencies
-        run: pip install mypy types-requests types-python-dateutil
-        shell: bash
+      - name: Setup uv
+        uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: "0.12.5"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
 
-      - id: mypy
-        name: Run mypy
-        run: mypy ./cpi --ignore-missing-imports
-        shell: bash
+      - name: Install Python dependencies
+        run: make install-dev
+
+      - name: Run static checks
+        run: make check
+
+      - name: Prune uv cache
+        run: uv cache prune --ci
 
   test-python:
-    strategy:
-      matrix:
-        python: ['3.9', '3.10', '3.11', '3.12']
-    name: "Test: pip"
+    name: Test Python code
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.9", "3.10", "3.11", "3.12"]
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
-
-      - id: install-python
-        name: Install Python
-        uses: actions/setup-python@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          python-version: ${{ matrix.python }}
+          persist-credentials: false
 
-      - id: install-python-dependencies
-        name: Install Python dependencies
-        run: pip install requests click python-dateutil pandas pytest pytest-cov pytest-xdist
+      - name: Setup uv
+        uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: "0.12.5"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
 
-      - id: download-data
-        name: Download data
-        run: python -c 'import cpi'
+      - name: Install Python
+        run: uv python install ${{ matrix.python }}
 
-      - id: tests
-        name: Run tests
-        run: pytest -n auto --cov=cpi --cov-report term-missing tests
+      - name: Install Python dependencies
+        run: make install-test UV_PYTHON=${{ matrix.python }}
 
-      - id: update
-        name: Update data
-        run: python -c 'import cpi; cpi.update()'
+      - name: Initialize CPI database
+        run: uv run --python ${{ matrix.python }} python -c 'import cpi'
+
+      - name: Run tests
+        run: make test UV_PYTHON=${{ matrix.python }}
+
+      - name: Verify data can update
+        run: uv run --python ${{ matrix.python }} python -c 'import cpi; cpi.update()'
+
+      - name: Prune uv cache
+        run: uv cache prune --ci
 
   test-conda:
+    name: Test Conda on Python ${{ matrix.python }}
+    runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python: ['3.9', '3.10', '3.11', '3.12']
-    name: "Test: conda"
-    runs-on: ubuntu-latest
+        python: ["3.9", "3.10", "3.11", "3.12"]
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
-
-      - id: install-python
-        name: Install Python
-        uses: actions/setup-python@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          python-version: ${{ matrix.python }}
+          persist-credentials: false
 
-      - id: install-python-dependencies
-        name: Install Python dependencies
+      - name: Create Conda environment
         run: |
-          $CONDA/bin/conda create -n cpi python=${{ matrix.python }}
-          $CONDA/bin/conda install -n cpi requests click python-dateutil pandas pytest pytest-cov pytest-xdist
+          "$CONDA/bin/conda" create -y -n cpi "python=${{ matrix.python }}"
+          "$CONDA/bin/conda" install -y -n cpi requests click python-dateutil pandas pytest pytest-cov pytest-xdist
 
-      - id: download-data
-        name: Download data
-        run: $CONDA/bin/conda run -n cpi python -c 'import cpi'
+      - name: Initialize CPI database
+        run: |
+          "$CONDA/bin/conda" run -n cpi python -c "import cpi"
 
-      - id: tests
-        name: Run tests
-        run: $CONDA/bin/conda run -n cpi pytest -n auto --cov=cpi --cov-report term-missing tests
+      - name: Run tests
+        run: |
+          "$CONDA/bin/conda" run -n cpi pytest -n auto --cov=cpi --cov-report term-missing tests
 
-      - id: update
-        name: Update data
-        run: $CONDA/bin/conda run -n cpi python -c 'import cpi; cpi.update()'
+      - name: Verify data can update
+        run: |
+          "$CONDA/bin/conda" run -n cpi python -c "import cpi; cpi.update()"
 
-  test-build:
-    name: Build Python package
+  build:
+    name: Build package
     runs-on: ubuntu-latest
-    needs: [test-python, test-conda, lint-python, mypy-python]
+    needs: [check, test-python, test-conda]
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
-
-      - id: install-python
-        name: Install Python
-        uses: actions/setup-python@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          python-version: '3.11'
+          persist-credentials: false
 
-      - id: install-python-dependencies
-        name: Install Python dependencies
-        run: pip install requests click python-dateutil pandas twine setuptools-scm wheel
-        shell: bash
-
-      - id: create-db
-        name: Create database
-        run: python -c 'import cpi'
-        shell: bash
-
-      - id: build
-        name: Build release
-        run: |
-          python setup.py sdist
-          python setup.py bdist_wheel
-          ls -l dist
-        shell: bash
-
-      - id: check
-        name: Check release
-        run: twine check dist/*
-        shell: bash
-
-      - id: save
-        name: Save artifact
-        uses: actions/upload-artifact@v6
+      - name: Setup uv
+        uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
         with:
-          name: build-${{ github.run_number }}
+          version: "0.12.5"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Build distributions
+        run: make build
+
+      - name: Save artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: release-candidate
           path: ./dist
           if-no-files-found: error
+
+      - name: Prune uv cache
+        run: uv cache prune --ci
 
   tag-release:
     name: Tagged PyPI release
     runs-on: ubuntu-latest
-    needs: [test-build]
+    needs: [build]
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+    permissions:
+      id-token: write
     steps:
-      - id: fetch
-        name: Fetch artifact
-        uses: actions/download-artifact@v7
+      - name: Fetch artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
-          name: build-${{ github.run_number }}
+          name: release-candidate
           path: ./dist
 
-      - id: publish
-        name: Publish release
-        uses: pypa/gh-action-pypi-publish@release/v1
+      - name: Publish release
+        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # release/v1
         with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
           verbose: true
-          verify_metadata: false
+          verify-metadata: false
