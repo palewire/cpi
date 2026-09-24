@@ -99,7 +99,7 @@ SEEB,SEEB,"Tuition, other school fees, and childcare"
 SEEB01,SEEB01,College tuition and fees
 SEEB02,SEEB02,Elementary and high school tuition and fees
 SEEB03,SEEB03,Day care and preschool
-SEEB04,SEEB04,Technical and business school tuition and fees
+SEEB04,SEEB04,Technical and vocational school tuition and fixed fees
 SEEC,SEEC,Postage and delivery services
 SEEC01,SEEC01,Postage
 SEEC02,SEEC02,Delivery services
@@ -208,7 +208,7 @@ SEGD05,SEGD05,Financial services
 SEGE,SEGE,Miscellaneous personal goods
 SEHA,SEHA,Rent of primary residence
 SEHB,SEHB,Lodging away from home
-SEHB01,SEHB01,"Housing at school, excluding board"
+SEHB01,SEHB01,Lodging while at school
 SEHB02,SEHB02,Other lodging away from home including hotels and motels
 SEHC,SEHC,Owners' equivalent rent of residences
 SEHC01,SEHC01,Owners' equivalent rent of primary residence
@@ -258,7 +258,7 @@ SEMC04,SEMC04,Services by other medical professionals
 SEMD,SEMD,Hospital and related services
 SEMD01,SEMD01,Hospital services
 SEMD02,SEMD02,Nursing homes and adult day services
-SEMD03,SEMD03,Care of invalids and elderly at home
+SEMD03,SEMD03,Home health care
 SEME,SEME,Health insurance
 SEMF,SEMF,Medicinal drugs
 SEMF01,SEMF01,Prescription drugs
